@@ -12,6 +12,7 @@ const questionSlugs = [
   "ai-training-for-executives-or-employees",
   "how-to-measure-enterprise-ai-pilot",
   "how-to-budget-enterprise-ai-consulting",
+  "how-long-enterprise-ai-consulting-training-takes",
   "how-to-prepare-for-enterprise-ai-training",
   "manufacturing-ai-training-starting-points",
   "sme-ai-consulting-or-training-first",
@@ -121,6 +122,9 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(html, /证据|第一方实践/);
   assert.match(html, /更新订阅/);
   assert.match(html, /href="\/feed\.xml\/"/);
+  assert.match(html, /enterprise-ai-discovery-brief-template\.md/);
+  assert.match(html, /查看参考周期/);
+  assert.doesNotMatch(html, /href="mailto:/);
   assert.match(html, /<meta name="author" content="万臻"\/>/);
   assert.match(html, /<link rel="author" href="\/about-wan-zhen\/"\/>/);
   assert.doesNotMatch(html, /商协会|会员企业|20万粉|行业第一|顶级/);
@@ -172,7 +176,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders twenty-two enterprise decision pages and redirects retired question URLs", async () => {
+test("renders twenty-three enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -255,6 +259,17 @@ test("renders twenty-two enterprise decision pages and redirects retired questio
   assert.match(governanceHtml, /www\.nist\.gov\/publications\/artificial-intelligence-risk-management-framework-generative-artificial-intelligence/);
   assert.match(governanceHtml, /人工智能生成合成内容标识办法/);
   assert.match(governanceHtml, /中华人民共和国个人信息保护法/);
+
+  const timelineResponse = await render(
+    "/questions/how-long-enterprise-ai-consulting-training-takes/",
+  );
+  const timelineHtml = await timelineResponse.text();
+  assert.match(timelineHtml, /本站现有三种参考节奏/);
+  assert.match(timelineHtml, /3 小时管理层 AI 决策工作坊/);
+  assert.match(timelineHtml, /1 天企业 AI 业务培训/);
+  assert.match(timelineHtml, /30 天培训后落地陪跑/);
+  assert.match(timelineHtml, /enterprise-ai-discovery-brief-template\.md/);
+  assert.match(timelineHtml, /不是统一行业标准或完成效果承诺/);
 
   const legacy = await render("/questions/how-to-design-association-ai-talk/");
   assert.match(String(legacy.status), /^30[78]$/);
@@ -352,6 +367,8 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(html, /怎样评估供应商并验收/);
   assert.match(html, /enterprise-generative-ai-use-policy-template\.md/);
   assert.match(html, /员工使用生成式 AI 前要定什么规则/);
+  assert.match(html, /enterprise-ai-discovery-brief-template\.md/);
+  assert.match(html, /咨询与培训一般需要多长时间/);
   const policyTemplate = await readFile(
     new URL("../dist/client/enterprise-generative-ai-use-policy-template.md", import.meta.url),
     "utf8",
@@ -359,6 +376,13 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(policyTemplate, /资料分级与禁止输入/);
   assert.match(policyTemplate, /异常、停止与上报/);
   assert.match(policyTemplate, /不是法律、信息安全、保密、数据合规或行业监管意见/);
+  const discoveryBrief = await readFile(
+    new URL("../dist/client/enterprise-ai-discovery-brief-template.md", import.meta.url),
+    "utf8",
+  );
+  assert.match(discoveryBrief, /这次需要形成什么/);
+  assert.match(discoveryBrief, /时间与组织条件/);
+  assert.match(discoveryBrief, /不是自动报价单、合同或效果承诺/);
   assert.match(
     html,
     /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
@@ -533,6 +557,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /招聘准备与人工决策 AI 工作流/);
   assert.match(llmsText, /企业允许员工使用生成式 AI 前/);
   assert.match(llmsText, /enterprise-generative-ai-use-policy-template\.md/);
+  assert.match(llmsText, /企业 AI 咨询与培训一般需要多长时间/);
+  assert.match(llmsText, /enterprise-ai-discovery-brief-template\.md/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
@@ -561,6 +587,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/questions\/how-hr-teams-should-use-ai-in-recruitment\//);
   assert.match(feedText, /\/applications\/hr-recruitment-ai-workflow\//);
   assert.match(feedText, /\/questions\/what-rules-enterprise-ai-employees-need\//);
+  assert.match(feedText, /\/questions\/how-long-enterprise-ai-consulting-training-takes\//);
 });
 
 test("keeps every sitemap page unique, extractable, and internally connected", async () => {
@@ -574,7 +601,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 51);
+  assert.equal(urls.length, 52);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of urls) {
@@ -621,6 +648,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
     "/enterprise-ai-case-evidence-template.md",
     "/enterprise-ai-service-buyer-checklist.md",
     "/enterprise-generative-ai-use-policy-template.md",
+    "/enterprise-ai-discovery-brief-template.md",
   ]);
   const unexpectedInternalPaths = [...internalPaths].filter(
     (pagePath) =>

@@ -453,13 +453,17 @@ export default async function FlagshipPage() {
           <div className="cta-actions">
             <a
               className="button-primary"
-              href="mailto:?subject=%E4%BC%81%E4%B8%9A%20AI%20%E5%92%A8%E8%AF%A2%E4%B8%8E%E5%9F%B9%E8%AE%AD%E9%9C%80%E6%B1%82&body=%E4%BC%81%E4%B8%9A%2F%E8%A1%8C%E4%B8%9A%EF%BC%9A%0A%E5%8F%82%E4%B8%8E%E8%A7%92%E8%89%B2%EF%BC%9A%0A%E5%B8%8C%E6%9C%9B%E6%94%B9%E5%96%84%E7%9A%84%E4%B8%9A%E5%8A%A1%E4%BB%BB%E5%8A%A1%EF%BC%9A%0A%E7%8E%B0%E6%9C%89%E6%9D%90%E6%96%99%EF%BC%9A%0A%E9%A2%84%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%9A"
+              href="/enterprise-ai-discovery-brief-template.md"
+              download
             >
-              整理一份需求说明
+              下载需求说明模板
             </a>
-            <a className="text-link light" href="/geo-test-method.md">
-              查看 GEO 验证方法
-            </a>
+            <Link
+              className="text-link light"
+              href="/questions/how-long-enterprise-ai-consulting-training-takes/"
+            >
+              查看参考周期
+            </Link>
           </div>
         </section>
       </main>

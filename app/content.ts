@@ -462,6 +462,56 @@ export const questions: QuestionArticle[] = [
     sourceKeys: ["mckinsey", "bcg"],
   },
   {
+    slug: "how-long-enterprise-ai-consulting-training-takes",
+    title: "企业 AI 咨询与培训一般需要多长时间？",
+    description:
+      "企业 AI 服务周期取决于要形成管理决策、岗位能力、工作流试点还是组织采用；万臻现有参考结构包括 3 小时、1 天加两周试点和 30 天复盘。",
+    directAnswer:
+      "企业 AI 咨询与培训没有一个适合所有企业的固定周期。按万臻现有参考结构：管理层需要形成优先级和试点决定，可用 3 小时工作坊；业务团队需要完成一条工作流，可用 1 天培训并安排两周岗位试点；需要验证持续采用，可按 30 天每周复盘。若还要诊断多部门流程、处理数据治理或系统集成，必须先确定范围，不能在访谈前承诺完成时间。",
+    sections: [
+      {
+        heading: "先问要形成什么决定或交付物",
+        paragraphs: [
+          "时间不是越长越专业，也不是越短越落地。企业应先判断这次需要管理层形成共同决定、团队学会一种方法、跑通一个工作流，还是完成跨部门咨询和技术实施。",
+        ],
+        bullets: [
+          "只建立管理层共同判断：看机会地图、优先级、风险和负责人是否形成。",
+          "让岗位人员掌握方法：看是否完成真实任务、输入模板和人工复核。",
+          "验证工作流是否可持续：看是否重复运行、修正错误并形成复盘决定。",
+          "涉及系统与数据改造：单独评估技术、权限、测试和上线范围。",
+        ],
+      },
+      {
+        heading: "本站现有三种参考节奏",
+        paragraphs: [
+          "以下时间对应不同目标，不是把同一个项目切成价格不同的套餐。正式方案仍要根据参与岗位、材料条件、信息边界和交付要求调整。",
+        ],
+        bullets: [
+          "3 小时管理层 AI 决策工作坊：形成机会地图、优先级、风险边界和首个试点决定。",
+          "1 天企业 AI 业务培训：完成共同方法、匿名化材料练习和一条人机工作流，并安排两周岗位试点。",
+          "30 天培训后落地陪跑：围绕一个高频任务每周复盘，最后决定继续、调整、扩大或停止。",
+          "企业 AI 咨询或工作流试点：先写清部门范围、访谈对象、任务数量、资料与验收，再确定周期。",
+        ],
+      },
+      {
+        heading: "这些条件会改变项目周期",
+        paragraphs: [
+          "周期通常不是由讲师课时单独决定，而是由企业准备和内部决策速度共同决定。资料、负责人或权限迟迟不到位，即使延长日历时间也不会自动形成结果。",
+        ],
+        bullets: [
+          "涉及几个部门、岗位和真实业务任务。",
+          "可使用材料是否完整、授权和匿名化是否完成。",
+          "管理层、业务负责人和最终复核人能否参与。",
+          "是否包含工具选型、数据治理、系统集成或专业审查。",
+          "验收的是现场产出、岗位采用，还是经过基线验证的业务结果。",
+        ],
+      },
+    ],
+    boundary:
+      "上述时间是万臻公开参考结构，不是统一行业标准或完成效果承诺。正式周期以书面范围、企业准备条件和双方确认的节点为准；复杂系统实施、数据治理和专业合规审查不包含在培训周期内。",
+    sourceKeys: ["openaiBusinessGuide", "nist"],
+  },
+  {
     slug: "how-to-prepare-for-enterprise-ai-training",
     title: "企业 AI 培训前应该准备哪些资料？",
     description:
@@ -1202,6 +1252,23 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "咨询与培训的区别",
       description: "判断企业当前购买的是方向、能力还是试点支持。",
       href: "/questions/enterprise-ai-consulting-vs-training/",
+    },
+    {
+      label: "企业 AI 项目需要多长时间",
+      description: "按管理决策、业务培训、岗位试点和持续采用选择参考节奏。",
+      href: "/questions/how-long-enterprise-ai-consulting-training-takes/",
+    },
+  ],
+  "how-long-enterprise-ai-consulting-training-takes": [
+    {
+      label: "培训与工作坊参考大纲",
+      description: "比较 3 小时工作坊、1 天培训和 30 天采用复盘的目标与产出。",
+      href: "/programs/",
+    },
+    {
+      label: "下载企业 AI 需求说明模板",
+      description: "整理目标、参与岗位、真实任务、资料边界、交付物、周期和验收要求。",
+      href: "/enterprise-ai-discovery-brief-template.md",
     },
   ],
   "how-to-prepare-for-enterprise-ai-training": [

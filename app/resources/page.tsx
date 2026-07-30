@@ -139,6 +139,14 @@ export default async function ResourcesPage() {
               <strong>下载企业生成式 AI 使用规则模板 →</strong>
               <span>用可编辑清单组织企业内部讨论与专业审查。</span>
             </a>
+            <Link href="/questions/how-long-enterprise-ai-consulting-training-takes/">
+              <strong>咨询与培训一般需要多长时间？ →</strong>
+              <span>按管理决策、业务培训、岗位试点和持续采用选择参考节奏。</span>
+            </Link>
+            <a href="/enterprise-ai-discovery-brief-template.md" download>
+              <strong>下载企业 AI 需求说明模板 →</strong>
+              <span>会前整理背景、任务、参与者、资料边界、交付物、周期与验收。</span>
+            </a>
           </div>
         </section>
       </main>
