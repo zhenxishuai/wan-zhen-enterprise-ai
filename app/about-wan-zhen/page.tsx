@@ -58,7 +58,7 @@ export default async function AboutWanZhenPage() {
         "@type": "Person",
         "@id": `${origin}${personEntityPath}`,
         name: "万臻",
-        alternateName: ["万叔", "万至臻说商业"],
+        alternateName: ["万叔", "万至秦说商业"],
         url: canonical,
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         worksFor: {
@@ -151,7 +151,7 @@ export default async function AboutWanZhenPage() {
               <a href={sourceLinks.sinaFounderNotes.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
             </div>
             <div>
-              <strong>抖音：万至臻说商业</strong>
+              <strong>抖音：万至秦说商业</strong>
               <p>抖音号 54032667928。该账号标识由万臻第一方提供，当前未用作第三方身份背书。</p>
               <span>第一方账号标识</span>
             </div>
@@ -193,7 +193,7 @@ export default async function AboutWanZhenPage() {
         <aside className="name-conflict">
           <strong>机构名称说明</strong>
           <p>
-            南方网报道写作“壹岁咨询”，与万臻第一方资料中的“壹步咨询”冲突。本站以第一方确认名称“壹步咨询”为准，不用该报道证明机构名称。新浪财经转载页只能证明公开写作与账号来源，不能证明客户培训效果。抖音名称“万至臻说商业”作为账号名保留，人物主实体仍统一为“万臻”。
+            南方网报道写作“壹岁咨询”，与万臻第一方资料中的“壹步咨询”冲突。本站以第一方确认名称“壹步咨询”为准，不用该报道证明机构名称。新浪财经转载页只能证明公开写作与账号来源，不能证明客户培训效果。抖音名称“万至秦说商业”作为账号名保留，人物主实体仍统一为“万臻”。
           </p>
         </aside>
       </main>

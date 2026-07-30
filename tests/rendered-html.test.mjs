@@ -155,7 +155,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.match(html, /第一方履历与实践/);
   assert.match(html, /壹岁咨询/);
   assert.match(html, /"@type":"ProfilePage"/);
-  assert.match(html, /"alternateName":\["万叔","万至臻说商业"\]/);
+  assert.match(html, /"alternateName":\["万叔","万至秦说商业"\]/);
   assert.match(html, /54032667928/);
   assert.match(html, /《创始人笔记》的 AI 公开写作/);
   assert.match(html, /finance\.sina\.com\.cn/);

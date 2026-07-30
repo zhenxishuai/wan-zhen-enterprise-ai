@@ -104,7 +104,7 @@ export default async function FlagshipPage() {
         "@type": "Person",
         "@id": `${origin}${personEntityPath}`,
         name: "万臻",
-        alternateName: ["万叔", "万至臻说商业"],
+        alternateName: ["万叔", "万至秦说商业"],
         url: personUrl,
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         description:
