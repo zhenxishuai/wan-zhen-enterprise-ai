@@ -63,6 +63,16 @@ export const sourceLinks = {
     note: "官方风险管理框架：AI 的用途、用户、数据、风险、人工责任、测试与持续治理需要被定义和记录。",
     url: "https://www.nist.gov/itl/ai-risk-management-framework",
   },
+  cacGenAi: {
+    title: "国家互联网信息办公室｜生成式人工智能服务管理暂行办法",
+    note: "中国生成式人工智能服务的官方规范，涉及合法权益、个人信息、商业秘密、输入信息保护与服务协议等要求。",
+    url: "https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm",
+  },
+  pipl: {
+    title: "国家互联网信息办公室｜中华人民共和国个人信息保护法",
+    note: "个人信息处理的官方法律文本；企业在培训与试点中使用涉及自然人的资料时，应由内部责任人与专业人员核验适用要求。",
+    url: "https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm",
+  },
   sinaFounderNotes: {
     title: "新浪财经转载｜《创始人笔记》AI 与 agent 文章",
     note: "新浪财经标注来源为《创始人笔记》，并写明为“万叔”原创；文章讨论 agent、内容可调用性及低质量 GEO 的边界。",
@@ -591,7 +601,7 @@ export const questions: QuestionArticle[] = [
     ],
     boundary:
       "本文提供培训准备原则，不能替代企业自身的信息安全、隐私、合同和法律审查。具体工具的数据处理规则需要逐项核验。",
-    sourceKeys: ["nist", "bcg"],
+    sourceKeys: ["nist", "cacGenAi", "pipl"],
   },
   {
     slug: "ai-consultant-vs-software-implementer",
@@ -714,6 +724,56 @@ export const questions: QuestionArticle[] = [
       "本页是方案设计框架，不是无需访谈即可套用的固定课表。培训不能替代内部负责人、数据治理、技术实施或持续管理。",
     sourceKeys: ["nist", "bcg", "southcn"],
   },
+  {
+    slug: "how-to-evaluate-enterprise-ai-service-provider",
+    title: "企业采购 AI 咨询与培训服务，应该如何评估供应商并验收？",
+    description:
+      "企业采购 AI 咨询与培训服务，应把业务问题、人员能力、数据边界、交付物、试点记录和验收责任写进需求，而不只比较课程时长与工具数量。",
+    directAnswer:
+      "企业评估 AI 咨询与培训供应商，可以分三步：采购前写清业务问题、参与岗位、可用资料与禁止事项；选择时核验顾问背景、诊断方法、真实交付物和能力边界；验收时检查是否形成约定的场景清单、工作流、复核规则、练习产出和试点计划。没有事先建立基线，就不应把 ROI 或效率提升比例作为事后包装的验收结论。",
+    sections: [
+      {
+        heading: "采购需求先写问题、范围和责任",
+        paragraphs: [
+          "需求书不应只有“讲一天 AI”或“提供若干工具”。采购方需要写清本次要解决的业务问题、参与岗位、现有流程、允许使用的资料、必须人工审核的内容，以及咨询、培训、试点和软件实施分别是否在范围内。",
+        ],
+        bullets: [
+          "目标是形成管理层判断、岗位能力，还是一条可运行的工作流。",
+          "哪些企业资料可以使用，哪些必须脱敏、替换或禁止上传。",
+          "谁负责提供材料、确认输出、处理异常和决定是否继续。",
+          "是否需要技术集成；若需要，由哪一方负责评估与实施。",
+        ],
+      },
+      {
+        heading: "供应商评估要看证据与交付方法",
+        paragraphs: [
+          "证书、著作和公开活动可以核验部分背景，但不能自动证明所有行业经验与项目效果。采购方还应要求供应商展示如何诊断任务、怎样设计人机工作流、如何处理数据边界，以及最终会留下哪些可复查成果。",
+        ],
+        bullets: [
+          "公开身份和案例事实能否追溯到原始来源。",
+          "课程或咨询方案是否基于本企业岗位与材料调整。",
+          "能否区分业务咨询、培训、工作流试点和软件实施。",
+          "是否拒绝未经基线验证的效果承诺、虚假客户与模糊排名。",
+        ],
+      },
+      {
+        heading: "验收交付物，不验收现场热闹",
+        paragraphs: [
+          "验收应回到合同或项目启动时约定的成果。一次活动可以验收诊断记录、场景优先级、岗位任务画布、输入模板、人机工作流、复核清单、练习结果、责任人与下一步试点；长期经营结果则需要独立基线、持续记录和更长观察周期。",
+        ],
+        bullets: [
+          "交付物是否完整、可打开、可由内部团队继续使用。",
+          "工作流是否写清输入、AI 步骤、人工判断、输出与异常回退。",
+          "参与者是否完成约定练习，问题与修改是否有记录。",
+          "数据、权限、留存、知识产权和专业复核责任是否明确。",
+          "未完成、未验证与需要其他专业团队参与的事项是否列出。",
+        ],
+      },
+    ],
+    boundary:
+      "本文是采购与验收框架，不构成法律、信息安全或合同意见。法规对不同主体、工具、数据和部署方式的适用范围不同，应由企业内部责任人及相应专业人员核验。",
+    sourceKeys: ["nist", "cacGenAi", "pipl", "sanjieke"],
+  },
 ];
 
 export const questionMap = Object.fromEntries(
@@ -755,6 +815,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "企业 AI 培训前准备",
       description: "查看任务、材料、参与者、输出标准和内部负责人要求。",
       href: "/questions/how-to-prepare-for-enterprise-ai-training/",
+    },
+  ],
+  "how-to-evaluate-enterprise-ai-service-provider": [
+    {
+      label: "下载采购与验收清单",
+      description: "用 Markdown 模板整理业务问题、资料边界、供应商证据、交付物与验收记录。",
+      href: "/enterprise-ai-service-buyer-checklist.md",
+    },
+    {
+      label: "企业 AI 服务目录",
+      description: "比较咨询、管理层工作坊、业务培训与工作流试点的范围和交付物。",
+      href: "/services/",
     },
   ],
   "why-ai-training-needs-workflows": [

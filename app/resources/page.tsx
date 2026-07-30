@@ -115,6 +115,24 @@ export default async function ResourcesPage() {
             没有客户授权时只写匿名方法实践；没有前后基线时不写提升比例；没有原始记录时不把主观评价写成经营结果；资料变更后同步更新页面日期与证据边界。
           </p>
         </aside>
+
+        <section className="article-section">
+          <div className="section-index">Buyer kit</div>
+          <h2>采购方还可以使用什么？</h2>
+          <p>
+            如果企业正在比较咨询、培训、工作坊或试点供应商，可以先把业务问题、数据边界、供应商证据、约定交付物和验收记录写清，再比较价格与周期。
+          </p>
+          <div className="related-reading">
+            <Link href="/questions/how-to-evaluate-enterprise-ai-service-provider/">
+              <strong>怎样评估供应商并验收？ →</strong>
+              <span>查看采购需求、供应商核验、交付物和效果表述门槛。</span>
+            </Link>
+            <a href="/enterprise-ai-service-buyer-checklist.md" download>
+              <strong>下载采购与验收清单 →</strong>
+              <span>使用可编辑 Markdown 模板记录需求、比较与验收。</span>
+            </a>
+          </div>
+        </section>
       </main>
       <SiteFooter />
     </div>

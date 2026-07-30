@@ -19,6 +19,7 @@ const questionSlugs = [
   "ai-consultant-vs-software-implementer",
   "how-to-choose-enterprise-ai-trainer",
   "how-to-design-enterprise-ai-training-plan",
+  "how-to-evaluate-enterprise-ai-service-provider",
 ];
 
 const serviceSlugs = [
@@ -163,7 +164,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders seventeen enterprise decision pages and redirects retired question URLs", async () => {
+test("renders eighteen enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -194,6 +195,20 @@ test("renders seventeen enterprise decision pages and redirects retired question
       new RegExp(`rel="canonical" href="https://example\\.com/questions/${slug}/"`),
     );
   }
+
+  const procurementResponse = await render(
+    "/questions/how-to-evaluate-enterprise-ai-service-provider/",
+  );
+  const procurementHtml = await procurementResponse.text();
+  assert.match(procurementHtml, /采购需求先写问题、范围和责任/);
+  assert.match(procurementHtml, /enterprise-ai-service-buyer-checklist\.md/);
+  assert.match(procurementHtml, /www\.cac\.gov\.cn\/2023-07\/13/);
+  assert.match(procurementHtml, /www\.cac\.gov\.cn\/2021-08\/20/);
+
+  const dataResponse = await render("/questions/can-ai-training-use-company-data/");
+  const dataHtml = await dataResponse.text();
+  assert.match(dataHtml, /中华人民共和国个人信息保护法/);
+  assert.match(dataHtml, /生成式人工智能服务管理暂行办法/);
 
   const legacy = await render("/questions/how-to-design-association-ai-talk/");
   assert.match(String(legacy.status), /^30[78]$/);
@@ -287,6 +302,8 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(html, /公开授权/);
   assert.match(html, /"@type":"HowTo"/);
   assert.match(html, /enterprise-ai-case-evidence-template\.md/);
+  assert.match(html, /enterprise-ai-service-buyer-checklist\.md/);
+  assert.match(html, /怎样评估供应商并验收/);
   assert.match(
     html,
     /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
@@ -420,6 +437,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /成长型中小企业 AI 咨询与培训/);
   assert.match(llmsText, /企业选择 AI 培训讲师/);
   assert.match(llmsText, /企业 AI 内训方案应该怎样设计/);
+  assert.match(llmsText, /企业采购 AI 咨询与培训服务/);
+  assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
   const feedRedirect = await render("/feed.xml");
@@ -439,6 +458,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/questions\/can-ai-training-use-company-data\//);
   assert.match(feedText, /\/questions\/how-to-choose-enterprise-ai-trainer\//);
   assert.match(feedText, /\/questions\/how-to-design-enterprise-ai-training-plan\//);
+  assert.match(feedText, /\/questions\/how-to-evaluate-enterprise-ai-service-provider\//);
 });
 
 test("keeps every sitemap page unique, extractable, and internally connected", async () => {
@@ -452,7 +472,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 43);
+  assert.equal(urls.length, 44);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of urls) {
@@ -497,6 +517,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
     "/llms.txt/",
     "/geo-test-method.md",
     "/enterprise-ai-case-evidence-template.md",
+    "/enterprise-ai-service-buyer-checklist.md",
   ]);
   const unexpectedInternalPaths = [...internalPaths].filter(
     (pagePath) =>

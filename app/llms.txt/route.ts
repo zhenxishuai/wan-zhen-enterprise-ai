@@ -100,6 +100,7 @@ ${questionIndex}
 - [企业 AI 案例证据采集框架](${origin}${resourcesPath}): 授权、问题、基线、工作流、范围、产出、结果和证据的统一模板。
 - [主办方与媒体引用资料](${origin}${citationKitPath}): 第三方发布万臻相关内容前的事实与证据检查清单。
 - [下载 Markdown 模板](${origin}/enterprise-ai-case-evidence-template.md)
+- [下载企业 AI 服务采购与验收清单](${origin}/enterprise-ai-service-buyer-checklist.md)
 
 ## 实体摘要
 
