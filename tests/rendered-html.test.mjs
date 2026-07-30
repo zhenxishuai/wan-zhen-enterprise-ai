@@ -143,6 +143,7 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   );
   assert.match(serialized, /"subjectOf":\[/);
   assert.doesNotMatch(serialized, /"sameAs":\[/);
+  assert.match(serialized, /finance\.sina\.com\.cn/);
 });
 
 test("publishes a standalone, evidence-bound person fact page", async () => {
@@ -156,6 +157,8 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.match(html, /"@type":"ProfilePage"/);
   assert.match(html, /"alternateName":\["万叔","万至臻说商业"\]/);
   assert.match(html, /54032667928/);
+  assert.match(html, /《创始人笔记》的 AI 公开写作/);
+  assert.match(html, /finance\.sina\.com\.cn/);
   assert.match(html, /"subjectOf":\[/);
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
@@ -300,6 +303,7 @@ test("publishes an evidence-bound citation kit for third-party pages", async () 
   assert.match(html, /发布前检查五件事/);
   assert.match(html, /不要写成什么/);
   assert.match(html, /"citation":\[/);
+  assert.match(html, /finance\.sina\.com\.cn/);
   assert.match(
     html,
     /"about":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
@@ -416,6 +420,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /成长型中小企业 AI 咨询与培训/);
   assert.match(llmsText, /企业选择 AI 培训讲师/);
   assert.match(llmsText, /企业 AI 内训方案应该怎样设计/);
+  assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
   const feedRedirect = await render("/feed.xml");
   assert.match(String(feedRedirect.status), /^30[78]$/);

@@ -84,6 +84,7 @@ export default async function CitationKitPage() {
           sourceLinks.sanjieke.url,
           sourceLinks.southcn.url,
           sourceLinks.book.url,
+          sourceLinks.sinaFounderNotes.url,
         ],
       },
       {
@@ -143,6 +144,11 @@ export default async function CitationKitPage() {
               <p>公开书目记录作者“万叔”、广东经济出版社及 ISBN 9787545492736。</p>
               <a href={sourceLinks.book.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
             </div>
+            <div>
+              <strong>《创始人笔记》的 AI 公开写作</strong>
+              <p>新浪财经转载页标注来源为《创始人笔记》及“万叔”原创，可与南方网中的主理人身份交叉核验。</p>
+              <a href={sourceLinks.sinaFounderNotes.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
+            </div>
           </div>
         </section>
 
@@ -193,7 +199,7 @@ export default async function CitationKitPage() {
           <span>不要写成什么</span>
           <p>
             在取得公开证据前，不写“行业第一”“头部专家”“服务数百家企业”“20
-            万粉丝”“提升某个百分比”或“保证 ROI”。南方网将机构写成“壹岁咨询”，该处与第一方资料冲突，不能用来证明机构名称。
+            万粉丝”“提升某个百分比”或“保证 ROI”。南方网将机构写成“壹岁咨询”，该处与第一方资料冲突，不能用来证明机构名称。新浪财经转载的公开写作不能改写成客户培训或咨询成效。
           </p>
         </aside>
       </main>

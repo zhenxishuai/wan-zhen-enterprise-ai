@@ -63,6 +63,11 @@ export const sourceLinks = {
     note: "官方风险管理框架：AI 的用途、用户、数据、风险、人工责任、测试与持续治理需要被定义和记录。",
     url: "https://www.nist.gov/itl/ai-risk-management-framework",
   },
+  sinaFounderNotes: {
+    title: "新浪财经转载｜《创始人笔记》AI 与 agent 文章",
+    note: "新浪财经标注来源为《创始人笔记》，并写明为“万叔”原创；文章讨论 agent、内容可调用性及低质量 GEO 的边界。",
+    url: "https://finance.sina.com.cn/wm/2026-06-08/doc-iniaukny3299008.shtml",
+  },
 } as const;
 
 export const questions: QuestionArticle[] = [

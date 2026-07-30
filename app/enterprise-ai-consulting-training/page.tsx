@@ -113,6 +113,7 @@ export default async function FlagshipPage() {
         subjectOf: [
           { "@type": "Course", url: sourceLinks.sanjieke.url },
           { "@type": "Article", url: sourceLinks.southcn.url },
+          { "@type": "Article", url: sourceLinks.sinaFounderNotes.url },
           { "@type": "Book", url: sourceLinks.book.url },
         ],
         identifier: {
