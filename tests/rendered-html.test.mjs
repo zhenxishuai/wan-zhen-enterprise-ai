@@ -440,3 +440,71 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/questions\/how-to-choose-enterprise-ai-trainer\//);
   assert.match(feedText, /\/questions\/how-to-design-enterprise-ai-training-plan\//);
 });
+
+test("keeps every sitemap page unique, extractable, and internally connected", async () => {
+  const sitemap = await render("/sitemap.xml/");
+  const sitemapText = await sitemap.text();
+  const urls = [...sitemapText.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+    (match) => match[1],
+  );
+  const sitemapPaths = new Set(urls.map((url) => new URL(url).pathname));
+  const titles = new Map();
+  const canonicals = new Map();
+  const internalPaths = new Set();
+
+  assert.equal(urls.length, 43);
+  assert.equal(sitemapPaths.size, urls.length);
+
+  for (const url of urls) {
+    const pagePath = new URL(url).pathname;
+    const response = await render(pagePath);
+    assert.equal(response.status, 200, pagePath);
+    assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i, pagePath);
+
+    const html = await response.text();
+    const title = html.match(/<title>([^<]+)<\/title>/)?.[1] ?? "";
+    const canonical =
+      html.match(/<link rel="canonical" href="([^"]+)"\/>/)?.[1] ?? "";
+    const description =
+      html.match(/<meta name="description" content="([^"]+)"\/>/)?.[1] ?? "";
+
+    assert.ok(title, `missing title: ${pagePath}`);
+    assert.equal(canonical, url, `wrong canonical: ${pagePath}`);
+    assert.ok(description, `missing description: ${pagePath}`);
+    assert.equal((html.match(/<h1\b/g) ?? []).length, 1, `wrong H1 count: ${pagePath}`);
+    assert.ok(extractJsonLd(html).length > 0, `missing JSON-LD: ${pagePath}`);
+    assert.doesNotMatch(
+      html.match(/<main[\s\S]*?<\/main>/)?.[0] ?? "",
+      /PAGE NOT FOUND|class="not-found/,
+      pagePath,
+    );
+
+    assert.equal(titles.has(title), false, `duplicate title: ${title}`);
+    assert.equal(canonicals.has(canonical), false, `duplicate canonical: ${canonical}`);
+    titles.set(title, pagePath);
+    canonicals.set(canonical, pagePath);
+
+    for (const match of html.matchAll(/href="([^"]+)"/g)) {
+      if (match[1].startsWith("/") && !match[1].startsWith("//")) {
+        internalPaths.add(new URL(match[1], "https://example.com").pathname);
+      }
+    }
+  }
+
+  const allowedNonHtmlPaths = new Set([
+    "/",
+    "/feed.xml/",
+    "/llms.txt/",
+    "/geo-test-method.md",
+    "/enterprise-ai-case-evidence-template.md",
+  ]);
+  const unexpectedInternalPaths = [...internalPaths].filter(
+    (pagePath) =>
+      !sitemapPaths.has(pagePath) &&
+      !allowedNonHtmlPaths.has(pagePath) &&
+      !pagePath.startsWith("/assets/") &&
+      !pagePath.match(/^\/(?:og\.png|favicon\.svg)$/),
+  );
+
+  assert.deepEqual(unexpectedInternalPaths, []);
+});
