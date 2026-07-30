@@ -25,6 +25,7 @@ const questionSlugs = [
   "how-to-sustain-enterprise-ai-training-adoption",
   "how-customer-service-teams-should-use-ai",
   "how-hr-teams-should-use-ai-in-recruitment",
+  "how-marketing-teams-should-use-ai-content",
   "what-rules-enterprise-ai-employees-need",
 ];
 
@@ -43,6 +44,7 @@ const caseSlugs = [
 
 const applicationSlugs = [
   "sales-preparation-ai-workflow",
+  "marketing-content-ai-workflow",
   "customer-service-ai-workflow",
   "hr-recruitment-ai-workflow",
   "procurement-comparison-ai-workflow",
@@ -176,7 +178,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders twenty-three enterprise decision pages and redirects retired question URLs", async () => {
+test("renders twenty-four enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -255,6 +257,16 @@ test("renders twenty-three enterprise decision pages and redirects retired quest
   assert.match(recruitmentHtml, /www\.ilo\.org\/publications\/ai-human-resource-management/);
   assert.match(recruitmentHtml, /www\.mohrss\.gov\.cn\/xxgk2020/);
   assert.match(recruitmentHtml, /中华人民共和国个人信息保护法/);
+
+  const marketingResponse = await render(
+    "/questions/how-marketing-teams-should-use-ai-content/",
+  );
+  const marketingHtml = await marketingResponse.text();
+  assert.match(marketingHtml, /先建立来源清单和不可自动生成的承诺/);
+  assert.match(marketingHtml, /市场内容研究、生产与发布 AI 工作流/);
+  assert.match(marketingHtml, /中华人民共和国广告法/);
+  assert.match(marketingHtml, /人工智能生成合成内容标识办法/);
+  assert.match(marketingHtml, /AI 不应直接把未经审核的内容发布到外部渠道/);
 
   const governanceResponse = await render(
     "/questions/what-rules-enterprise-ai-employees-need/",
@@ -440,7 +452,8 @@ test("publishes extractable business application workflows with human review", a
   assert.equal(indexResponse.status, 200);
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /别先问用哪个 AI/);
-  assert.match(indexHtml, /六类业务工作流/);
+  assert.match(indexHtml, /七类业务工作流/);
+  assert.match(indexHtml, /市场内容研究、生产与发布 AI 工作流/);
   assert.match(indexHtml, /客户服务知识检索与回复 AI 工作流/);
   assert.match(indexHtml, /招聘准备与人工决策 AI 工作流/);
   assert.match(indexHtml, /"@type":"ItemList"/);
@@ -480,6 +493,15 @@ test("publishes extractable business application workflows with human review", a
   assert.match(recruitmentApplicationHtml, /不能直接成为淘汰或录用决定/);
   assert.match(recruitmentApplicationHtml, /不代表已经为特定企业部署自动筛选/);
   assert.match(recruitmentApplicationHtml, /\"@type\":\"HowTo\"/);
+
+  const marketingApplication = await render(
+    "/applications/marketing-content-ai-workflow/",
+  );
+  const marketingApplicationHtml = await marketingApplication.text();
+  assert.match(marketingApplicationHtml, /AI 不拥有对外发布权限/);
+  assert.match(marketingApplicationHtml, /事实与品牌复核表/);
+  assert.match(marketingApplicationHtml, /不承诺流量、线索、转化或销售增长/);
+  assert.match(marketingApplicationHtml, /\"@type\":\"HowTo\"/);
 });
 
 test("publishes buyer-oriented training and workshop outlines", async () => {
@@ -575,6 +597,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /客户服务知识检索与回复 AI 工作流/);
   assert.match(llmsText, /HR 团队怎样在招聘中使用 AI/);
   assert.match(llmsText, /招聘准备与人工决策 AI 工作流/);
+  assert.match(llmsText, /市场团队怎样使用 AI 生产内容/);
+  assert.match(llmsText, /市场内容研究、生产与发布 AI 工作流/);
   assert.match(llmsText, /企业允许员工使用生成式 AI 前/);
   assert.match(llmsText, /enterprise-generative-ai-use-policy-template\.md/);
   assert.match(llmsText, /企业 AI 咨询与培训一般需要多长时间/);
@@ -605,6 +629,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/applications\/customer-service-ai-workflow\//);
   assert.match(feedText, /\/questions\/how-hr-teams-should-use-ai-in-recruitment\//);
   assert.match(feedText, /\/applications\/hr-recruitment-ai-workflow\//);
+  assert.match(feedText, /\/applications\/marketing-content-ai-workflow\//);
+  assert.match(feedText, /\/questions\/how-marketing-teams-should-use-ai-content\//);
   assert.match(feedText, /\/questions\/what-rules-enterprise-ai-employees-need\//);
   assert.match(feedText, /\/questions\/how-long-enterprise-ai-consulting-training-takes\//);
 });
@@ -620,7 +646,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 52);
+  assert.equal(urls.length, 54);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of urls) {

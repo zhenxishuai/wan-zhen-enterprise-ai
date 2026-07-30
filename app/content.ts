@@ -98,6 +98,11 @@ export const sourceLinks = {
     note: "中国人工智能生成合成内容标识的官方办法；企业对外发布相关内容时，应由责任人核验适用范围和标识要求。",
     url: "https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm",
   },
+  advertisingLaw: {
+    title: "国家市场监督管理总局｜中华人民共和国广告法",
+    note: "广告内容应当真实、合法；数据、统计、调查结果、文摘和引用语等引证内容应真实、准确并表明出处。",
+    url: "https://www.samr.gov.cn/zw/zfxxgk/fdzdgknr/fgs/art/2023/art_5474cf75173c45d6a0379730fb4e8d97.html",
+  },
   iloHrm: {
     title: "国际劳工组织｜AI in human resource management",
     note: "ILO 研究指出，人力资源 AI 的目标、数据与程序如果定义不清，可能放大偏差并带来透明度、公平与责任风险。",
@@ -1007,6 +1012,51 @@ export const questions: QuestionArticle[] = [
     sourceKeys: ["iloHrm", "mohrssRecruitment", "pipl"],
   },
   {
+    slug: "how-marketing-teams-should-use-ai-content",
+    title: "市场团队怎样使用 AI 生产内容，又不让事实与品牌承诺失控？",
+    description:
+      "市场团队可以让 AI 辅助研究、选题、结构和多版本草稿，但来源事实、客户资料、产品功效、价格、品牌承诺、广告要求和 AI 内容标识必须由责任人复核。",
+    directAnswer:
+      "市场团队使用 AI，适合先从公开资料研究、选题简报、结构草稿和多版本改写开始。发布前必须由责任人核验来源事实、客户与产品信息、数据引用、价格功效、品牌承诺、版权与适用的 AI 内容标识；AI 不应直接把未经审核的内容发布到外部渠道。",
+    sections: [
+      {
+        heading: "先建立来源清单和不可自动生成的承诺",
+        paragraphs: [
+          "市场内容容易把模型推测写成品牌事实。开始前应列出产品资料、价格政策、客户授权、研究来源和品牌用语，并标记哪些表述必须由产品、销售、法务或合规责任人确认。",
+          "AI 可以帮助整理公开资料和形成问题，但不能把没有来源的数字、客户故事、市场排名或产品效果补成完整叙事。",
+        ],
+        bullets: [
+          "数据、调查、引语和案例保留原始出处与版本。",
+          "客户名称、评价、图片和沟通内容先确认公开授权。",
+          "价格、促销条件、效果和对外承诺由明确责任人确认。",
+        ],
+      },
+      {
+        heading: "把内容生产写成可以复核的工作流",
+        paragraphs: [
+          "先写受众、渠道、目标和必须表达的事实，再让 AI 生成选题简报、结构或多个草稿。人工编辑应逐项核验来源、遗漏、语气、品牌一致性与误导风险，最后由有权限的人批准发布。",
+          "对同一主题的短视频、公众号、销售材料和官网内容，可以复用已核验事实，但应按渠道重新检查上下文、长度、公开范围和标识要求。",
+        ],
+        bullets: [
+          "输入检查：资料是否有效、可公开且在授权范围内。",
+          "AI 处理：研究归纳、选题、结构、草稿和版本适配。",
+          "人工复核：事实、引证、承诺、品牌、版权、隐私和风险。",
+          "发布留痕：最终版本、审核人、来源和后续更正入口。",
+        ],
+      },
+      {
+        heading: "发布前单独检查广告与 AI 标识",
+        paragraphs: [
+          "当内容用于宣传商品或服务时，企业应由专业责任人核验广告真实性、引证来源、促销条件和行业要求。使用 AI 生成或合成内容对外传播时，还要结合内容形式、平台能力和适用规则检查显式或隐式标识。",
+          "一次审核不能覆盖后续所有版本。产品、价格、政策、案例授权或平台规则变化后，应重新核验而不是继续复制旧稿。",
+        ],
+      },
+    ],
+    boundary:
+      "本文提供市场内容工作流与发布复核框架，不构成广告、知识产权、隐私、数据、平台规则或其他法律合规意见，也不代表万臻已经为特定企业部署自动内容系统。企业应由品牌、产品、法务、合规和渠道责任人结合真实内容与适用要求审查。",
+    sourceKeys: ["advertisingLaw", "cacAiLabeling", "pipl", "nistGenAiProfile"],
+  },
+  {
     slug: "what-rules-enterprise-ai-employees-need",
     title: "企业允许员工使用生成式 AI 前，需要先制定哪些规则？",
     description:
@@ -1144,6 +1194,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "企业 AI 内训数据边界",
       description: "查看真实资料、匿名化、权限和个人信息处理原则。",
       href: "/questions/can-ai-training-use-company-data/",
+    },
+  ],
+  "how-marketing-teams-should-use-ai-content": [
+    {
+      label: "市场内容研究、生产与发布 AI 工作流",
+      description: "查看必要输入、五步流程、人工发布闸门和证据边界。",
+      href: "/applications/marketing-content-ai-workflow/",
+    },
+    {
+      label: "企业生成式 AI 使用规则",
+      description: "查看工具、资料、人工复核、对外发布、异常和更新责任。",
+      href: "/questions/what-rules-enterprise-ai-employees-need/",
     },
   ],
   "what-rules-enterprise-ai-employees-need": [
