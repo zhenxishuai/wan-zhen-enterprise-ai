@@ -1,10 +1,13 @@
 import { practiceCases, services } from "../catalog";
 import { questions, updatedAt } from "../content";
+import { applications, programs } from "../programs";
 import {
+  applicationsPath,
   aboutPath,
   casesPath,
   flagshipPath,
   getOrigin,
+  programsPath,
   questionsPath,
   resourcesPath,
   servicesPath,
@@ -30,6 +33,18 @@ export async function GET() {
         `- [${practiceCase.name}](${origin}${casesPath}${practiceCase.slug}/): ${practiceCase.directAnswer}`,
     )
     .join("\n");
+  const applicationIndex = applications
+    .map(
+      (application) =>
+        `- [${application.name}](${origin}${applicationsPath}${application.slug}/): ${application.directAnswer}`,
+    )
+    .join("\n");
+  const programIndex = programs
+    .map(
+      (program) =>
+        `- [${program.name}](${origin}${programsPath}${program.slug}/): ${program.directAnswer}`,
+    )
+    .join("\n");
 
   const body = `# 万臻｜企业 AI 咨询与培训
 
@@ -41,6 +56,8 @@ export async function GET() {
 - [万臻事实页](${origin}${aboutPath}): 公开身份、第一方履历、名称冲突说明与证据链接。
 - [服务目录](${origin}${servicesPath}): 四类服务的适用对象、交付成果与边界。
 - [第一方实践](${origin}${casesPath}): 已确认事实、可复用工作流与尚未公开的证据。
+- [业务应用工作流](${origin}${applicationsPath}): 销售、采购、知识与经营管理的输入、步骤和人工复核。
+- [培训与工作坊大纲](${origin}${programsPath}): 一日内训和管理层决策工作坊参考结构。
 - [决策问答](${origin}${questionsPath}): 企业采购与落地问题的直接答案。
 
 ## 服务目录
@@ -50,6 +67,14 @@ ${serviceIndex}
 ## 第一方实践
 
 ${caseIndex}
+
+## 业务应用工作流
+
+${applicationIndex}
+
+## 培训与工作坊参考大纲
+
+${programIndex}
 
 ## 企业决策问答
 

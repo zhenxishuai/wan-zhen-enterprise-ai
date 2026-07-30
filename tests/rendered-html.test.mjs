@@ -27,6 +27,18 @@ const caseSlugs = [
   "enterprise-knowledge-ai",
 ];
 
+const applicationSlugs = [
+  "sales-preparation-ai-workflow",
+  "procurement-comparison-ai-workflow",
+  "enterprise-knowledge-ai-workflow",
+  "management-reporting-ai-workflow",
+];
+
+const programSlugs = [
+  "one-day-enterprise-ai-training",
+  "executive-ai-decision-workshop",
+];
+
 async function render(requestPath) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${requestPath}`);
@@ -191,6 +203,41 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(html, /enterprise-ai-case-evidence-template\.md/);
 });
 
+test("publishes extractable business application workflows with human review", async () => {
+  const indexResponse = await render("/applications/");
+  assert.equal(indexResponse.status, 200);
+  const indexHtml = await indexResponse.text();
+  assert.match(indexHtml, /别先问用哪个 AI/);
+  assert.match(indexHtml, /"@type":"ItemList"/);
+
+  for (const slug of applicationSlugs) {
+    const response = await render(`/applications/${slug}/`);
+    assert.equal(response.status, 200, slug);
+    const html = await response.text();
+    assert.match(html, /五步工作流/);
+    assert.match(html, /人必须检查什么/);
+    assert.match(html, /证据与能力边界/);
+    assert.match(html, /"@type":"HowTo"/);
+  }
+});
+
+test("publishes buyer-oriented training and workshop outlines", async () => {
+  const indexResponse = await render("/programs/");
+  assert.equal(indexResponse.status, 200);
+  const indexHtml = await indexResponse.text();
+  assert.match(indexHtml, /先看会后留下什么/);
+
+  for (const slug of programSlugs) {
+    const response = await render(`/programs/${slug}/`);
+    assert.equal(response.status, 200, slug);
+    const html = await response.text();
+    assert.match(html, /会前准备/);
+    assert.match(html, /现场模块/);
+    assert.match(html, /不只带走课件/);
+    assert.match(html, /"@type":"Course"/);
+  }
+});
+
 test("publishes crawler, sitemap, and machine-readable content interfaces", async () => {
   const robotsRedirect = await render("/robots.txt");
   assert.match(String(robotsRedirect.status), /^30[78]$/);
@@ -215,6 +262,12 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   for (const slug of caseSlugs) {
     assert.match(sitemapText, new RegExp(`/cases/${slug}/`));
   }
+  for (const slug of applicationSlugs) {
+    assert.match(sitemapText, new RegExp(`/applications/${slug}/`));
+  }
+  for (const slug of programSlugs) {
+    assert.match(sitemapText, new RegExp(`/programs/${slug}/`));
+  }
   for (const slug of questionSlugs) {
     assert.match(sitemapText, new RegExp(`/questions/${slug}/`));
   }
@@ -231,4 +284,6 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /抖音号：54032667928/);
   assert.match(llmsText, /企业 AI 案例证据采集框架/);
   assert.match(llmsText, /管理层 AI 决策工作坊/);
+  assert.match(llmsText, /销售准备与方案 AI 工作流/);
+  assert.match(llmsText, /一日企业 AI 业务培训参考大纲/);
 });

@@ -1,10 +1,13 @@
 import { practiceCases, services } from "../catalog";
 import { questions, updatedAt } from "../content";
+import { applications, programs } from "../programs";
 import {
+  applicationsPath,
   aboutPath,
   casesPath,
   flagshipPath,
   getOrigin,
+  programsPath,
   questionsPath,
   resourcesPath,
   servicesPath,
@@ -19,6 +22,10 @@ export async function GET() {
     ...services.map((service) => `${servicesPath}${service.slug}/`),
     casesPath,
     ...practiceCases.map((practiceCase) => `${casesPath}${practiceCase.slug}/`),
+    applicationsPath,
+    ...applications.map((application) => `${applicationsPath}${application.slug}/`),
+    programsPath,
+    ...programs.map((program) => `${programsPath}${program.slug}/`),
     questionsPath,
     ...questions.map((question) => `${questionsPath}${question.slug}/`),
     resourcesPath,
@@ -29,7 +36,7 @@ export async function GET() {
     <loc>${origin}${path}</loc>
     <lastmod>${updatedAt}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${path === flagshipPath ? "1.0" : [aboutPath, servicesPath, casesPath, questionsPath].includes(path) ? "0.9" : "0.8"}</priority>
+    <priority>${path === flagshipPath ? "1.0" : [aboutPath, servicesPath, casesPath, applicationsPath, programsPath, questionsPath].includes(path) ? "0.9" : "0.8"}</priority>
   </url>`,
     )
     .join("\n");

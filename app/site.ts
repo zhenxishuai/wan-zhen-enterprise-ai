@@ -7,6 +7,8 @@ export const servicesPath = "/services/";
 export const casesPath = "/cases/";
 export const questionsPath = "/questions/";
 export const resourcesPath = "/resources/";
+export const applicationsPath = "/applications/";
+export const programsPath = "/programs/";
 
 export async function getOrigin() {
   const requestHeaders = await headers();

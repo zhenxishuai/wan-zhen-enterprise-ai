@@ -3,7 +3,14 @@ import Link from "next/link";
 import { services } from "../catalog";
 import { JsonLd, SiteFooter, SiteHeader } from "../components";
 import { updatedAt } from "../content";
-import { flagshipPath, getOrigin, servicesPath, siteName } from "../site";
+import {
+  applicationsPath,
+  flagshipPath,
+  getOrigin,
+  programsPath,
+  servicesPath,
+  siteName,
+} from "../site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
@@ -120,6 +127,17 @@ export default async function ServicesPage() {
               </div>
             </article>
           ))}
+        </section>
+
+        <section className="path-split">
+          <Link href={applicationsPath}>
+            <span>按业务任务进入</span>
+            <strong>销售、采购、知识与经营工作流 →</strong>
+          </Link>
+          <Link href={programsPath}>
+            <span>按活动方案进入</span>
+            <strong>一日内训与管理层工作坊大纲 →</strong>
+          </Link>
         </section>
 
         <section className="hub-cta">
