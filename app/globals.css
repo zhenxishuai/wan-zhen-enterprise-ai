@@ -828,6 +828,32 @@ a:focus-visible {
   align-items: stretch;
 }
 
+.cta-contact {
+  display: grid;
+  gap: 7px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.cta-contact span {
+  color: #aeb9ff;
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cta-contact strong {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.cta-contact small {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
 .cta .button-primary {
   border-color: var(--white);
   background: var(--white);

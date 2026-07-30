@@ -451,6 +451,11 @@ export default async function FlagshipPage() {
             </p>
           </div>
           <div className="cta-actions">
+            <div className="cta-contact">
+              <span>当前公开账号</span>
+              <strong>抖音搜索 54032667928</strong>
+              <small>账号名：万至秦说商业。请按抖音号核对，不通过同名账号判断身份。</small>
+            </div>
             <a
               className="button-primary"
               href="/enterprise-ai-discovery-brief-template.md"

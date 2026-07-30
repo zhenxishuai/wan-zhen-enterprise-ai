@@ -139,6 +139,10 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(html, /href="\/feed\.xml\/"/);
   assert.match(html, /enterprise-ai-discovery-brief-template\.md/);
   assert.match(html, /查看参考周期/);
+  assert.match(html, /抖音搜索 54032667928/);
+  assert.match(html, /账号名：万至秦说商业/);
+  assert.match(html, /不通过同名账号判断身份/);
+  assert.doesNotMatch(html, /douyin\.com\/user\//);
   assert.doesNotMatch(html, /href="mailto:/);
   assert.match(html, /<meta name="author" content="万臻"\/>/);
   assert.match(html, /<link rel="author" href="\/about-wan-zhen\/"\/>/);
