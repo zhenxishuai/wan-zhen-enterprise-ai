@@ -70,6 +70,20 @@ export default async function CasePage({ params }: PageProps) {
         publisher: { "@id": `${origin}${organizationEntityPath}` },
         isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         about: [practiceCase.category, "企业 AI", "人机协同工作流"],
+        abstract: practiceCase.boundary,
+        keywords: ["第一方实践", "非客户效果案例", "可复用工作流", "证据边界"],
+        hasPart: [
+          {
+            "@type": "CreativeWork",
+            name: "已确认的第一方实践内容",
+            description: practiceCase.confirmed.join("；"),
+          },
+          {
+            "@type": "CreativeWork",
+            name: "可复用工作流模板",
+            description: practiceCase.reusableWorkflow.join("；"),
+          },
+        ],
       },
       {
         "@type": "BreadcrumbList",
@@ -145,6 +159,21 @@ export default async function CasePage({ params }: PageProps) {
           <span>03 / 证据边界</span>
           <p>{practiceCase.boundary}</p>
         </aside>
+
+        <section className="case-evidence-status" aria-labelledby="evidence-status-title">
+          <header>
+            <p className="section-kicker">Evidence status</p>
+            <h2 id="evidence-status-title">当前证据到哪一层</h2>
+          </header>
+          <dl>
+            <div><dt>实践来源</dt><dd>万臻第一方陈述</dd></div>
+            <div><dt>客户身份</dt><dd>未公开</dd></div>
+            <div><dt>完整实施记录</dt><dd>未公开</dd></div>
+            <div><dt>前后基线</dt><dd>未公开</dd></div>
+            <div><dt>量化结果</dt><dd>未公开，不作效果推断</dd></div>
+            <div><dt>第三方证据</dt><dd>未公开</dd></div>
+          </dl>
+        </section>
 
         <section className="related-section">
           <p className="section-kicker">More first-party practices</p>

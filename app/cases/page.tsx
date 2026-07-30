@@ -69,7 +69,7 @@ export default async function CasesPage() {
           <div className="eyebrow">First-party practice · 证据分层</div>
           <h1>公开我们知道的，<br />也公开还不知道的。</h1>
           <p className="hub-answer">
-            以下内容来自万臻第一方实践陈述。每页把已确认的实践方向、可复用工作流模板和尚未公开的数据分开，避免把方法模板写成客户成效。
+            以下内容来自万臻第一方实践陈述。每页把已确认的实践方向、可复用工作流模板和证据状态分开，明确客户身份、完整实施记录、前后基线、量化结果与第三方证据是否公开，避免把方法模板写成客户成效。
           </p>
         </header>
 

@@ -407,6 +407,7 @@ test("separates confirmed first-party practice from reusable workflow templates"
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /公开我们知道的/);
   assert.match(indexHtml, /证据分层/);
+  assert.match(indexHtml, /客户身份、完整实施记录、前后基线、量化结果与第三方证据是否公开/);
 
   for (const slug of caseSlugs) {
     const response = await render(`/cases/${slug}/`);
@@ -415,12 +416,18 @@ test("separates confirmed first-party practice from reusable workflow templates"
     assert.match(html, /已确认/);
     assert.match(html, /可复用模板/);
     assert.match(html, /证据边界/);
+    assert.match(html, /当前证据到哪一层/);
+    assert.match(html, /万臻第一方陈述/);
+    assert.match(html, /未公开，不作效果推断/);
     assert.match(html, /内容作者与事实核验/);
     assert.doesNotMatch(html, /提升\d+%|节省\d+%|客户评价/);
     assert.match(
       html,
       /"author":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
     );
+    assert.match(html, /"hasPart":\[/);
+    assert.match(html, /"name":"已确认的第一方实践内容"/);
+    assert.match(html, /"name":"可复用工作流模板"/);
   }
 });
 
@@ -704,6 +711,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /财务经营分析与差异说明 AI 工作流/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
+  assert.match(llmsText, /客户身份、完整实施记录、前后基线、量化结果与第三方证据当前未公开/);
 
   const feed = await render("/feed.xml");
   assert.equal(feed.status, 200);
