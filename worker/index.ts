@@ -19,6 +19,13 @@ interface ExecutionContext {
   passThroughOnException(): void;
 }
 
+const machineRoutes = new Set([
+  "/robots.txt",
+  "/sitemap.xml",
+  "/feed.xml",
+  "/llms.txt",
+]);
+
 // Image security config. SVG sources with .svg extension auto-skip the
 // optimization endpoint on the client side (served directly, no proxy).
 // To route SVGs through the optimizer (with security headers), set
@@ -38,6 +45,11 @@ const worker = {
           return result.response();
         },
       }, allowedWidths);
+    }
+
+    if (machineRoutes.has(url.pathname)) {
+      url.pathname = `${url.pathname}/`;
+      return handler.fetch(new Request(url, request), env, ctx);
     }
 
     return handler.fetch(request, env, ctx);

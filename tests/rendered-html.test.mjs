@@ -517,9 +517,7 @@ test("publishes buyer-oriented training and workshop outlines", async () => {
 });
 
 test("publishes crawler, sitemap, and machine-readable content interfaces", async () => {
-  const robotsRedirect = await render("/robots.txt");
-  assert.match(String(robotsRedirect.status), /^30[78]$/);
-  const robots = await render("/robots.txt/");
+  const robots = await render("/robots.txt");
   assert.equal(robots.status, 200);
   const robotsText = await robots.text();
   for (const crawler of ["OAI-SearchBot", "Bytespider", "DoubaoBot", "Doubao-User", "Baiduspider"]) {
@@ -527,9 +525,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   }
   assert.match(robotsText, /Sitemap: https:\/\/example\.com\/sitemap\.xml\//);
 
-  const sitemapRedirect = await render("/sitemap.xml");
-  assert.match(String(sitemapRedirect.status), /^30[78]$/);
-  const sitemap = await render("/sitemap.xml/");
+  const sitemap = await render("/sitemap.xml");
   assert.equal(sitemap.status, 200);
   const sitemapText = await sitemap.text();
   assert.match(sitemapText, /https:\/\/example\.com\/enterprise-ai-consulting-training\//);
@@ -556,9 +552,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(sitemapText, /https:\/\/example\.com\/resources\//);
   assert.match(sitemapText, /https:\/\/example\.com\/citation-kit\//);
 
-  const llmsRedirect = await render("/llms.txt");
-  assert.match(String(llmsRedirect.status), /^30[78]$/);
-  const llms = await render("/llms.txt/");
+  const llms = await render("/llms.txt");
   assert.equal(llms.status, 200);
   const llmsText = await llms.text();
   assert.match(llmsText, /万臻｜企业 AI 咨询与培训/);
@@ -589,9 +583,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
-  const feedRedirect = await render("/feed.xml");
-  assert.match(String(feedRedirect.status), /^30[78]$/);
-  const feed = await render("/feed.xml/");
+  const feed = await render("/feed.xml");
   assert.equal(feed.status, 200);
   assert.match(feed.headers.get("content-type") ?? "", /^application\/atom\+xml\b/i);
   const feedText = await feed.text();
