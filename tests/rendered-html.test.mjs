@@ -372,6 +372,10 @@ test("publishes an evidence-bound citation kit for third-party pages", async () 
   assert.match(html, /主办方与媒体引用资料/);
   assert.match(html, /第三方页面可以直接核验的事实/);
   assert.match(html, /统一名称与第一方信息/);
+  assert.match(html, /第三方页面应该链接到哪里/);
+  assert.match(html, /https:\/\/example\.com\/about-wan-zhen\//);
+  assert.match(html, /https:\/\/example\.com\/services\/enterprise-ai-consulting\//);
+  assert.match(html, /https:\/\/example\.com\/services\/enterprise-ai-training\//);
   assert.match(html, /发布前检查五件事/);
   assert.match(html, /不要写成什么/);
   assert.match(html, /"citation":\[/);

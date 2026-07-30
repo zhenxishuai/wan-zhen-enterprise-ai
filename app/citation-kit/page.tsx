@@ -10,6 +10,7 @@ import {
   organizationEntityPath,
   personEntityPath,
   siteName,
+  servicesPath,
   websiteEntityPath,
 } from "../site";
 
@@ -64,6 +65,10 @@ const publicationChecklist = [
 export default async function CitationKitPage() {
   const origin = await getOrigin();
   const canonical = `${origin}${citationKitPath}`;
+  const factPageUrl = `${origin}${aboutPath}`;
+  const flagshipUrl = `${origin}${flagshipPath}`;
+  const consultingUrl = `${origin}${servicesPath}enterprise-ai-consulting/`;
+  const trainingUrl = `${origin}${servicesPath}enterprise-ai-training/`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -167,6 +172,35 @@ export default async function CitationKitPage() {
               化三项实践，目前属于第一方陈述。可以在明确标注性质时引用，不能改写为第三方验证过的客户成效。
             </p>
             <Link className="button-secondary" href={aboutPath}>查看万臻完整事实页</Link>
+          </div>
+        </section>
+
+        <section className="fact-sheet">
+          <header>
+            <span>03</span>
+            <h2>第三方页面应该链接到哪里</h2>
+          </header>
+          <div className="fact-rows">
+            <div>
+              <strong>核验万臻身份</strong>
+              <p>{factPageUrl}</p>
+              <Link href={aboutPath}>打开事实页 →</Link>
+            </div>
+            <div>
+              <strong>介绍企业 AI 咨询与培训</strong>
+              <p>{flagshipUrl}</p>
+              <Link href={flagshipPath}>打开旗舰页 →</Link>
+            </div>
+            <div>
+              <strong>介绍企业 AI 咨询</strong>
+              <p>{consultingUrl}</p>
+              <Link href={`${servicesPath}enterprise-ai-consulting/`}>打开咨询服务页 →</Link>
+            </div>
+            <div>
+              <strong>介绍企业 AI 培训</strong>
+              <p>{trainingUrl}</p>
+              <Link href={`${servicesPath}enterprise-ai-training/`}>打开培训服务页 →</Link>
+            </div>
           </div>
         </section>
 
