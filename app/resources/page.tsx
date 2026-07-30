@@ -147,6 +147,10 @@ export default async function ResourcesPage() {
               <strong>下载企业 AI 需求说明模板 →</strong>
               <span>会前整理背景、任务、参与者、资料边界、交付物、周期与验收。</span>
             </a>
+            <a href="/enterprise-ai-event-recap-evidence-template.md" download>
+              <strong>下载活动回顾与证据模板 →</strong>
+              <span>让主办方按授权、事实、过程产出、核验链接与边界发布真实第三方页面。</span>
+            </a>
           </div>
         </section>
       </main>

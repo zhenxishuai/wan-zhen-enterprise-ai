@@ -126,6 +126,9 @@ export default async function CitationKitPage() {
           <p className="detail-answer">
             这不是一份排名材料，而是供企业、活动主办方、课程平台和媒体使用的公开核验页。可以引用已经标明来源的事实；第一方信息要注明性质；客户与效果数据必须另行取得授权。
           </p>
+          <a className="button-primary" href="/enterprise-ai-event-recap-evidence-template.md" download>
+            下载活动回顾与证据模板
+          </a>
         </header>
 
         <section className="fact-sheet">
@@ -236,6 +239,17 @@ export default async function CitationKitPage() {
             万粉丝”“提升某个百分比”或“保证 ROI”。南方网将机构写成“壹岁咨询”，该处与第一方资料冲突，不能用来证明机构名称。新浪财经转载的公开写作不能改写成客户培训或咨询成效。
           </p>
         </aside>
+
+        <section className="article-section">
+          <div className="section-index">Publish from evidence</div>
+          <h2>真实活动结束后，怎样形成第三方页面？</h2>
+          <p>
+            先由主办方确认公开权限，再记录活动日期、对象、真实议题、实际模块、过程产出和尚未验证的结果。模板已经预留核验链接、禁止表述、审核人和后续更正字段，方便主办方在自有网站、官方公众号文章页或课程平台发布。
+          </p>
+          <a className="button-secondary" href="/enterprise-ai-event-recap-evidence-template.md" download>
+            下载可编辑 Markdown 模板
+          </a>
+        </section>
       </main>
       <SiteFooter />
     </div>

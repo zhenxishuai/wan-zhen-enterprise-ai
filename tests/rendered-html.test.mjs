@@ -369,6 +369,8 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(html, /员工使用生成式 AI 前要定什么规则/);
   assert.match(html, /enterprise-ai-discovery-brief-template\.md/);
   assert.match(html, /咨询与培训一般需要多长时间/);
+  assert.match(html, /enterprise-ai-event-recap-evidence-template\.md/);
+  assert.match(html, /活动回顾与证据模板/);
   const policyTemplate = await readFile(
     new URL("../dist/client/enterprise-generative-ai-use-policy-template.md", import.meta.url),
     "utf8",
@@ -383,6 +385,15 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(discoveryBrief, /这次需要形成什么/);
   assert.match(discoveryBrief, /时间与组织条件/);
   assert.match(discoveryBrief, /不是自动报价单、合同或效果承诺/);
+  const eventRecapTemplate = await readFile(
+    new URL("../dist/client/enterprise-ai-event-recap-evidence-template.md", import.meta.url),
+    "utf8",
+  );
+  assert.match(eventRecapTemplate, /活动基本事实/);
+  assert.match(eventRecapTemplate, /现场或会后形成了什么/);
+  assert.match(eventRecapTemplate, /建议保留的核验链接/);
+  assert.match(eventRecapTemplate, /不能用推测补齐/);
+  assert.match(eventRecapTemplate, /不构成媒体背书、效果证明、合同、法律或合规意见/);
   assert.match(
     html,
     /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
@@ -401,6 +412,8 @@ test("publishes an evidence-bound citation kit for third-party pages", async () 
   assert.match(html, /https:\/\/example\.com\/services\/enterprise-ai-consulting\//);
   assert.match(html, /https:\/\/example\.com\/services\/enterprise-ai-training\//);
   assert.match(html, /发布前检查五件事/);
+  assert.match(html, /enterprise-ai-event-recap-evidence-template\.md/);
+  assert.match(html, /真实活动结束后，怎样形成第三方页面/);
   assert.match(html, /不要写成什么/);
   assert.match(html, /"citation":\[/);
   assert.match(html, /finance\.sina\.com\.cn/);
@@ -559,6 +572,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /enterprise-generative-ai-use-policy-template\.md/);
   assert.match(llmsText, /企业 AI 咨询与培训一般需要多长时间/);
   assert.match(llmsText, /enterprise-ai-discovery-brief-template\.md/);
+  assert.match(llmsText, /enterprise-ai-event-recap-evidence-template\.md/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
@@ -649,6 +663,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
     "/enterprise-ai-service-buyer-checklist.md",
     "/enterprise-generative-ai-use-policy-template.md",
     "/enterprise-ai-discovery-brief-template.md",
+    "/enterprise-ai-event-recap-evidence-template.md",
   ]);
   const unexpectedInternalPaths = [...internalPaths].filter(
     (pagePath) =>
