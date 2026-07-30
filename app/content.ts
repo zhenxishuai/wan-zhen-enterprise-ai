@@ -28,9 +28,9 @@ export const sourceLinks = {
     url: "https://news.southcn.com/node_54a44f01a2/09d6b2e8d6.shtml",
   },
   book: {
-    title: "《认知势能》出版信息",
-    note: "广东经济出版社，ISBN 9787545492736，作者署名“万叔”。",
-    url: "https://easterneast.com/product/6689dda6f0f22447208c1370/",
+    title: "对外经济贸易大学图书馆｜《认知势能》馆藏记录",
+    note: "高校图书馆书目：万叔著，广东经济出版社，ISBN 9787545492736，2024 年。",
+    url: "https://opac.lib.uibe.edu.cn/opac/book/33127141902bc53eadf7902b7c3adfb8",
   },
   geoPaper: {
     title: "GEO: Generative Engine Optimization",
