@@ -110,10 +110,10 @@ export default async function FlagshipPage() {
         description:
           "壹步咨询创始人，具有十余年企业咨询与组织管理经验，关注 AI 如何进入企业真实业务工作流。",
         worksFor: { "@id": `${origin}${organizationEntityPath}` },
-        sameAs: [
-          sourceLinks.sanjieke.url,
-          sourceLinks.southcn.url,
-          sourceLinks.book.url,
+        subjectOf: [
+          { "@type": "Course", url: sourceLinks.sanjieke.url },
+          { "@type": "Article", url: sourceLinks.southcn.url },
+          { "@type": "Book", url: sourceLinks.book.url },
         ],
         identifier: {
           "@type": "PropertyValue",

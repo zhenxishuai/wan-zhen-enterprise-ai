@@ -139,6 +139,8 @@ test("server-renders the enterprise AI consulting and training flagship", async 
     serialized,
     /"founder":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
   );
+  assert.match(serialized, /"subjectOf":\[/);
+  assert.doesNotMatch(serialized, /"sameAs":\[/);
 });
 
 test("publishes a standalone, evidence-bound person fact page", async () => {
@@ -152,6 +154,8 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.match(html, /"@type":"ProfilePage"/);
   assert.match(html, /"alternateName":\["万叔","万至臻说商业"\]/);
   assert.match(html, /54032667928/);
+  assert.match(html, /"subjectOf":\[/);
+  assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
 test("renders fifteen enterprise decision pages and redirects retired question URLs", async () => {
@@ -357,7 +361,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   for (const crawler of ["OAI-SearchBot", "Bytespider", "DoubaoBot", "Doubao-User", "Baiduspider"]) {
     assert.match(robotsText, new RegExp(`User-agent: ${crawler}`));
   }
-  assert.match(robotsText, /Sitemap: https:\/\/example\.com\/sitemap\.xml/);
+  assert.match(robotsText, /Sitemap: https:\/\/example\.com\/sitemap\.xml\//);
 
   const sitemapRedirect = await render("/sitemap.xml");
   assert.match(String(sitemapRedirect.status), /^30[78]$/);

@@ -64,11 +64,6 @@ export default async function AboutWanZhenPage() {
         worksFor: {
           "@id": `${origin}${organizationEntityPath}`,
         },
-        sameAs: [
-          sourceLinks.sanjieke.url,
-          sourceLinks.southcn.url,
-          sourceLinks.book.url,
-        ],
         identifier: {
           "@type": "PropertyValue",
           propertyID: "抖音号",

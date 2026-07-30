@@ -20,7 +20,7 @@ Allow: /
 User-agent: Baiduspider
 Allow: /
 
-Sitemap: ${origin}/sitemap.xml
+Sitemap: ${origin}/sitemap.xml/
 `;
 
   return new Response(body, {
