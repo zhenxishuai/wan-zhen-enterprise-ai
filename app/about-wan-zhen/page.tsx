@@ -49,7 +49,7 @@ export default async function AboutWanZhenPage() {
         "@type": "Person",
         "@id": `${canonical}#person`,
         name: "万臻",
-        alternateName: "万叔",
+        alternateName: ["万叔", "万至臻说商业"],
         url: canonical,
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         worksFor: {
@@ -62,6 +62,11 @@ export default async function AboutWanZhenPage() {
           sourceLinks.southcn.url,
           sourceLinks.book.url,
         ],
+        identifier: {
+          "@type": "PropertyValue",
+          propertyID: "抖音号",
+          value: "54032667928",
+        },
         subjectOf: [
           { "@type": "Article", url: sourceLinks.southcn.url },
           { "@type": "Course", url: sourceLinks.sanjieke.url },
@@ -137,6 +142,11 @@ export default async function AboutWanZhenPage() {
               <p>广东经济出版社出版，ISBN 9787545492736，公开书目信息作者署名“万叔”。</p>
               <a href={sourceLinks.book.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
             </div>
+            <div>
+              <strong>抖音：万至臻说商业</strong>
+              <p>抖音号 54032667928。该账号标识由万臻第一方提供，当前未用作第三方身份背书。</p>
+              <span>第一方账号标识</span>
+            </div>
           </div>
         </section>
 
@@ -175,7 +185,7 @@ export default async function AboutWanZhenPage() {
         <aside className="name-conflict">
           <strong>机构名称说明</strong>
           <p>
-            南方网报道写作“壹岁咨询”，与万臻第一方资料中的“壹步咨询”冲突。本站以第一方确认名称“壹步咨询”为准，不用该报道证明机构名称。
+            南方网报道写作“壹岁咨询”，与万臻第一方资料中的“壹步咨询”冲突。本站以第一方确认名称“壹步咨询”为准，不用该报道证明机构名称。抖音名称“万至臻说商业”作为账号名保留，人物主实体仍统一为“万臻”。
           </p>
         </aside>
       </main>

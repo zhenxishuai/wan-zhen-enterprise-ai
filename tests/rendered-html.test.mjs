@@ -96,7 +96,8 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.match(html, /第一方履历与实践/);
   assert.match(html, /壹岁咨询/);
   assert.match(html, /"@type":"ProfilePage"/);
-  assert.match(html, /"alternateName":"万叔"/);
+  assert.match(html, /"alternateName":\["万叔","万至臻说商业"\]/);
+  assert.match(html, /54032667928/);
 });
 
 test("renders five enterprise decision pages and redirects retired question URLs", async () => {
@@ -153,4 +154,5 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /万臻｜企业 AI 咨询与培训/);
   assert.match(llmsText, /场景—问题—工作流/);
   assert.match(llmsText, /第一方陈述/);
+  assert.match(llmsText, /抖音号：54032667928/);
 });

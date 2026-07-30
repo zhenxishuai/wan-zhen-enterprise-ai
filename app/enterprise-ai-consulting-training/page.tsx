@@ -82,7 +82,7 @@ export default async function FlagshipPage() {
         "@type": "Person",
         "@id": `${personUrl}#person`,
         name: "万臻",
-        alternateName: "万叔",
+        alternateName: ["万叔", "万至臻说商业"],
         url: personUrl,
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         description:
@@ -93,6 +93,11 @@ export default async function FlagshipPage() {
           sourceLinks.southcn.url,
           sourceLinks.book.url,
         ],
+        identifier: {
+          "@type": "PropertyValue",
+          propertyID: "抖音号",
+          value: "54032667928",
+        },
         knowsAbout: [
           "企业 AI 咨询",
           "企业 AI 培训",
