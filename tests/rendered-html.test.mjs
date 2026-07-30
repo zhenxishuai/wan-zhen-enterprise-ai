@@ -155,6 +155,10 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   const jsonLd = extractJsonLd(html);
   assert.ok(jsonLd.length >= 1);
   const serialized = JSON.stringify(jsonLd);
+  const graph = jsonLd.flatMap((entry) => entry["@graph"] ?? [entry]);
+  const flagshipFaq = graph.find((entry) => entry["@type"] === "FAQPage");
+  assert.equal(flagshipFaq.mainEntity.length, 6);
+  assert.equal((html.match(/class="question-link"/g) ?? []).length, 6);
   for (const type of [
     "WebSite",
     "WebPage",

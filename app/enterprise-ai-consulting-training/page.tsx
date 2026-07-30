@@ -61,6 +61,7 @@ export default async function FlagshipPage() {
   const canonical = `${origin}${flagshipPath}`;
   const personUrl = `${origin}${aboutPath}`;
   const sources = Object.values(sourceLinks);
+  const flagshipQuestions = questions.slice(0, 6);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -172,7 +173,7 @@ export default async function FlagshipPage() {
       {
         "@type": "FAQPage",
         "@id": `${canonical}#faq`,
-        mainEntity: questions.map((question) => ({
+        mainEntity: flagshipQuestions.map((question) => ({
           "@type": "Question",
           name: question.title,
           acceptedAnswer: {
@@ -403,7 +404,7 @@ export default async function FlagshipPage() {
             </div>
           </header>
           <div className="question-list">
-            {questions.slice(0, 6).map((question, index) => (
+            {flagshipQuestions.map((question, index) => (
               <Link
                 className="question-link"
                 href={`/questions/${question.slug}/`}
