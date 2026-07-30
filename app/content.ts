@@ -93,6 +93,16 @@ export const sourceLinks = {
     note: "NIST AI 风险管理资源：人机交互、人工监督、角色能力与何时需要人工介入，应根据使用情境和风险明确设计。",
     url: "https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/",
   },
+  pmiProjectAi: {
+    title: "PMI｜Shaping the Future of Project Management With AI",
+    note: "PMI 项目管理研究：应把生成式 AI 连接到具体项目任务与能力；任务越复杂，需要的人工介入越多。",
+    url: "https://www.pmi.org/learning/thought-leadership/shaping-the-future-of-project-management-with-ai",
+  },
+  pmiAiGovernance: {
+    title: "PMI｜The Time for AI Governance Is Now",
+    note: "PMI 项目管理文章：项目工作中的 AI 使用需要结构化治理、监督与问责，而不只是引入自动化工具。",
+    url: "https://www.pmi.org/blog/the-time-for-ai-governance-is-now",
+  },
   nistGenAiProfile: {
     title: "NIST｜生成式人工智能风险管理框架应用指南",
     note: "NIST AI RMF 生成式 AI 配套指南：组织需要定义角色、政策、监督、测试、事件沟通和持续风险管理。",
@@ -1062,6 +1072,51 @@ export const questions: QuestionArticle[] = [
     sourceKeys: ["advertisingLaw", "cacAiLabeling", "pipl", "nistGenAiProfile"],
   },
   {
+    slug: "how-project-teams-should-use-ai-for-status-reporting",
+    title: "项目团队怎样用 AI 整理进展，又不把草稿当成事实？",
+    description:
+      "项目团队可以让 AI 整理会议纪要、行动项、风险、依赖和状态草稿，但进度、完成、负责人、日期与对外承诺必须由责任人核验。",
+    directAnswer:
+      "项目团队使用 AI，适合先从会议纪要、行动项、风险依赖和周报草稿开始。AI 应只基于已批准计划和带日期、版本、责任人的记录整理信息，把缺失与冲突标成待核验；任务责任人确认实际状态，项目负责人确认范围、日期、风险和对外承诺，AI 不能凭语气推断任务已经完成。",
+    sections: [
+      {
+        heading: "先登记来源，再让 AI 整理进展",
+        paragraphs: [
+          "项目汇报的第一步不是写提示词，而是确定什么算有效来源。已批准计划、会议决定、任务台账、风险记录和客户确认的版本应带有日期、责任人与保存位置；即时沟通只能作为线索，不能自动覆盖正式记录。",
+          "没有来源、版本冲突或责任人未确认的内容，应明确标为待核验，而不是让 AI 补成看似完整的进度。",
+        ],
+        bullets: [
+          "统一未开始、进行中、阻塞、完成与待核验的状态定义。",
+          "完成必须对应约定的完成标准或可检查交付物。",
+          "每条风险、依赖、行动和决定保留来源与更新时间。",
+        ],
+      },
+      {
+        heading: "把纪要、任务和风险整理成一条工作流",
+        paragraphs: [
+          "AI 可以归并同一事项在不同记录中的变化，生成完成项、阻塞、依赖、行动和待决策事项草稿，并标出缺失的负责人、日期或依据。项目成员随后逐项确认，避免把讨论意向、乐观表述或旧计划写成当前事实。",
+          "最终状态更新应保留原始来源、AI 草稿、人工修改和批准版本，让下一周期能够追踪承诺是否兑现。",
+        ],
+        bullets: [
+          "输入：计划、纪要、任务、风险、决定和上期承诺。",
+          "AI 处理：归并、分类、差异提示、缺项标记与摘要草稿。",
+          "人工确认：实际状态、完成标准、责任、日期、风险与承诺。",
+          "输出：批准版状态更新、行动项、待决策事项和更正记录。",
+        ],
+      },
+      {
+        heading: "项目负责人仍对汇报和升级负责",
+        paragraphs: [
+          "任务责任人确认自己负责事项的事实，项目负责人核验整体范围、关键路径、依赖与升级建议，管理层或客户责任人按权限批准重大变更和对外表述。AI 不应自动关闭任务、评价人员绩效或替团队承诺交期。",
+          "涉及合同交付、财务金额、客户承诺、人员评价或专业安全的内容，应进入相应的审批与专业复核流程。",
+        ],
+      },
+    ],
+    boundary:
+      "本文与下载模板提供通用项目信息整理框架，不是项目管理系统实施方案，也不构成审计、合同、财务、绩效、法律或行业专业意见，不代表万臻已经为特定企业部署自动项目汇报。企业应按项目风险、工具、资料和权限确认正式流程。",
+    sourceKeys: ["pmiProjectAi", "pmiAiGovernance", "nistHumanAi", "nistCore"],
+  },
+  {
     slug: "who-should-lead-enterprise-ai-training-project",
     title: "企业 AI 咨询与培训项目，应该由哪个部门牵头？",
     description:
@@ -1250,6 +1305,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "企业生成式 AI 使用规则",
       description: "查看工具、资料、人工复核、对外发布、异常和更新责任。",
       href: "/questions/what-rules-enterprise-ai-employees-need/",
+    },
+  ],
+  "how-project-teams-should-use-ai-for-status-reporting": [
+    {
+      label: "项目进展与行动闭环 AI 工作流",
+      description: "查看必要输入、五步流程、人工确认和状态汇报边界。",
+      href: "/applications/project-status-ai-workflow/",
+    },
+    {
+      label: "下载项目状态更新模板",
+      description: "用可编辑表格登记来源、进度、阻塞、行动、待决策事项与确认人。",
+      href: "/project-status-ai-workflow-template.md",
     },
   ],
   "who-should-lead-enterprise-ai-training-project": [

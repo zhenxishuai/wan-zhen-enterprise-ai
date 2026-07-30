@@ -182,6 +182,21 @@ export default async function ApplicationPage({ params }: PageProps) {
           <span>证据与能力边界</span>
           <p>{application.boundary}</p>
         </aside>
+
+        {application.relatedLinks && (
+          <section className="article-section">
+            <div className="section-index">Related</div>
+            <h2>继续使用这套工作流</h2>
+            <div className="related-reading">
+              {application.relatedLinks.map((link) => (
+                <Link href={link.href} key={link.href}>
+                  <strong>{link.label} →</strong>
+                  <span>{link.description}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
       <SiteFooter />
     </div>

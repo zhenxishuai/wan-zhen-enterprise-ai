@@ -156,6 +156,10 @@ export default async function ResourcesPage() {
               <strong>下载项目角色与 RACI 模板 →</strong>
               <span>明确管理层、业务、协调、HR、IT、数据安全、法务与外部顾问责任。</span>
             </a>
+            <a href="/project-status-ai-workflow-template.md" download>
+              <strong>下载项目状态更新模板 →</strong>
+              <span>登记来源、进度、风险、行动、待决策事项、人工确认与更正记录。</span>
+            </a>
           </div>
         </section>
       </main>

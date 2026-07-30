@@ -26,6 +26,7 @@ const questionSlugs = [
   "how-customer-service-teams-should-use-ai",
   "how-hr-teams-should-use-ai-in-recruitment",
   "how-marketing-teams-should-use-ai-content",
+  "how-project-teams-should-use-ai-for-status-reporting",
   "who-should-lead-enterprise-ai-training-project",
   "what-rules-enterprise-ai-employees-need",
 ];
@@ -50,6 +51,7 @@ const applicationSlugs = [
   "hr-recruitment-ai-workflow",
   "procurement-comparison-ai-workflow",
   "enterprise-knowledge-ai-workflow",
+  "project-status-ai-workflow",
   "management-reporting-ai-workflow",
 ];
 
@@ -179,7 +181,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders twenty-five enterprise decision pages and redirects retired question URLs", async () => {
+test("renders twenty-six enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -268,6 +270,16 @@ test("renders twenty-five enterprise decision pages and redirects retired questi
   assert.match(marketingHtml, /中华人民共和国广告法/);
   assert.match(marketingHtml, /人工智能生成合成内容标识办法/);
   assert.match(marketingHtml, /AI 不应直接把未经审核的内容发布到外部渠道/);
+
+  const projectStatusResponse = await render(
+    "/questions/how-project-teams-should-use-ai-for-status-reporting/",
+  );
+  const projectStatusHtml = await projectStatusResponse.text();
+  assert.match(projectStatusHtml, /先登记来源，再让 AI 整理进展/);
+  assert.match(projectStatusHtml, /AI 不能凭语气推断任务已经完成/);
+  assert.match(projectStatusHtml, /project-status-ai-workflow-template\.md/);
+  assert.match(projectStatusHtml, /PMI｜Shaping the Future of Project Management With AI/);
+  assert.match(projectStatusHtml, /NIST AIRC｜AI Risk Management and Human-AI Interaction/);
 
   const projectRolesResponse = await render(
     "/questions/who-should-lead-enterprise-ai-training-project/",
@@ -438,6 +450,14 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(projectRolesTemplate, /管理层发起人/);
   assert.match(projectRolesTemplate, /业务负责人/);
   assert.match(projectRolesTemplate, /外部顾问不能替企业承担内部决策/);
+  const projectStatusTemplate = await readFile(
+    new URL("../dist/client/project-status-ai-workflow-template.md", import.meta.url),
+    "utf8",
+  );
+  assert.match(projectStatusTemplate, /项目进展事实表/);
+  assert.match(projectStatusTemplate, /统一状态定义/);
+  assert.match(projectStatusTemplate, /不自行判断完成/);
+  assert.match(projectStatusTemplate, /任务状态、项目决定、客户承诺与最终发布责任/);
   assert.match(
     html,
     /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
@@ -474,10 +494,11 @@ test("publishes extractable business application workflows with human review", a
   assert.equal(indexResponse.status, 200);
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /别先问用哪个 AI/);
-  assert.match(indexHtml, /七类业务工作流/);
+  assert.match(indexHtml, /八类业务工作流/);
   assert.match(indexHtml, /市场内容研究、生产与发布 AI 工作流/);
   assert.match(indexHtml, /客户服务知识检索与回复 AI 工作流/);
   assert.match(indexHtml, /招聘准备与人工决策 AI 工作流/);
+  assert.match(indexHtml, /项目进展与行动闭环 AI 工作流/);
   assert.match(indexHtml, /"@type":"ItemList"/);
 
   for (const slug of applicationSlugs) {
@@ -524,6 +545,16 @@ test("publishes extractable business application workflows with human review", a
   assert.match(marketingApplicationHtml, /事实与品牌复核表/);
   assert.match(marketingApplicationHtml, /不承诺流量、线索、转化或销售增长/);
   assert.match(marketingApplicationHtml, /\"@type\":\"HowTo\"/);
+
+  const projectStatusApplication = await render(
+    "/applications/project-status-ai-workflow/",
+  );
+  const projectStatusApplicationHtml = await projectStatusApplication.text();
+  assert.match(projectStatusApplicationHtml, /不能凭聊天语气推断任务完成/);
+  assert.match(projectStatusApplicationHtml, /没有证据的内容标为待核验/);
+  assert.match(projectStatusApplicationHtml, /不代表已经为特定企业部署项目管理系统/);
+  assert.match(projectStatusApplicationHtml, /project-status-ai-workflow-template\.md/);
+  assert.match(projectStatusApplicationHtml, /\"@type\":\"HowTo\"/);
 });
 
 test("publishes buyer-oriented training and workshop outlines", async () => {
@@ -628,6 +659,9 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /enterprise-ai-event-recap-evidence-template\.md/);
   assert.match(llmsText, /企业 AI 咨询与培训项目，应该由哪个部门牵头/);
   assert.match(llmsText, /enterprise-ai-project-roles-raci-template\.md/);
+  assert.match(llmsText, /项目团队怎样用 AI 整理进展/);
+  assert.match(llmsText, /项目进展与行动闭环 AI 工作流/);
+  assert.match(llmsText, /project-status-ai-workflow-template\.md/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
@@ -655,6 +689,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/applications\/hr-recruitment-ai-workflow\//);
   assert.match(feedText, /\/applications\/marketing-content-ai-workflow\//);
   assert.match(feedText, /\/questions\/how-marketing-teams-should-use-ai-content\//);
+  assert.match(feedText, /\/applications\/project-status-ai-workflow\//);
+  assert.match(feedText, /\/questions\/how-project-teams-should-use-ai-for-status-reporting\//);
   assert.match(feedText, /\/questions\/who-should-lead-enterprise-ai-training-project\//);
   assert.match(feedText, /\/questions\/what-rules-enterprise-ai-employees-need\//);
   assert.match(feedText, /\/questions\/how-long-enterprise-ai-consulting-training-takes\//);
@@ -671,7 +707,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 55);
+  assert.equal(urls.length, 57);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of urls) {
@@ -721,6 +757,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
     "/enterprise-ai-discovery-brief-template.md",
     "/enterprise-ai-event-recap-evidence-template.md",
     "/enterprise-ai-project-roles-raci-template.md",
+    "/project-status-ai-workflow-template.md",
   ]);
   const unexpectedInternalPaths = [...internalPaths].filter(
     (pagePath) =>
