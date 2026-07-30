@@ -83,6 +83,11 @@ export const sourceLinks = {
     note: "官方研究报告：AI 培训需要与组织政策、沟通、透明度、责任、安全和员工隐私共同设计。",
     url: "https://www.oecd.org/en/publications/ai-and-skills_f843b352-en/full-report.html",
   },
+  nistHumanAi: {
+    title: "NIST AIRC｜AI Risk Management and Human-AI Interaction",
+    note: "NIST AI 风险管理资源：人机交互、人工监督、角色能力与何时需要人工介入，应根据使用情境和风险明确设计。",
+    url: "https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/",
+  },
   sinaFounderNotes: {
     title: "新浪财经转载｜《创始人笔记》AI 与 agent 文章",
     note: "新浪财经标注来源为《创始人笔记》，并写明为“万叔”原创；文章讨论 agent、内容可调用性及低质量 GEO 的边界。",
@@ -833,6 +838,55 @@ export const questions: QuestionArticle[] = [
       "两至四周计划用于验证岗位采用与工作流条件，不承诺员工必然形成长期习惯，也不等于经营 ROI 已经成立。员工数据、绩效评价和工作场所监测需要独立治理与专业审查。",
     sourceKeys: ["openaiBusinessGuide", "oecdSkills", "nist"],
   },
+  {
+    slug: "how-customer-service-teams-should-use-ai",
+    title: "客服团队怎样使用 AI，又不让错误回复直接发给客户？",
+    description:
+      "客服团队可以先让 AI 辅助问题分类、知识检索、回复草稿和会话摘要；对外发送、退款、合同、投诉和高风险承诺必须设置人工复核与升级。",
+    directAnswer:
+      "客服团队使用 AI，适合先从问题分类、权威知识检索、回复草稿和会话摘要开始，而不是一开始就自动回复所有客户。企业应明确哪些问题可辅助、哪些必须转人工，要求答案保留来源与版本，并让客服人员核验客户事实、政策、价格、退款、合同和任何对外承诺后再发送。",
+    sections: [
+      {
+        heading: "先选低风险、可核验的问题类型",
+        paragraphs: [
+          "第一批任务应当有稳定知识来源、答案可以检查、出错后容易回退，例如公开产品信息、流程说明和常见操作指引。涉及投诉、退款、合同、账户安全、健康、财务或重大客户关系的问题，应直接进入人工处理或更高等级复核。",
+        ],
+        bullets: [
+          "为每类问题写清 AI 可做的步骤与禁止动作。",
+          "设置转人工条件，而不是只设置一个统一置信度。",
+          "没有权威资料或客户上下文不完整时，允许回答“不确定”。",
+          "不让模型自行创造价格、库存、交期、政策或补偿承诺。",
+        ],
+      },
+      {
+        heading: "回复必须连接来源、版本和客户上下文",
+        paragraphs: [
+          "客服答案不能只因为语气自然就被认为正确。工作流需要记录使用了哪份产品、政策或服务资料，资料何时生效，以及客户问题中哪些事实已经确认、哪些仍需追问。",
+        ],
+        bullets: [
+          "知识来源有责任人、生效日期和失效规则。",
+          "客户身份、订单与历史沟通只使用完成服务所需的最少信息。",
+          "草稿标记事实来源、待确认项和可能触发的升级条件。",
+          "政策更新后同步更新知识与测试问题。",
+        ],
+      },
+      {
+        heading: "人工复核和错误复盘必须进入流程",
+        paragraphs: [
+          "试点阶段可以默认由客服人员审核后发送。每周汇总被改写、被拒绝、转人工、客户追问和投诉中的代表问题，判断错误来自知识、输入、模型、流程还是责任边界，再决定哪些类型可以继续、扩大或停止。",
+        ],
+        bullets: [
+          "客服人员核验事实、语气、政策和承诺。",
+          "高风险回复保留审核人与发送记录。",
+          "客户要求更正、删除或投诉时进入既有处理机制。",
+          "不把回复数量或机器人接待量直接当作服务质量。",
+        ],
+      },
+    ],
+    boundary:
+      "本文提供客服工作流设计原则，不是自动客服系统实施方案，也不构成个人信息、消费者权益或合同法律意见。具体行业、渠道、工具与数据的适用要求需要由企业及相应专业人员核验。",
+    sourceKeys: ["nistHumanAi", "cacGenAi", "pipl"],
+  },
 ];
 
 export const questionMap = Object.fromEntries(
@@ -898,6 +952,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "AI 工作流设计与试点",
       description: "查看一个明确任务怎样进入输入、处理、复核与复盘。",
       href: "/services/ai-workflow-pilot/",
+    },
+  ],
+  "how-customer-service-teams-should-use-ai": [
+    {
+      label: "客户服务知识与回复工作流",
+      description: "查看输入、步骤、交付物、人工复核和升级边界。",
+      href: "/applications/customer-service-ai-workflow/",
+    },
+    {
+      label: "企业知识问答与更新工作流",
+      description: "查看来源、版本、权限、纠错与失效机制。",
+      href: "/applications/enterprise-knowledge-ai-workflow/",
     },
   ],
   "why-ai-training-needs-workflows": [
