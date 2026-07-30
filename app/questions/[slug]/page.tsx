@@ -10,7 +10,15 @@ import {
   sourceLinks,
   updatedAt,
 } from "../../content";
-import { flagshipPath, getOrigin, questionsPath, siteName } from "../../site";
+import {
+  flagshipPath,
+  getOrigin,
+  organizationEntityPath,
+  personEntityPath,
+  questionsPath,
+  siteName,
+  websiteEntityPath,
+} from "../../site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -83,10 +91,10 @@ export default async function QuestionPage({ params }: PageProps) {
         inLanguage: "zh-CN",
         mainEntityOfPage: canonical,
         author: {
-          "@type": "Organization",
-          name: siteName,
-          url: `${origin}${flagshipPath}`,
+          "@id": `${origin}${personEntityPath}`,
         },
+        publisher: { "@id": `${origin}${organizationEntityPath}` },
+        isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         citation: articleSources.map((source) => source.url),
         about: ["企业 AI 咨询", "企业 AI 培训", "业务工作流", "万臻"],
         mentions: relatedLinks.map((link) => ({

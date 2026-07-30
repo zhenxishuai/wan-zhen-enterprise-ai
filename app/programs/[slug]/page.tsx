@@ -4,7 +4,15 @@ import { notFound } from "next/navigation";
 import { JsonLd, SiteFooter, SiteHeader } from "../../components";
 import { updatedAt } from "../../content";
 import { programMap, programs } from "../../programs";
-import { flagshipPath, getOrigin, programsPath, siteName } from "../../site";
+import {
+  flagshipPath,
+  getOrigin,
+  organizationEntityPath,
+  personEntityPath,
+  programsPath,
+  siteName,
+  websiteEntityPath,
+} from "../../site";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -51,10 +59,10 @@ export default async function ProgramPage({ params }: PageProps) {
         name: program.name,
         description: program.directAnswer,
         provider: {
-          "@type": "Person",
-          name: "万臻",
-          url: `${origin}/about-wan-zhen/`,
+          "@id": `${origin}${organizationEntityPath}`,
         },
+        author: { "@id": `${origin}${personEntityPath}` },
+        isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         audience: { "@type": "BusinessAudience", audienceType: program.audience },
         teaches: program.takeaways,
         inLanguage: "zh-CN",

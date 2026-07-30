@@ -4,7 +4,15 @@ import { notFound } from "next/navigation";
 import { JsonLd, SiteFooter, SiteHeader } from "../../components";
 import { updatedAt } from "../../content";
 import { applicationMap, applications } from "../../programs";
-import { applicationsPath, flagshipPath, getOrigin, siteName } from "../../site";
+import {
+  applicationsPath,
+  flagshipPath,
+  getOrigin,
+  organizationEntityPath,
+  personEntityPath,
+  siteName,
+  websiteEntityPath,
+} from "../../site";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -53,6 +61,9 @@ export default async function ApplicationPage({ params }: PageProps) {
         description: application.directAnswer,
         dateModified: updatedAt,
         inLanguage: "zh-CN",
+        author: { "@id": `${origin}${personEntityPath}` },
+        publisher: { "@id": `${origin}${organizationEntityPath}` },
+        isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         supply: application.inputs.map((name) => ({ "@type": "HowToSupply", name })),
         step: application.workflow.map((text, index) => ({
           "@type": "HowToStep",

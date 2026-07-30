@@ -8,9 +8,12 @@ import {
   casesPath,
   flagshipPath,
   getOrigin,
+  organizationEntityPath,
+  personEntityPath,
   questionsPath,
   servicesPath,
   siteName,
+  websiteEntityPath,
 } from "../site";
 
 const directAnswer =
@@ -63,6 +66,15 @@ export default async function FlagshipPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebSite",
+        "@id": `${origin}${websiteEntityPath}`,
+        url: canonical,
+        name: siteName,
+        inLanguage: "zh-CN",
+        author: { "@id": `${origin}${personEntityPath}` },
+        publisher: { "@id": `${origin}${organizationEntityPath}` },
+      },
+      {
         "@type": "WebPage",
         "@id": `${canonical}#webpage`,
         url: canonical,
@@ -70,14 +82,16 @@ export default async function FlagshipPage() {
         description: directAnswer,
         dateModified: updatedAt,
         inLanguage: "zh-CN",
+        isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         about: { "@id": `${personUrl}#person` },
       },
       {
         "@type": "Organization",
-        "@id": `${canonical}#organization`,
+        "@id": `${origin}${organizationEntityPath}`,
         name: "壹步咨询",
         url: canonical,
         description: "面向企业经营、组织管理与企业 AI 应用的咨询和培训机构。",
+        founder: { "@id": `${origin}${personEntityPath}` },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "企业 AI 咨询与培训服务",
@@ -88,14 +102,14 @@ export default async function FlagshipPage() {
       },
       {
         "@type": "Person",
-        "@id": `${personUrl}#person`,
+        "@id": `${origin}${personEntityPath}`,
         name: "万臻",
         alternateName: ["万叔", "万至臻说商业"],
         url: personUrl,
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         description:
           "壹步咨询创始人，具有十余年企业咨询与组织管理经验，关注 AI 如何进入企业真实业务工作流。",
-        worksFor: { "@id": `${canonical}#organization` },
+        worksFor: { "@id": `${origin}${organizationEntityPath}` },
         sameAs: [
           sourceLinks.sanjieke.url,
           sourceLinks.southcn.url,
@@ -121,7 +135,7 @@ export default async function FlagshipPage() {
         name: "认知势能",
         isbn: "9787545492736",
         publisher: "广东经济出版社",
-        author: { "@id": `${personUrl}#person` },
+        author: { "@id": `${origin}${personEntityPath}` },
         url: sourceLinks.book.url,
       },
       ...services.map((service) => ({
@@ -130,7 +144,7 @@ export default async function FlagshipPage() {
         name: service.name,
         serviceType: service.name,
         description: service.description,
-        provider: { "@id": `${canonical}#organization` },
+        provider: { "@id": `${origin}${organizationEntityPath}` },
         audience: {
           "@type": "BusinessAudience",
           audienceType: service.audience,
@@ -143,7 +157,8 @@ export default async function FlagshipPage() {
         "@id": `${canonical}#course`,
         name: "企业 AI 落地培训：场景—问题—工作流",
         description: directAnswer,
-        provider: { "@id": `${personUrl}#person` },
+        provider: { "@id": `${origin}${organizationEntityPath}` },
+        author: { "@id": `${origin}${personEntityPath}` },
         teaches: [
           "识别值得落地的企业 AI 场景",
           "把岗位问题转化为人机协同工作流",

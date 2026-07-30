@@ -9,6 +9,9 @@ export const questionsPath = "/questions/";
 export const resourcesPath = "/resources/";
 export const applicationsPath = "/applications/";
 export const programsPath = "/programs/";
+export const personEntityPath = `${aboutPath}#person`;
+export const organizationEntityPath = `${flagshipPath}#organization`;
+export const websiteEntityPath = `${flagshipPath}#website`;
 
 export async function getOrigin() {
   const requestHeaders = await headers();

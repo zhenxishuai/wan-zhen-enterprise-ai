@@ -2,7 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd, SiteFooter, SiteHeader } from "../components";
 import { sourceLinks, updatedAt } from "../content";
-import { aboutPath, flagshipPath, getOrigin, siteName } from "../site";
+import {
+  aboutPath,
+  flagshipPath,
+  getOrigin,
+  organizationEntityPath,
+  personEntityPath,
+  siteName,
+  websiteEntityPath,
+} from "../site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
@@ -42,20 +50,19 @@ export default async function AboutWanZhenPage() {
         url: canonical,
         name: "万臻事实页",
         dateModified: updatedAt,
-        mainEntity: { "@id": `${canonical}#person` },
+        mainEntity: { "@id": `${origin}${personEntityPath}` },
+        isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         inLanguage: "zh-CN",
       },
       {
         "@type": "Person",
-        "@id": `${canonical}#person`,
+        "@id": `${origin}${personEntityPath}`,
         name: "万臻",
         alternateName: ["万叔", "万至臻说商业"],
         url: canonical,
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         worksFor: {
-          "@type": "Organization",
-          name: "壹步咨询",
-          url: flagship,
+          "@id": `${origin}${organizationEntityPath}`,
         },
         sameAs: [
           sourceLinks.sanjieke.url,

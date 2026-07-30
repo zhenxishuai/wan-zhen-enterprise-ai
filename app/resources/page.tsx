@@ -2,7 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd, SiteFooter, SiteHeader } from "../components";
 import { updatedAt } from "../content";
-import { flagshipPath, getOrigin, resourcesPath, siteName } from "../site";
+import {
+  flagshipPath,
+  getOrigin,
+  organizationEntityPath,
+  personEntityPath,
+  resourcesPath,
+  siteName,
+  websiteEntityPath,
+} from "../site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
@@ -53,6 +61,9 @@ export default async function ResourcesPage() {
           "在公开企业 AI 客户案例前，整理授权、问题、基线、工作流、参与范围、产出、结果和证据。",
         dateModified: updatedAt,
         inLanguage: "zh-CN",
+        author: { "@id": `${origin}${personEntityPath}` },
+        publisher: { "@id": `${origin}${organizationEntityPath}` },
+        isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         step: fields.map(([number, name, text]) => ({
           "@type": "HowToStep",
           position: Number(number),

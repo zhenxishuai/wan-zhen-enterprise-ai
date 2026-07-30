@@ -2,6 +2,7 @@ import { practiceCases, services } from "../catalog";
 import { questions, updatedAt } from "../content";
 import { applications, programs } from "../programs";
 import {
+  aboutPath,
   applicationsPath,
   casesPath,
   flagshipPath,
@@ -68,6 +69,10 @@ export async function GET() {
   <id>${escapeXml(`${origin}${flagshipPath}`)}</id>
   <title>${escapeXml(siteName)}</title>
   <updated>${updated}</updated>
+  <author>
+    <name>万臻</name>
+    <uri>${escapeXml(`${origin}${aboutPath}`)}</uri>
+  </author>
   <link rel="self" href="${escapeXml(`${origin}/feed.xml/`)}" />
   <link rel="alternate" href="${escapeXml(`${origin}${flagshipPath}`)}" />
   <subtitle>企业 AI 咨询、培训、业务工作流、第一方实践和决策问答更新。</subtitle>

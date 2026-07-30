@@ -4,7 +4,15 @@ import { notFound } from "next/navigation";
 import { practiceCaseMap, practiceCases } from "../../catalog";
 import { JsonLd, SiteFooter, SiteHeader } from "../../components";
 import { updatedAt } from "../../content";
-import { casesPath, flagshipPath, getOrigin, siteName } from "../../site";
+import {
+  casesPath,
+  flagshipPath,
+  getOrigin,
+  organizationEntityPath,
+  personEntityPath,
+  siteName,
+  websiteEntityPath,
+} from "../../site";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -57,10 +65,10 @@ export default async function CasePage({ params }: PageProps) {
         inLanguage: "zh-CN",
         mainEntityOfPage: canonical,
         author: {
-          "@type": "Person",
-          name: "万臻",
-          url: `${origin}/about-wan-zhen/`,
+          "@id": `${origin}${personEntityPath}`,
         },
+        publisher: { "@id": `${origin}${organizationEntityPath}` },
+        isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         about: [practiceCase.category, "企业 AI", "人机协同工作流"],
       },
       {

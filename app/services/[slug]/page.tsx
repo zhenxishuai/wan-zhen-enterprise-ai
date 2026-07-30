@@ -7,8 +7,11 @@ import { updatedAt } from "../../content";
 import {
   flagshipPath,
   getOrigin,
+  organizationEntityPath,
+  personEntityPath,
   servicesPath,
   siteName,
+  websiteEntityPath,
 } from "../../site";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -61,6 +64,9 @@ export default async function ServicePage({ params }: PageProps) {
         dateModified: updatedAt,
         inLanguage: "zh-CN",
         mainEntity: { "@id": `${canonical}#service` },
+        author: { "@id": `${origin}${personEntityPath}` },
+        publisher: { "@id": `${origin}${organizationEntityPath}` },
+        isPartOf: { "@id": `${origin}${websiteEntityPath}` },
       },
       {
         "@type": "Service",
@@ -69,9 +75,7 @@ export default async function ServicePage({ params }: PageProps) {
         description: service.directAnswer,
         serviceType: service.name,
         provider: {
-          "@type": "Organization",
-          name: "壹步咨询",
-          url: `${origin}${flagshipPath}`,
+          "@id": `${origin}${organizationEntityPath}`,
         },
         audience: {
           "@type": "BusinessAudience",

@@ -99,12 +99,15 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(html, /证据|第一方实践/);
   assert.match(html, /更新订阅/);
   assert.match(html, /href="\/feed\.xml\/"/);
+  assert.match(html, /<meta name="author" content="万臻"\/>/);
+  assert.match(html, /<link rel="author" href="\/about-wan-zhen\/"\/>/);
   assert.doesNotMatch(html, /商协会|会员企业|20万粉|行业第一|顶级/);
 
   const jsonLd = extractJsonLd(html);
   assert.ok(jsonLd.length >= 1);
   const serialized = JSON.stringify(jsonLd);
   for (const type of [
+    "WebSite",
     "WebPage",
     "Person",
     "Organization",
@@ -117,6 +120,14 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   }
   assert.match(serialized, /企业 AI 咨询/);
   assert.match(serialized, /企业 AI 培训/);
+  assert.match(
+    serialized,
+    /"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#website"/,
+  );
+  assert.match(
+    serialized,
+    /"founder":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
+  );
 });
 
 test("publishes a standalone, evidence-bound person fact page", async () => {
@@ -145,6 +156,18 @@ test("renders ten enterprise decision pages and redirects retired question URLs"
     assert.match(html, /"@type":"Article"/);
     assert.match(html, /"@type":"FAQPage"/);
     assert.match(html, /"mentions":\[/);
+    assert.match(
+      html,
+      /"author":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
+    );
+    assert.match(
+      html,
+      /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
+    );
+    assert.match(
+      html,
+      /"isPartOf":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#website"\}/,
+    );
     assert.doesNotMatch(html, /商协会|会员企业/);
     assert.match(
       html,
@@ -175,6 +198,14 @@ test("publishes distinct service pages with deliverables and boundaries", async 
     assert.match(html, /"@type":"Service"/);
     assert.match(
       html,
+      /"provider":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
+    );
+    assert.match(
+      html,
+      /"author":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
+    );
+    assert.match(
+      html,
       new RegExp(`rel="canonical" href="https://example\\.com/services/${slug}/"`),
     );
   }
@@ -195,6 +226,10 @@ test("separates confirmed first-party practice from reusable workflow templates"
     assert.match(html, /可复用模板/);
     assert.match(html, /证据边界/);
     assert.doesNotMatch(html, /提升\d+%|节省\d+%|客户评价/);
+    assert.match(
+      html,
+      /"author":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
+    );
   }
 });
 
@@ -207,6 +242,10 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(html, /公开授权/);
   assert.match(html, /"@type":"HowTo"/);
   assert.match(html, /enterprise-ai-case-evidence-template\.md/);
+  assert.match(
+    html,
+    /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
+  );
 });
 
 test("publishes extractable business application workflows with human review", async () => {
@@ -224,6 +263,10 @@ test("publishes extractable business application workflows with human review", a
     assert.match(html, /人必须检查什么/);
     assert.match(html, /证据与能力边界/);
     assert.match(html, /"@type":"HowTo"/);
+    assert.match(
+      html,
+      /"author":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
+    );
   }
 });
 
@@ -241,6 +284,14 @@ test("publishes buyer-oriented training and workshop outlines", async () => {
     assert.match(html, /现场模块/);
     assert.match(html, /不只带走课件/);
     assert.match(html, /"@type":"Course"/);
+    assert.match(
+      html,
+      /"provider":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
+    );
+    assert.match(
+      html,
+      /"author":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
+    );
   }
 });
 
@@ -300,6 +351,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feed.headers.get("content-type") ?? "", /^application\/atom\+xml\b/i);
   const feedText = await feed.text();
   assert.match(feedText, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
+  assert.match(feedText, /<author>\s*<name>万臻<\/name>/);
   assert.match(feedText, /企业 AI 咨询、培训、业务工作流/);
   assert.match(feedText, /\/applications\/sales-preparation-ai-workflow\//);
   assert.match(feedText, /\/programs\/one-day-enterprise-ai-training\//);
