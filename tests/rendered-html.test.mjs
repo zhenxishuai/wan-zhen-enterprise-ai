@@ -30,6 +30,7 @@ const questionSlugs = [
   "how-project-teams-should-use-ai-for-status-reporting",
   "who-should-lead-enterprise-ai-training-project",
   "what-rules-enterprise-ai-employees-need",
+  "questions-before-enterprise-ai-consulting",
 ];
 
 const serviceSlugs = [
@@ -77,6 +78,7 @@ const downloadResourcePaths = [
   "/enterprise-ai-event-recap-evidence-template.md",
   "/enterprise-ai-project-roles-raci-template.md",
   "/project-status-ai-workflow-template.md",
+  "/enterprise-ai-consulting-diagnostic-questions.md",
 ];
 
 async function render(requestPath) {
@@ -197,7 +199,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders twenty-seven enterprise decision pages and redirects retired question URLs", async () => {
+test("renders twenty-eight enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -326,6 +328,17 @@ test("renders twenty-seven enterprise decision pages and redirects retired quest
   assert.match(governanceHtml, /www\.nist\.gov\/publications\/artificial-intelligence-risk-management-framework-generative-artificial-intelligence/);
   assert.match(governanceHtml, /人工智能生成合成内容标识办法/);
   assert.match(governanceHtml, /中华人民共和国个人信息保护法/);
+
+  const consultingQuestionsResponse = await render(
+    "/questions/questions-before-enterprise-ai-consulting/",
+  );
+  const consultingQuestionsHtml = await consultingQuestionsResponse.text();
+  assert.match(consultingQuestionsHtml, /管理层应该先回答哪些问题/);
+  assert.match(consultingQuestionsHtml, /第一组：经营问题与责任人/);
+  assert.match(consultingQuestionsHtml, /第五组：试点、记录与采用/);
+  assert.match(consultingQuestionsHtml, /enterprise-ai-consulting-diagnostic-questions\.md/);
+  assert.match(consultingQuestionsHtml, /这 20 个问题是万臻/);
+  assert.doesNotMatch(consultingQuestionsHtml, /保证|行业第一|顶级/);
 
   const timelineResponse = await render(
     "/questions/how-long-enterprise-ai-consulting-training-takes/",
@@ -490,6 +503,14 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(projectStatusTemplate, /统一状态定义/);
   assert.match(projectStatusTemplate, /不自行判断完成/);
   assert.match(projectStatusTemplate, /任务状态、项目决定、客户承诺与最终发布责任/);
+  const consultingDiagnosticQuestions = await readFile(
+    new URL("../dist/client/enterprise-ai-consulting-diagnostic-questions.md", import.meta.url),
+    "utf8",
+  );
+  assert.match(consultingDiagnosticQuestions, /企业 AI 咨询前诊断题单/);
+  assert.match(consultingDiagnosticQuestions, /## 一、经营问题与责任人/);
+  assert.match(consultingDiagnosticQuestions, /### 20\./);
+  assert.match(consultingDiagnosticQuestions, /不构成项目结果、客户案例、效果承诺/);
   assert.match(
     html,
     /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
@@ -710,6 +731,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /财务团队怎样使用 AI 做经营分析/);
   assert.match(llmsText, /财务经营分析与差异说明 AI 工作流/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
+  assert.match(llmsText, /企业做 AI 咨询前，管理层应该先回答哪些问题/);
+  assert.match(llmsText, /enterprise-ai-consulting-diagnostic-questions\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
   assert.match(llmsText, /客户身份、完整实施记录、前后基线、量化结果与第三方证据当前未公开/);
 
@@ -759,9 +782,9 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 66);
-  assert.equal(htmlUrls.length, 59);
-  assert.equal(downloadUrls.length, 7);
+  assert.equal(urls.length, 68);
+  assert.equal(htmlUrls.length, 60);
+  assert.equal(downloadUrls.length, 8);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of downloadUrls) {

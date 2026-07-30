@@ -160,6 +160,14 @@ export default async function ResourcesPage() {
               <strong>下载项目状态更新模板 →</strong>
               <span>登记来源、进度、风险、行动、待决策事项、人工确认与更正记录。</span>
             </a>
+            <Link href="/questions/questions-before-enterprise-ai-consulting/">
+              <strong>咨询前，管理层先回答什么？ →</strong>
+              <span>用五组 20 个问题整理经营目标、任务、资料、人工责任和试点条件。</span>
+            </Link>
+            <a href="/enterprise-ai-consulting-diagnostic-questions.md" download>
+              <strong>下载企业 AI 咨询前诊断题单 →</strong>
+              <span>用可编辑模板记录 20 个问题的答案、证据、责任人和待确认项。</span>
+            </a>
           </div>
         </section>
       </main>

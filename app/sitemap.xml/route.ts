@@ -26,6 +26,7 @@ export async function GET() {
     "/enterprise-ai-event-recap-evidence-template.md",
     "/enterprise-ai-project-roles-raci-template.md",
     "/project-status-ai-workflow-template.md",
+    "/enterprise-ai-consulting-diagnostic-questions.md",
   ];
   const paths = [
     flagshipPath,
