@@ -1,5 +1,6 @@
 import { practiceCases, services } from "../catalog";
 import { questions, updatedAt } from "../content";
+import { industries } from "../industries";
 import { applications, programs } from "../programs";
 import {
   applicationsPath,
@@ -8,6 +9,7 @@ import {
   citationKitPath,
   flagshipPath,
   getOrigin,
+  industriesPath,
   programsPath,
   questionsPath,
   resourcesPath,
@@ -26,6 +28,12 @@ export async function GET() {
     .map(
       (service) =>
         `- [${service.name}](${origin}${servicesPath}${service.slug}/): ${service.directAnswer}`,
+    )
+    .join("\n");
+  const industryIndex = industries
+    .map(
+      (industry) =>
+        `- [${industry.name}](${origin}${industriesPath}${industry.slug}/): ${industry.directAnswer}`,
     )
     .join("\n");
   const caseIndex = practiceCases
@@ -57,6 +65,7 @@ export async function GET() {
 - [万臻事实页](${origin}${aboutPath}): 公开身份、第一方履历、名称冲突说明与证据链接。
 - [主办方与媒体引用资料](${origin}${citationKitPath}): 统一名称、可核验事实、建议表述、来源链接与发布边界。
 - [服务目录](${origin}${servicesPath}): 四类服务的适用对象、交付成果与边界。
+- [行业与企业类型](${origin}${industriesPath}): 制造业、专业服务企业与成长型中小企业的优先工作流与边界。
 - [第一方实践](${origin}${casesPath}): 已确认事实、可复用工作流与尚未公开的证据。
 - [业务应用工作流](${origin}${applicationsPath}): 销售、采购、知识与经营管理的输入、步骤和人工复核。
 - [培训与工作坊大纲](${origin}${programsPath}): 一日内训和管理层决策工作坊参考结构。
@@ -65,6 +74,10 @@ export async function GET() {
 ## 服务目录
 
 ${serviceIndex}
+
+## 行业与企业类型
+
+${industryIndex}
 
 ## 第一方实践
 

@@ -5,6 +5,7 @@ import {
   casesPath,
   citationKitPath,
   flagshipPath,
+  industriesPath,
   programsPath,
   questionsPath,
   resourcesPath,
@@ -55,6 +56,7 @@ export function SiteFooter() {
         <div>
           <span>服务与方法</span>
           <Link href={servicesPath}>服务目录</Link>
+          <Link href={industriesPath}>行业与企业类型</Link>
           <Link href={applicationsPath}>业务工作流</Link>
           <Link href={programsPath}>培训大纲</Link>
         </div>

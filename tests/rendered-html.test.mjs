@@ -12,6 +12,11 @@ const questionSlugs = [
   "how-to-measure-enterprise-ai-pilot",
   "how-to-budget-enterprise-ai-consulting",
   "how-to-prepare-for-enterprise-ai-training",
+  "manufacturing-ai-training-starting-points",
+  "sme-ai-consulting-or-training-first",
+  "professional-services-ai-workflows",
+  "can-ai-training-use-company-data",
+  "ai-consultant-vs-software-implementer",
 ];
 
 const serviceSlugs = [
@@ -37,6 +42,12 @@ const applicationSlugs = [
 const programSlugs = [
   "one-day-enterprise-ai-training",
   "executive-ai-decision-workshop",
+];
+
+const industrySlugs = [
+  "manufacturing-enterprise-ai",
+  "professional-services-enterprise-ai",
+  "sme-enterprise-ai",
 ];
 
 async function render(requestPath) {
@@ -143,7 +154,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.match(html, /54032667928/);
 });
 
-test("renders ten enterprise decision pages and redirects retired question URLs", async () => {
+test("renders fifteen enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -181,6 +192,31 @@ test("renders ten enterprise decision pages and redirects retired question URLs"
     legacy.headers.get("location"),
     "https://example.com/questions/enterprise-ai-consulting-vs-training/",
   );
+});
+
+test("publishes industry-fit pages without presenting them as customer cases", async () => {
+  const indexResponse = await render("/industries/");
+  assert.equal(indexResponse.status, 200);
+  const indexHtml = await indexResponse.text();
+  assert.match(indexHtml, /行业不同/);
+  assert.match(indexHtml, /不是客户名单/);
+  assert.match(indexHtml, /"@type":"ItemList"/);
+
+  for (const slug of industrySlugs) {
+    const response = await render(`/industries/${slug}/`);
+    assert.equal(response.status, 200, slug);
+    const html = await response.text();
+    assert.match(html, /非客户案例/);
+    assert.match(html, /第一轮怎样做/);
+    assert.match(html, /适用与证据边界/);
+    assert.match(html, /"@type":"BusinessAudience"/);
+    assert.match(html, /"mentions":\[/);
+    assert.doesNotMatch(html, /客户评价|提升\d+%|服务过|成功案例/);
+    assert.match(
+      html,
+      new RegExp(`rel="canonical" href="https://example\\.com/industries/${slug}/"`),
+    );
+  }
 });
 
 test("publishes distinct service pages with deliverables and boundaries", async () => {
@@ -342,6 +378,10 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   for (const slug of programSlugs) {
     assert.match(sitemapText, new RegExp(`/programs/${slug}/`));
   }
+  for (const slug of industrySlugs) {
+    assert.match(sitemapText, new RegExp(`/industries/${slug}/`));
+  }
+  assert.match(sitemapText, /https:\/\/example\.com\/industries\//);
   for (const slug of questionSlugs) {
     assert.match(sitemapText, new RegExp(`/questions/${slug}/`));
   }
@@ -362,6 +402,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /销售准备与方案 AI 工作流/);
   assert.match(llmsText, /一日企业 AI 业务培训参考大纲/);
   assert.match(llmsText, /主办方与媒体引用资料/);
+  assert.match(llmsText, /制造业企业 AI 咨询与培训/);
+  assert.match(llmsText, /成长型中小企业 AI 咨询与培训/);
 
   const feedRedirect = await render("/feed.xml");
   assert.match(String(feedRedirect.status), /^30[78]$/);
@@ -376,4 +418,6 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/programs\/one-day-enterprise-ai-training\//);
   assert.match(feedText, /\/questions\/how-to-choose-enterprise-ai-consultant\//);
   assert.match(feedText, /\/citation-kit\//);
+  assert.match(feedText, /\/industries\/manufacturing-enterprise-ai\//);
+  assert.match(feedText, /\/questions\/can-ai-training-use-company-data\//);
 });

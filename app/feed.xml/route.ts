@@ -1,5 +1,6 @@
 import { practiceCases, services } from "../catalog";
 import { questions, updatedAt } from "../content";
+import { industries } from "../industries";
 import { applications, programs } from "../programs";
 import {
   aboutPath,
@@ -8,6 +9,7 @@ import {
   citationKitPath,
   flagshipPath,
   getOrigin,
+  industriesPath,
   programsPath,
   questionsPath,
   servicesPath,
@@ -47,6 +49,11 @@ export async function GET() {
       title: service.name,
       path: `${servicesPath}${service.slug}/`,
       summary: service.description,
+    })),
+    ...industries.map((industry) => ({
+      title: industry.name,
+      path: `${industriesPath}${industry.slug}/`,
+      summary: industry.description,
     })),
     ...applications.map((application) => ({
       title: application.name,

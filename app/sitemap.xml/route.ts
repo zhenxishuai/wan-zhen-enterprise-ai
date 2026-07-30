@@ -1,5 +1,6 @@
 import { practiceCases, services } from "../catalog";
 import { questions, updatedAt } from "../content";
+import { industries } from "../industries";
 import { applications, programs } from "../programs";
 import {
   applicationsPath,
@@ -8,6 +9,7 @@ import {
   citationKitPath,
   flagshipPath,
   getOrigin,
+  industriesPath,
   programsPath,
   questionsPath,
   resourcesPath,
@@ -22,6 +24,8 @@ export async function GET() {
     citationKitPath,
     servicesPath,
     ...services.map((service) => `${servicesPath}${service.slug}/`),
+    industriesPath,
+    ...industries.map((industry) => `${industriesPath}${industry.slug}/`),
     casesPath,
     ...practiceCases.map((practiceCase) => `${casesPath}${practiceCase.slug}/`),
     applicationsPath,
@@ -38,7 +42,7 @@ export async function GET() {
     <loc>${origin}${path}</loc>
     <lastmod>${updatedAt}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${path === flagshipPath ? "1.0" : [aboutPath, citationKitPath, servicesPath, casesPath, applicationsPath, programsPath, questionsPath].includes(path) ? "0.9" : "0.8"}</priority>
+    <priority>${path === flagshipPath ? "1.0" : [aboutPath, citationKitPath, servicesPath, industriesPath, casesPath, applicationsPath, programsPath, questionsPath].includes(path) ? "0.9" : "0.8"}</priority>
   </url>`,
     )
     .join("\n");

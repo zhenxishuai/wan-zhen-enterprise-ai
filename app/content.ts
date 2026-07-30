@@ -58,6 +58,11 @@ export const sourceLinks = {
     note: "关于网页发现、搜索摘要与引用的官方说明。",
     url: "https://help.openai.com/en/articles/12627856",
   },
+  nist: {
+    title: "NIST｜AI Risk Management Framework",
+    note: "官方风险管理框架：AI 的用途、用户、数据、风险、人工责任、测试与持续治理需要被定义和记录。",
+    url: "https://www.nist.gov/itl/ai-risk-management-framework",
+  },
 } as const;
 
 export const questions: QuestionArticle[] = [
@@ -443,6 +448,182 @@ export const questions: QuestionArticle[] = [
       "不同工具和企业制度对数据使用的要求不同；本站内容不能替代企业自身的信息安全、隐私和法律审查。",
     sourceKeys: ["bcg", "mckinsey"],
   },
+  {
+    slug: "manufacturing-ai-training-starting-points",
+    title: "制造业企业做 AI 咨询与培训，应该从哪些场景开始？",
+    description:
+      "制造业企业可以先从采购、知识、项目与经营信息等材料可取得、结果可检查的工作流开始，而不是直接承诺复杂生产自动化。",
+    directAnswer:
+      "制造业企业做 AI 咨询与培训，适合先从采购信息比较、制度与工艺知识查找、项目进展和经营异常汇总等工作流开始。这些任务材料较明确、可以人工复核，也更适合小范围试点；视觉质检、预测性维护、排产和设备控制则需要独立的数据、算法、工业软件与安全评估。",
+    sections: [
+      {
+        heading: "先选信息工作流，不先碰关键控制",
+        paragraphs: [
+          "第一轮试点的目标是验证企业能否把任务、输入、AI 处理、人工复核和交付责任写清楚。采购材料、制度文件和项目汇报通常比关键生产控制更容易限定范围。",
+        ],
+        bullets: [
+          "采购需求和供应商资料格式是否长期不统一。",
+          "制度、工艺或质量文件是否存在查找和版本确认困难。",
+          "项目进展、异常和依赖是否需要跨部门重复汇总。",
+        ],
+      },
+      {
+        heading: "用真实脱敏材料判断可行性",
+        paragraphs: [
+          "培训或咨询前准备一小批真实表格、文件和优秀输出，让使用者判断 AI 的错误集中在哪里、人工复核是否清楚，以及资料和权限是否构成新瓶颈。",
+        ],
+      },
+      {
+        heading: "再决定是否进入技术实施",
+        paragraphs: [
+          "只有当工作流价值、数据条件、责任人和验收方式已经清楚，企业才适合讨论系统集成、工业数据接入或专门算法项目。",
+        ],
+      },
+    ],
+    boundary:
+      "本文是制造业场景选择框架，不代表已为特定制造企业实施，也不构成生产安全、工业控制、质量或设备技术方案。",
+    sourceKeys: ["bcg", "mckinsey"],
+  },
+  {
+    slug: "sme-ai-consulting-or-training-first",
+    title: "中小企业做 AI，应该先咨询还是直接培训？",
+    description:
+      "中小企业方向不清时先做轻量诊断，任务明确但团队不会用时做培训，已有具体任务时可直接进入小试点。",
+    directAnswer:
+      "中小企业应该按问题成熟度选择：不知道先做什么时，先做轻量咨询诊断；已经有明确岗位任务、但团队不会设计工作流时，做业务培训；任务、材料和负责人都明确时，可以直接做小范围工作流试点。资源有限更需要缩小范围，而不是同时购买很多工具。",
+    sections: [
+      {
+        heading: "方向不清，先把问题排队",
+        paragraphs: [
+          "如果老板、销售、运营和职能部门各自提出不同 AI 想法，应先按业务价值、材料可得性、可检查性、风险和负责人意愿排序。",
+        ],
+      },
+      {
+        heading: "任务明确，培训要留下工作流",
+        paragraphs: [
+          "培训不应只让员工体验模型，而要围绕一个真实任务完成输入模板、AI 步骤、人工复核和会后两周试点。",
+        ],
+      },
+      {
+        heading: "已有负责人，可以直接小试",
+        paragraphs: [
+          "当任务高频、材料现成、结果可检查且有人负责时，不必先做宏大规划，可以用少量样本验证是否值得扩大。",
+        ],
+        bullets: [
+          "一次只选一个明确任务。",
+          "优先使用现有脱敏材料与已有工具。",
+          "记录人工修改和失败，不只展示最好结果。",
+        ],
+      },
+    ],
+    boundary:
+      "企业规模不是唯一判断依据。数据敏感、流程复杂或涉及重大决策的中小企业，同样可能需要技术、安全、法律或行业专业团队。",
+    sourceKeys: ["bcg", "mckinsey"],
+  },
+  {
+    slug: "professional-services-ai-workflows",
+    title: "专业服务企业怎样把 AI 用于知识、方案和项目交付？",
+    description:
+      "专业服务企业可以从客户研究、方案结构、知识检索和项目复盘开始，但专业判断、事实核验与客户承诺必须由人负责。",
+    directAnswer:
+      "专业服务企业使用 AI，适合把资料整理、客户研究、方案结构、知识检索和项目汇报设计成可复核工作流。AI 可以减少搜索与空白页时间，但不能替代顾问对事实、专业判断、客户情境、能力承诺和最终交付质量的责任。",
+    sections: [
+      {
+        heading: "先拆分整理工作与专业判断",
+        paragraphs: [
+          "客户资料归纳、访谈纪要、相似项目检索和方案结构可以由 AI 辅助；问题诊断、取舍建议、专业结论和对外承诺必须保留给负责人。",
+        ],
+      },
+      {
+        heading: "知识复用必须保留来源与版本",
+        paragraphs: [
+          "专业经验如果没有来源、适用条件、版本和责任人，AI 很容易把相似材料拼成错误答案。知识工作流需要把引用和不确定性一起交付。",
+        ],
+      },
+      {
+        heading: "用优秀交付反向定义标准",
+        paragraphs: [
+          "准备脱敏后的优秀方案、报告或复盘材料，分析它为什么可用，再用这些标准检查 AI 辅助产出，而不是只评价文字是否流畅。",
+        ],
+      },
+    ],
+    boundary:
+      "法律、财务、医疗、工程等受专业责任约束的结论，必须由具备相应资质和授权的人员审核；本文不构成任何专业意见。",
+    sourceKeys: ["mckinsey", "bcg"],
+  },
+  {
+    slug: "can-ai-training-use-company-data",
+    title: "企业 AI 内训可以使用公司真实资料吗？",
+    description:
+      "可以使用经过授权、最小化和脱敏的真实结构，但培训前必须明确工具、账号、权限、敏感等级、人工复核和删除留存规则。",
+    directAnswer:
+      "企业 AI 内训可以使用真实资料的结构和任务，但不应默认把客户隐私、商业秘密、合同、财务或员工信息上传外部工具。更稳妥的做法是先分类、最小化、脱敏和授权，确认使用哪个账号与工具、资料如何留存，并为高风险输出设置人工复核。",
+    sections: [
+      {
+        heading: "真实结构有价值，原始敏感信息不一定需要",
+        paragraphs: [
+          "培训需要保留任务的真实难度，例如字段、版本、例外和判断点；姓名、联系方式、价格、合同条款和未公开经营数据通常可以替换、遮盖或抽样。",
+        ],
+      },
+      {
+        heading: "会前定义数据与工具边界",
+        paragraphs: [
+          "企业应明确允许使用的工具、账号、资料类型、存储位置、权限、保留时间、异常处理和责任人。不同产品与部署方式的规则不能混为一谈。",
+        ],
+        bullets: [
+          "资料是否经过业务负责人授权。",
+          "是否只保留完成练习所需的最少字段。",
+          "是否能够追踪来源、版本与人工修改。",
+          "是否准备了不上传资料的替代练习。",
+        ],
+      },
+      {
+        heading: "高风险输出必须人工确认",
+        paragraphs: [
+          "合同、财务、客户承诺、员工评价和专业结论不能因为出现在培训练习里就降低审核要求。",
+        ],
+      },
+    ],
+    boundary:
+      "本文提供培训准备原则，不能替代企业自身的信息安全、隐私、合同和法律审查。具体工具的数据处理规则需要逐项核验。",
+    sourceKeys: ["nist", "bcg"],
+  },
+  {
+    slug: "ai-consultant-vs-software-implementer",
+    title: "企业 AI 咨询顾问和软件实施公司有什么区别？",
+    description:
+      "咨询顾问侧重业务问题、场景优先级、工作流和组织采用；软件实施公司侧重系统配置、集成、数据与运维，复杂项目通常需要协作。",
+    directAnswer:
+      "企业 AI 咨询顾问主要帮助企业确定为什么做、先做什么、人与 AI 怎样分工、如何试点和采用；软件实施公司主要负责把确定需求变成可运行系统，包括配置、开发、集成、数据、权限和运维。前者不能替代技术实施，后者也不应替企业省略业务判断。",
+    sections: [
+      {
+        heading: "咨询先回答业务与组织问题",
+        paragraphs: [
+          "咨询阶段需要识别经营目标、流程阻力、使用者、输入材料、验收标准、风险和负责人，形成可供决策和试点的范围。",
+        ],
+      },
+      {
+        heading: "实施负责系统落地与运行",
+        paragraphs: [
+          "当企业需要接入内部系统、构建权限、迁移数据、开发接口或持续运维时，应由具备相应技术能力的实施团队负责。",
+        ],
+      },
+      {
+        heading: "复杂项目需要共同交付",
+        paragraphs: [
+          "更稳妥的协作顺序是先把业务任务和责任边界写清，再由技术团队评估方案，并让真实使用者参与测试和复盘。",
+        ],
+        bullets: [
+          "咨询成果应能进入技术需求，而不是停在概念报告。",
+          "技术方案应回到真实工作流验证，而不是只证明功能可用。",
+          "最终验收同时看系统、流程、采用和风险。",
+        ],
+      },
+    ],
+    boundary:
+      "不同供应商的实际能力可能重叠，应以团队成员、工作范围、交付物、责任和合同为准，不能仅凭“咨询”或“实施”名称判断。",
+    sourceKeys: ["bcg", "mckinsey"],
+  },
 ];
 
 export const questionMap = Object.fromEntries(
@@ -568,6 +749,66 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "企业 AI 业务培训",
       description: "查看岗位培训的产出、持续使用方式和能力边界。",
       href: "/services/enterprise-ai-training/",
+    },
+  ],
+  "manufacturing-ai-training-starting-points": [
+    {
+      label: "制造业企业 AI 场景",
+      description: "查看采购、知识与经营信息工作流的适用条件和技术边界。",
+      href: "/industries/manufacturing-enterprise-ai/",
+    },
+    {
+      label: "企业 AI 业务应用",
+      description: "查看四类可复用工作流的输入、步骤与人工复核。",
+      href: "/applications/",
+    },
+  ],
+  "sme-ai-consulting-or-training-first": [
+    {
+      label: "成长型中小企业 AI 场景",
+      description: "查看资源有限时怎样选择第一条任务和控制投入范围。",
+      href: "/industries/sme-enterprise-ai/",
+    },
+    {
+      label: "四类企业 AI 服务",
+      description: "比较咨询、管理层工作坊、业务培训与工作流试点。",
+      href: "/services/",
+    },
+  ],
+  "professional-services-ai-workflows": [
+    {
+      label: "专业服务企业 AI 场景",
+      description: "查看客户研究、知识复用与项目汇报的优先工作流。",
+      href: "/industries/professional-services-enterprise-ai/",
+    },
+    {
+      label: "企业知识问答工作流",
+      description: "查看来源、版本、权限、引用与更新责任怎样设计。",
+      href: "/applications/enterprise-knowledge-ai-workflow/",
+    },
+  ],
+  "can-ai-training-use-company-data": [
+    {
+      label: "企业 AI 培训准备",
+      description: "查看会前任务、匿名化材料、输出标准与内部负责人要求。",
+      href: "/questions/how-to-prepare-for-enterprise-ai-training/",
+    },
+    {
+      label: "一日企业 AI 培训大纲",
+      description: "查看真实材料练习、人工复核与会后试点结构。",
+      href: "/programs/one-day-enterprise-ai-training/",
+    },
+  ],
+  "ai-consultant-vs-software-implementer": [
+    {
+      label: "企业 AI 咨询",
+      description: "查看业务诊断、场景优先级、试点方案与服务边界。",
+      href: "/services/enterprise-ai-consulting/",
+    },
+    {
+      label: "AI 工作流设计与试点",
+      description: "查看明确任务怎样进入输入、处理、复核与复盘。",
+      href: "/services/ai-workflow-pilot/",
     },
   ],
 };
