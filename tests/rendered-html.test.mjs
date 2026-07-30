@@ -184,6 +184,7 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(serialized, /"subjectOf":\[/);
   assert.doesNotMatch(serialized, /"sameAs":\[/);
   assert.match(serialized, /finance\.sina\.com\.cn/);
+  assert.match(serialized, /sanjieke\.cn\/course\/detail\/sjk\/8005800/);
 });
 
 test("publishes a standalone, evidence-bound person fact page", async () => {
@@ -198,6 +199,9 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.match(html, /"alternateName":\["万叔","万至秦说商业"\]/);
   assert.match(html, /54032667928/);
   assert.match(html, /《创始人笔记》的 AI 公开写作/);
+  assert.match(html, /AI 写作公开课程/);
+  assert.match(html, /sanjieke\.cn\/course\/detail\/sjk\/8005800/);
+  assert.match(html, /不证明企业客户成效/);
   assert.match(html, /finance\.sina\.com\.cn/);
   assert.match(html, /"subjectOf":\[/);
   assert.doesNotMatch(html, /"sameAs":\[/);
@@ -527,6 +531,9 @@ test("publishes an evidence-bound citation kit for third-party pages", async () 
   const html = await response.text();
   assert.match(html, /主办方与媒体引用资料/);
   assert.match(html, /第三方页面可以直接核验的事实/);
+  assert.match(html, /AI 写作公开课程/);
+  assert.match(html, /sanjieke\.cn\/course\/detail\/sjk\/8005800/);
+  assert.match(html, /不用于证明企业客户效果/);
   assert.match(html, /统一名称与第一方信息/);
   assert.match(html, /第三方页面应该链接到哪里/);
   assert.match(html, /https:\/\/example\.com\/about-wan-zhen\//);
@@ -738,6 +745,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /企业做 AI 咨询前，管理层应该先回答哪些问题/);
   assert.match(llmsText, /enterprise-ai-consulting-diagnostic-questions\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
+  assert.match(llmsText, /AI 写作公开教学内容/);
+  assert.match(llmsText, /三节课《AI写作基础课》/);
   assert.match(llmsText, /客户身份、完整实施记录、前后基线、量化结果与第三方证据当前未公开/);
 
   const feed = await render("/feed.xml");

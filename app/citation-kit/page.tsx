@@ -87,6 +87,7 @@ export default async function CitationKitPage() {
         isPartOf: { "@id": `${origin}${websiteEntityPath}` },
         citation: [
           sourceLinks.sanjieke.url,
+          sourceLinks.sanjiekeAiWriting.url,
           sourceLinks.southcn.url,
           sourceLinks.book.url,
           sourceLinks.sinaFounderNotes.url,
@@ -142,6 +143,11 @@ export default async function CitationKitPage() {
               <strong>CMC 与咨询背景</strong>
               <p>三节课公开课程页标注万臻为 CMC 国际注册管理咨询师、商业咨询公司创始人。</p>
               <a href={sourceLinks.sanjieke.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
+            </div>
+            <div>
+              <strong>AI 写作公开课程</strong>
+              <p>三节课《AI写作基础课》页面标注讲师为万臻，并列出 AIGC 办公提效、行业应用与课程模块；可用于核验公开教学内容，不用于证明企业客户效果。</p>
+              <a href={sourceLinks.sanjiekeAiWriting.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
             </div>
             <div>
               <strong>GBA OPC 与企业 AI 方法</strong>

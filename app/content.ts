@@ -28,6 +28,11 @@ export const sourceLinks = {
     note: "公开课程页：万臻、CMC 国际注册管理咨询师、商业咨询公司创始人。",
     url: "https://www.sanjieke.cn/course/detail/sjk/8005801",
   },
+  sanjiekeAiWriting: {
+    title: "三节课｜AI写作基础课",
+    note: "公开课程页：讲师万臻、AIGC 办公提效与行业应用方向，以及 AI 写作课程模块；不代表企业客户成效。",
+    url: "https://www.sanjieke.cn/course/detail/sjk/8005800",
+  },
   southcn: {
     title: "南方网｜AI 怎么用效果最好？这场活动干货拉满",
     note: "公开报道：GBA OPC 执委身份、企业 AI 活动参与及方法观点。",

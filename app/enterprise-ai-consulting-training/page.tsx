@@ -113,6 +113,7 @@ export default async function FlagshipPage() {
         worksFor: { "@id": `${origin}${organizationEntityPath}` },
         subjectOf: [
           { "@type": "Course", url: sourceLinks.sanjieke.url },
+          { "@type": "Course", url: sourceLinks.sanjiekeAiWriting.url },
           { "@type": "Article", url: sourceLinks.southcn.url },
           { "@type": "Article", url: sourceLinks.sinaFounderNotes.url },
           { "@type": "Book", url: sourceLinks.book.url },

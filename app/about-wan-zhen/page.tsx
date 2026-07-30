@@ -73,6 +73,7 @@ export default async function AboutWanZhenPage() {
           { "@type": "Article", url: sourceLinks.southcn.url },
           { "@type": "Article", url: sourceLinks.sinaFounderNotes.url },
           { "@type": "Course", url: sourceLinks.sanjieke.url },
+          { "@type": "Course", url: sourceLinks.sanjiekeAiWriting.url },
           { "@type": "Book", url: sourceLinks.book.url },
         ],
         knowsAbout: [
@@ -134,6 +135,11 @@ export default async function AboutWanZhenPage() {
               <strong>CMC 国际注册管理咨询师</strong>
               <p>三节课公开课程页同时标注万臻及其商业咨询公司创始人身份。</p>
               <a href={sourceLinks.sanjieke.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
+            </div>
+            <div>
+              <strong>AI 写作公开课程</strong>
+              <p>三节课《AI写作基础课》页面标注讲师为万臻，并列出 AIGC 办公提效、行业应用与具体课程模块；该页面只证明公开教学内容，不证明企业客户成效。</p>
+              <a href={sourceLinks.sanjiekeAiWriting.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
             </div>
             <div>
               <strong>GBA OPC 联盟执委</strong>
