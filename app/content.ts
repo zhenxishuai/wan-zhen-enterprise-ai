@@ -103,6 +103,16 @@ export const sourceLinks = {
     note: "PMI 项目管理文章：项目工作中的 AI 使用需要结构化治理、监督与问责，而不只是引入自动化工具。",
     url: "https://www.pmi.org/blog/the-time-for-ai-governance-is-now",
   },
+  accountingLaw: {
+    title: "财政部｜中华人民共和国会计法（2024年）",
+    note: "官方法律文本要求会计资料真实、完整，并明确单位负责人对本单位会计工作和会计资料的真实性、完整性负责。",
+    url: "https://kjs.mof.gov.cn/zhengcefabu/202408/t20240812_3941615.htm",
+  },
+  accountingInformatization: {
+    title: "财政部｜会计信息化工作规范",
+    note: "官方规范覆盖会计数据采集、会计资料生成、存储、转换、输出、分析和利用，相关系统与流程仍需符合会计及信息化要求。",
+    url: "https://jx.mof.gov.cn/xxgk/zhengcefagui/202408/t20240808_3941396.htm",
+  },
   nistGenAiProfile: {
     title: "NIST｜生成式人工智能风险管理框架应用指南",
     note: "NIST AI RMF 生成式 AI 配套指南：组织需要定义角色、政策、监督、测试、事件沟通和持续风险管理。",
@@ -1072,6 +1082,50 @@ export const questions: QuestionArticle[] = [
     sourceKeys: ["advertisingLaw", "cacAiLabeling", "pipl", "nistGenAiProfile"],
   },
   {
+    slug: "how-finance-teams-should-use-ai-for-management-analysis",
+    title: "财务团队怎样使用 AI 做经营分析，又不让模型改写会计事实？",
+    description:
+      "财务团队可以让 AI 辅助整理预算差异、趋势、异常线索和分析草稿，但会计事实、数据口径、凭证、报表和最终判断必须由财务责任人核验。",
+    directAnswer:
+      "财务团队使用 AI，适合先从已批准数据的归集、预算与实际差异说明、趋势摘要和待核验问题开始。AI 只能基于明确来源、期间和口径整理草稿，不能补造会计事实、修改凭证、自动记账、报税、付款或出具审计意见；财务人员必须回看原始资料并对数据、解释和最终报告负责。",
+    sections: [
+      {
+        heading: "先锁定来源、期间和口径",
+        paragraphs: [
+          "财务分析不能把不同版本、期间或口径的数据直接交给模型混合。开始前应明确数据来自哪份已批准报表或台账、覆盖什么期间、币种与组织范围，以及预算、实际、预测和管理调整分别如何定义。",
+          "涉及凭证、账户、个人信息、薪酬、客户、供应商和未公开经营数据时，应先确认工具、账号、权限、脱敏与保存要求。",
+        ],
+        bullets: [
+          "每个关键数字保留来源、期间、版本和责任人。",
+          "缺失、冲突或未结账数据标为待核验，不让 AI 补齐。",
+          "管理口径与法定会计口径分开说明。",
+        ],
+      },
+      {
+        heading: "让 AI 生成问题和草稿，不生成会计事实",
+        paragraphs: [
+          "AI 可以按既定公式整理预算与实际差异、趋势变化、异常项目和需要业务部门解释的问题，也可以把已核验事实写成经营分析草稿。它不应自行决定差异原因、会计处理、税务结论或未来结果。",
+          "分析草稿中的数字、因果解释和行动建议应分别标记，避免把相关性、业务猜测或模型语言写成已经确认的事实。",
+        ],
+        bullets: [
+          "数据层：只重算可复核的汇总、比例与差异。",
+          "解释层：列出证据和待业务确认的问题。",
+          "建议层：说明假设、风险和需要谁批准。",
+        ],
+      },
+      {
+        heading: "财务责任人与业务负责人共同确认",
+        paragraphs: [
+          "财务人员核验数据来源、计算、会计口径和披露范围；业务负责人确认经营原因、行动和时间承诺；单位负责人或有权限人员按制度批准正式报告、付款、申报和对外披露。",
+          "AI 不能替代会计监督、专业判断、内部控制、审计或授权审批，也不能因为草稿流畅就降低复核要求。",
+        ],
+      },
+    ],
+    boundary:
+      "本文提供财务经营分析辅助框架，不是自动记账、财务软件实施、税务申报、资金支付、审计、估值或投资建议，也不构成会计、税务、法律或行业专业意见，不代表万臻已经为特定企业部署财务 AI 系统。",
+    sourceKeys: ["accountingLaw", "accountingInformatization", "nistHumanAi", "nistCore"],
+  },
+  {
     slug: "how-project-teams-should-use-ai-for-status-reporting",
     title: "项目团队怎样用 AI 整理进展，又不把草稿当成事实？",
     description:
@@ -1304,6 +1358,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
     {
       label: "企业生成式 AI 使用规则",
       description: "查看工具、资料、人工复核、对外发布、异常和更新责任。",
+      href: "/questions/what-rules-enterprise-ai-employees-need/",
+    },
+  ],
+  "how-finance-teams-should-use-ai-for-management-analysis": [
+    {
+      label: "财务经营分析与差异说明 AI 工作流",
+      description: "查看必要输入、五步流程、财务复核和会计事实边界。",
+      href: "/applications/finance-management-analysis-ai-workflow/",
+    },
+    {
+      label: "企业生成式 AI 使用规则",
+      description: "查看工具、资料、人工复核、异常上报和更新责任。",
       href: "/questions/what-rules-enterprise-ai-employees-need/",
     },
   ],

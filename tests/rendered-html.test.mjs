@@ -26,6 +26,7 @@ const questionSlugs = [
   "how-customer-service-teams-should-use-ai",
   "how-hr-teams-should-use-ai-in-recruitment",
   "how-marketing-teams-should-use-ai-content",
+  "how-finance-teams-should-use-ai-for-management-analysis",
   "how-project-teams-should-use-ai-for-status-reporting",
   "who-should-lead-enterprise-ai-training-project",
   "what-rules-enterprise-ai-employees-need",
@@ -51,6 +52,7 @@ const applicationSlugs = [
   "hr-recruitment-ai-workflow",
   "procurement-comparison-ai-workflow",
   "enterprise-knowledge-ai-workflow",
+  "finance-management-analysis-ai-workflow",
   "project-status-ai-workflow",
   "management-reporting-ai-workflow",
 ];
@@ -195,7 +197,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders twenty-six enterprise decision pages and redirects retired question URLs", async () => {
+test("renders twenty-seven enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -284,6 +286,15 @@ test("renders twenty-six enterprise decision pages and redirects retired questio
   assert.match(marketingHtml, /中华人民共和国广告法/);
   assert.match(marketingHtml, /人工智能生成合成内容标识办法/);
   assert.match(marketingHtml, /AI 不应直接把未经审核的内容发布到外部渠道/);
+
+  const financeResponse = await render(
+    "/questions/how-finance-teams-should-use-ai-for-management-analysis/",
+  );
+  const financeHtml = await financeResponse.text();
+  assert.match(financeHtml, /先锁定来源、期间和口径/);
+  assert.match(financeHtml, /不能补造会计事实、修改凭证、自动记账、报税、付款或出具审计意见/);
+  assert.match(financeHtml, /财政部｜中华人民共和国会计法/);
+  assert.match(financeHtml, /财政部｜会计信息化工作规范/);
 
   const projectStatusResponse = await render(
     "/questions/how-project-teams-should-use-ai-for-status-reporting/",
@@ -508,11 +519,12 @@ test("publishes extractable business application workflows with human review", a
   assert.equal(indexResponse.status, 200);
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /别先问用哪个 AI/);
-  assert.match(indexHtml, /八类业务工作流/);
+  assert.match(indexHtml, /九类业务工作流/);
   assert.match(indexHtml, /市场内容研究、生产与发布 AI 工作流/);
   assert.match(indexHtml, /客户服务知识检索与回复 AI 工作流/);
   assert.match(indexHtml, /招聘准备与人工决策 AI 工作流/);
   assert.match(indexHtml, /项目进展与行动闭环 AI 工作流/);
+  assert.match(indexHtml, /财务经营分析与差异说明 AI 工作流/);
   assert.match(indexHtml, /"@type":"ItemList"/);
 
   for (const slug of applicationSlugs) {
@@ -569,6 +581,15 @@ test("publishes extractable business application workflows with human review", a
   assert.match(projectStatusApplicationHtml, /不代表已经为特定企业部署项目管理系统/);
   assert.match(projectStatusApplicationHtml, /project-status-ai-workflow-template\.md/);
   assert.match(projectStatusApplicationHtml, /\"@type\":\"HowTo\"/);
+
+  const financeApplication = await render(
+    "/applications/finance-management-analysis-ai-workflow/",
+  );
+  const financeApplicationHtml = await financeApplication.text();
+  assert.match(financeApplicationHtml, /不能补造会计事实、修改凭证、自动记账、报税、付款/);
+  assert.match(financeApplicationHtml, /AI 不拥有记账、付款、申报、审计或对外披露权限/);
+  assert.match(financeApplicationHtml, /不代表已经为特定企业部署财务 AI 系统/);
+  assert.match(financeApplicationHtml, /\"@type\":\"HowTo\"/);
 });
 
 test("publishes buyer-oriented training and workshop outlines", async () => {
@@ -679,6 +700,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /项目团队怎样用 AI 整理进展/);
   assert.match(llmsText, /项目进展与行动闭环 AI 工作流/);
   assert.match(llmsText, /project-status-ai-workflow-template\.md/);
+  assert.match(llmsText, /财务团队怎样使用 AI 做经营分析/);
+  assert.match(llmsText, /财务经营分析与差异说明 AI 工作流/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
@@ -708,6 +731,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/questions\/how-marketing-teams-should-use-ai-content\//);
   assert.match(feedText, /\/applications\/project-status-ai-workflow\//);
   assert.match(feedText, /\/questions\/how-project-teams-should-use-ai-for-status-reporting\//);
+  assert.match(feedText, /\/applications\/finance-management-analysis-ai-workflow\//);
+  assert.match(feedText, /\/questions\/how-finance-teams-should-use-ai-for-management-analysis\//);
   assert.match(feedText, /\/questions\/who-should-lead-enterprise-ai-training-project\//);
   assert.match(feedText, /\/questions\/what-rules-enterprise-ai-employees-need\//);
   assert.match(feedText, /\/questions\/how-long-enterprise-ai-consulting-training-takes\//);
@@ -726,8 +751,8 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 64);
-  assert.equal(htmlUrls.length, 57);
+  assert.equal(urls.length, 66);
+  assert.equal(htmlUrls.length, 59);
   assert.equal(downloadUrls.length, 7);
   assert.equal(sitemapPaths.size, urls.length);
 

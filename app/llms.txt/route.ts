@@ -67,7 +67,7 @@ export async function GET() {
 - [服务目录](${origin}${servicesPath}): 四类服务的适用对象、交付成果与边界。
 - [行业与企业类型](${origin}${industriesPath}): 制造业、专业服务企业与成长型中小企业的优先工作流与边界。
 - [第一方实践](${origin}${casesPath}): 已确认事实、可复用工作流与尚未公开的证据。
-- [业务应用工作流](${origin}${applicationsPath}): 销售、市场内容、客户服务、人力资源、采购、知识管理、项目交付与经营管理的输入、步骤和人工复核。
+- [业务应用工作流](${origin}${applicationsPath}): 销售、市场内容、客户服务、人力资源、采购、知识管理、财务分析、项目交付与经营管理的输入、步骤和人工复核。
 - [培训与工作坊大纲](${origin}${programsPath}): 一日内训、管理层决策工作坊和培训后 30 天落地陪跑参考结构。
 - [决策问答](${origin}${questionsPath}): 企业采购与落地问题的直接答案。
 
