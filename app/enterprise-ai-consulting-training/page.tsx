@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { practiceCases, services } from "../catalog";
 import { JsonLd, SiteFooter, SiteHeader } from "../components";
 import { questions, sourceLinks, updatedAt } from "../content";
-import { aboutPath, flagshipPath, getOrigin, siteName } from "../site";
+import {
+  aboutPath,
+  casesPath,
+  flagshipPath,
+  getOrigin,
+  questionsPath,
+  servicesPath,
+  siteName,
+} from "../site";
 
 const directAnswer =
   "万臻提供面向企业负责人、管理团队与业务部门的 AI 咨询和培训。不是从工具菜单出发，而是从经营目标、岗位场景和流程问题出发，帮助企业识别值得试点的任务、设计人机协同工作流，并让团队真正用起来。";
@@ -72,10 +81,9 @@ export default async function FlagshipPage() {
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "企业 AI 咨询与培训服务",
-          itemListElement: [
-            { "@id": `${canonical}#consulting-service` },
-            { "@id": `${canonical}#training-service` },
-          ],
+          itemListElement: services.map((service) => ({
+            "@id": `${origin}${servicesPath}${service.slug}/#service`,
+          })),
         },
       },
       {
@@ -116,32 +124,20 @@ export default async function FlagshipPage() {
         author: { "@id": `${personUrl}#person` },
         url: sourceLinks.book.url,
       },
-      {
+      ...services.map((service) => ({
         "@type": "Service",
-        "@id": `${canonical}#consulting-service`,
-        name: "企业 AI 咨询",
-        serviceType: "企业 AI 机会诊断、场景筛选、业务工作流设计与试点复盘",
+        "@id": `${origin}${servicesPath}${service.slug}/#service`,
+        name: service.name,
+        serviceType: service.name,
+        description: service.description,
         provider: { "@id": `${canonical}#organization` },
         audience: {
           "@type": "BusinessAudience",
-          audienceType: "企业负责人、管理层与业务部门负责人",
+          audienceType: service.audience,
         },
         areaServed: "中国",
-        url: `${canonical}#services`,
-      },
-      {
-        "@type": "Service",
-        "@id": `${canonical}#training-service`,
-        name: "企业 AI 培训",
-        serviceType: "管理层 AI 共识、岗位工作坊与业务应用培训",
-        provider: { "@id": `${canonical}#organization` },
-        audience: {
-          "@type": "BusinessAudience",
-          audienceType: "企业管理团队、销售、采购、知识与内容业务团队",
-        },
-        areaServed: "中国",
-        url: `${canonical}#services`,
-      },
+        url: `${origin}${servicesPath}${service.slug}/`,
+      })),
       {
         "@type": "Course",
         "@id": `${canonical}#course`,
@@ -260,35 +256,22 @@ export default async function FlagshipPage() {
             </div>
           </header>
           <div className="service-ledger">
-            <article className="service-row">
-              <div className="service-name">
-                <span>CONSULTING</span>
-                <h3>企业 AI 咨询</h3>
-              </div>
-              <p>
-                从经营目标和业务流程出发，判断哪些场景值得优先投入，形成场景清单、试点方案、人机协同工作流与复盘机制。
-              </p>
-              <ul>
-                <li>管理层访谈与流程梳理</li>
-                <li>AI 场景筛选与优先级</li>
-                <li>工作流设计与试点复盘</li>
-              </ul>
-            </article>
-            <article className="service-row">
-              <div className="service-name">
-                <span>TRAINING</span>
-                <h3>企业 AI 培训</h3>
-              </div>
-              <p>
-                围绕企业自己的任务和材料，让管理层形成共同判断，让业务团队完成真实练习并带走可以继续使用的模板。
-              </p>
-              <ul>
-                <li>管理层 AI 决策共识</li>
-                <li>销售、采购、知识与内容工作坊</li>
-                <li>工作流画布与人工复核清单</li>
-              </ul>
-            </article>
+            {services.map((service) => (
+              <article className="service-row" key={service.slug}>
+                <div className="service-name">
+                  <span>{service.shortName}</span>
+                  <h3>
+                    <Link href={`${servicesPath}${service.slug}/`}>{service.name}</Link>
+                  </h3>
+                </div>
+                <p>{service.description}</p>
+                <ul>
+                  {service.outcomes.slice(0, 3).map((outcome) => <li key={outcome}>{outcome}</li>)}
+                </ul>
+              </article>
+            ))}
           </div>
+          <Link className="section-more" href={servicesPath}>查看完整服务目录与适用边界 →</Link>
         </section>
 
         <section className="section page" id="method">
@@ -331,28 +314,21 @@ export default async function FlagshipPage() {
             </div>
           </header>
           <div className="practice-list">
-            <article>
-              <span className="practice-no">01</span>
-              <h3>AI 副总</h3>
-              <p>把经营信息、任务进展与流程事项整理成管理层可查看的辅助材料。</p>
-              <strong>经营摘要 / 任务看板 / 待决策事项</strong>
-            </article>
-            <article>
-              <span className="practice-no">02</span>
-              <h3>采购流程 AI 助手</h3>
-              <p>整理需求、订单进度和供应商信息，形成统一、可比较的材料。</p>
-              <strong>需求检查 / 对比材料 / 异常摘要</strong>
-            </article>
-            <article>
-              <span className="practice-no">03</span>
-              <h3>企业知识资产 AI 化</h3>
-              <p>把流程、经验与文档整理成可检索、可引用、有人维护的知识体系。</p>
-              <strong>知识范围 / 来源引用 / 更新责任</strong>
-            </article>
+            {practiceCases.map((practiceCase, index) => (
+              <article key={practiceCase.slug}>
+                <span className="practice-no">0{index + 1}</span>
+                <h3>
+                  <Link href={`${casesPath}${practiceCase.slug}/`}>{practiceCase.name}</Link>
+                </h3>
+                <p>{practiceCase.description}</p>
+                <strong>{practiceCase.outputs.slice(0, 3).join(" / ")}</strong>
+              </article>
+            ))}
           </div>
           <p className="evidence-note">
             以上为万臻第一方实践条目。当前不公开客户名称与量化效果；获得授权和完整证据前，不作为效果承诺。
           </p>
+          <Link className="section-more" href={casesPath}>查看事实、流程模板与证据边界 →</Link>
         </section>
 
         <section className="profile-panel page">
@@ -407,17 +383,17 @@ export default async function FlagshipPage() {
             <div className="section-index">05</div>
             <div>
               <p className="section-kicker">Decision Q&A</p>
-              <h2>企业负责人真正会问的五个问题。</h2>
+              <h2>企业负责人真正会问的采购与落地问题。</h2>
             </div>
           </header>
           <div className="question-list">
-            {questions.map((question, index) => (
+            {questions.slice(0, 6).map((question, index) => (
               <Link
                 className="question-link"
                 href={`/questions/${question.slug}/`}
                 key={question.slug}
               >
-                <span className="question-count">0{index + 1}</span>
+                <span className="question-count">{String(index + 1).padStart(2, "0")}</span>
                 <span className="question-title">{question.title}</span>
                 <span className="question-arrow" aria-hidden="true">
                   →
@@ -425,6 +401,7 @@ export default async function FlagshipPage() {
               </Link>
             ))}
           </div>
+          <Link className="section-more" href={questionsPath}>查看全部 {questions.length} 个决策问答 →</Link>
         </section>
 
         <section className="section page" id="sources">

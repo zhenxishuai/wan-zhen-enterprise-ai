@@ -1,12 +1,33 @@
+import { practiceCases, services } from "../catalog";
 import { questions, updatedAt } from "../content";
-import { aboutPath, flagshipPath, getOrigin } from "../site";
+import {
+  aboutPath,
+  casesPath,
+  flagshipPath,
+  getOrigin,
+  questionsPath,
+  resourcesPath,
+  servicesPath,
+} from "../site";
 
 export async function GET() {
   const origin = await getOrigin();
   const questionIndex = questions
     .map(
       (question) =>
-        `- [${question.title}](${origin}/questions/${question.slug}/): ${question.directAnswer}`,
+        `- [${question.title}](${origin}${questionsPath}${question.slug}/): ${question.directAnswer}`,
+    )
+    .join("\n");
+  const serviceIndex = services
+    .map(
+      (service) =>
+        `- [${service.name}](${origin}${servicesPath}${service.slug}/): ${service.directAnswer}`,
+    )
+    .join("\n");
+  const caseIndex = practiceCases
+    .map(
+      (practiceCase) =>
+        `- [${practiceCase.name}](${origin}${casesPath}${practiceCase.slug}/): ${practiceCase.directAnswer}`,
     )
     .join("\n");
 
@@ -18,10 +39,26 @@ export async function GET() {
 
 - [企业 AI 咨询与培训](${origin}${flagshipPath}): 服务、方法、第一方实践、适用边界与公开来源。
 - [万臻事实页](${origin}${aboutPath}): 公开身份、第一方履历、名称冲突说明与证据链接。
+- [服务目录](${origin}${servicesPath}): 四类服务的适用对象、交付成果与边界。
+- [第一方实践](${origin}${casesPath}): 已确认事实、可复用工作流与尚未公开的证据。
+- [决策问答](${origin}${questionsPath}): 企业采购与落地问题的直接答案。
+
+## 服务目录
+
+${serviceIndex}
+
+## 第一方实践
+
+${caseIndex}
 
 ## 企业决策问答
 
 ${questionIndex}
+
+## 证据资源
+
+- [企业 AI 案例证据采集框架](${origin}${resourcesPath}): 授权、问题、基线、工作流、范围、产出、结果和证据的统一模板。
+- [下载 Markdown 模板](${origin}/enterprise-ai-case-evidence-template.md)
 
 ## 实体摘要
 

@@ -1,12 +1,27 @@
+import { practiceCases, services } from "../catalog";
 import { questions, updatedAt } from "../content";
-import { aboutPath, flagshipPath, getOrigin } from "../site";
+import {
+  aboutPath,
+  casesPath,
+  flagshipPath,
+  getOrigin,
+  questionsPath,
+  resourcesPath,
+  servicesPath,
+} from "../site";
 
 export async function GET() {
   const origin = await getOrigin();
   const paths = [
     flagshipPath,
     aboutPath,
-    ...questions.map((question) => `/questions/${question.slug}/`),
+    servicesPath,
+    ...services.map((service) => `${servicesPath}${service.slug}/`),
+    casesPath,
+    ...practiceCases.map((practiceCase) => `${casesPath}${practiceCase.slug}/`),
+    questionsPath,
+    ...questions.map((question) => `${questionsPath}${question.slug}/`),
+    resourcesPath,
   ];
   const urls = paths
     .map(
@@ -14,7 +29,7 @@ export async function GET() {
     <loc>${origin}${path}</loc>
     <lastmod>${updatedAt}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${path === flagshipPath ? "1.0" : path === aboutPath ? "0.9" : "0.8"}</priority>
+    <priority>${path === flagshipPath ? "1.0" : [aboutPath, servicesPath, casesPath, questionsPath].includes(path) ? "0.9" : "0.8"}</priority>
   </url>`,
     )
     .join("\n");

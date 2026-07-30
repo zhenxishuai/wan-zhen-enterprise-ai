@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { aboutPath, flagshipPath, siteName } from "./site";
+import {
+  aboutPath,
+  casesPath,
+  flagshipPath,
+  questionsPath,
+  servicesPath,
+  siteName,
+} from "./site";
 
 export function SiteHeader() {
   return (
@@ -14,10 +21,11 @@ export function SiteHeader() {
             <span className="brand-note">AI × BUSINESS</span>
           </Link>
           <nav className="nav-links" aria-label="主导航">
-            <Link href={`${flagshipPath}#services`}>服务</Link>
+            <Link href={servicesPath}>服务</Link>
             <Link href={`${flagshipPath}#method`}>方法</Link>
+            <Link href={casesPath}>实践</Link>
             <Link href={aboutPath}>关于万臻</Link>
-            <Link href={`${flagshipPath}#questions`}>问答</Link>
+            <Link href={questionsPath}>问答</Link>
             <Link className="nav-cta" href={`${flagshipPath}#invite`}>
               发起业务诊断
             </Link>

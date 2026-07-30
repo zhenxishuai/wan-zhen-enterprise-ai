@@ -3,6 +3,10 @@ import { headers } from "next/headers";
 export const siteName = "万臻｜企业 AI 咨询与培训";
 export const flagshipPath = "/enterprise-ai-consulting-training/";
 export const aboutPath = "/about-wan-zhen/";
+export const servicesPath = "/services/";
+export const casesPath = "/cases/";
+export const questionsPath = "/questions/";
+export const resourcesPath = "/resources/";
 
 export async function getOrigin() {
   const requestHeaders = await headers();

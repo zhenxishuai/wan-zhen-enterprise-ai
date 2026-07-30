@@ -7,6 +7,24 @@ const questionSlugs = [
   "where-to-start-enterprise-ai",
   "enterprise-ai-consulting-vs-training",
   "who-wan-zhen-ai-service-is-for",
+  "what-enterprise-ai-consulting-delivers",
+  "ai-training-for-executives-or-employees",
+  "how-to-measure-enterprise-ai-pilot",
+  "how-to-budget-enterprise-ai-consulting",
+  "how-to-prepare-for-enterprise-ai-training",
+];
+
+const serviceSlugs = [
+  "enterprise-ai-consulting",
+  "executive-ai-workshop",
+  "enterprise-ai-training",
+  "ai-workflow-pilot",
+];
+
+const caseSlugs = [
+  "ai-vice-president",
+  "procurement-ai-assistant",
+  "enterprise-knowledge-ai",
 ];
 
 async function render(requestPath) {
@@ -100,7 +118,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.match(html, /54032667928/);
 });
 
-test("renders five enterprise decision pages and redirects retired question URLs", async () => {
+test("renders ten enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -124,6 +142,55 @@ test("renders five enterprise decision pages and redirects retired question URLs
   );
 });
 
+test("publishes distinct service pages with deliverables and boundaries", async () => {
+  const indexResponse = await render("/services/");
+  assert.equal(indexResponse.status, 200);
+  const indexHtml = await indexResponse.text();
+  assert.match(indexHtml, /不同阶段/);
+  assert.match(indexHtml, /"@type":"ItemList"/);
+
+  for (const slug of serviceSlugs) {
+    const response = await render(`/services/${slug}/`);
+    assert.equal(response.status, 200, slug);
+    const html = await response.text();
+    assert.match(html, /服务边界/);
+    assert.match(html, /"@type":"Service"/);
+    assert.match(
+      html,
+      new RegExp(`rel="canonical" href="https://example\\.com/services/${slug}/"`),
+    );
+  }
+});
+
+test("separates confirmed first-party practice from reusable workflow templates", async () => {
+  const indexResponse = await render("/cases/");
+  assert.equal(indexResponse.status, 200);
+  const indexHtml = await indexResponse.text();
+  assert.match(indexHtml, /公开我们知道的/);
+  assert.match(indexHtml, /证据分层/);
+
+  for (const slug of caseSlugs) {
+    const response = await render(`/cases/${slug}/`);
+    assert.equal(response.status, 200, slug);
+    const html = await response.text();
+    assert.match(html, /已确认/);
+    assert.match(html, /可复用模板/);
+    assert.match(html, /证据边界/);
+    assert.doesNotMatch(html, /提升\d+%|节省\d+%|客户评价/);
+  }
+});
+
+test("publishes a reusable customer-case evidence framework", async () => {
+  const response = await render("/resources/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /企业 AI 案例证据采集框架/);
+  assert.match(html, /原始基线/);
+  assert.match(html, /公开授权/);
+  assert.match(html, /"@type":"HowTo"/);
+  assert.match(html, /enterprise-ai-case-evidence-template\.md/);
+});
+
 test("publishes crawler, sitemap, and machine-readable content interfaces", async () => {
   const robotsRedirect = await render("/robots.txt");
   assert.match(String(robotsRedirect.status), /^30[78]$/);
@@ -142,9 +209,16 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   const sitemapText = await sitemap.text();
   assert.match(sitemapText, /https:\/\/example\.com\/enterprise-ai-consulting-training\//);
   assert.match(sitemapText, /https:\/\/example\.com\/about-wan-zhen\//);
+  for (const slug of serviceSlugs) {
+    assert.match(sitemapText, new RegExp(`/services/${slug}/`));
+  }
+  for (const slug of caseSlugs) {
+    assert.match(sitemapText, new RegExp(`/cases/${slug}/`));
+  }
   for (const slug of questionSlugs) {
     assert.match(sitemapText, new RegExp(`/questions/${slug}/`));
   }
+  assert.match(sitemapText, /https:\/\/example\.com\/resources\//);
 
   const llmsRedirect = await render("/llms.txt");
   assert.match(String(llmsRedirect.status), /^30[78]$/);
@@ -155,4 +229,6 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /场景—问题—工作流/);
   assert.match(llmsText, /第一方陈述/);
   assert.match(llmsText, /抖音号：54032667928/);
+  assert.match(llmsText, /企业 AI 案例证据采集框架/);
+  assert.match(llmsText, /管理层 AI 决策工作坊/);
 });

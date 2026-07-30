@@ -9,7 +9,7 @@ import {
   sourceLinks,
   updatedAt,
 } from "../../content";
-import { flagshipPath, getOrigin, siteName } from "../../site";
+import { flagshipPath, getOrigin, questionsPath, siteName } from "../../site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -115,6 +115,12 @@ export default async function QuestionPage({ params }: PageProps) {
           {
             "@type": "ListItem",
             position: 2,
+            name: "决策问答",
+            item: `${origin}${questionsPath}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
             name: article.title,
             item: canonical,
           },
@@ -130,7 +136,7 @@ export default async function QuestionPage({ params }: PageProps) {
       <main id="main-content" className="page">
         <header className="article-hero">
           <nav className="breadcrumbs" aria-label="面包屑">
-            <Link href={flagshipPath}>企业 AI 咨询与培训</Link> / 决策问答
+            <Link href={flagshipPath}>企业 AI 咨询与培训</Link> / <Link href={questionsPath}>决策问答</Link>
           </nav>
           <div className="eyebrow">Decision Q&A · 可独立引用</div>
           <h1>{article.title}</h1>
@@ -190,7 +196,7 @@ export default async function QuestionPage({ params }: PageProps) {
                 </a>
               ))}
               <Link href={`${flagshipPath}#invite`}>发起一次业务诊断 →</Link>
-              <Link href={`${flagshipPath}#questions`}>查看全部决策问答</Link>
+              <Link href={questionsPath}>查看全部决策问答</Link>
             </div>
           </aside>
         </div>

@@ -1111,6 +1111,536 @@ a:focus-visible {
   margin-bottom: 8px;
 }
 
+/* Service, practice, question and resource hubs */
+
+.section-more {
+  display: block;
+  padding: 22px var(--gutter);
+  border-top: 1px solid var(--line);
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.section-more:hover,
+.section-more:focus-visible {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.hub-hero,
+.detail-hero,
+.case-hero,
+.resource-hero {
+  padding: 72px var(--gutter) 78px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.hub-hero h1,
+.detail-hero h1,
+.case-hero h1,
+.resource-hero h1 {
+  max-width: 1030px;
+  margin: 26px 0 34px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(52px, 7.4vw, 94px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.065em;
+}
+
+.hub-hero.compact h1 {
+  max-width: 880px;
+}
+
+.hub-answer,
+.detail-answer {
+  max-width: 880px;
+  margin-bottom: 0;
+  padding-top: 26px;
+  border-top: 3px solid var(--blue);
+  color: #373a3b;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(18px, 2.1vw, 25px);
+  line-height: 1.8;
+}
+
+.catalog-list,
+.practice-ledger,
+.question-index {
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.catalog-row {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1.15fr) minmax(270px, 0.85fr);
+  gap: clamp(24px, 4vw, 64px);
+  padding: 54px var(--gutter) 58px;
+  border-bottom: 1px solid var(--line);
+}
+
+.catalog-row:last-child,
+.practice-entry:last-child,
+.question-index article:last-child {
+  border-bottom: 0;
+}
+
+.catalog-number,
+.practice-mark {
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.catalog-copy h2,
+.practice-entry h2 {
+  margin: 10px 0 20px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.catalog-copy > p:last-child,
+.practice-entry > div > p:last-child {
+  max-width: 630px;
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.catalog-meta {
+  padding-left: 28px;
+  border-left: 1px solid var(--line);
+}
+
+.catalog-meta > span,
+.practice-outputs > span,
+.aside-label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.catalog-meta p {
+  margin-bottom: 26px;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.catalog-meta ul {
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.catalog-meta li {
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.hub-cta {
+  padding: 74px var(--gutter) 82px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+  background: var(--blue);
+  color: white;
+}
+
+.hub-cta p {
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.hub-cta h2 {
+  margin-bottom: 34px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.hub-cta .button-primary {
+  border-color: white;
+}
+
+.outcome-strip {
+  margin-top: 42px;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.outcome-strip span {
+  padding: 13px 17px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.detail-aside {
+  padding: 46px 28px;
+}
+
+.detail-aside .aside-block {
+  position: sticky;
+  top: 104px;
+}
+
+.detail-aside p {
+  margin-bottom: 30px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.detail-aside a {
+  display: block;
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.detail-aside a:hover,
+.detail-aside a:focus-visible {
+  color: var(--blue);
+}
+
+.related-section {
+  padding: 66px var(--gutter) 76px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.related-section h2 {
+  margin: 12px 0 32px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.related-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.related-links a {
+  min-height: 130px;
+  padding: 24px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.related-links a:hover,
+.related-links a:focus-visible {
+  background: var(--ink);
+  color: white;
+}
+
+.related-links span,
+.related-links strong {
+  display: block;
+}
+
+.related-links span {
+  margin-bottom: 30px;
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.related-links a:hover span,
+.related-links a:focus-visible span {
+  color: #aeb9ff;
+}
+
+.related-links strong {
+  font-size: 14px;
+}
+
+.practice-entry {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) minmax(270px, 0.7fr);
+  gap: clamp(24px, 4vw, 56px);
+  padding: 50px var(--gutter) 54px;
+  border-bottom: 1px solid var(--line);
+}
+
+.practice-outputs {
+  padding-left: 28px;
+  border-left: 1px solid var(--line);
+}
+
+.practice-outputs em {
+  display: block;
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-style: normal;
+}
+
+.practice-outputs a {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.practice-ledger + .evidence-note {
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.practice-ledger + .evidence-note span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.practice-ledger + .evidence-note p {
+  max-width: 850px;
+  margin-bottom: 0;
+}
+
+.case-evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.evidence-panel {
+  min-height: 470px;
+  padding: 54px var(--gutter) 62px;
+}
+
+.evidence-panel:first-child {
+  border-right: 1px solid var(--line);
+}
+
+.evidence-panel > span,
+.case-boundary > span {
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.evidence-panel h2 {
+  margin: 20px 0 34px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.evidence-panel ul,
+.evidence-panel ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.evidence-panel li {
+  position: relative;
+  padding: 17px 0 17px 30px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.evidence-panel li::before {
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  content: "✓";
+}
+
+.evidence-panel.template li {
+  counter-increment: step;
+}
+
+.evidence-panel.template li::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.case-output-section {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 50px;
+  padding: 64px var(--gutter) 72px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.case-output-section h2 {
+  margin: 12px 0 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.output-list span {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  padding: 15px 0;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.output-list em {
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-style: normal;
+}
+
+.case-boundary {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 34px;
+  padding: 44px var(--gutter);
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+  background: var(--ink);
+  color: white;
+}
+
+.case-boundary p {
+  max-width: 820px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.question-index article {
+  display: grid;
+  grid-template-columns: 70px 1fr 48px;
+  gap: 28px;
+  align-items: start;
+  padding: 34px var(--gutter) 38px;
+  border-bottom: 1px solid var(--line);
+  transition: background 180ms ease;
+}
+
+.question-index article:hover {
+  background: var(--paper-deep);
+}
+
+.question-index article > span {
+  padding-top: 8px;
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.question-index h2 {
+  margin-bottom: 13px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(23px, 3vw, 35px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.question-index p {
+  max-width: 800px;
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.question-index article > a:last-child {
+  color: var(--blue);
+  font-size: 22px;
+}
+
+.resource-hero .button-primary {
+  margin-top: 34px;
+}
+
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-right: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.framework-grid article {
+  min-height: 250px;
+  padding: 38px var(--gutter) 46px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.framework-grid article:nth-child(even) {
+  border-right: 0;
+}
+
+.framework-grid span {
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.framework-grid h2 {
+  margin: 34px 0 16px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.framework-grid p {
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
 /* Not found */
 
 .not-found {
@@ -1190,16 +1720,36 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
   .article-body {
     border-right: 0;
   }
 
-  .article-aside {
+  .article-aside,
+  .detail-aside {
     border-top: 1px solid var(--line);
   }
 
-  .aside-block {
+  .aside-block,
+  .detail-aside .aside-block {
     position: static;
+  }
+
+  .catalog-row,
+  .practice-entry {
+    grid-template-columns: 54px 1fr;
+  }
+
+  .catalog-meta,
+  .practice-outputs {
+    grid-column: 2;
+  }
+
+  .related-links {
+    grid-template-columns: 1fr 1fr;
   }
 
   .profile-hero-grid,
@@ -1314,9 +1864,74 @@ a:focus-visible {
   .article-hero,
   .article-body,
   .article-aside,
-  .profile-hero {
+  .profile-hero,
+  .hub-hero,
+  .detail-hero,
+  .case-hero,
+  .resource-hero,
+  .detail-aside {
     padding-right: 22px;
     padding-left: 22px;
+  }
+
+  .hub-hero h1,
+  .detail-hero h1,
+  .case-hero h1,
+  .resource-hero h1 {
+    font-size: 46px;
+  }
+
+  .catalog-row,
+  .practice-entry {
+    grid-template-columns: 34px 1fr;
+    gap: 16px;
+    padding: 36px 22px 42px;
+  }
+
+  .catalog-meta,
+  .practice-outputs {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .related-section,
+  .hub-cta {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .related-links {
+    grid-template-columns: 1fr;
+  }
+
+  .case-evidence-grid,
+  .case-output-section,
+  .framework-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .evidence-panel,
+  .case-output-section,
+  .framework-grid article {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .evidence-panel:first-child,
+  .framework-grid article {
+    border-right: 0;
+  }
+
+  .case-boundary {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 36px 22px;
+  }
+
+  .question-index article {
+    grid-template-columns: 30px 1fr 22px;
+    gap: 12px;
+    padding: 28px 22px 32px;
   }
 
   .fit-split,
