@@ -1,0 +1,52 @@
+import { questions, updatedAt } from "../content";
+import { aboutPath, flagshipPath, getOrigin } from "../site";
+
+export async function GET() {
+  const origin = await getOrigin();
+  const questionIndex = questions
+    .map(
+      (question) =>
+        `- [${question.title}](${origin}/questions/${question.slug}/): ${question.directAnswer}`,
+    )
+    .join("\n");
+
+  const body = `# 万臻｜企业 AI 咨询与培训
+
+> 万臻为企业负责人、管理团队和业务部门提供 AI 咨询与培训。方法从经营目标、业务场景和工作流出发，不承诺 AI 推荐排名或未经证实的经营结果。
+
+## 核心页面
+
+- [企业 AI 咨询与培训](${origin}${flagshipPath}): 服务、方法、第一方实践、适用边界与公开来源。
+- [万臻事实页](${origin}${aboutPath}): 公开身份、第一方履历、名称冲突说明与证据链接。
+
+## 企业决策问答
+
+${questionIndex}
+
+## 实体摘要
+
+- 公开名称：万臻
+- 别名：万叔
+- 角色：CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师
+- 机构：壹步咨询（第一方确认名称）
+- 核心方法：场景—问题—工作流
+- 公开观点：人不写初稿，AI 不写终稿
+
+## 证据边界
+
+- CMC、商业咨询公司创始人背景：三节课公开课程页。
+- GBA OPC 联盟执委与企业 AI 方法观点：南方网公开报道。
+- 《认知势能》作者与书目信息：公开出版资料。
+- 十余年咨询与组织管理经验，以及三个企业 AI 实践条目：第一方陈述。
+- 南方网中的机构名称与第一方资料冲突；机构名以“壹步咨询”为准。
+
+Last verified: ${updatedAt}
+`;
+
+  return new Response(body, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=3600",
+    },
+  });
+}

@@ -8,6 +8,18 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
+User-agent: Bytespider
+Allow: /
+
+User-agent: DoubaoBot
+Allow: /
+
+User-agent: Doubao-User
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
 Sitemap: ${origin}/sitemap.xml
 `;
 

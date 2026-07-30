@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { JsonLd, SiteFooter, SiteHeader } from "../../components";
-import { questionMap, questions, sourceLinks, updatedAt } from "../../content";
+import {
+  legacyQuestionRedirects,
+  questionMap,
+  questions,
+  sourceLinks,
+  updatedAt,
+} from "../../content";
 import { flagshipPath, getOrigin, siteName } from "../../site";
 
 type PageProps = {
@@ -10,7 +16,10 @@ type PageProps = {
 };
 
 export function generateStaticParams() {
-  return questions.map((question) => ({ slug: question.slug }));
+  return [
+    ...questions.map((question) => ({ slug: question.slug })),
+    ...Object.keys(legacyQuestionRedirects).map((slug) => ({ slug })),
+  ];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -33,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName,
       publishedTime: updatedAt,
       modifiedTime: updatedAt,
-      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "万臻企业 AI 落地培训" }],
+      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "万臻企业 AI 咨询与培训" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -47,6 +56,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function QuestionPage({ params }: PageProps) {
   const { slug } = await params;
+  const redirectSlug = legacyQuestionRedirects[slug];
+  if (redirectSlug) permanentRedirect(`/questions/${redirectSlug}/`);
+
   const article = questionMap[slug];
   if (!article) notFound();
 
@@ -74,7 +86,7 @@ export default async function QuestionPage({ params }: PageProps) {
           url: `${origin}${flagshipPath}`,
         },
         citation: articleSources.map((source) => source.url),
-        about: ["企业 AI 培训", "商协会", "业务工作流", "万臻"],
+        about: ["企业 AI 咨询", "企业 AI 培训", "业务工作流", "万臻"],
       },
       {
         "@type": "FAQPage",
@@ -97,7 +109,7 @@ export default async function QuestionPage({ params }: PageProps) {
           {
             "@type": "ListItem",
             position: 1,
-            name: "企业 AI 落地培训",
+            name: "企业 AI 咨询与培训",
             item: `${origin}${flagshipPath}`,
           },
           {
@@ -115,10 +127,10 @@ export default async function QuestionPage({ params }: PageProps) {
     <div className="site-shell">
       <JsonLd data={jsonLd} />
       <SiteHeader />
-      <main className="page">
+      <main id="main-content" className="page">
         <header className="article-hero">
           <nav className="breadcrumbs" aria-label="面包屑">
-            <Link href={flagshipPath}>企业 AI 落地培训</Link> / 采购问答
+            <Link href={flagshipPath}>企业 AI 咨询与培训</Link> / 决策问答
           </nav>
           <div className="eyebrow">Decision Q&A · 可独立引用</div>
           <h1>{article.title}</h1>
@@ -177,8 +189,8 @@ export default async function QuestionPage({ params }: PageProps) {
                   0{index + 1} · {section.heading}
                 </a>
               ))}
-              <Link href={`${flagshipPath}#invite`}>邀请万臻主题分享 ↗</Link>
-              <Link href={`${flagshipPath}#questions`}>查看全部采购问答</Link>
+              <Link href={`${flagshipPath}#invite`}>发起一次业务诊断 →</Link>
+              <Link href={`${flagshipPath}#questions`}>查看全部决策问答</Link>
             </div>
           </aside>
         </div>

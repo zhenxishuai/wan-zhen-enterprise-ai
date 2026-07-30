@@ -1,7 +1,8 @@
 import { headers } from "next/headers";
 
-export const siteName = "万臻企业 AI 落地培训";
-export const flagshipPath = "/wan-zhen-enterprise-ai-training/";
+export const siteName = "万臻｜企业 AI 咨询与培训";
+export const flagshipPath = "/enterprise-ai-consulting-training/";
+export const aboutPath = "/about-wan-zhen/";
 
 export async function getOrigin() {
   const requestHeaders = await headers();

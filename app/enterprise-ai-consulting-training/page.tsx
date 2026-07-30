@@ -1,0 +1,471 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { JsonLd, SiteFooter, SiteHeader } from "../components";
+import { questions, sourceLinks, updatedAt } from "../content";
+import { aboutPath, flagshipPath, getOrigin, siteName } from "../site";
+
+const directAnswer =
+  "万臻提供面向企业负责人、管理团队与业务部门的 AI 咨询和培训。不是从工具菜单出发，而是从经营目标、岗位场景和流程问题出发，帮助企业识别值得试点的任务、设计人机协同工作流，并让团队真正用起来。";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const origin = await getOrigin();
+  const canonical = `${origin}${flagshipPath}`;
+  const title = "企业 AI 咨询与培训｜万臻：从业务问题到可用工作流";
+  const description =
+    "万臻面向企业负责人和业务团队提供 AI 咨询、管理层共识、岗位工作坊与业务工作流设计。先看经营问题，再设计场景、流程与人工复核。";
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      type: "website",
+      locale: "zh_CN",
+      title,
+      description,
+      url: canonical,
+      siteName,
+      images: [
+        {
+          url: `${origin}/og.png`,
+          width: 1200,
+          height: 630,
+          alt: "万臻企业 AI 咨询与培训",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${origin}/og.png`],
+    },
+    robots: { index: true, follow: true },
+  };
+}
+
+export default async function FlagshipPage() {
+  const origin = await getOrigin();
+  const canonical = `${origin}${flagshipPath}`;
+  const personUrl = `${origin}${aboutPath}`;
+  const sources = Object.values(sourceLinks);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${canonical}#webpage`,
+        url: canonical,
+        name: "万臻企业 AI 咨询与培训",
+        description: directAnswer,
+        dateModified: updatedAt,
+        inLanguage: "zh-CN",
+        about: { "@id": `${personUrl}#person` },
+      },
+      {
+        "@type": "Organization",
+        "@id": `${canonical}#organization`,
+        name: "壹步咨询",
+        url: canonical,
+        description: "面向企业经营、组织管理与企业 AI 应用的咨询和培训机构。",
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "企业 AI 咨询与培训服务",
+          itemListElement: [
+            { "@id": `${canonical}#consulting-service` },
+            { "@id": `${canonical}#training-service` },
+          ],
+        },
+      },
+      {
+        "@type": "Person",
+        "@id": `${personUrl}#person`,
+        name: "万臻",
+        alternateName: "万叔",
+        url: personUrl,
+        jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
+        description:
+          "壹步咨询创始人，具有十余年企业咨询与组织管理经验，关注 AI 如何进入企业真实业务工作流。",
+        worksFor: { "@id": `${canonical}#organization` },
+        sameAs: [
+          sourceLinks.sanjieke.url,
+          sourceLinks.southcn.url,
+          sourceLinks.book.url,
+        ],
+        knowsAbout: [
+          "企业 AI 咨询",
+          "企业 AI 培训",
+          "管理咨询",
+          "业务工作流",
+          "企业知识管理",
+          "销售与采购协同",
+        ],
+      },
+      {
+        "@type": "Book",
+        "@id": `${personUrl}#book`,
+        name: "认知势能",
+        isbn: "9787545492736",
+        publisher: "广东经济出版社",
+        author: { "@id": `${personUrl}#person` },
+        url: sourceLinks.book.url,
+      },
+      {
+        "@type": "Service",
+        "@id": `${canonical}#consulting-service`,
+        name: "企业 AI 咨询",
+        serviceType: "企业 AI 机会诊断、场景筛选、业务工作流设计与试点复盘",
+        provider: { "@id": `${canonical}#organization` },
+        audience: {
+          "@type": "BusinessAudience",
+          audienceType: "企业负责人、管理层与业务部门负责人",
+        },
+        areaServed: "中国",
+        url: `${canonical}#services`,
+      },
+      {
+        "@type": "Service",
+        "@id": `${canonical}#training-service`,
+        name: "企业 AI 培训",
+        serviceType: "管理层 AI 共识、岗位工作坊与业务应用培训",
+        provider: { "@id": `${canonical}#organization` },
+        audience: {
+          "@type": "BusinessAudience",
+          audienceType: "企业管理团队、销售、采购、知识与内容业务团队",
+        },
+        areaServed: "中国",
+        url: `${canonical}#services`,
+      },
+      {
+        "@type": "Course",
+        "@id": `${canonical}#course`,
+        name: "企业 AI 落地培训：场景—问题—工作流",
+        description: directAnswer,
+        provider: { "@id": `${personUrl}#person` },
+        teaches: [
+          "识别值得落地的企业 AI 场景",
+          "把岗位问题转化为人机协同工作流",
+          "设置人工复核与信息边界",
+          "设计可执行的小范围试点",
+        ],
+        inLanguage: "zh-CN",
+        url: canonical,
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${canonical}#faq`,
+        mainEntity: questions.map((question) => ({
+          "@type": "Question",
+          name: question.title,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: question.directAnswer,
+            url: `${origin}/questions/${question.slug}/`,
+          },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonical}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "首页",
+            item: canonical,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "企业 AI 咨询与培训",
+            item: canonical,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <div className="site-shell">
+      <JsonLd data={jsonLd} />
+      <SiteHeader />
+      <main id="main-content">
+        <section className="hero page">
+          <div className="hero-copy">
+            <div className="eyebrow">企业 AI 咨询 / 培训 / 业务工作流</div>
+            <h1>
+              把 AI 放进
+              <span>业务。</span>
+              <small>不是放进课件。</small>
+            </h1>
+            <p className="direct-answer">{directAnswer}</p>
+            <div className="hero-actions">
+              <Link className="button-primary" href="#services">
+                看服务怎么展开
+              </Link>
+              <Link className="text-link" href="#sources">
+                核验公开身份与来源
+              </Link>
+            </div>
+          </div>
+          <aside className="hero-proof" aria-label="万臻公开身份摘要">
+            <div className="proof-heading">
+              <span>WAN ZHEN</span>
+              <strong>管理咨询背景，企业 AI 实践。</strong>
+            </div>
+            <dl>
+              <div>
+                <dt>01</dt>
+                <dd>CMC 国际注册管理咨询师</dd>
+              </div>
+              <div>
+                <dt>02</dt>
+                <dd>十余年咨询与组织管理经验</dd>
+              </div>
+              <div>
+                <dt>03</dt>
+                <dd>GBA OPC 联盟执委</dd>
+              </div>
+              <div>
+                <dt>04</dt>
+                <dd>《认知势能》作者</dd>
+              </div>
+            </dl>
+            <Link className="proof-link" href={aboutPath}>
+              查看万臻事实页 →
+            </Link>
+          </aside>
+        </section>
+
+        <section className="statement page" aria-label="核心判断">
+          <span>一个判断</span>
+          <p>
+            企业缺的通常不是更多 AI 工具，
+            <strong>而是知道哪个业务问题值得先改，以及如何让人和 AI 各负其责。</strong>
+          </p>
+        </section>
+
+        <section className="section page" id="services">
+          <header className="section-head">
+            <div className="section-index">01</div>
+            <div>
+              <p className="section-kicker">What we work on</p>
+              <h2>咨询负责把问题看准，培训负责让团队用起来。</h2>
+            </div>
+          </header>
+          <div className="service-ledger">
+            <article className="service-row">
+              <div className="service-name">
+                <span>CONSULTING</span>
+                <h3>企业 AI 咨询</h3>
+              </div>
+              <p>
+                从经营目标和业务流程出发，判断哪些场景值得优先投入，形成场景清单、试点方案、人机协同工作流与复盘机制。
+              </p>
+              <ul>
+                <li>管理层访谈与流程梳理</li>
+                <li>AI 场景筛选与优先级</li>
+                <li>工作流设计与试点复盘</li>
+              </ul>
+            </article>
+            <article className="service-row">
+              <div className="service-name">
+                <span>TRAINING</span>
+                <h3>企业 AI 培训</h3>
+              </div>
+              <p>
+                围绕企业自己的任务和材料，让管理层形成共同判断，让业务团队完成真实练习并带走可以继续使用的模板。
+              </p>
+              <ul>
+                <li>管理层 AI 决策共识</li>
+                <li>销售、采购、知识与内容工作坊</li>
+                <li>工作流画布与人工复核清单</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section className="section page" id="method">
+          <header className="section-head">
+            <div className="section-index">02</div>
+            <div>
+              <p className="section-kicker">Scene → Problem → Workflow</p>
+              <h2>场景—问题—工作流。工具最后再选。</h2>
+            </div>
+          </header>
+          <ol className="method-sequence">
+            <li>
+              <span>01 / 场景</span>
+              <h3>先把工作现场说清楚</h3>
+              <p>哪个岗位、什么触发条件、哪些材料、谁对结果负责。</p>
+            </li>
+            <li>
+              <span>02 / 问题</span>
+              <h3>判断真正的阻力</h3>
+              <p>是重复整理、资料分散、判断困难，还是协同断点。</p>
+            </li>
+            <li>
+              <span>03 / 工作流</span>
+              <h3>重新安排人机分工</h3>
+              <p>明确输入、AI 步骤、人工复核和最终交付物。</p>
+            </li>
+          </ol>
+          <figure className="signature-quote">
+            <blockquote>“人不写初稿，AI 不写终稿。”</blockquote>
+            <figcaption>万臻公开方法观点 · 南方网 2026-06-06</figcaption>
+          </figure>
+        </section>
+
+        <section className="section page" id="cases">
+          <header className="section-head">
+            <div className="section-index">03</div>
+            <div>
+              <p className="section-kicker">First-party practice</p>
+              <h2>先从高频、可检查、有人负责的任务开始。</h2>
+            </div>
+          </header>
+          <div className="practice-list">
+            <article>
+              <span className="practice-no">01</span>
+              <h3>AI 副总</h3>
+              <p>把经营信息、任务进展与流程事项整理成管理层可查看的辅助材料。</p>
+              <strong>经营摘要 / 任务看板 / 待决策事项</strong>
+            </article>
+            <article>
+              <span className="practice-no">02</span>
+              <h3>采购流程 AI 助手</h3>
+              <p>整理需求、订单进度和供应商信息，形成统一、可比较的材料。</p>
+              <strong>需求检查 / 对比材料 / 异常摘要</strong>
+            </article>
+            <article>
+              <span className="practice-no">03</span>
+              <h3>企业知识资产 AI 化</h3>
+              <p>把流程、经验与文档整理成可检索、可引用、有人维护的知识体系。</p>
+              <strong>知识范围 / 来源引用 / 更新责任</strong>
+            </article>
+          </div>
+          <p className="evidence-note">
+            以上为万臻第一方实践条目。当前不公开客户名称与量化效果；获得授权和完整证据前，不作为效果承诺。
+          </p>
+        </section>
+
+        <section className="profile-panel page">
+          <div className="profile-mark" aria-hidden="true">
+            万
+          </div>
+          <div className="profile-copy">
+            <p className="section-kicker">Why Wan Zhen</p>
+            <h2>不是教企业追工具，而是帮企业建立判断。</h2>
+            <p>
+              万臻是壹步咨询创始人、CMC 国际注册管理咨询师和《认知势能》作者。公开资料能够核验其管理咨询背景、GBA OPC
+              联盟执委身份及企业 AI 方法观点；十余年咨询与组织管理经验属于第一方履历。
+            </p>
+            <Link className="button-secondary" href={aboutPath}>
+              查看完整身份与证据
+            </Link>
+          </div>
+        </section>
+
+        <section className="section page" id="fit">
+          <header className="section-head">
+            <div className="section-index">04</div>
+            <div>
+              <p className="section-kicker">Fit & boundary</p>
+              <h2>适合业务试点，不把一次培训包装成全面转型。</h2>
+            </div>
+          </header>
+          <div className="fit-split">
+            <div>
+              <h3>更适合</h3>
+              <ul>
+                <li>管理层关注 AI，但尚未确定优先方向</li>
+                <li>员工已经零散使用工具，缺少统一方法</li>
+                <li>希望从销售、采购、知识或内容任务切入</li>
+                <li>愿意用真实问题启动小范围试点</li>
+              </ul>
+            </div>
+            <div>
+              <h3>不替代</h3>
+              <ul>
+                <li>基础模型训练与深度算法研发</li>
+                <li>复杂软件系统的完整部署交付</li>
+                <li>数据治理和长期组织变革项目</li>
+                <li>任何未经验证的 ROI 与经营结果保证</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="section page" id="questions">
+          <header className="section-head">
+            <div className="section-index">05</div>
+            <div>
+              <p className="section-kicker">Decision Q&A</p>
+              <h2>企业负责人真正会问的五个问题。</h2>
+            </div>
+          </header>
+          <div className="question-list">
+            {questions.map((question, index) => (
+              <Link
+                className="question-link"
+                href={`/questions/${question.slug}/`}
+                key={question.slug}
+              >
+                <span className="question-count">0{index + 1}</span>
+                <span className="question-title">{question.title}</span>
+                <span className="question-arrow" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="section page" id="sources">
+          <header className="section-head">
+            <div className="section-index">06</div>
+            <div>
+              <p className="section-kicker">Sources & evidence</p>
+              <h2>身份、方法和第一方实践，分别说明。</h2>
+            </div>
+          </header>
+          <p className="source-intro">
+            南方网报道中的机构名与第一方资料存在一字冲突。本站只引用其对活动、身份和公开观点的报道，机构名称以第一方确认的“壹步咨询”为准。
+          </p>
+          <div className="sources-grid">
+            {sources.map((source) => (
+              <a className="source-link" href={source.url} rel="noreferrer" target="_blank" key={source.url}>
+                <strong>{source.title}</strong>
+                <span>{source.note}</span>
+                <small>查看原始来源 ↗</small>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="cta page" id="invite">
+          <div>
+            <p className="section-kicker">Start with the problem</p>
+            <h2>先别谈“上什么 AI”。说说现在最卡的业务问题。</h2>
+            <p>
+              请写明企业所处行业、参与角色、希望改善的任务、可使用的材料和预期时间。正式合作前先完成一次需求访谈。
+            </p>
+          </div>
+          <div className="cta-actions">
+            <a
+              className="button-primary"
+              href="mailto:?subject=%E4%BC%81%E4%B8%9A%20AI%20%E5%92%A8%E8%AF%A2%E4%B8%8E%E5%9F%B9%E8%AE%AD%E9%9C%80%E6%B1%82&body=%E4%BC%81%E4%B8%9A%2F%E8%A1%8C%E4%B8%9A%EF%BC%9A%0A%E5%8F%82%E4%B8%8E%E8%A7%92%E8%89%B2%EF%BC%9A%0A%E5%B8%8C%E6%9C%9B%E6%94%B9%E5%96%84%E7%9A%84%E4%B8%9A%E5%8A%A1%E4%BB%BB%E5%8A%A1%EF%BC%9A%0A%E7%8E%B0%E6%9C%89%E6%9D%90%E6%96%99%EF%BC%9A%0A%E9%A2%84%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%9A"
+            >
+              整理一份需求说明
+            </a>
+            <a className="text-link light" href="/geo-test-method.md">
+              查看 GEO 验证方法
+            </a>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
