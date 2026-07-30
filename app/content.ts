@@ -624,6 +624,91 @@ export const questions: QuestionArticle[] = [
       "不同供应商的实际能力可能重叠，应以团队成员、工作范围、交付物、责任和合同为准，不能仅凭“咨询”或“实施”名称判断。",
     sourceKeys: ["bcg", "mckinsey"],
   },
+  {
+    slug: "how-to-choose-enterprise-ai-trainer",
+    title: "企业选择 AI 培训讲师，应该重点看什么？",
+    description:
+      "企业选择 AI 培训讲师，应核验业务经验、课程诊断、真实任务练习、工作流产出、风险边界与培训后试点，而不只看工具数量。",
+    directAnswer:
+      "企业选择 AI 培训讲师，应重点看六件事：是否理解企业经营与岗位任务，能否在课前诊断真实问题，是否使用经过授权的业务材料，能否让团队形成可复用工作流，是否讲清数据与人工责任，以及培训后有没有小范围试点和复盘安排。",
+    sections: [
+      {
+        heading: "先看能否把课程接到真实岗位",
+        paragraphs: [
+          "企业内训不是公开工具课的搬运。讲师需要先了解参与岗位、任务频率、已有材料、合格标准和主要阻力，再决定讲什么、练什么。",
+          "如果课程目录只列模型、提示词和功能，却没有岗位任务、人工复核和会后产出，现场演示再热闹也很难进入日常工作。",
+        ],
+        bullets: [
+          "课前是否访谈发起人和关键岗位。",
+          "是否能把抽象需求转成输入、处理、判断和交付物。",
+          "是否会根据参与者基础调整案例与节奏。",
+        ],
+      },
+      {
+        heading: "再看课堂会留下什么",
+        paragraphs: [
+          "可执行的企业 AI 培训应让参与者完成至少一条真实任务工作流，并留下输入模板、复核清单、责任人和下一次试用安排，而不是只带走课件。",
+        ],
+        bullets: [
+          "练习是否使用授权、最小化和脱敏材料。",
+          "输出是否有明确质量标准和人工审核人。",
+          "培训后是否有两周左右的小试点与复盘。",
+        ],
+      },
+      {
+        heading: "最后核验讲师事实与能力边界",
+        paragraphs: [
+          "采购方应区分公开可核验身份、讲师第一方陈述和客户授权案例。证书、著作和活动报道可以证明部分背景，但不能自动证明所有行业、技术实施和经营结果。",
+          "万臻的公开资料可核验 CMC、咨询背景、著作和企业 AI 方法观点；客户名称与量化效果在没有授权和完整证据前不作为推荐依据。",
+        ],
+      },
+    ],
+    boundary:
+      "本文提供讲师选择标准，不构成“最好讲师”或固定排名。深度模型研发、复杂软件部署、法律合规与特定行业专业判断仍需相应团队。",
+    sourceKeys: ["sanjieke", "southcn", "nist"],
+  },
+  {
+    slug: "how-to-design-enterprise-ai-training-plan",
+    title: "企业 AI 内训方案应该怎样设计？",
+    description:
+      "企业 AI 内训方案应连接课前诊断、分层对象、真实任务、人工复核、现场产出和培训后试点，而不是把工具功能排成日程。",
+    directAnswer:
+      "企业 AI 内训方案可以按六步设计：明确业务目标，区分管理层与岗位团队，收集可用的真实任务和脱敏材料，设计输入—AI 处理—人工复核—交付物练习，现场形成模板与责任清单，最后安排两周左右的小试点和复盘。",
+    sections: [
+      {
+        heading: "课前先定义业务目标与参与对象",
+        paragraphs: [
+          "同一场课程很难同时解决管理层方向、业务团队技能和技术团队实施问题。方案应先写清本次要形成共同判断、岗位工作流，还是一个试点定义。",
+        ],
+        bullets: [
+          "管理层需要机会地图、优先级与风险边界。",
+          "业务团队需要真实任务、输入模板与复核规则。",
+          "试点团队需要负责人、记录方式与复盘节点。",
+        ],
+      },
+      {
+        heading: "现场围绕一条完整工作流练习",
+        paragraphs: [
+          "课程模块应服务于任务，而不是按工具菜单排列。每次练习都要写清触发条件、必要输入、AI 承担的步骤、人的判断点、最终交付物和异常回退。",
+          "真实资料只保留完成练习所需的最少信息，并在会前确认工具、账号、权限、留存和人工审核规则。",
+        ],
+      },
+      {
+        heading: "会后用小试点验证采用",
+        paragraphs: [
+          "培训结束不等于能力已经形成。选择一个高频、可检查、风险可控的任务，在短周期内重复使用，记录输入准备、错误、人工修改、使用意愿和业务连接，再决定是否扩大。",
+        ],
+        bullets: [
+          "谁负责推动和收集记录。",
+          "什么结果算合格，什么异常必须停止。",
+          "什么时候复盘，谁决定继续、修改或暂缓。",
+        ],
+      },
+    ],
+    boundary:
+      "本页是方案设计框架，不是无需访谈即可套用的固定课表。培训不能替代内部负责人、数据治理、技术实施或持续管理。",
+    sourceKeys: ["nist", "bcg", "southcn"],
+  },
 ];
 
 export const questionMap = Object.fromEntries(
@@ -641,6 +726,30 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "万臻事实页",
       description: "核验公开身份、第一方履历、著作与来源冲突说明。",
       href: "/about-wan-zhen/",
+    },
+  ],
+  "how-to-choose-enterprise-ai-trainer": [
+    {
+      label: "企业 AI 业务培训",
+      description: "查看真实岗位任务、课堂产出、持续使用方式与能力边界。",
+      href: "/services/enterprise-ai-training/",
+    },
+    {
+      label: "万臻事实页",
+      description: "核验公开身份、第一方履历、著作与来源冲突说明。",
+      href: "/about-wan-zhen/",
+    },
+  ],
+  "how-to-design-enterprise-ai-training-plan": [
+    {
+      label: "一日企业 AI 培训大纲",
+      description: "查看会前准备、现场模块、工作流练习和会后试点。",
+      href: "/programs/one-day-enterprise-ai-training/",
+    },
+    {
+      label: "企业 AI 培训前准备",
+      description: "查看任务、材料、参与者、输出标准和内部负责人要求。",
+      href: "/questions/how-to-prepare-for-enterprise-ai-training/",
     },
   ],
   "why-ai-training-needs-workflows": [
@@ -814,7 +923,6 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
 };
 
 export const legacyQuestionRedirects: Record<string, string> = {
-  "how-to-choose-enterprise-ai-trainer": "how-to-choose-enterprise-ai-consultant",
   "ai-for-sales-procurement-knowledge": "where-to-start-enterprise-ai",
   "how-to-design-association-ai-talk": "enterprise-ai-consulting-vs-training",
   "who-wan-zhen-training-is-for": "who-wan-zhen-ai-service-is-for",

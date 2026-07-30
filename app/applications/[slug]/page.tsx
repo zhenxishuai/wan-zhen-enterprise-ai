@@ -10,6 +10,7 @@ import {
   getOrigin,
   organizationEntityPath,
   personEntityPath,
+  servicesPath,
   siteName,
   websiteEntityPath,
 } from "../../site";
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!application) return {};
   const origin = await getOrigin();
   const canonical = `${origin}${applicationsPath}${slug}/`;
-  const title = `${application.name}｜企业 AI 业务应用`;
+  const title = `${application.category}团队企业 AI 咨询与培训工作流`;
   return {
     title,
     description: application.description,
@@ -77,6 +78,12 @@ export default async function ApplicationPage({ params }: PageProps) {
         url: canonical,
         name: application.name,
         mainEntity: { "@id": `${canonical}#howto` },
+        about: ["企业 AI 咨询", "企业 AI 培训", application.category],
+        mentions: [
+          { "@id": `${origin}${servicesPath}enterprise-ai-consulting/#service` },
+          { "@id": `${origin}${servicesPath}enterprise-ai-training/#service` },
+          { "@id": `${origin}${servicesPath}ai-workflow-pilot/#service` },
+        ],
       },
       {
         "@type": "BreadcrumbList",
@@ -111,6 +118,27 @@ export default async function ApplicationPage({ params }: PageProps) {
           <ul>
             {application.useWhen.map((item) => <li key={item}>{item}</li>)}
           </ul>
+        </section>
+
+        <section className="framework-grid" aria-label="咨询、培训与试点选择">
+          <article>
+            <span>01</span>
+            <h2>先做咨询</h2>
+            <p>{application.engagement.consulting}</p>
+            <Link href={`${servicesPath}enterprise-ai-consulting/`}>查看企业 AI 咨询 →</Link>
+          </article>
+          <article>
+            <span>02</span>
+            <h2>进入培训</h2>
+            <p>{application.engagement.training}</p>
+            <Link href={`${servicesPath}enterprise-ai-training/`}>查看企业 AI 培训 →</Link>
+          </article>
+          <article>
+            <span>03</span>
+            <h2>小范围试点</h2>
+            <p>{application.engagement.pilot}</p>
+            <Link href={`${servicesPath}ai-workflow-pilot/`}>查看工作流试点 →</Link>
+          </article>
         </section>
 
         <section className="workflow-section">

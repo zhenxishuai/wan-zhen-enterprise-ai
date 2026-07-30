@@ -17,6 +17,8 @@ const questionSlugs = [
   "professional-services-ai-workflows",
   "can-ai-training-use-company-data",
   "ai-consultant-vs-software-implementer",
+  "how-to-choose-enterprise-ai-trainer",
+  "how-to-design-enterprise-ai-training-plan",
 ];
 
 const serviceSlugs = [
@@ -158,7 +160,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders fifteen enterprise decision pages and redirects retired question URLs", async () => {
+test("renders seventeen enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -319,7 +321,11 @@ test("publishes extractable business application workflows with human review", a
     assert.match(html, /五步工作流/);
     assert.match(html, /人必须检查什么/);
     assert.match(html, /证据与能力边界/);
+    assert.match(html, /先做咨询/);
+    assert.match(html, /进入培训/);
+    assert.match(html, /小范围试点/);
     assert.match(html, /"@type":"HowTo"/);
+    assert.match(html, /"mentions":\[/);
     assert.match(
       html,
       /"author":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
@@ -408,6 +414,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /主办方与媒体引用资料/);
   assert.match(llmsText, /制造业企业 AI 咨询与培训/);
   assert.match(llmsText, /成长型中小企业 AI 咨询与培训/);
+  assert.match(llmsText, /企业选择 AI 培训讲师/);
+  assert.match(llmsText, /企业 AI 内训方案应该怎样设计/);
 
   const feedRedirect = await render("/feed.xml");
   assert.match(String(feedRedirect.status), /^30[78]$/);
@@ -424,4 +432,6 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/citation-kit\//);
   assert.match(feedText, /\/industries\/manufacturing-enterprise-ai\//);
   assert.match(feedText, /\/questions\/can-ai-training-use-company-data\//);
+  assert.match(feedText, /\/questions\/how-to-choose-enterprise-ai-trainer\//);
+  assert.match(feedText, /\/questions\/how-to-design-enterprise-ai-training-plan\//);
 });
