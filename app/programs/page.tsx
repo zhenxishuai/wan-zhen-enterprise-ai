@@ -8,9 +8,9 @@ import { flagshipPath, getOrigin, programsPath, siteName } from "../site";
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
   const canonical = `${origin}${programsPath}`;
-  const title = "企业 AI 内训与管理层工作坊参考大纲";
+  const title = "企业 AI 内训、管理层工作坊与落地陪跑参考大纲";
   const description =
-    "一日企业 AI 业务培训与三小时管理层 AI 决策工作坊参考大纲：会前准备、现场模块、带走成果和适用边界。";
+    "一日企业 AI 业务培训、三小时管理层 AI 决策工作坊与培训后 30 天落地陪跑参考结构：会前准备、推进节奏、带走成果和适用边界。";
   return {
     title,
     description,
@@ -37,7 +37,7 @@ export default async function ProgramsPage() {
       {
         "@type": "CollectionPage",
         url: canonical,
-        name: "企业 AI 内训与管理层工作坊参考大纲",
+        name: "企业 AI 内训、管理层工作坊与落地陪跑参考大纲",
         dateModified: updatedAt,
         inLanguage: "zh-CN",
       },
@@ -66,7 +66,7 @@ export default async function ProgramsPage() {
           <div className="eyebrow">Program outlines · 大纲服务于产出</div>
           <h1>先看会后留下什么，<br />再看课上讲什么。</h1>
           <p className="hub-answer">
-            以下是两种常用合作形式的参考结构。正式方案会根据岗位任务、材料条件、信息边界和参与者基础调整，不用一份固定课件应付所有企业。
+            以下是三种常用合作形式的参考结构。正式方案会根据岗位任务、材料条件、信息边界和参与者基础调整，不用一份固定课件或固定周期应付所有企业。
           </p>
         </header>
 

@@ -112,7 +112,7 @@ export default async function ProgramPage({ params }: PageProps) {
         <section className="agenda-section">
           <header>
             <p className="section-kicker">Reference agenda</p>
-            <h2>现场模块</h2>
+            <h2>推进节奏</h2>
           </header>
           <div>
             {program.agenda.map((item) => (

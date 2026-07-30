@@ -20,6 +20,7 @@ const questionSlugs = [
   "how-to-choose-enterprise-ai-trainer",
   "how-to-design-enterprise-ai-training-plan",
   "how-to-evaluate-enterprise-ai-service-provider",
+  "how-to-sustain-enterprise-ai-training-adoption",
 ];
 
 const serviceSlugs = [
@@ -45,6 +46,7 @@ const applicationSlugs = [
 const programSlugs = [
   "one-day-enterprise-ai-training",
   "executive-ai-decision-workshop",
+  "thirty-day-enterprise-ai-adoption-plan",
 ];
 
 const industrySlugs = [
@@ -164,7 +166,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders eighteen enterprise decision pages and redirects retired question URLs", async () => {
+test("renders nineteen enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -209,6 +211,15 @@ test("renders eighteen enterprise decision pages and redirects retired question 
   const dataHtml = await dataResponse.text();
   assert.match(dataHtml, /中华人民共和国个人信息保护法/);
   assert.match(dataHtml, /生成式人工智能服务管理暂行办法/);
+
+  const adoptionResponse = await render(
+    "/questions/how-to-sustain-enterprise-ai-training-adoption/",
+  );
+  const adoptionHtml = await adoptionResponse.text();
+  assert.match(adoptionHtml, /把课程产出变成一个真实任务/);
+  assert.match(adoptionHtml, /30 天落地陪跑参考计划/);
+  assert.match(adoptionHtml, /openai\.com\/zh-Hans-CN\/business/);
+  assert.match(adoptionHtml, /www\.oecd\.org\/en\/publications\/ai-and-skills/);
 
   const legacy = await render("/questions/how-to-design-association-ai-talk/");
   assert.match(String(legacy.status), /^30[78]$/);
@@ -359,13 +370,14 @@ test("publishes buyer-oriented training and workshop outlines", async () => {
   assert.equal(indexResponse.status, 200);
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /先看会后留下什么/);
+  assert.match(indexHtml, /三种常用合作形式/);
 
   for (const slug of programSlugs) {
     const response = await render(`/programs/${slug}/`);
     assert.equal(response.status, 200, slug);
     const html = await response.text();
     assert.match(html, /会前准备/);
-    assert.match(html, /现场模块/);
+    assert.match(html, /推进节奏/);
     assert.match(html, /不只带走课件/);
     assert.match(html, /"@type":"Course"/);
     assert.match(
@@ -377,6 +389,13 @@ test("publishes buyer-oriented training and workshop outlines", async () => {
       /"author":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
     );
   }
+
+  const adoptionProgram = await render(
+    "/programs/thirty-day-enterprise-ai-adoption-plan/",
+  );
+  const adoptionProgramHtml = await adoptionProgram.text();
+  assert.match(adoptionProgramHtml, /继续、调整、扩大或停止/);
+  assert.match(adoptionProgramHtml, /30 天是复盘节奏，不是效果承诺/);
 });
 
 test("publishes crawler, sitemap, and machine-readable content interfaces", async () => {
@@ -438,6 +457,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /企业选择 AI 培训讲师/);
   assert.match(llmsText, /企业 AI 内训方案应该怎样设计/);
   assert.match(llmsText, /企业采购 AI 咨询与培训服务/);
+  assert.match(llmsText, /企业 AI 培训结束后，怎样让员工真正持续使用/);
+  assert.match(llmsText, /企业 AI 培训后 30 天落地陪跑参考计划/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
@@ -459,6 +480,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/questions\/how-to-choose-enterprise-ai-trainer\//);
   assert.match(feedText, /\/questions\/how-to-design-enterprise-ai-training-plan\//);
   assert.match(feedText, /\/questions\/how-to-evaluate-enterprise-ai-service-provider\//);
+  assert.match(feedText, /\/questions\/how-to-sustain-enterprise-ai-training-adoption\//);
+  assert.match(feedText, /\/programs\/thirty-day-enterprise-ai-adoption-plan\//);
 });
 
 test("keeps every sitemap page unique, extractable, and internally connected", async () => {
@@ -472,7 +495,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 44);
+  assert.equal(urls.length, 46);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of urls) {

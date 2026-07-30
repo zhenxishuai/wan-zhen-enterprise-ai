@@ -73,6 +73,16 @@ export const sourceLinks = {
     note: "个人信息处理的官方法律文本；企业在培训与试点中使用涉及自然人的资料时，应由内部责任人与专业人员核验适用要求。",
     url: "https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm",
   },
+  openaiBusinessGuide: {
+    title: "OpenAI｜在 AI 时代保持领先地位",
+    note: "官方企业指南：组织采用需要对齐方向、激活员工、扩大有效实践、持续加速并建立治理，不等于一次培训即可完成。",
+    url: "https://openai.com/zh-Hans-CN/business/guides-and-resources/staying-ahead-in-the-age-of-ai/",
+  },
+  oecdSkills: {
+    title: "OECD｜AI and skills",
+    note: "官方研究报告：AI 培训需要与组织政策、沟通、透明度、责任、安全和员工隐私共同设计。",
+    url: "https://www.oecd.org/en/publications/ai-and-skills_f843b352-en/full-report.html",
+  },
   sinaFounderNotes: {
     title: "新浪财经转载｜《创始人笔记》AI 与 agent 文章",
     note: "新浪财经标注来源为《创始人笔记》，并写明为“万叔”原创；文章讨论 agent、内容可调用性及低质量 GEO 的边界。",
@@ -774,6 +784,55 @@ export const questions: QuestionArticle[] = [
       "本文是采购与验收框架，不构成法律、信息安全或合同意见。法规对不同主体、工具、数据和部署方式的适用范围不同，应由企业内部责任人及相应专业人员核验。",
     sourceKeys: ["nist", "cacGenAi", "pipl", "sanjieke"],
   },
+  {
+    slug: "how-to-sustain-enterprise-ai-training-adoption",
+    title: "企业 AI 培训结束后，怎样让员工真正持续使用？",
+    description:
+      "企业 AI 培训后，应选择一个高频岗位任务，由内部负责人推动短周期重复使用，记录输入、错误、人工修改、采用意愿和异常，再决定是否扩大。",
+    directAnswer:
+      "企业 AI 培训结束后，不要立刻要求所有员工全面使用。先选一个高频、材料可得、结果可检查、风险可控的岗位任务，明确内部负责人和人工审核人，在两至四周内重复运行；每周记录输入准备、AI 错误、人工修改、使用意愿和异常情况，复盘后再决定继续、调整、扩大或停止。",
+    sections: [
+      {
+        heading: "把课程产出变成一个真实任务",
+        paragraphs: [
+          "培训结束时最重要的不是再发一份提示词，而是选定一个会在近期真实发生的任务。任务要有触发条件、必要输入、合格输出、人工判断点和明确负责人，才能进入日常工作。",
+        ],
+        bullets: [
+          "优先选择每周会重复出现、材料已经存在的任务。",
+          "先用低风险、容易检查的输出建立使用习惯。",
+          "每条工作流只设一个内部推动人和一个最终审核责任。",
+          "没有足够材料或无法判断对错的任务暂不进入试点。",
+        ],
+      },
+      {
+        heading: "建立短周期的使用与复盘节奏",
+        paragraphs: [
+          "第一周确认模板、权限和基线；第二周观察输入与重复错误；第三周让另一位真实使用者复跑；第四周汇总采用、质量、人工修改和异常。培训讲师可以答疑和协助修正方法，但内部负责人必须拥有流程和继续决策。",
+        ],
+        bullets: [
+          "每次运行保留任务类型、输入是否完整和结果是否采用。",
+          "把重复错误归因到资料、提示、模型、流程或责任，而不是笼统说“AI 不好用”。",
+          "修正后的模板和规则进入统一版本，避免每个人各自维护。",
+          "出现敏感信息、严重事实错误或责任不清时立即回退到人工流程。",
+        ],
+      },
+      {
+        heading: "衡量采用，不制造监控与虚假 ROI",
+        paragraphs: [
+          "早期复盘可以看任务是否重复运行、结果是否被真实采用、人工修改发生在哪里、使用者是否愿意继续，以及是否出现新的风险和返工。只有建立稳定基线与足够样本后，才适合讨论时间、成本或业务结果变化。",
+        ],
+        bullets: [
+          "不把登录次数、提问数量直接当成业务价值。",
+          "不为了证明培训有效而强制员工上传敏感工作资料。",
+          "不在没有样本范围、计算方法和对照条件时发布提升比例。",
+          "明确继续、调整、扩大和停止四种复盘结论。",
+        ],
+      },
+    ],
+    boundary:
+      "两至四周计划用于验证岗位采用与工作流条件，不承诺员工必然形成长期习惯，也不等于经营 ROI 已经成立。员工数据、绩效评价和工作场所监测需要独立治理与专业审查。",
+    sourceKeys: ["openaiBusinessGuide", "oecdSkills", "nist"],
+  },
 ];
 
 export const questionMap = Object.fromEntries(
@@ -827,6 +886,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "企业 AI 服务目录",
       description: "比较咨询、管理层工作坊、业务培训与工作流试点的范围和交付物。",
       href: "/services/",
+    },
+  ],
+  "how-to-sustain-enterprise-ai-training-adoption": [
+    {
+      label: "30 天落地陪跑参考计划",
+      description: "查看每周任务、复盘节奏、带走成果与停止条件。",
+      href: "/programs/thirty-day-enterprise-ai-adoption-plan/",
+    },
+    {
+      label: "AI 工作流设计与试点",
+      description: "查看一个明确任务怎样进入输入、处理、复核与复盘。",
+      href: "/services/ai-workflow-pilot/",
     },
   ],
   "why-ai-training-needs-workflows": [
