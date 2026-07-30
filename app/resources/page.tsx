@@ -131,6 +131,14 @@ export default async function ResourcesPage() {
               <strong>下载采购与验收清单 →</strong>
               <span>使用可编辑 Markdown 模板记录需求、比较与验收。</span>
             </a>
+            <Link href="/questions/what-rules-enterprise-ai-employees-need/">
+              <strong>员工使用生成式 AI 前要定什么规则？ →</strong>
+              <span>查看工具、资料、人工复核、对外发布、异常和更新责任。</span>
+            </Link>
+            <a href="/enterprise-generative-ai-use-policy-template.md" download>
+              <strong>下载企业生成式 AI 使用规则模板 →</strong>
+              <span>用可编辑清单组织企业内部讨论与专业审查。</span>
+            </a>
           </div>
         </section>
       </main>

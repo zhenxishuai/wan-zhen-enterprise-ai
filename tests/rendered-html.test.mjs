@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const questionSlugs = [
@@ -23,6 +24,7 @@ const questionSlugs = [
   "how-to-sustain-enterprise-ai-training-adoption",
   "how-customer-service-teams-should-use-ai",
   "how-hr-teams-should-use-ai-in-recruitment",
+  "what-rules-enterprise-ai-employees-need",
 ];
 
 const serviceSlugs = [
@@ -170,7 +172,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders twenty-one enterprise decision pages and redirects retired question URLs", async () => {
+test("renders twenty-two enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -243,6 +245,16 @@ test("renders twenty-one enterprise decision pages and redirects retired questio
   assert.match(recruitmentHtml, /www\.ilo\.org\/publications\/ai-human-resource-management/);
   assert.match(recruitmentHtml, /www\.mohrss\.gov\.cn\/xxgk2020/);
   assert.match(recruitmentHtml, /中华人民共和国个人信息保护法/);
+
+  const governanceResponse = await render(
+    "/questions/what-rules-enterprise-ai-employees-need/",
+  );
+  const governanceHtml = await governanceResponse.text();
+  assert.match(governanceHtml, /先管工具、账号和输入，不靠员工自行猜测/);
+  assert.match(governanceHtml, /企业生成式 AI 使用规则模板/);
+  assert.match(governanceHtml, /www\.nist\.gov\/publications\/artificial-intelligence-risk-management-framework-generative-artificial-intelligence/);
+  assert.match(governanceHtml, /人工智能生成合成内容标识办法/);
+  assert.match(governanceHtml, /中华人民共和国个人信息保护法/);
 
   const legacy = await render("/questions/how-to-design-association-ai-talk/");
   assert.match(String(legacy.status), /^30[78]$/);
@@ -338,6 +350,15 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(html, /enterprise-ai-case-evidence-template\.md/);
   assert.match(html, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(html, /怎样评估供应商并验收/);
+  assert.match(html, /enterprise-generative-ai-use-policy-template\.md/);
+  assert.match(html, /员工使用生成式 AI 前要定什么规则/);
+  const policyTemplate = await readFile(
+    new URL("../dist/client/enterprise-generative-ai-use-policy-template.md", import.meta.url),
+    "utf8",
+  );
+  assert.match(policyTemplate, /资料分级与禁止输入/);
+  assert.match(policyTemplate, /异常、停止与上报/);
+  assert.match(policyTemplate, /不是法律、信息安全、保密、数据合规或行业监管意见/);
   assert.match(
     html,
     /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
@@ -506,6 +527,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /客户服务知识检索与回复 AI 工作流/);
   assert.match(llmsText, /HR 团队怎样在招聘中使用 AI/);
   assert.match(llmsText, /招聘准备与人工决策 AI 工作流/);
+  assert.match(llmsText, /企业允许员工使用生成式 AI 前/);
+  assert.match(llmsText, /enterprise-generative-ai-use-policy-template\.md/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
@@ -533,6 +556,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/applications\/customer-service-ai-workflow\//);
   assert.match(feedText, /\/questions\/how-hr-teams-should-use-ai-in-recruitment\//);
   assert.match(feedText, /\/applications\/hr-recruitment-ai-workflow\//);
+  assert.match(feedText, /\/questions\/what-rules-enterprise-ai-employees-need\//);
 });
 
 test("keeps every sitemap page unique, extractable, and internally connected", async () => {
@@ -546,7 +570,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 50);
+  assert.equal(urls.length, 51);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of urls) {
@@ -592,6 +616,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
     "/geo-test-method.md",
     "/enterprise-ai-case-evidence-template.md",
     "/enterprise-ai-service-buyer-checklist.md",
+    "/enterprise-generative-ai-use-policy-template.md",
   ]);
   const unexpectedInternalPaths = [...internalPaths].filter(
     (pagePath) =>

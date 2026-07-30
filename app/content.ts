@@ -88,6 +88,16 @@ export const sourceLinks = {
     note: "NIST AI 风险管理资源：人机交互、人工监督、角色能力与何时需要人工介入，应根据使用情境和风险明确设计。",
     url: "https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/",
   },
+  nistGenAiProfile: {
+    title: "NIST｜生成式人工智能风险管理框架应用指南",
+    note: "NIST AI RMF 生成式 AI 配套指南：组织需要定义角色、政策、监督、测试、事件沟通和持续风险管理。",
+    url: "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+  },
+  cacAiLabeling: {
+    title: "国家互联网信息办公室｜人工智能生成合成内容标识办法",
+    note: "中国人工智能生成合成内容标识的官方办法；企业对外发布相关内容时，应由责任人核验适用范围和标识要求。",
+    url: "https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm",
+  },
   iloHrm: {
     title: "国际劳工组织｜AI in human resource management",
     note: "ILO 研究指出，人力资源 AI 的目标、数据与程序如果定义不清，可能放大偏差并带来透明度、公平与责任风险。",
@@ -946,6 +956,55 @@ export const questions: QuestionArticle[] = [
       "本文提供招聘辅助工作流原则，不是自动筛选或人才测评系统实施方案，也不构成劳动用工、反歧视或个人信息法律意见。实际招聘流程、工具与数据应由企业人力资源、法务、合规和安全责任人共同核验。",
     sourceKeys: ["iloHrm", "mohrssRecruitment", "pipl"],
   },
+  {
+    slug: "what-rules-enterprise-ai-employees-need",
+    title: "企业允许员工使用生成式 AI 前，需要先制定哪些规则？",
+    description:
+      "企业开放生成式 AI 前，应明确批准工具、资料分级、禁止输入、输出复核、对外发布、责任记录、异常上报和规则更新。",
+    directAnswer:
+      "企业允许员工使用生成式 AI 前，至少要写清七件事：哪些工具和账号可以用，哪些资料禁止输入，个人信息和商业秘密怎样处理，哪些输出必须人工复核，对外发布何时需要标识和批准，谁对使用记录与结果负责，以及发生泄露、错误或不当输出时怎样停止、上报和纠正。",
+    sections: [
+      {
+        heading: "先管工具、账号和输入，不靠员工自行猜测",
+        paragraphs: [
+          "内部规则首先要回答“在哪里用、用什么账号、能输入什么”。企业可以按公开、内部、敏感和禁止四级整理资料类型，再由数据、法务、安全和业务责任人确认具体边界。",
+        ],
+        bullets: [
+          "列出批准、限制和禁止使用的工具与账号类型。",
+          "禁止输入密码、密钥、涉密信息和未经授权的个人信息。",
+          "客户资料、合同、源代码、财务和商业秘密按内部制度处理。",
+          "练习和培训优先使用匿名化、替换或合成材料。",
+        ],
+      },
+      {
+        heading: "把人工复核写成具体责任，而不是一句口号",
+        paragraphs: [
+          "不同输出需要不同复核：内部头脑风暴与对外合同、招聘决定、客户承诺的风险完全不同。规则应按场景指定事实、版权、隐私、政策、专业判断和对外承诺的审核人。",
+        ],
+        bullets: [
+          "AI 输出默认是草稿，不因为语气完整就视为事实。",
+          "合同、财务、法律、人事、健康和客户承诺必须由相应责任人核验。",
+          "对外文本、图片、音视频按渠道和适用要求检查生成内容标识。",
+          "保留来源、修改、批准和最终发布版本。",
+        ],
+      },
+      {
+        heading: "设定停止条件、异常上报和定期更新",
+        paragraphs: [
+          "可执行的规则不能只写禁止事项，还要告诉员工出错后怎么办。企业应指定报告入口和处置责任人，记录泄露、严重事实错误、歧视、不当内容、越权访问和供应商变化，并用真实事件更新培训与规则。",
+        ],
+        bullets: [
+          "发现敏感信息误传时立即停止相关任务并按内部流程报告。",
+          "出现高风险错误、无法核验来源或责任不清时回退到人工流程。",
+          "工具条款、模型、账号权限或法规变化后重新评估。",
+          "规则定期复核，并让员工知道最新版本在哪里。",
+        ],
+      },
+    ],
+    boundary:
+      "本文与下载模板用于企业内部讨论和责任梳理，不构成法律、信息安全、保密、数据合规或行业监管意见。企业应结合所在地区、行业、数据类型、工具条款和既有制度，由相应专业责任人审查后发布。",
+    sourceKeys: ["nistGenAiProfile", "cacGenAi", "pipl", "cacAiLabeling"],
+  },
 ];
 
 export const questionMap = Object.fromEntries(
@@ -1030,6 +1089,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "招聘准备与人工决策工作流",
       description: "查看岗位标准、必要输入、辅助步骤、人工复核和录用责任边界。",
       href: "/applications/hr-recruitment-ai-workflow/",
+    },
+    {
+      label: "企业 AI 内训数据边界",
+      description: "查看真实资料、匿名化、权限和个人信息处理原则。",
+      href: "/questions/can-ai-training-use-company-data/",
+    },
+  ],
+  "what-rules-enterprise-ai-employees-need": [
+    {
+      label: "下载企业生成式 AI 使用规则模板",
+      description: "用可编辑 Markdown 清单梳理工具、资料、复核、发布、记录、异常和更新责任。",
+      href: "/enterprise-generative-ai-use-policy-template.md",
     },
     {
       label: "企业 AI 内训数据边界",
