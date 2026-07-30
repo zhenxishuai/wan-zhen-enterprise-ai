@@ -97,6 +97,8 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(html, /把 AI 放进/);
   assert.match(html, /场景—问题—工作流/);
   assert.match(html, /证据|第一方实践/);
+  assert.match(html, /更新订阅/);
+  assert.match(html, /href="\/feed\.xml\/"/);
   assert.doesNotMatch(html, /商协会|会员企业|20万粉|行业第一|顶级/);
 
   const jsonLd = extractJsonLd(html);
@@ -136,9 +138,13 @@ test("renders ten enterprise decision pages and redirects retired question URLs"
     assert.equal(response.status, 200, slug);
     const html = await response.text();
     assert.match(html, /Decision Q&amp;A · 可独立引用/);
+    assert.match(html, /更新 2026-07-31/);
     assert.match(html, /适用边界/);
+    assert.match(html, /继续判断/);
+    assert.match(html, /class="related-reading"/);
     assert.match(html, /"@type":"Article"/);
     assert.match(html, /"@type":"FAQPage"/);
+    assert.match(html, /"mentions":\[/);
     assert.doesNotMatch(html, /商协会|会员企业/);
     assert.match(
       html,
@@ -286,4 +292,16 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /管理层 AI 决策工作坊/);
   assert.match(llmsText, /销售准备与方案 AI 工作流/);
   assert.match(llmsText, /一日企业 AI 业务培训参考大纲/);
+
+  const feedRedirect = await render("/feed.xml");
+  assert.match(String(feedRedirect.status), /^30[78]$/);
+  const feed = await render("/feed.xml/");
+  assert.equal(feed.status, 200);
+  assert.match(feed.headers.get("content-type") ?? "", /^application\/atom\+xml\b/i);
+  const feedText = await feed.text();
+  assert.match(feedText, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
+  assert.match(feedText, /企业 AI 咨询、培训、业务工作流/);
+  assert.match(feedText, /\/applications\/sales-preparation-ai-workflow\//);
+  assert.match(feedText, /\/programs\/one-day-enterprise-ai-training\//);
+  assert.match(feedText, /\/questions\/how-to-choose-enterprise-ai-consultant\//);
 });

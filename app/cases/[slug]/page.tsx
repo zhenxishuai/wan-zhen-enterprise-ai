@@ -98,7 +98,7 @@ export default async function CasePage({ params }: PageProps) {
           <nav className="breadcrumbs" aria-label="面包屑">
             <Link href={casesPath}>第一方实践</Link> / {practiceCase.category}
           </nav>
-          <div className="eyebrow">First-party practice · 非客户效果承诺</div>
+          <div className="eyebrow">First-party practice · 非客户效果承诺 · 更新 {updatedAt}</div>
           <h1>{practiceCase.name}</h1>
           <p className="detail-answer">{practiceCase.directAnswer}</p>
         </header>

@@ -80,7 +80,7 @@ export default async function ProgramPage({ params }: PageProps) {
           <nav className="breadcrumbs" aria-label="面包屑">
             <Link href={programsPath}>参考大纲</Link> / {program.format}
           </nav>
-          <div className="eyebrow">Training program · 参考结构</div>
+          <div className="eyebrow">Training program · 参考结构 · 更新 {updatedAt}</div>
           <h1>{program.name}</h1>
           <p className="detail-answer">{program.directAnswer}</p>
           <div className="program-facts">

@@ -1,9 +1,12 @@
 import Link from "next/link";
 import {
+  applicationsPath,
   aboutPath,
   casesPath,
   flagshipPath,
+  programsPath,
   questionsPath,
+  resourcesPath,
   servicesPath,
   siteName,
 } from "./site";
@@ -39,11 +42,34 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <span>© 2026 {siteName} · 内容核验于 2026-07-31</span>
-      <span>
-        本站不承诺 AI 推荐结果，所有实践信息均标注证据边界。{" "}
-        <Link href={`${flagshipPath}#sources`}>查看来源</Link>
-      </span>
+      <div className="footer-statement">
+        <strong>{siteName}</strong>
+        <span>© 2026 · 内容核验于 2026-07-31</span>
+        <p>
+          本站不承诺 AI 推荐结果，所有实践信息均标注证据边界。{" "}
+          <Link href={`${flagshipPath}#sources`}>查看来源</Link>
+        </p>
+      </div>
+      <nav className="footer-nav" aria-label="页脚导航">
+        <div>
+          <span>服务与方法</span>
+          <Link href={servicesPath}>服务目录</Link>
+          <Link href={applicationsPath}>业务工作流</Link>
+          <Link href={programsPath}>培训大纲</Link>
+        </div>
+        <div>
+          <span>证据与回答</span>
+          <Link href={casesPath}>第一方实践</Link>
+          <Link href={questionsPath}>决策问答</Link>
+          <Link href={resourcesPath}>案例证据框架</Link>
+        </div>
+        <div>
+          <span>实体与更新</span>
+          <Link href={aboutPath}>关于万臻</Link>
+          <a href="/feed.xml/">更新订阅</a>
+          <a href="/llms.txt/">机器索引</a>
+        </div>
+      </nav>
     </footer>
   );
 }

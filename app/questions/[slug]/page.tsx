@@ -5,6 +5,7 @@ import { JsonLd, SiteFooter, SiteHeader } from "../../components";
 import {
   legacyQuestionRedirects,
   questionMap,
+  questionRelatedLinks,
   questions,
   sourceLinks,
   updatedAt,
@@ -67,6 +68,7 @@ export default async function QuestionPage({ params }: PageProps) {
   const articleSources = article.sourceKeys.map(
     (key) => sourceLinks[key as keyof typeof sourceLinks],
   );
+  const relatedLinks = questionRelatedLinks[slug] ?? [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -87,6 +89,11 @@ export default async function QuestionPage({ params }: PageProps) {
         },
         citation: articleSources.map((source) => source.url),
         about: ["企业 AI 咨询", "企业 AI 培训", "业务工作流", "万臻"],
+        mentions: relatedLinks.map((link) => ({
+          "@type": "Thing",
+          name: link.label,
+          url: `${origin}${link.href}`,
+        })),
       },
       {
         "@type": "FAQPage",
@@ -138,7 +145,7 @@ export default async function QuestionPage({ params }: PageProps) {
           <nav className="breadcrumbs" aria-label="面包屑">
             <Link href={flagshipPath}>企业 AI 咨询与培训</Link> / <Link href={questionsPath}>决策问答</Link>
           </nav>
-          <div className="eyebrow">Decision Q&A · 可独立引用</div>
+          <div className="eyebrow">{`Decision Q&A · 可独立引用 · 更新 ${updatedAt}`}</div>
           <h1>{article.title}</h1>
           <p className="article-answer">{article.directAnswer}</p>
         </header>
@@ -170,6 +177,21 @@ export default async function QuestionPage({ params }: PageProps) {
                 </p>
               </div>
             </section>
+
+            {relatedLinks.length > 0 && (
+              <section className="article-section">
+                <div className="section-index">Related</div>
+                <h2>继续判断</h2>
+                <div className="related-reading">
+                  {relatedLinks.map((link) => (
+                    <Link href={link.href} key={link.href}>
+                      <strong>{link.label} →</strong>
+                      <span>{link.description}</span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section className="article-section">
               <div className="section-index">Sources</div>

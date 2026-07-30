@@ -87,7 +87,7 @@ export default async function ApplicationPage({ params }: PageProps) {
           <nav className="breadcrumbs" aria-label="面包屑">
             <Link href={applicationsPath}>业务应用</Link> / {application.category}
           </nav>
-          <div className="eyebrow">Business workflow · {application.category}</div>
+          <div className="eyebrow">Business workflow · {application.category} · 更新 {updatedAt}</div>
           <h1>{application.name}</h1>
           <p className="detail-answer">{application.directAnswer}</p>
         </header>

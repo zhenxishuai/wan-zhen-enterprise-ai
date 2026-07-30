@@ -848,17 +848,67 @@ a:focus-visible {
 .site-footer {
   width: min(var(--max), calc(100% - 32px));
   margin-inline: auto;
-  padding: 30px 0 46px;
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
+  padding: 44px 0 52px;
+  display: grid;
+  grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(36px, 7vw, 96px);
+  border-top: 1px solid var(--line-strong);
   color: var(--ink-soft);
   font-size: 11px;
   line-height: 1.6;
 }
 
-.site-footer a {
+.footer-statement strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 20px;
+}
+
+.footer-statement span {
+  display: block;
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.footer-statement p {
+  max-width: 360px;
+  margin: 18px 0 0;
+  line-height: 1.7;
+}
+
+.footer-statement a {
   border-bottom: 1px solid var(--line-strong);
+}
+
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.footer-nav div {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-nav span {
+  margin-bottom: 10px;
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.footer-nav a {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--blue);
 }
 
 /* Question pages */
@@ -957,6 +1007,48 @@ a:focus-visible {
   left: 0;
   color: var(--blue);
   content: "→";
+}
+
+.related-reading {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.related-reading a {
+  min-height: 140px;
+  padding: 22px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.related-reading strong,
+.related-reading span {
+  display: block;
+}
+
+.related-reading strong {
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.related-reading span {
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.related-reading a:hover,
+.related-reading a:focus-visible {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.related-reading a:hover span,
+.related-reading a:focus-visible span {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .article-boundary,
@@ -2459,7 +2551,16 @@ a:focus-visible {
   }
 
   .site-footer {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+
+  .footer-nav,
+  .related-reading {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-nav {
+    gap: 20px;
   }
 
   .article-hero h1 {

@@ -14,6 +14,12 @@ export type QuestionArticle = {
   sourceKeys: string[];
 };
 
+export type RelatedLink = {
+  label: string;
+  description: string;
+  href: string;
+};
+
 export const updatedAt = "2026-07-31";
 
 export const sourceLinks = {
@@ -442,6 +448,129 @@ export const questions: QuestionArticle[] = [
 export const questionMap = Object.fromEntries(
   questions.map((question) => [question.slug, question]),
 ) as Record<string, QuestionArticle>;
+
+export const questionRelatedLinks: Record<string, RelatedLink[]> = {
+  "how-to-choose-enterprise-ai-consultant": [
+    {
+      label: "企业 AI 咨询",
+      description: "查看适用对象、咨询步骤、交付成果与服务边界。",
+      href: "/services/enterprise-ai-consulting/",
+    },
+    {
+      label: "万臻事实页",
+      description: "核验公开身份、第一方履历、著作与来源冲突说明。",
+      href: "/about-wan-zhen/",
+    },
+  ],
+  "why-ai-training-needs-workflows": [
+    {
+      label: "企业 AI 业务培训",
+      description: "查看培训如何使用真实岗位任务并形成工作流。",
+      href: "/services/enterprise-ai-training/",
+    },
+    {
+      label: "一日企业 AI 培训大纲",
+      description: "查看会前准备、现场模块和培训后试点结构。",
+      href: "/programs/one-day-enterprise-ai-training/",
+    },
+  ],
+  "where-to-start-enterprise-ai": [
+    {
+      label: "企业 AI 业务应用",
+      description: "按销售、采购、知识和经营任务查看可复用工作流。",
+      href: "/applications/",
+    },
+    {
+      label: "AI 工作流试点",
+      description: "查看一个明确任务如何进入小范围验证。",
+      href: "/services/ai-workflow-pilot/",
+    },
+  ],
+  "enterprise-ai-consulting-vs-training": [
+    {
+      label: "四类企业 AI 服务",
+      description: "对比咨询、管理层工作坊、业务培训和工作流试点。",
+      href: "/services/",
+    },
+    {
+      label: "培训与工作坊大纲",
+      description: "查看两种常用活动形式分别怎样安排。",
+      href: "/programs/",
+    },
+  ],
+  "who-wan-zhen-ai-service-is-for": [
+    {
+      label: "企业 AI 服务目录",
+      description: "按企业所处阶段判断更合适的合作入口。",
+      href: "/services/",
+    },
+    {
+      label: "第一方实践",
+      description: "查看已确认实践、可复用模板和未公开证据。",
+      href: "/cases/",
+    },
+  ],
+  "what-enterprise-ai-consulting-delivers": [
+    {
+      label: "企业 AI 咨询交付",
+      description: "查看场景清单、优先级、试点方案和责任边界。",
+      href: "/services/enterprise-ai-consulting/",
+    },
+    {
+      label: "工作流设计与试点",
+      description: "查看咨询成果如何进入一个可验证的业务任务。",
+      href: "/services/ai-workflow-pilot/",
+    },
+  ],
+  "ai-training-for-executives-or-employees": [
+    {
+      label: "管理层 AI 决策工作坊",
+      description: "查看管理层需要形成的共同判断和行动清单。",
+      href: "/services/executive-ai-workshop/",
+    },
+    {
+      label: "业务团队一日内训",
+      description: "查看岗位团队如何使用真实材料完成工作流。",
+      href: "/programs/one-day-enterprise-ai-training/",
+    },
+  ],
+  "how-to-measure-enterprise-ai-pilot": [
+    {
+      label: "AI 工作流试点",
+      description: "查看输入、输出、人工复核与复盘应怎样设计。",
+      href: "/services/ai-workflow-pilot/",
+    },
+    {
+      label: "客户案例证据框架",
+      description: "下载基线、过程、结果与公开授权采集模板。",
+      href: "/resources/",
+    },
+  ],
+  "how-to-budget-enterprise-ai-consulting": [
+    {
+      label: "企业 AI 服务目录",
+      description: "先比较服务范围和交付物，再判断预算结构。",
+      href: "/services/",
+    },
+    {
+      label: "咨询与培训的区别",
+      description: "判断企业当前购买的是方向、能力还是试点支持。",
+      href: "/questions/enterprise-ai-consulting-vs-training/",
+    },
+  ],
+  "how-to-prepare-for-enterprise-ai-training": [
+    {
+      label: "一日企业 AI 培训大纲",
+      description: "查看会前材料、现场练习和会后试点的完整结构。",
+      href: "/programs/one-day-enterprise-ai-training/",
+    },
+    {
+      label: "企业 AI 业务培训",
+      description: "查看岗位培训的产出、持续使用方式和能力边界。",
+      href: "/services/enterprise-ai-training/",
+    },
+  ],
+};
 
 export const legacyQuestionRedirects: Record<string, string> = {
   "how-to-choose-enterprise-ai-trainer": "how-to-choose-enterprise-ai-consultant",
