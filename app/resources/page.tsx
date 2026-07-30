@@ -152,6 +152,10 @@ export default async function ResourcesPage() {
               <strong>下载活动回顾与证据模板 →</strong>
               <span>让主办方按授权、事实、过程产出、核验链接与边界发布真实第三方页面。</span>
             </a>
+            <a href="/enterprise-ai-project-roles-raci-template.md" download>
+              <strong>下载项目角色与 RACI 模板 →</strong>
+              <span>明确管理层、业务、协调、HR、IT、数据安全、法务与外部顾问责任。</span>
+            </a>
           </div>
         </section>
       </main>

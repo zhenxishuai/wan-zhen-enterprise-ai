@@ -63,6 +63,11 @@ export const sourceLinks = {
     note: "官方风险管理框架：AI 的用途、用户、数据、风险、人工责任、测试与持续治理需要被定义和记录。",
     url: "https://www.nist.gov/itl/ai-risk-management-framework",
   },
+  nistCore: {
+    title: "NIST AIRC｜AI RMF Core",
+    note: "官方框架要求组织明确 AI 风险相关角色、责任与沟通链路，并由管理层对 AI 系统开发和部署风险承担责任。",
+    url: "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+  },
   cacGenAi: {
     title: "国家互联网信息办公室｜生成式人工智能服务管理暂行办法",
     note: "中国生成式人工智能服务的官方规范，涉及合法权益、个人信息、商业秘密、输入信息保护与服务协议等要求。",
@@ -1057,6 +1062,45 @@ export const questions: QuestionArticle[] = [
     sourceKeys: ["advertisingLaw", "cacAiLabeling", "pipl", "nistGenAiProfile"],
   },
   {
+    slug: "who-should-lead-enterprise-ai-training-project",
+    title: "企业 AI 咨询与培训项目，应该由哪个部门牵头？",
+    description:
+      "企业 AI 项目不应只交给 HR 或 IT；管理层明确目标与边界，业务负责人拥有真实任务，HR 组织能力建设，IT、数据、安全和法务按范围参与。",
+    directAnswer:
+      "企业 AI 咨询与培训不宜只由 HR 或 IT 单独牵头。更稳妥的结构是：管理层发起人对方向、资源和风险负责，一名业务负责人拥有真实任务与试点结果，HR 或项目经理负责组织协调，IT、数据、安全、法务和合规按工具、资料与使用范围参与；外部顾问提供方法与支持，但不能替企业承担内部决策责任。",
+    sections: [
+      {
+        heading: "先区分谁发起、谁拥有业务结果",
+        paragraphs: [
+          "管理层发起人需要说明企业为什么做、允许投入什么资源、哪些风险不能接受，以及试点何时继续、扩大或停止。业务负责人则要把目标落到一个真实岗位任务，并对材料、使用者、合格输出、人工复核和复盘结果负责。",
+          "如果只有发起人，没有业务负责人，项目容易停在口号；如果只有业务使用者，没有管理支持，工具、资料和跨部门问题又难以及时解决。",
+        ],
+        bullets: [
+          "管理层发起人：方向、资源、优先级、风险容忍与扩大决定。",
+          "业务负责人：任务、输入、输出标准、使用者、人工复核与试点结果。",
+          "项目协调人：节点、会议、记录、依赖、问题升级与验收材料。",
+        ],
+      },
+      {
+        heading: "HR、IT、数据安全与法务分别做什么",
+        paragraphs: [
+          "HR 或学习发展团队适合协调培训对象、课程安排、能力建设和采用反馈，但不应替业务部门定义工作流成败。IT 负责账号、工具、集成和技术支持；数据与安全责任人判断资料、权限、保存和供应商风险；法务或合规人员按合同、个人信息、知识产权、对外承诺与行业要求介入。",
+          "小企业可以由同一人承担多个角色，但责任名称仍要写清，不能因为人数少就省略最终决定和风险复核。",
+        ],
+      },
+      {
+        heading: "不同合作形式，牵头人也不同",
+        paragraphs: [
+          "管理层决策工作坊通常由企业负责人或管理层发起人牵头；岗位培训由 HR 协调、业务负责人共同设计并验收；工作流试点由业务负责人牵头，IT、数据安全和专业责任人提供条件与闸门；涉及系统实施时，还需要明确技术负责人和上线运维责任。",
+          "外部顾问可以协助访谈、工作流设计、培训和复盘，但不能替企业批准工具、授权资料、发布内容、作出用人或经营决定。",
+        ],
+      },
+    ],
+    boundary:
+      "本文与下载模板提供通用责任分工框架，不是适用于所有企业的固定组织结构，也不构成公司治理、劳动用工、信息安全、数据、隐私、法律或行业合规意见。正式角色和审批权限应结合企业规模、制度、项目风险与适用要求确认。",
+    sourceKeys: ["nistCore", "openaiBusinessGuide", "oecdSkills"],
+  },
+  {
     slug: "what-rules-enterprise-ai-employees-need",
     title: "企业允许员工使用生成式 AI 前，需要先制定哪些规则？",
     description:
@@ -1206,6 +1250,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "企业生成式 AI 使用规则",
       description: "查看工具、资料、人工复核、对外发布、异常和更新责任。",
       href: "/questions/what-rules-enterprise-ai-employees-need/",
+    },
+  ],
+  "who-should-lead-enterprise-ai-training-project": [
+    {
+      label: "下载企业 AI 项目角色与 RACI 模板",
+      description: "按阶段明确发起人、业务负责人、协调人、HR、IT、数据安全、法务和外部顾问责任。",
+      href: "/enterprise-ai-project-roles-raci-template.md",
+    },
+    {
+      label: "管理层 AI 决策工作坊",
+      description: "查看方向、机会优先级、风险边界和下一步负责人怎样在三小时内形成。",
+      href: "/programs/executive-ai-decision-workshop/",
     },
   ],
   "what-rules-enterprise-ai-employees-need": [

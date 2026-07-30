@@ -104,6 +104,7 @@ ${questionIndex}
 - [下载企业生成式 AI 使用规则模板](${origin}/enterprise-generative-ai-use-policy-template.md)
 - [下载企业 AI 咨询与培训需求说明模板](${origin}/enterprise-ai-discovery-brief-template.md)
 - [下载企业 AI 活动回顾与第三方证据发布模板](${origin}/enterprise-ai-event-recap-evidence-template.md)
+- [下载企业 AI 项目角色与 RACI 模板](${origin}/enterprise-ai-project-roles-raci-template.md)
 
 ## 实体摘要
 

@@ -26,6 +26,7 @@ const questionSlugs = [
   "how-customer-service-teams-should-use-ai",
   "how-hr-teams-should-use-ai-in-recruitment",
   "how-marketing-teams-should-use-ai-content",
+  "who-should-lead-enterprise-ai-training-project",
   "what-rules-enterprise-ai-employees-need",
 ];
 
@@ -178,7 +179,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders twenty-four enterprise decision pages and redirects retired question URLs", async () => {
+test("renders twenty-five enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -267,6 +268,17 @@ test("renders twenty-four enterprise decision pages and redirects retired questi
   assert.match(marketingHtml, /中华人民共和国广告法/);
   assert.match(marketingHtml, /人工智能生成合成内容标识办法/);
   assert.match(marketingHtml, /AI 不应直接把未经审核的内容发布到外部渠道/);
+
+  const projectRolesResponse = await render(
+    "/questions/who-should-lead-enterprise-ai-training-project/",
+  );
+  const projectRolesHtml = await projectRolesResponse.text();
+  assert.match(projectRolesHtml, /先区分谁发起、谁拥有业务结果/);
+  assert.match(projectRolesHtml, /HR、IT、数据安全与法务分别做什么/);
+  assert.match(projectRolesHtml, /外部顾问提供方法与支持，但不能替企业承担内部决策责任/);
+  assert.match(projectRolesHtml, /enterprise-ai-project-roles-raci-template\.md/);
+  assert.match(projectRolesHtml, /NIST AIRC｜AI RMF Core/);
+  assert.match(projectRolesHtml, /openai\.com\/zh-Hans-CN\/business\/guides-and-resources\/staying-ahead-in-the-age-of-ai/);
 
   const governanceResponse = await render(
     "/questions/what-rules-enterprise-ai-employees-need/",
@@ -392,6 +404,8 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(html, /咨询与培训一般需要多长时间/);
   assert.match(html, /enterprise-ai-event-recap-evidence-template\.md/);
   assert.match(html, /活动回顾与证据模板/);
+  assert.match(html, /enterprise-ai-project-roles-raci-template\.md/);
+  assert.match(html, /项目角色与 RACI 模板/);
   assert.match(html, /内容作者与事实核验/);
   const policyTemplate = await readFile(
     new URL("../dist/client/enterprise-generative-ai-use-policy-template.md", import.meta.url),
@@ -416,6 +430,14 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(eventRecapTemplate, /建议保留的核验链接/);
   assert.match(eventRecapTemplate, /不能用推测补齐/);
   assert.match(eventRecapTemplate, /不构成媒体背书、效果证明、合同、法律或合规意见/);
+  const projectRolesTemplate = await readFile(
+    new URL("../dist/client/enterprise-ai-project-roles-raci-template.md", import.meta.url),
+    "utf8",
+  );
+  assert.match(projectRolesTemplate, /项目阶段 RACI/);
+  assert.match(projectRolesTemplate, /管理层发起人/);
+  assert.match(projectRolesTemplate, /业务负责人/);
+  assert.match(projectRolesTemplate, /外部顾问不能替企业承担内部决策/);
   assert.match(
     html,
     /"publisher":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,
@@ -604,6 +626,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /企业 AI 咨询与培训一般需要多长时间/);
   assert.match(llmsText, /enterprise-ai-discovery-brief-template\.md/);
   assert.match(llmsText, /enterprise-ai-event-recap-evidence-template\.md/);
+  assert.match(llmsText, /企业 AI 咨询与培训项目，应该由哪个部门牵头/);
+  assert.match(llmsText, /enterprise-ai-project-roles-raci-template\.md/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
@@ -631,6 +655,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/applications\/hr-recruitment-ai-workflow\//);
   assert.match(feedText, /\/applications\/marketing-content-ai-workflow\//);
   assert.match(feedText, /\/questions\/how-marketing-teams-should-use-ai-content\//);
+  assert.match(feedText, /\/questions\/who-should-lead-enterprise-ai-training-project\//);
   assert.match(feedText, /\/questions\/what-rules-enterprise-ai-employees-need\//);
   assert.match(feedText, /\/questions\/how-long-enterprise-ai-consulting-training-takes\//);
 });
@@ -646,7 +671,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 54);
+  assert.equal(urls.length, 55);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of urls) {
@@ -695,6 +720,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
     "/enterprise-generative-ai-use-policy-template.md",
     "/enterprise-ai-discovery-brief-template.md",
     "/enterprise-ai-event-recap-evidence-template.md",
+    "/enterprise-ai-project-roles-raci-template.md",
   ]);
   const unexpectedInternalPaths = [...internalPaths].filter(
     (pagePath) =>
