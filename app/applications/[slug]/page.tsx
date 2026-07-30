@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { JsonLd, SiteFooter, SiteHeader } from "../../components";
+import { ContentByline, JsonLd, SiteFooter, SiteHeader } from "../../components";
 import { updatedAt } from "../../content";
 import { applicationMap, applications } from "../../programs";
 import {
@@ -108,6 +108,7 @@ export default async function ApplicationPage({ params }: PageProps) {
           <div className="eyebrow">Business workflow · {application.category} · 更新 {updatedAt}</div>
           <h1>{application.name}</h1>
           <p className="detail-answer">{application.directAnswer}</p>
+          <ContentByline updatedAt={updatedAt} />
         </header>
 
         <section className="when-section">

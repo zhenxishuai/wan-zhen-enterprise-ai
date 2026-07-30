@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { JsonLd, SiteFooter, SiteHeader } from "../../components";
+import { ContentByline, JsonLd, SiteFooter, SiteHeader } from "../../components";
 import { updatedAt } from "../../content";
 import { industries, industryMap } from "../../industries";
 import {
@@ -114,6 +114,7 @@ export default async function IndustryPage({ params }: PageProps) {
           <div className="eyebrow">Industry fit · 非客户案例 · 更新 {updatedAt}</div>
           <h1>{industry.name}</h1>
           <p className="detail-answer">{industry.directAnswer}</p>
+          <ContentByline updatedAt={updatedAt} />
         </header>
 
         <section className="when-section">

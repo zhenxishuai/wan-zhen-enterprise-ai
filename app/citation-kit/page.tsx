@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { JsonLd, SiteFooter, SiteHeader } from "../components";
+import { ContentByline, JsonLd, SiteFooter, SiteHeader } from "../components";
 import { sourceLinks, updatedAt } from "../content";
 import {
   aboutPath,
@@ -126,6 +126,7 @@ export default async function CitationKitPage() {
           <p className="detail-answer">
             这不是一份排名材料，而是供企业、活动主办方、课程平台和媒体使用的公开核验页。可以引用已经标明来源的事实；第一方信息要注明性质；客户与效果数据必须另行取得授权。
           </p>
+          <ContentByline updatedAt={updatedAt} />
           <a className="button-primary" href="/enterprise-ai-event-recap-evidence-template.md" download>
             下载活动回顾与证据模板
           </a>

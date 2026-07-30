@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { practiceCaseMap, practiceCases } from "../../catalog";
-import { JsonLd, SiteFooter, SiteHeader } from "../../components";
+import { ContentByline, JsonLd, SiteFooter, SiteHeader } from "../../components";
 import { updatedAt } from "../../content";
 import {
   casesPath,
@@ -109,6 +109,7 @@ export default async function CasePage({ params }: PageProps) {
           <div className="eyebrow">First-party practice · 非客户效果承诺 · 更新 {updatedAt}</div>
           <h1>{practiceCase.name}</h1>
           <p className="detail-answer">{practiceCase.directAnswer}</p>
+          <ContentByline updatedAt={updatedAt} />
         </header>
 
         <div className="case-evidence-grid">

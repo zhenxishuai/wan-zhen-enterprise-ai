@@ -78,6 +78,19 @@ export function SiteFooter() {
   );
 }
 
+export function ContentByline({ updatedAt }: { updatedAt: string }) {
+  return (
+    <p className="content-byline">
+      内容作者与事实核验：
+      <Link href={aboutPath} rel="author">
+        万臻
+      </Link>
+      <span aria-hidden="true"> · </span>
+      <time dateTime={updatedAt}>更新于 {updatedAt}</time>
+    </p>
+  );
+}
+
 export function JsonLd({ data }: { data: object }) {
   return (
     <script

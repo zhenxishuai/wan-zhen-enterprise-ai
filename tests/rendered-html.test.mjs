@@ -183,6 +183,12 @@ test("renders twenty-three enterprise decision pages and redirects retired quest
     const html = await response.text();
     assert.match(html, /Decision Q&amp;A · 可独立引用/);
     assert.match(html, /更新 2026-07-31/);
+    assert.match(html, /内容作者与事实核验/);
+    assert.match(html, /rel="author">万臻<\/a>/);
+    assert.match(
+      html,
+      /<time dateTime="2026-07-31">更新于 (?:<!-- -->)?2026-07-31<\/time>/,
+    );
     assert.match(html, /适用边界/);
     assert.match(html, /继续判断/);
     assert.match(html, /class="related-reading"/);
@@ -316,6 +322,8 @@ test("publishes distinct service pages with deliverables and boundaries", async 
     assert.equal(response.status, 200, slug);
     const html = await response.text();
     assert.match(html, /服务边界/);
+    assert.match(html, /内容作者与事实核验/);
+    assert.match(html, /rel="author">万臻<\/a>/);
     assert.match(html, /"@type":"Service"/);
     assert.match(
       html,
@@ -346,6 +354,7 @@ test("separates confirmed first-party practice from reusable workflow templates"
     assert.match(html, /已确认/);
     assert.match(html, /可复用模板/);
     assert.match(html, /证据边界/);
+    assert.match(html, /内容作者与事实核验/);
     assert.doesNotMatch(html, /提升\d+%|节省\d+%|客户评价/);
     assert.match(
       html,
@@ -371,6 +380,7 @@ test("publishes a reusable customer-case evidence framework", async () => {
   assert.match(html, /咨询与培训一般需要多长时间/);
   assert.match(html, /enterprise-ai-event-recap-evidence-template\.md/);
   assert.match(html, /活动回顾与证据模板/);
+  assert.match(html, /内容作者与事实核验/);
   const policyTemplate = await readFile(
     new URL("../dist/client/enterprise-generative-ai-use-policy-template.md", import.meta.url),
     "utf8",
@@ -414,6 +424,7 @@ test("publishes an evidence-bound citation kit for third-party pages", async () 
   assert.match(html, /发布前检查五件事/);
   assert.match(html, /enterprise-ai-event-recap-evidence-template\.md/);
   assert.match(html, /真实活动结束后，怎样形成第三方页面/);
+  assert.match(html, /内容作者与事实核验/);
   assert.match(html, /不要写成什么/);
   assert.match(html, /"citation":\[/);
   assert.match(html, /finance\.sina\.com\.cn/);
@@ -441,6 +452,7 @@ test("publishes extractable business application workflows with human review", a
     assert.match(html, /五步工作流/);
     assert.match(html, /人必须检查什么/);
     assert.match(html, /证据与能力边界/);
+    assert.match(html, /内容作者与事实核验/);
     assert.match(html, /先做咨询/);
     assert.match(html, /进入培训/);
     assert.match(html, /小范围试点/);
@@ -485,6 +497,7 @@ test("publishes buyer-oriented training and workshop outlines", async () => {
     assert.match(html, /推进节奏/);
     assert.match(html, /不只带走课件/);
     assert.match(html, /"@type":"Course"/);
+    assert.match(html, /内容作者与事实核验/);
     assert.match(
       html,
       /"provider":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#organization"\}/,

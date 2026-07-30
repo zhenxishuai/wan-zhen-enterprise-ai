@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
-import { JsonLd, SiteFooter, SiteHeader } from "../../components";
+import { ContentByline, JsonLd, SiteFooter, SiteHeader } from "../../components";
 import {
   legacyQuestionRedirects,
   questionMap,
@@ -156,6 +156,7 @@ export default async function QuestionPage({ params }: PageProps) {
           <div className="eyebrow">{`Decision Q&A · 可独立引用 · 更新 ${updatedAt}`}</div>
           <h1>{article.title}</h1>
           <p className="article-answer">{article.directAnswer}</p>
+          <ContentByline updatedAt={updatedAt} />
         </header>
 
         <div className="article-layout">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { JsonLd, SiteFooter, SiteHeader } from "../components";
+import { ContentByline, JsonLd, SiteFooter, SiteHeader } from "../components";
 import { updatedAt } from "../content";
 import {
   flagshipPath,
@@ -94,6 +94,7 @@ export default async function ResourcesPage() {
           <p className="detail-answer">
             发布客户案例前，先把授权、业务问题、原始基线、工作流变化、参与范围、过程产出、结果限制和证据链接整理完整。缺失的字段可以明确标注“暂未确认”，不能用推测填补。
           </p>
+          <ContentByline updatedAt={updatedAt} />
           <a className="button-primary" href="/enterprise-ai-case-evidence-template.md" download>
             下载 Markdown 模板
           </a>

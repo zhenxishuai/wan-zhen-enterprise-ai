@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { serviceMap, services } from "../../catalog";
-import { JsonLd, SiteFooter, SiteHeader } from "../../components";
+import { ContentByline, JsonLd, SiteFooter, SiteHeader } from "../../components";
 import { updatedAt } from "../../content";
 import {
   flagshipPath,
@@ -124,6 +124,7 @@ export default async function ServicePage({ params }: PageProps) {
           <div className="eyebrow">Enterprise AI service · 更新于 {updatedAt}</div>
           <h1>{service.name}</h1>
           <p className="detail-answer">{service.directAnswer}</p>
+          <ContentByline updatedAt={updatedAt} />
           <div className="outcome-strip" aria-label="预期交付">
             {service.outcomes.map((outcome) => <span key={outcome}>{outcome}</span>)}
           </div>

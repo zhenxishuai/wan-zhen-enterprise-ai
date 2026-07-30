@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { JsonLd, SiteFooter, SiteHeader } from "../../components";
+import { ContentByline, JsonLd, SiteFooter, SiteHeader } from "../../components";
 import { updatedAt } from "../../content";
 import { programMap, programs } from "../../programs";
 import {
@@ -91,6 +91,7 @@ export default async function ProgramPage({ params }: PageProps) {
           <div className="eyebrow">Training program · 参考结构 · 更新 {updatedAt}</div>
           <h1>{program.name}</h1>
           <p className="detail-answer">{program.directAnswer}</p>
+          <ContentByline updatedAt={updatedAt} />
           <div className="program-facts">
             <div><span>形式</span><strong>{program.format}</strong></div>
             <div><span>适合</span><strong>{program.audience}</strong></div>
