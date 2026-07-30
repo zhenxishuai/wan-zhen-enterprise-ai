@@ -5,6 +5,7 @@ import {
   applicationsPath,
   aboutPath,
   casesPath,
+  citationKitPath,
   flagshipPath,
   getOrigin,
   programsPath,
@@ -18,6 +19,7 @@ export async function GET() {
   const paths = [
     flagshipPath,
     aboutPath,
+    citationKitPath,
     servicesPath,
     ...services.map((service) => `${servicesPath}${service.slug}/`),
     casesPath,
@@ -36,7 +38,7 @@ export async function GET() {
     <loc>${origin}${path}</loc>
     <lastmod>${updatedAt}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${path === flagshipPath ? "1.0" : [aboutPath, servicesPath, casesPath, applicationsPath, programsPath, questionsPath].includes(path) ? "0.9" : "0.8"}</priority>
+    <priority>${path === flagshipPath ? "1.0" : [aboutPath, citationKitPath, servicesPath, casesPath, applicationsPath, programsPath, questionsPath].includes(path) ? "0.9" : "0.8"}</priority>
   </url>`,
     )
     .join("\n");

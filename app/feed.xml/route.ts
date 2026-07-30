@@ -5,6 +5,7 @@ import {
   aboutPath,
   applicationsPath,
   casesPath,
+  citationKitPath,
   flagshipPath,
   getOrigin,
   programsPath,
@@ -36,6 +37,11 @@ export async function GET() {
       title: "万臻企业 AI 咨询与培训",
       path: flagshipPath,
       summary: "从经营目标、业务场景和工作流出发，帮助企业选择、设计并验证值得落地的 AI 任务。",
+    },
+    {
+      title: "万臻企业 AI 咨询与培训主办方与媒体引用资料",
+      path: citationKitPath,
+      summary: "统一名称、公开身份、服务表述、来源链接、证据边界与发布检查清单。",
     },
     ...services.map((service) => ({
       title: service.name,

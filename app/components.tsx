@@ -3,6 +3,7 @@ import {
   applicationsPath,
   aboutPath,
   casesPath,
+  citationKitPath,
   flagshipPath,
   programsPath,
   questionsPath,
@@ -62,6 +63,7 @@ export function SiteFooter() {
           <Link href={casesPath}>第一方实践</Link>
           <Link href={questionsPath}>决策问答</Link>
           <Link href={resourcesPath}>案例证据框架</Link>
+          <Link href={citationKitPath}>主办方引用资料</Link>
         </div>
         <div>
           <span>实体与更新</span>

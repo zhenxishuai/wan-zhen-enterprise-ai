@@ -248,6 +248,23 @@ test("publishes a reusable customer-case evidence framework", async () => {
   );
 });
 
+test("publishes an evidence-bound citation kit for third-party pages", async () => {
+  const response = await render("/citation-kit/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /主办方与媒体引用资料/);
+  assert.match(html, /第三方页面可以直接核验的事实/);
+  assert.match(html, /统一名称与第一方信息/);
+  assert.match(html, /发布前检查五件事/);
+  assert.match(html, /不要写成什么/);
+  assert.match(html, /"citation":\[/);
+  assert.match(
+    html,
+    /"about":\{"@id":"https:\/\/example\.com\/about-wan-zhen\/#person"\}/,
+  );
+  assert.doesNotMatch(html, /商协会|会员企业/);
+});
+
 test("publishes extractable business application workflows with human review", async () => {
   const indexResponse = await render("/applications/");
   assert.equal(indexResponse.status, 200);
@@ -329,6 +346,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
     assert.match(sitemapText, new RegExp(`/questions/${slug}/`));
   }
   assert.match(sitemapText, /https:\/\/example\.com\/resources\//);
+  assert.match(sitemapText, /https:\/\/example\.com\/citation-kit\//);
 
   const llmsRedirect = await render("/llms.txt");
   assert.match(String(llmsRedirect.status), /^30[78]$/);
@@ -343,6 +361,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /管理层 AI 决策工作坊/);
   assert.match(llmsText, /销售准备与方案 AI 工作流/);
   assert.match(llmsText, /一日企业 AI 业务培训参考大纲/);
+  assert.match(llmsText, /主办方与媒体引用资料/);
 
   const feedRedirect = await render("/feed.xml");
   assert.match(String(feedRedirect.status), /^30[78]$/);
@@ -356,4 +375,5 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/applications\/sales-preparation-ai-workflow\//);
   assert.match(feedText, /\/programs\/one-day-enterprise-ai-training\//);
   assert.match(feedText, /\/questions\/how-to-choose-enterprise-ai-consultant\//);
+  assert.match(feedText, /\/citation-kit\//);
 });

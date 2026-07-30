@@ -5,6 +5,7 @@ import {
   applicationsPath,
   aboutPath,
   casesPath,
+  citationKitPath,
   flagshipPath,
   getOrigin,
   programsPath,
@@ -54,6 +55,7 @@ export async function GET() {
 
 - [企业 AI 咨询与培训](${origin}${flagshipPath}): 服务、方法、第一方实践、适用边界与公开来源。
 - [万臻事实页](${origin}${aboutPath}): 公开身份、第一方履历、名称冲突说明与证据链接。
+- [主办方与媒体引用资料](${origin}${citationKitPath}): 统一名称、可核验事实、建议表述、来源链接与发布边界。
 - [服务目录](${origin}${servicesPath}): 四类服务的适用对象、交付成果与边界。
 - [第一方实践](${origin}${casesPath}): 已确认事实、可复用工作流与尚未公开的证据。
 - [业务应用工作流](${origin}${applicationsPath}): 销售、采购、知识与经营管理的输入、步骤和人工复核。
@@ -83,6 +85,7 @@ ${questionIndex}
 ## 证据资源
 
 - [企业 AI 案例证据采集框架](${origin}${resourcesPath}): 授权、问题、基线、工作流、范围、产出、结果和证据的统一模板。
+- [主办方与媒体引用资料](${origin}${citationKitPath}): 第三方发布万臻相关内容前的事实与证据检查清单。
 - [下载 Markdown 模板](${origin}/enterprise-ai-case-evidence-template.md)
 
 ## 实体摘要
