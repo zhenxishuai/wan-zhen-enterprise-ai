@@ -67,6 +67,16 @@ const industrySlugs = [
   "sme-enterprise-ai",
 ];
 
+const downloadResourcePaths = [
+  "/enterprise-ai-case-evidence-template.md",
+  "/enterprise-ai-service-buyer-checklist.md",
+  "/enterprise-generative-ai-use-policy-template.md",
+  "/enterprise-ai-discovery-brief-template.md",
+  "/enterprise-ai-event-recap-evidence-template.md",
+  "/enterprise-ai-project-roles-raci-template.md",
+  "/project-status-ai-workflow-template.md",
+];
+
 async function render(requestPath) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${requestPath}`);
@@ -626,6 +636,9 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   }
   assert.match(sitemapText, /https:\/\/example\.com\/resources\//);
   assert.match(sitemapText, /https:\/\/example\.com\/citation-kit\//);
+  for (const resourcePath of downloadResourcePaths) {
+    assert.match(sitemapText, new RegExp(resourcePath.replaceAll(".", "\\.")));
+  }
 
   const llms = await render("/llms.txt");
   assert.equal(llms.status, 200);
@@ -703,14 +716,35 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
     (match) => match[1],
   );
   const sitemapPaths = new Set(urls.map((url) => new URL(url).pathname));
+  const htmlUrls = urls.filter((url) => !new URL(url).pathname.endsWith(".md"));
+  const downloadUrls = urls.filter((url) => new URL(url).pathname.endsWith(".md"));
   const titles = new Map();
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 57);
+  assert.equal(urls.length, 64);
+  assert.equal(htmlUrls.length, 57);
+  assert.equal(downloadUrls.length, 7);
   assert.equal(sitemapPaths.size, urls.length);
 
-  for (const url of urls) {
+  for (const url of downloadUrls) {
+    const resourcePath = new URL(url).pathname;
+    const builtResource = await readFile(
+      new URL(`../dist/client${resourcePath}`, import.meta.url),
+      "utf8",
+    );
+    assert.ok(builtResource.length > 200, `empty download resource: ${resourcePath}`);
+
+    const response = await render(resourcePath);
+    assert.ok([200, 308].includes(response.status), `${resourcePath}: ${response.status}`);
+    if (response.status === 200) {
+      assert.match(response.headers.get("content-type") ?? "", /^text\/markdown\b/i, resourcePath);
+    } else {
+      assert.equal(response.headers.get("location"), `${resourcePath}/`, resourcePath);
+    }
+  }
+
+  for (const url of htmlUrls) {
     const pagePath = new URL(url).pathname;
     const response = await render(pagePath);
     assert.equal(response.status, 200, pagePath);
@@ -751,13 +785,6 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
     "/feed.xml/",
     "/llms.txt/",
     "/geo-test-method.md",
-    "/enterprise-ai-case-evidence-template.md",
-    "/enterprise-ai-service-buyer-checklist.md",
-    "/enterprise-generative-ai-use-policy-template.md",
-    "/enterprise-ai-discovery-brief-template.md",
-    "/enterprise-ai-event-recap-evidence-template.md",
-    "/enterprise-ai-project-roles-raci-template.md",
-    "/project-status-ai-workflow-template.md",
   ]);
   const unexpectedInternalPaths = [...internalPaths].filter(
     (pagePath) =>

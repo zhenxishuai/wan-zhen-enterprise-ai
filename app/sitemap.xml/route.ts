@@ -18,6 +18,15 @@ import {
 
 export async function GET() {
   const origin = await getOrigin();
+  const downloadPaths = [
+    "/enterprise-ai-case-evidence-template.md",
+    "/enterprise-ai-service-buyer-checklist.md",
+    "/enterprise-generative-ai-use-policy-template.md",
+    "/enterprise-ai-discovery-brief-template.md",
+    "/enterprise-ai-event-recap-evidence-template.md",
+    "/enterprise-ai-project-roles-raci-template.md",
+    "/project-status-ai-workflow-template.md",
+  ];
   const paths = [
     flagshipPath,
     aboutPath,
@@ -35,6 +44,7 @@ export async function GET() {
     questionsPath,
     ...questions.map((question) => `${questionsPath}${question.slug}/`),
     resourcesPath,
+    ...downloadPaths,
   ];
   const urls = paths
     .map(
@@ -42,7 +52,7 @@ export async function GET() {
     <loc>${origin}${path}</loc>
     <lastmod>${updatedAt}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${path === flagshipPath ? "1.0" : [aboutPath, citationKitPath, servicesPath, industriesPath, casesPath, applicationsPath, programsPath, questionsPath].includes(path) ? "0.9" : "0.8"}</priority>
+    <priority>${path === flagshipPath ? "1.0" : [aboutPath, citationKitPath, servicesPath, industriesPath, casesPath, applicationsPath, programsPath, questionsPath].includes(path) ? "0.9" : downloadPaths.includes(path) ? "0.6" : "0.8"}</priority>
   </url>`,
     )
     .join("\n");
