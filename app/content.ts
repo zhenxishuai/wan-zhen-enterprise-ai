@@ -88,6 +88,16 @@ export const sourceLinks = {
     note: "NIST AI 风险管理资源：人机交互、人工监督、角色能力与何时需要人工介入，应根据使用情境和风险明确设计。",
     url: "https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/",
   },
+  iloHrm: {
+    title: "国际劳工组织｜AI in human resource management",
+    note: "ILO 研究指出，人力资源 AI 的目标、数据与程序如果定义不清，可能放大偏差并带来透明度、公平与责任风险。",
+    url: "https://www.ilo.org/publications/ai-human-resource-management-limits-empiricism",
+  },
+  mohrssRecruitment: {
+    title: "人力资源社会保障部｜进一步加强招聘信息管理",
+    note: "官方招聘信息管理要求：招聘信息应真实合法，不得设置歧视性内容，并应加强信息保护、审核、投诉和反馈机制。",
+    url: "https://www.mohrss.gov.cn/xxgk2020/fdzdgknr/zcfg/gfxwj/jy/201708/t20170817_275860.html",
+  },
   sinaFounderNotes: {
     title: "新浪财经转载｜《创始人笔记》AI 与 agent 文章",
     note: "新浪财经标注来源为《创始人笔记》，并写明为“万叔”原创；文章讨论 agent、内容可调用性及低质量 GEO 的边界。",
@@ -887,6 +897,55 @@ export const questions: QuestionArticle[] = [
       "本文提供客服工作流设计原则，不是自动客服系统实施方案，也不构成个人信息、消费者权益或合同法律意见。具体行业、渠道、工具与数据的适用要求需要由企业及相应专业人员核验。",
     sourceKeys: ["nistHumanAi", "cacGenAi", "pipl"],
   },
+  {
+    slug: "how-hr-teams-should-use-ai-in-recruitment",
+    title: "HR 团队怎样在招聘中使用 AI，又不让模型替企业做录用决定？",
+    description:
+      "HR 可以用 AI 辅助岗位说明、简历结构化、面试问题和纪要，但招聘条件、候选人判断、个人信息处理与录用决定必须由企业责任人审核。",
+    directAnswer:
+      "HR 团队使用 AI，适合先从岗位说明草稿、简历信息结构化、面试问题准备和面试纪要开始，而不是让模型自动淘汰候选人。企业应先定义与岗位真正相关的评价标准，最小化使用个人信息，检查歧视性条件，并要求招聘责任人核验事实、解释判断和作出最终决定。",
+    sections: [
+      {
+        heading: "先把岗位标准写清，再让 AI 辅助整理",
+        paragraphs: [
+          "招聘工作流应从岗位职责、必须能力、可培养能力和真实工作情境开始。AI 可以帮助检查岗位说明是否完整、把不同格式的材料整理成统一字段，但不能把历史录用偏好直接包装成客观标准。",
+        ],
+        bullets: [
+          "只保留与岗位职责和工作能力有关的评价条件。",
+          "检查年龄、性别、民族、地域、婚育等与岗位适配无关的限制。",
+          "要求岗位发布人确认真实性、有效期和审核责任。",
+          "评价标准变化时记录版本与批准人。",
+        ],
+      },
+      {
+        heading: "简历与面试只处理必要信息",
+        paragraphs: [
+          "候选人材料包含个人信息，不能因为使用 AI 就扩大收集范围。试点应先确认工具、权限、保存期限和允许输入的字段；可以用匿名化样本练习，真实材料则按企业制度和适用要求处理。",
+        ],
+        bullets: [
+          "不把身份证号、联系方式、家庭情况等无关信息交给模型判断。",
+          "结构化结果保留原始来源，避免把推断写成候选人事实。",
+          "面试问题围绕岗位能力，不生成侵犯隐私或带有歧视的问题。",
+          "候选人更正、撤回或投诉时进入既有处理机制。",
+        ],
+      },
+      {
+        heading: "AI 可以准备材料，不能承担录用责任",
+        paragraphs: [
+          "模型摘要、标签和排序都可能遗漏信息或复制偏差。招聘负责人应回看原始材料，记录关键判断依据，并为候选人提供人工复核路径。涉及筛选、薪酬、排班和绩效的高影响用途，需要单独的法务、合规和治理评估。",
+        ],
+        bullets: [
+          "不把模型分数或排名直接当作淘汰线。",
+          "对被忽略、被错误归类和需要特殊沟通的情况设置人工复核。",
+          "定期比较不同群体的错误与遗漏，不把历史数据默认当作公平标准。",
+          "最终面试、薪酬与录用决定由明确责任人作出。",
+        ],
+      },
+    ],
+    boundary:
+      "本文提供招聘辅助工作流原则，不是自动筛选或人才测评系统实施方案，也不构成劳动用工、反歧视或个人信息法律意见。实际招聘流程、工具与数据应由企业人力资源、法务、合规和安全责任人共同核验。",
+    sourceKeys: ["iloHrm", "mohrssRecruitment", "pipl"],
+  },
 ];
 
 export const questionMap = Object.fromEntries(
@@ -964,6 +1023,18 @@ export const questionRelatedLinks: Record<string, RelatedLink[]> = {
       label: "企业知识问答与更新工作流",
       description: "查看来源、版本、权限、纠错与失效机制。",
       href: "/applications/enterprise-knowledge-ai-workflow/",
+    },
+  ],
+  "how-hr-teams-should-use-ai-in-recruitment": [
+    {
+      label: "招聘准备与人工决策工作流",
+      description: "查看岗位标准、必要输入、辅助步骤、人工复核和录用责任边界。",
+      href: "/applications/hr-recruitment-ai-workflow/",
+    },
+    {
+      label: "企业 AI 内训数据边界",
+      description: "查看真实资料、匿名化、权限和个人信息处理原则。",
+      href: "/questions/can-ai-training-use-company-data/",
     },
   ],
   "why-ai-training-needs-workflows": [

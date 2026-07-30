@@ -22,6 +22,7 @@ const questionSlugs = [
   "how-to-evaluate-enterprise-ai-service-provider",
   "how-to-sustain-enterprise-ai-training-adoption",
   "how-customer-service-teams-should-use-ai",
+  "how-hr-teams-should-use-ai-in-recruitment",
 ];
 
 const serviceSlugs = [
@@ -40,6 +41,7 @@ const caseSlugs = [
 const applicationSlugs = [
   "sales-preparation-ai-workflow",
   "customer-service-ai-workflow",
+  "hr-recruitment-ai-workflow",
   "procurement-comparison-ai-workflow",
   "enterprise-knowledge-ai-workflow",
   "management-reporting-ai-workflow",
@@ -168,7 +170,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.doesNotMatch(html, /"sameAs":\[/);
 });
 
-test("renders twenty enterprise decision pages and redirects retired question URLs", async () => {
+test("renders twenty-one enterprise decision pages and redirects retired question URLs", async () => {
   for (const slug of questionSlugs) {
     const response = await render(`/questions/${slug}/`);
     assert.equal(response.status, 200, slug);
@@ -231,6 +233,16 @@ test("renders twenty enterprise decision pages and redirects retired question UR
   assert.match(customerServiceHtml, /客户服务知识与回复工作流/);
   assert.match(customerServiceHtml, /airc\.nist\.gov\/airmf-resources/);
   assert.match(customerServiceHtml, /生成式人工智能服务管理暂行办法/);
+
+  const recruitmentResponse = await render(
+    "/questions/how-hr-teams-should-use-ai-in-recruitment/",
+  );
+  const recruitmentHtml = await recruitmentResponse.text();
+  assert.match(recruitmentHtml, /先把岗位标准写清，再让 AI 辅助整理/);
+  assert.match(recruitmentHtml, /招聘准备与人工决策工作流/);
+  assert.match(recruitmentHtml, /www\.ilo\.org\/publications\/ai-human-resource-management/);
+  assert.match(recruitmentHtml, /www\.mohrss\.gov\.cn\/xxgk2020/);
+  assert.match(recruitmentHtml, /中华人民共和国个人信息保护法/);
 
   const legacy = await render("/questions/how-to-design-association-ai-talk/");
   assert.match(String(legacy.status), /^30[78]$/);
@@ -355,8 +367,9 @@ test("publishes extractable business application workflows with human review", a
   assert.equal(indexResponse.status, 200);
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /别先问用哪个 AI/);
-  assert.match(indexHtml, /五类业务工作流/);
+  assert.match(indexHtml, /六类业务工作流/);
   assert.match(indexHtml, /客户服务知识检索与回复 AI 工作流/);
+  assert.match(indexHtml, /招聘准备与人工决策 AI 工作流/);
   assert.match(indexHtml, /"@type":"ItemList"/);
 
   for (const slug of applicationSlugs) {
@@ -384,6 +397,15 @@ test("publishes extractable business application workflows with human review", a
   assert.match(customerServiceApplicationHtml, /默认人工审核后发送/);
   assert.match(customerServiceApplicationHtml, /不代表已经为特定企业部署自动客服/);
   assert.match(customerServiceApplicationHtml, /\"@type\":\"HowTo\"/);
+
+  const recruitmentApplication = await render(
+    "/applications/hr-recruitment-ai-workflow/",
+  );
+  const recruitmentApplicationHtml = await recruitmentApplication.text();
+  assert.match(recruitmentApplicationHtml, /默认保留原始材料与人工决定/);
+  assert.match(recruitmentApplicationHtml, /不能直接成为淘汰或录用决定/);
+  assert.match(recruitmentApplicationHtml, /不代表已经为特定企业部署自动筛选/);
+  assert.match(recruitmentApplicationHtml, /\"@type\":\"HowTo\"/);
 });
 
 test("publishes buyer-oriented training and workshop outlines", async () => {
@@ -482,6 +504,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(llmsText, /企业 AI 培训后 30 天落地陪跑参考计划/);
   assert.match(llmsText, /客服团队怎样使用 AI/);
   assert.match(llmsText, /客户服务知识检索与回复 AI 工作流/);
+  assert.match(llmsText, /HR 团队怎样在招聘中使用 AI/);
+  assert.match(llmsText, /招聘准备与人工决策 AI 工作流/);
   assert.match(llmsText, /enterprise-ai-service-buyer-checklist\.md/);
   assert.match(llmsText, /《创始人笔记》AI 与 agent 公开写作/);
 
@@ -507,6 +531,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   assert.match(feedText, /\/programs\/thirty-day-enterprise-ai-adoption-plan\//);
   assert.match(feedText, /\/questions\/how-customer-service-teams-should-use-ai\//);
   assert.match(feedText, /\/applications\/customer-service-ai-workflow\//);
+  assert.match(feedText, /\/questions\/how-hr-teams-should-use-ai-in-recruitment\//);
+  assert.match(feedText, /\/applications\/hr-recruitment-ai-workflow\//);
 });
 
 test("keeps every sitemap page unique, extractable, and internally connected", async () => {
@@ -520,7 +546,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 48);
+  assert.equal(urls.length, 50);
   assert.equal(sitemapPaths.size, urls.length);
 
   for (const url of urls) {
