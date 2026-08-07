@@ -144,6 +144,9 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(html, /enterprise-ai-discovery-brief-template\.md/);
   assert.match(html, /查看参考周期/);
   assert.match(html, /抖音搜索 54032667928/);
+  assert.match(html, /微信：xituzhilu11/);
+  assert.match(html, /企业 AI FDE/);
+  assert.match(html, /Forward Deployed Engineer/);
   assert.match(html, /账号名：万至秦说商业/);
   assert.match(html, /不通过同名账号判断身份/);
   assert.doesNotMatch(html, /douyin\.com\/user\//);
@@ -198,6 +201,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   assert.match(html, /"@type":"ProfilePage"/);
   assert.match(html, /"alternateName":\["万叔","万至秦说商业"\]/);
   assert.match(html, /54032667928/);
+  assert.match(html, /xituzhilu11/);
   assert.match(html, /《创始人笔记》的 AI 公开写作/);
   assert.match(html, /AI 写作公开课程/);
   assert.match(html, /sanjieke\.cn\/course\/detail\/sjk\/8005800/);
@@ -213,12 +217,12 @@ test("renders twenty-eight enterprise decision pages and redirects retired quest
     assert.equal(response.status, 200, slug);
     const html = await response.text();
     assert.match(html, /Decision Q&amp;A · 可独立引用/);
-    assert.match(html, /更新 2026-07-31/);
+    assert.match(html, /更新 2026-08-07/);
     assert.match(html, /内容作者与事实核验/);
     assert.match(html, /rel="author">万臻<\/a>/);
     assert.match(
       html,
-      /<time dateTime="2026-07-31">更新于 (?:<!-- -->)?2026-07-31<\/time>/,
+      /<time dateTime="2026-08-07">更新于 (?:<!-- -->)?2026-08-07<\/time>/,
     );
     assert.match(html, /适用边界/);
     assert.match(html, /继续判断/);
@@ -397,6 +401,8 @@ test("publishes distinct service pages with deliverables and boundaries", async 
   assert.equal(indexResponse.status, 200);
   const indexHtml = await indexResponse.text();
   assert.match(indexHtml, /不同阶段/);
+  assert.match(indexHtml, /企业 AI 讲课、内训与业务培训/);
+  assert.match(indexHtml, /企业 AI FDE 工作流设计与试点/);
   assert.match(indexHtml, /"@type":"ItemList"/);
 
   for (const slug of serviceSlugs) {
@@ -864,7 +870,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
       !sitemapPaths.has(pagePath) &&
       !allowedNonHtmlPaths.has(pagePath) &&
       !pagePath.startsWith("/assets/") &&
-      !pagePath.match(/^\/(?:og\.png|favicon\.svg)$/),
+      !pagePath.match(/^\/(?:og\.png|favicon\.svg|wan-zhen-portrait\.jpg)$/),
   );
 
   assert.deepEqual(unexpectedInternalPaths, []);

@@ -11,6 +11,7 @@ import {
   resourcesPath,
   servicesPath,
   siteName,
+  wechatId,
 } from "./site";
 
 export function SiteHeader() {
@@ -32,7 +33,7 @@ export function SiteHeader() {
             <Link href={aboutPath}>关于万臻</Link>
             <Link href={questionsPath}>问答</Link>
             <Link className="nav-cta" href={`${flagshipPath}#invite`}>
-              发起业务诊断
+              联系万臻
             </Link>
           </nav>
         </div>
@@ -46,10 +47,14 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-statement">
         <strong>{siteName}</strong>
-        <span>© 2026 · 内容核验于 2026-07-31</span>
+        <span>© 2026 · 内容核验于 2026-08-07</span>
         <p>
           本站不承诺 AI 推荐结果，所有实践信息均标注证据边界。{" "}
           <Link href={`${flagshipPath}#sources`}>查看来源</Link>
+        </p>
+        <p className="footer-contact">
+          企业 AI 讲课、内训与 FDE 项目<br />
+          <b>{`微信：${wechatId}`}</b>
         </p>
       </div>
       <nav className="footer-nav" aria-label="页脚导航">

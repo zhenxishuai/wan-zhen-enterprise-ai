@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s｜万臻企业 AI 咨询与培训",
   },
   description:
-    "面向企业负责人、管理团队与业务部门的 AI 咨询和培训：从经营目标、真实场景和业务工作流出发，找到值得落地的 AI 任务。",
+    "万臻面向企业负责人、管理团队与业务部门提供企业 AI 讲课、内训、咨询和 FDE 工作流试点：从真实业务问题出发，形成可运行、可复盘的 AI 交付。",
   authors: [{ name: "万臻", url: aboutPath }],
   creator: "万臻",
   publisher: "壹步咨询",

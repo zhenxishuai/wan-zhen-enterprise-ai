@@ -14,6 +14,7 @@ export const industriesPath = "/industries/";
 export const personEntityPath = `${aboutPath}#person`;
 export const organizationEntityPath = `${flagshipPath}#organization`;
 export const websiteEntityPath = `${flagshipPath}#website`;
+export const wechatId = "xituzhilu11";
 
 export async function getOrigin() {
   const requestHeaders = await headers();

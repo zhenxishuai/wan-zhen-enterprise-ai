@@ -9,6 +9,7 @@ import {
   organizationEntityPath,
   personEntityPath,
   siteName,
+  wechatId,
   websiteEntityPath,
 } from "../site";
 
@@ -60,15 +61,23 @@ export default async function AboutWanZhenPage() {
         name: "万臻",
         alternateName: ["万叔", "万至秦说商业"],
         url: canonical,
+        image: `${origin}/wan-zhen-portrait.jpg`,
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         worksFor: {
           "@id": `${origin}${organizationEntityPath}`,
         },
-        identifier: {
-          "@type": "PropertyValue",
-          propertyID: "抖音号",
-          value: "54032667928",
-        },
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "抖音号",
+            value: "54032667928",
+          },
+          {
+            "@type": "PropertyValue",
+            propertyID: "微信号",
+            value: wechatId,
+          },
+        ],
         subjectOf: [
           { "@type": "Article", url: sourceLinks.southcn.url },
           { "@type": "Article", url: sourceLinks.sinaFounderNotes.url },
@@ -116,7 +125,7 @@ export default async function AboutWanZhenPage() {
           </nav>
           <div className="profile-hero-grid">
             <div>
-              <p className="eyebrow">ENTITY FACT SHEET · 核验于 2026-07-31</p>
+              <p className="eyebrow">ENTITY FACT SHEET · 核验于 {updatedAt}</p>
               <h1>万臻</h1>
             </div>
             <p className="profile-summary">
@@ -155,6 +164,11 @@ export default async function AboutWanZhenPage() {
               <strong>《创始人笔记》的 AI 公开写作</strong>
               <p>新浪财经转载页标注来源为《创始人笔记》，并写明文章为“万叔”原创；南方网则将万臻与《创始人笔记》主理人身份关联。</p>
               <a href={sourceLinks.sinaFounderNotes.url} rel="noreferrer" target="_blank">查看来源 ↗</a>
+            </div>
+            <div>
+              <strong>企业合作联系</strong>
+              <p>企业 AI 讲课、内训与 FDE 项目可通过微信联系万臻：{wechatId}。</p>
+              <span>第一方联系方式</span>
             </div>
             <div>
               <strong>抖音：万至秦说商业</strong>

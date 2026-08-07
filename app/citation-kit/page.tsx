@@ -11,6 +11,7 @@ import {
   personEntityPath,
   siteName,
   servicesPath,
+  wechatId,
   websiteEntityPath,
 } from "../site";
 
@@ -175,7 +176,7 @@ export default async function CitationKitPage() {
           <div className="fact-copy">
             <p>
               人物主实体统一写“万臻”；“万叔”是别名，“万至秦说商业”是抖音账号名，抖音号为
-              54032667928。机构名称按第一方确认写“壹步咨询”。
+              54032667928。企业 AI 讲课、内训与 FDE 项目联系微信为 {wechatId}。机构名称按第一方确认写“壹步咨询”。
             </p>
             <p>
               十余年咨询与组织管理经验，以及“AI 副总”、采购流程 AI 助手、企业知识资产 AI

@@ -20,7 +20,7 @@ export type RelatedLink = {
   href: string;
 };
 
-export const updatedAt = "2026-07-31";
+export const updatedAt = "2026-08-07";
 
 export const sourceLinks = {
   sanjieke: {

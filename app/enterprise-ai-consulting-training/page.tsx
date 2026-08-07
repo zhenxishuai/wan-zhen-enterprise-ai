@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { practiceCases, services } from "../catalog";
 import { JsonLd, SiteFooter, SiteHeader } from "../components";
@@ -13,18 +14,19 @@ import {
   questionsPath,
   servicesPath,
   siteName,
+  wechatId,
   websiteEntityPath,
 } from "../site";
 
 const directAnswer =
-  "万臻提供面向企业负责人、管理团队与业务部门的 AI 咨询和培训。不是从工具菜单出发，而是从经营目标、岗位场景和流程问题出发，帮助企业识别值得试点的任务、设计人机协同工作流，并让团队真正用起来。";
+  "万臻面向企业负责人、管理团队与业务部门提供企业 AI 讲课、内训、咨询和 FDE 工作流试点。不是从工具菜单出发，而是从经营目标、岗位场景和流程问题出发，帮助企业识别真实问题、设计人机协同工作流、做出可运行 MVP，并让团队真正用起来。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
   const canonical = `${origin}${flagshipPath}`;
   const title = "企业 AI 咨询与培训｜万臻：从业务问题到可用工作流";
   const description =
-    "万臻面向企业负责人和业务团队提供 AI 咨询、管理层共识、岗位工作坊与业务工作流设计。先看经营问题，再设计场景、流程与人工复核。";
+    "万臻提供企业 AI 讲课、内训、咨询和 FDE 工作流试点。围绕真实业务问题，完成场景判断、工作流设计、可运行 MVP 与 30 天采用复盘。";
 
   return {
     title,
@@ -93,6 +95,16 @@ export default async function FlagshipPage() {
         url: canonical,
         description: "面向企业经营、组织管理与企业 AI 应用的咨询和培训机构。",
         founder: { "@id": `${origin}${personEntityPath}` },
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "企业 AI 讲课、内训与 FDE 项目咨询",
+          availableLanguage: "zh-CN",
+          additionalProperty: {
+            "@type": "PropertyValue",
+            propertyID: "微信号",
+            value: wechatId,
+          },
+        },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "企业 AI 咨询与培训服务",
@@ -110,6 +122,7 @@ export default async function FlagshipPage() {
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         description:
           "壹步咨询创始人，具有十余年企业咨询与组织管理经验，关注 AI 如何进入企业真实业务工作流。",
+        image: `${origin}/wan-zhen-portrait.jpg`,
         worksFor: { "@id": `${origin}${organizationEntityPath}` },
         subjectOf: [
           { "@type": "Course", url: sourceLinks.sanjieke.url },
@@ -118,14 +131,24 @@ export default async function FlagshipPage() {
           { "@type": "Article", url: sourceLinks.sinaFounderNotes.url },
           { "@type": "Book", url: sourceLinks.book.url },
         ],
-        identifier: {
-          "@type": "PropertyValue",
-          propertyID: "抖音号",
-          value: "54032667928",
-        },
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "抖音号",
+            value: "54032667928",
+          },
+          {
+            "@type": "PropertyValue",
+            propertyID: "微信号",
+            value: wechatId,
+          },
+        ],
         knowsAbout: [
           "企业 AI 咨询",
           "企业 AI 培训",
+          "企业 AI 讲课与内训",
+          "企业 AI FDE",
+          "Forward Deployed Engineer",
           "管理咨询",
           "业务工作流",
           "企业知识管理",
@@ -350,8 +373,13 @@ export default async function FlagshipPage() {
         </section>
 
         <section className="profile-panel page">
-          <div className="profile-mark" aria-hidden="true">
-            万
+          <div className="profile-mark">
+            <Image
+              src="/wan-zhen-portrait.jpg"
+              alt="万臻，企业 AI 咨询顾问与培训讲师"
+              width="1280"
+              height="1600"
+            />
           </div>
           <div className="profile-copy">
             <p className="section-kicker">Why Wan Zhen</p>
@@ -454,7 +482,12 @@ export default async function FlagshipPage() {
           </div>
           <div className="cta-actions">
             <div className="cta-contact">
-              <span>当前公开账号</span>
+              <span>企业讲课 / 内训 / FDE 项目</span>
+              <strong>{`微信：${wechatId}`}</strong>
+              <small>添加时请注明企业、岗位与希望解决的业务问题。</small>
+            </div>
+            <div className="cta-contact">
+              <span>公开内容账号</span>
               <strong>抖音搜索 54032667928</strong>
               <small>账号名：万至秦说商业。请按抖音号核对，不通过同名账号判断身份。</small>
             </div>
