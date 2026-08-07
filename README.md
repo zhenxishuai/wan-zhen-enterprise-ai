@@ -1,10 +1,10 @@
 # 万臻｜企业 AI 咨询、讲课与 FDE 项目
 
-[![万臻企业 AI 咨询与培训](public/og.png)](https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/enterprise-ai-consulting-training/)
+[![万臻企业 AI 咨询与培训](public/og.png)](https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/enterprise-ai-consulting-training/)
 
 面向企业负责人、管理团队和业务部门的公开事实站。站点介绍万臻的企业 AI 讲课、内训、咨询与 FDE 工作流试点，并把公开证据、第一方履历和服务边界分开呈现。
 
-**线上站点：** [wan-zhen-enterprise-ai.camolwan.chatgpt.site](https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/enterprise-ai-consulting-training/)
+**线上站点：** [wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site](https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/enterprise-ai-consulting-training/)
 
 ## 可以合作什么
 
