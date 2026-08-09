@@ -1849,13 +1849,31 @@ a:focus-visible {
   background: var(--ink);
 }
 
-.brain-console iframe {
-  width: 100%;
-  height: min(820px, calc(100dvh - 110px));
-  min-height: 620px;
-  display: block;
-  border: 0;
+.brain-launch {
+  min-height: 420px;
+  display: grid;
+  place-content: center;
+  justify-items: start;
+  gap: 18px;
+  padding: clamp(42px, 8vw, 96px);
   background: var(--white);
+}
+
+.brain-launch h2,
+.brain-launch p {
+  max-width: 720px;
+  margin: 0;
+}
+
+.brain-launch h2 {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.08;
+}
+
+.brain-launch p:not(.section-kicker) {
+  color: var(--ink-soft);
+  line-height: 1.8;
 }
 
 .framework-grid {
@@ -2559,8 +2577,9 @@ a:focus-visible {
     padding: 6px;
   }
 
-  .brain-console iframe {
-    min-height: 680px;
+  .brain-launch {
+    min-height: 360px;
+    padding: 42px 22px;
   }
 
   .catalog-row,

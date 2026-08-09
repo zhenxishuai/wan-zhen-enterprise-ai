@@ -122,7 +122,7 @@ test("protects the second-brain workspace and renders it for a signed-in user", 
   const html = await signedIn.text();
   assert.match(html, /万叔第二大脑/);
   assert.match(html, /当前用户：<!-- -->owner@example\.com/);
-  assert.match(html, /src="https:\/\/pro\.tail487e3a\.ts\.net\/"/);
+  assert.match(html, /href="http:\/\/pro\.tail487e3a\.ts\.net:8765\/"/);
   assert.match(html, /name="robots" content="noindex, nofollow"/);
 });
 

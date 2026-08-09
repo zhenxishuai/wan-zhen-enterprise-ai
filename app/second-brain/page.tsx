@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const remoteUrl = "https://pro.tail487e3a.ts.net/";
+const remoteUrl = "http://pro.tail487e3a.ts.net:8765/";
 
 export default async function SecondBrainPage() {
   const user = await requireChatGPTUser(secondBrainPath);
@@ -43,18 +43,23 @@ export default async function SecondBrainPage() {
           </div>
         </section>
 
-        <section className="brain-console" aria-label="第二大脑工作台">
-          <iframe
-            allow="clipboard-write"
-            src={remoteUrl}
-            title="万叔第二大脑内容工作台"
-          />
-          <noscript>
+        <section className="brain-console" aria-label="第二大脑工作台入口">
+          <div className="brain-launch">
+            <p className="section-kicker">TAILNET ONLY · 已启动</p>
+            <h2>从这台设备打开私有工作台</h2>
             <p>
-              浏览器未启用 JavaScript，请
-              <a href={remoteUrl}>单独打开第二大脑</a>。
+              先确认设备已连接万叔自己的 Tailscale，再打开第二大脑。文章库仍留在
+              Mac 上，不复制到公开站点。
             </p>
-          </noscript>
+            <a
+              className="button-primary"
+              href={remoteUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              打开第二大脑 ↗
+            </a>
+          </div>
         </section>
       </main>
       <SiteFooter />
