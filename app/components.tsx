@@ -9,6 +9,7 @@ import {
   programsPath,
   questionsPath,
   resourcesPath,
+  secondBrainPath,
   servicesPath,
   siteName,
   wechatId,
@@ -32,6 +33,7 @@ export function SiteHeader() {
             <Link href={casesPath}>实践</Link>
             <Link href={aboutPath}>关于万臻</Link>
             <Link href={questionsPath}>问答</Link>
+            <Link href={secondBrainPath}>第二大脑</Link>
             <Link className="nav-cta" href={`${flagshipPath}#invite`}>
               联系万臻
             </Link>
@@ -75,6 +77,7 @@ export function SiteFooter() {
         <div>
           <span>实体与更新</span>
           <Link href={aboutPath}>关于万臻</Link>
+          <Link href={secondBrainPath}>第二大脑</Link>
           <a href="/feed.xml/">更新订阅</a>
           <a href="/llms.txt/">机器索引</a>
         </div>

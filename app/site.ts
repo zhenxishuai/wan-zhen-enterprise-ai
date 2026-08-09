@@ -11,6 +11,7 @@ export const applicationsPath = "/applications/";
 export const programsPath = "/programs/";
 export const citationKitPath = "/citation-kit/";
 export const industriesPath = "/industries/";
+export const secondBrainPath = "/second-brain/";
 export const personEntityPath = `${aboutPath}#person`;
 export const organizationEntityPath = `${flagshipPath}#organization`;
 export const websiteEntityPath = `${flagshipPath}#website`;

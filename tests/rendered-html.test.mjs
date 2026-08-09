@@ -81,7 +81,7 @@ const downloadResourcePaths = [
   "/enterprise-ai-consulting-diagnostic-questions.md",
 ];
 
-async function render(requestPath) {
+async function render(requestPath, requestHeaders = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${requestPath}`);
   const { default: worker } = await import(workerUrl.href);
@@ -92,6 +92,7 @@ async function render(requestPath) {
         accept: "text/html",
         "x-forwarded-host": "example.com",
         "x-forwarded-proto": "https",
+        ...requestHeaders,
       },
     }),
     {
@@ -105,6 +106,25 @@ async function render(requestPath) {
     },
   );
 }
+
+test("protects the second-brain workspace and renders it for a signed-in user", async () => {
+  const anonymous = await render("/second-brain/");
+  assert.match(String(anonymous.status), /^30[78]$/);
+  assert.equal(
+    anonymous.headers.get("location"),
+    "https://example.com/signin-with-chatgpt?return_to=%2Fsecond-brain%2F",
+  );
+
+  const signedIn = await render("/second-brain/", {
+    "oai-authenticated-user-email": "owner@example.com",
+  });
+  assert.equal(signedIn.status, 200);
+  const html = await signedIn.text();
+  assert.match(html, /万叔第二大脑/);
+  assert.match(html, /当前用户：<!-- -->owner@example\.com/);
+  assert.match(html, /src="https:\/\/pro\.tail487e3a\.ts\.net\/"/);
+  assert.match(html, /name="robots" content="noindex, nofollow"/);
+});
 
 function extractJsonLd(html) {
   return [...html.matchAll(/<script type="application\/ld\+json">([^<]+)<\/script>/g)]
@@ -861,6 +881,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
 
   const allowedNonHtmlPaths = new Set([
     "/",
+    "/second-brain/",
     "/feed.xml/",
     "/llms.txt/",
     "/geo-test-method.md",

@@ -1809,6 +1809,55 @@ a:focus-visible {
   margin-top: 34px;
 }
 
+/* Private second-brain workspace */
+
+.brain-hero {
+  padding-bottom: 42px;
+}
+
+.brain-hero h1 {
+  margin-bottom: 24px;
+}
+
+.brain-session {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  align-items: center;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.brain-session a {
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.brain-session a:hover,
+.brain-session a:focus-visible {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.brain-console {
+  padding: 14px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+  background: var(--ink);
+}
+
+.brain-console iframe {
+  width: 100%;
+  height: min(820px, calc(100dvh - 110px));
+  min-height: 620px;
+  display: block;
+  border: 0;
+  background: var(--white);
+}
+
 .framework-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2504,6 +2553,14 @@ a:focus-visible {
   .case-hero h1,
   .resource-hero h1 {
     font-size: 46px;
+  }
+
+  .brain-console {
+    padding: 6px;
+  }
+
+  .brain-console iframe {
+    min-height: 680px;
   }
 
   .catalog-row,
