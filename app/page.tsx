@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "./components";
 import { aboutPath, fdeCourseApplicationUrl, flagshipPath, getOrigin } from "./site";
@@ -115,12 +114,12 @@ export default async function Home() {
           </div>
 
           <figure className={styles.portrait}>
-            <Image
+            {/* The static hero image bypasses the worker image optimizer so the page also works in preview deployments. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className={styles.portraitImage}
               src="/wan-zhen-portrait.jpg"
               alt="万臻"
-              fill
-              priority
-              sizes="(max-width: 820px) 100vw, 43vw"
             />
             <div className={styles.photoGrid} aria-hidden="true" />
             <figcaption>
