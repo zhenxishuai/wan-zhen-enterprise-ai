@@ -135,16 +135,18 @@ test("server-renders the dual-entry personal brand homepage and keeps the legacy
   const home = await render("/");
   assert.equal(home.status, 200);
   const homeHtml = await home.text();
-  assert.match(homeHtml, /把咨询经验/);
-  assert.match(homeHtml, /做成可运行的交付/);
+  assert.match(homeHtml, /别把判断/);
+  assert.match(homeHtml, /停在一份报告里/);
   assert.match(homeHtml, /FDE 顾问课程/);
   assert.match(homeHtml, /企业 AI 服务/);
   assert.match(homeHtml, /href="\/fde-consultant-course\/"/);
   assert.match(homeHtml, /href="\/enterprise-ai-consulting-training\/"/);
   assert.match(homeHtml, /href="\/start\/"/);
+  assert.match(homeHtml, /href="https:\/\/fresophy\.feishu\.cn\/share\/base\/shrcnfGAskXHH9CFcaS66DfSaZ8"/);
   assert.match(homeHtml, /rel="canonical" href="https:\/\/example\.com\/"/);
   assert.match(homeHtml, /"@type":"WebSite"/);
-  assert.match(homeHtml, /不会自动判定资格、自动报价或替你作出项目承诺/);
+  assert.match(homeHtml, /课程申请与企业服务使用不同入口/);
+  assert.match(homeHtml, /不会自动判定谁合格/);
   assert.doesNotMatch(homeHtml, /约\s*100\s*人|5[—-]6\s*人/);
 
   const legacy = await render("/wan-zhen-enterprise-ai-training/");
