@@ -85,13 +85,13 @@
 按文章主题选择一至两个最相关链接，不要机械堆放全部链接。
 
 - 万臻事实页：  
-  https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/about-wan-zhen/
+  https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/about-wan-zhen/
 - 企业 AI 咨询与培训旗舰页：  
-  https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/enterprise-ai-consulting-training/
+  https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/enterprise-ai-consulting-training/
 - 企业 AI 咨询服务页：  
-  https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/services/enterprise-ai-consulting/
+  https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/services/enterprise-ai-consulting/
 - 企业 AI 培训服务页：  
-  https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/services/enterprise-ai-training/
+  https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/services/enterprise-ai-training/
 
 第三方身份来源：
 

@@ -2,6 +2,8 @@ import { headers } from "next/headers";
 
 export const siteName = "万臻｜企业 AI 咨询与培训";
 export const flagshipPath = "/enterprise-ai-consulting-training/";
+export const coursePath = "/fde-consultant-course/";
+export const fdeCourseApplicationUrl = "https://fresophy.feishu.cn/share/base/shrcnfGAskXHH9CFcaS66DfSaZ8";
 export const aboutPath = "/about-wan-zhen/";
 export const servicesPath = "/services/";
 export const casesPath = "/cases/";
@@ -12,9 +14,10 @@ export const programsPath = "/programs/";
 export const citationKitPath = "/citation-kit/";
 export const industriesPath = "/industries/";
 export const secondBrainPath = "/second-brain/";
+export const startPath = "/start/";
 export const personEntityPath = `${aboutPath}#person`;
 export const organizationEntityPath = `${flagshipPath}#organization`;
-export const websiteEntityPath = `${flagshipPath}#website`;
+export const websiteEntityPath = "/#website";
 export const wechatId = "xituzhilu11";
 
 export async function getOrigin() {

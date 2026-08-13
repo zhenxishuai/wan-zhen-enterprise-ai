@@ -1,0 +1,155 @@
+.shell {
+  min-height: 100dvh;
+  overflow: clip;
+  background: var(--paper);
+}
+
+.skip {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  transform: translateY(-160%);
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 13px;
+  transition: transform 180ms ease;
+}
+
+.skip:focus { transform: translateY(0); }
+
+.header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 clamp(20px, 4vw, 56px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(242, 240, 234, 0.92);
+  backdrop-filter: blur(18px);
+}
+
+.brand { display: flex; align-items: baseline; gap: 14px; }
+.brand strong { font-family: "Songti SC", "STSong", serif; font-size: 27px; letter-spacing: -0.08em; }
+.brand span, .kicker { color: var(--blue); font-family: "DIN Alternate", ui-monospace, monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; }
+.nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); font-size: 13px; font-weight: 650; }
+.nav a { padding-block: 8px; }
+.navCta { padding: 11px 16px !important; background: var(--ink); color: white; transition: background 180ms ease; }
+.navCta:hover, .navCta:focus-visible { background: var(--blue); }
+
+.hero {
+  width: min(1440px, 100%);
+  min-height: calc(100dvh - 74px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(360px, 0.75fr);
+  border-right: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.heroCopy { padding: clamp(64px, 7vw, 108px) clamp(24px, 5vw, 78px) 54px; }
+.hero h1 { max-width: 940px; margin: 24px 0 34px; font-size: clamp(56px, 7.6vw, 112px); font-weight: 650; line-height: 0.98; letter-spacing: -0.075em; text-wrap: balance; }
+.hero h1 em { display: block; color: var(--blue); font-family: "Songti SC", "STSong", serif; font-style: normal; font-weight: 600; }
+.lead { max-width: 720px; color: #343739; font-family: "Songti SC", "STSong", serif; font-size: clamp(19px, 1.75vw, 25px); line-height: 1.72; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 34px; }
+.primaryButton { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; padding: 0 22px; background: var(--ink); color: white; font-size: 13px; font-weight: 750; transition: background 180ms ease, transform 180ms ease; }
+.primaryButton:hover, .primaryButton:focus-visible { background: var(--blue); transform: translateY(-2px); }
+.primaryButton:active { transform: translateY(1px); }
+.textLink, .lightLink { border-bottom: 1px solid currentColor; padding-block: 7px; font-size: 13px; font-weight: 700; }
+.textLink:hover, .textLink:focus-visible { color: var(--blue); }
+
+.credentials { margin: clamp(56px, 7vw, 92px) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.credentials div { padding: 18px 18px 0 0; border-right: 1px solid var(--line); }
+.credentials div + div { padding-left: 18px; }
+.credentials dt { margin-bottom: 8px; color: var(--blue); font-family: ui-monospace, monospace; font-size: 10px; }
+.credentials dd { margin: 0; font-size: 13px; line-height: 1.5; }
+
+.portrait { position: relative; min-height: 680px; margin: 0; overflow: hidden; background: var(--ink); }
+.portrait img { object-fit: cover; object-position: center 30%; filter: saturate(0.78) contrast(1.04); }
+.portrait::after { position: absolute; inset: 0; border: 16px solid rgba(21, 23, 24, 0.08); content: ""; pointer-events: none; }
+.portrait figcaption { position: absolute; right: 0; bottom: 0; left: 0; z-index: 1; padding: 22px 26px; background: rgba(21, 23, 24, 0.9); color: white; }
+.portrait figcaption span { display: block; margin-bottom: 7px; color: #aeb9ff; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.14em; }
+.portrait figcaption strong { font-family: "Songti SC", "STSong", serif; font-size: 18px; }
+
+.statement, .choose, .boundary, .footer { width: min(1440px, 100%); margin-inline: auto; border: 1px solid var(--line-strong); border-top: 0; }
+.statement { display: grid; grid-template-columns: 170px 1fr; gap: 28px; padding: 72px clamp(24px, 5vw, 78px); }
+.statement > span, .chooseHead > span, .boundary span { color: var(--blue); font-family: ui-monospace, monospace; font-size: 11px; }
+.statement p { max-width: 1010px; margin: 0; font-family: "Songti SC", "STSong", serif; font-size: clamp(30px, 4.3vw, 58px); line-height: 1.3; letter-spacing: -0.045em; }
+.statement strong { color: var(--blue); font-weight: inherit; }
+
+.chooseHead { display: grid; grid-template-columns: 170px 1fr; gap: 28px; padding: 82px clamp(24px, 5vw, 78px) 52px; border-bottom: 1px solid var(--line); }
+.chooseHead h2, .boundary h2 { max-width: 880px; margin: 12px 0 0; font-family: "Songti SC", "STSong", serif; font-size: clamp(38px, 5vw, 68px); font-weight: 600; line-height: 1.16; letter-spacing: -0.055em; }
+
+.routeGrid { display: grid; grid-template-columns: 1fr 1fr; }
+.routeCard { min-height: 610px; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(32px, 4.3vw, 64px); background: var(--paper); }
+.routeCard + .routeCard { border-left: 1px solid var(--line); }
+.routeCard > div:first-child > span { color: var(--blue); font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.12em; }
+.routeCard h3 { max-width: 540px; margin: 72px 0 20px; font-family: "Songti SC", "STSong", serif; font-size: clamp(42px, 4.2vw, 66px); font-weight: 600; line-height: 1.1; letter-spacing: -0.06em; }
+.routeCard p { max-width: 560px; margin-bottom: 0; color: var(--ink-soft); font-family: "Songti SC", "STSong", serif; font-size: 18px; line-height: 1.78; }
+.routeCard ul { margin: 44px 0 30px; padding: 0; list-style: none; }
+.routeCard li { padding: 13px 0; border-top: 1px solid var(--line); font-size: 13px; line-height: 1.55; }
+.routeLink { display: inline-flex; align-items: center; justify-content: space-between; gap: 22px; min-height: 52px; padding: 0 18px; background: var(--ink); color: white; font-size: 13px; font-weight: 750; transition: background 180ms ease, transform 180ms ease; }
+.routeLink:hover, .routeLink:focus-visible { background: var(--blue); transform: translateY(-2px); }
+.routeLink:active { transform: translateY(1px); }
+.routeLink span { font-size: 18px; }
+.enterpriseCard { background: var(--ink); color: var(--white); }
+.enterpriseCard > div:first-child > span { color: #aeb9ff; }
+.enterpriseCard p { color: rgba(255,255,255,.72); }
+.enterpriseCard li { border-color: rgba(255,255,255,.18); color: rgba(255,255,255,.86); }
+.enterpriseCard .routeLink { background: var(--white); color: var(--ink); }
+.enterpriseCard .routeLink:hover, .enterpriseCard .routeLink:focus-visible { background: #dce1ff; color: var(--blue); }
+.routeActions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+.secondaryLink { border-bottom: 1px solid rgba(255,255,255,.72); color: white; padding-block: 7px; font-size: 13px; font-weight: 700; }
+.secondaryLink:hover, .secondaryLink:focus-visible { color: #dce1ff; }
+
+.boundary { display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; padding: 82px clamp(24px, 5vw, 78px); background: var(--blue); color: white; }
+.boundary span { color: #dce1ff; }
+.boundary h2 { max-width: 540px; }
+.boundary p { max-width: 590px; margin: 0 0 34px; color: rgba(255,255,255,.84); font-family: "Songti SC", "STSong", serif; font-size: 20px; line-height: 1.75; }
+.lightLink { color: white; }
+.lightLink:hover, .lightLink:focus-visible { color: #dce1ff; }
+
+.footer { display: grid; grid-template-columns: 1fr auto; gap: 36px; padding: 42px clamp(24px, 5vw, 78px); }
+.footer strong { font-family: "Songti SC", "STSong", serif; font-size: 19px; }
+.footer p { max-width: 520px; margin: 12px 0 0; color: var(--ink-soft); font-size: 12px; line-height: 1.7; }
+.footer nav { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; font-size: 12px; font-weight: 650; }
+.footer nav a:hover, .footer nav a:focus-visible { color: var(--blue); }
+
+@media (max-width: 980px) {
+  .nav a:not(.navCta) { display: none; }
+  .hero { grid-template-columns: 1fr .62fr; }
+  .routeGrid { grid-template-columns: 1fr; }
+  .routeCard + .routeCard { border-top: 1px solid var(--line); border-left: 0; }
+  .boundary { grid-template-columns: 1fr; gap: 38px; }
+}
+
+@media (max-width: 720px) {
+  .header { min-height: 66px; }
+  .brand span { display: none; }
+  .navCta { padding: 9px 12px !important; }
+  .hero { min-height: auto; grid-template-columns: 1fr; }
+  .heroCopy { padding-top: 62px; }
+  .hero h1 { font-size: clamp(48px, 14vw, 68px); }
+  .credentials { grid-template-columns: 1fr; }
+  .credentials div, .credentials div + div { padding: 14px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .portrait { min-height: 520px; }
+  .statement, .chooseHead { grid-template-columns: 1fr; }
+  .statement { padding-block: 54px; }
+  .chooseHead { padding-block: 62px 38px; }
+  .routeCard { min-height: auto; padding-block: 48px; }
+  .routeCard h3 { margin-top: 44px; }
+  .routeCard ul { margin-top: 36px; }
+  .routeActions { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .footer { grid-template-columns: 1fr; }
+  .footer nav { align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell { scroll-behavior: auto; }
+  .primaryButton, .routeLink { transition: none; }
+}

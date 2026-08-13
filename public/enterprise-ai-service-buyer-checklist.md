@@ -89,4 +89,4 @@
 - NIST AI Risk Management Framework：https://www.nist.gov/itl/ai-risk-management-framework
 - 《生成式人工智能服务管理暂行办法》：https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm
 - 《中华人民共和国个人信息保护法》：https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm
-- 万臻企业 AI 咨询与培训：https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/enterprise-ai-consulting-training/
+- 万臻企业 AI 咨询与培训：https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/enterprise-ai-consulting-training/

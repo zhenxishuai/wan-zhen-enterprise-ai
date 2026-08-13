@@ -2343,6 +2343,281 @@ a:focus-visible {
   color: var(--ink-soft);
 }
 
+/* Enterprise AI opportunity check */
+
+.check-hero {
+  padding: 72px var(--gutter) 78px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.check-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.55fr);
+  gap: clamp(40px, 7vw, 100px);
+  align-items: end;
+}
+
+.check-hero h1 {
+  max-width: 900px;
+  margin: 26px 0 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(54px, 7.5vw, 96px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.065em;
+}
+
+.check-hero-grid > p {
+  margin-bottom: 0;
+  padding-top: 24px;
+  border-top: 3px solid var(--blue);
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.check-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.check-layout > aside {
+  padding: 52px 30px;
+  border-right: 1px solid var(--line);
+}
+
+.check-layout > aside > span,
+.check-progress,
+.check-result > span {
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.check-layout aside ol {
+  margin: 28px 0 34px;
+  padding: 0;
+  list-style: none;
+  counter-reset: check-step;
+}
+
+.check-layout aside li {
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+  counter-increment: check-step;
+}
+
+.check-layout aside li::before {
+  margin-right: 10px;
+  color: var(--ink);
+  content: "0" counter(check-step);
+}
+
+.check-layout aside p {
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.opportunity-check form {
+  padding: 50px var(--gutter) 58px;
+}
+
+.check-progress {
+  margin-bottom: 20px;
+}
+
+.check-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 10px 32px;
+  margin: 0;
+  padding: 26px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.check-row legend {
+  padding: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.check-row legend span {
+  margin-right: 15px;
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.check-row > p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.check-options {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: start;
+  border: 1px solid var(--line-strong);
+}
+
+.check-options label {
+  cursor: pointer;
+}
+
+.check-options label + label {
+  border-left: 1px solid var(--line);
+}
+
+.check-options input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.check-options span {
+  min-height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  text-align: center;
+}
+
+.check-options input:checked + span {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.check-options input:focus-visible + span {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.check-submit {
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.check-privacy {
+  margin: 16px 0 0;
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.check-result {
+  padding: 52px var(--gutter) 58px;
+  border-top: 1px solid var(--line-strong);
+  background: var(--ink);
+  color: var(--white);
+  outline: none;
+}
+
+.check-result > span {
+  color: #aeb9ff;
+}
+
+.check-result h2 {
+  max-width: 760px;
+  margin: 18px 0 20px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.check-result > p {
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.8;
+}
+
+.result-contact {
+  margin: 34px 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+}
+
+.result-contact strong {
+  font-size: 18px;
+}
+
+.result-contact .button-secondary {
+  cursor: pointer;
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.message-preview {
+  display: block;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+}
+
+.message-preview textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 16px;
+  resize: vertical;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.copy-status {
+  min-height: 20px;
+  margin: 10px 0 0;
+  color: #aeb9ff !important;
+  font-size: 11px;
+}
+
+.check-next {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: end;
+  padding: 64px var(--gutter) 72px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+}
+
+.check-next h2 {
+  max-width: 760px;
+  margin: 14px 0 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
 @media (max-width: 960px) {
   .nav-links a:not(.nav-cta) {
     display: none;
@@ -2450,6 +2725,16 @@ a:focus-visible {
   }
 
   .fact-sheet > header {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .check-hero-grid,
+  .check-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .check-layout > aside {
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
@@ -2782,6 +3067,33 @@ a:focus-visible {
 
   .fact-copy {
     padding: 38px 22px 46px;
+  }
+
+  .check-hero,
+  .opportunity-check form,
+  .check-result,
+  .check-next {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .check-hero h1 {
+    font-size: 47px;
+  }
+
+  .check-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .check-options {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .check-next {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 }
 

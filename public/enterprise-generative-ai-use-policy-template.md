@@ -110,4 +110,4 @@
 - 《生成式人工智能服务管理暂行办法》：https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm
 - 《中华人民共和国个人信息保护法》：https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm
 - 《人工智能生成合成内容标识办法》：https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm
-- 万臻企业 AI 咨询与培训：https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/enterprise-ai-consulting-training/
+- 万臻企业 AI 咨询与培训：https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/enterprise-ai-consulting-training/

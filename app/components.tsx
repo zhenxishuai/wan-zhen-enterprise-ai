@@ -4,6 +4,7 @@ import {
   aboutPath,
   casesPath,
   citationKitPath,
+  coursePath,
   flagshipPath,
   industriesPath,
   programsPath,
@@ -12,6 +13,7 @@ import {
   secondBrainPath,
   servicesPath,
   siteName,
+  startPath,
   wechatId,
 } from "./site";
 
@@ -23,19 +25,20 @@ export function SiteHeader() {
       </a>
       <header className="site-header">
         <div className="header-inner">
-          <Link className="brand" href={flagshipPath} aria-label="万臻企业 AI 咨询与培训首页">
+          <Link className="brand" href="/" aria-label="万臻个人品牌首页">
             <span className="brand-name">万臻</span>
             <span className="brand-note">AI × BUSINESS</span>
           </Link>
           <nav className="nav-links" aria-label="主导航">
+            <Link href={coursePath}>FDE 课程</Link>
             <Link href={servicesPath}>服务</Link>
             <Link href={`${flagshipPath}#method`}>方法</Link>
             <Link href={casesPath}>实践</Link>
             <Link href={aboutPath}>关于万臻</Link>
             <Link href={questionsPath}>问答</Link>
             <Link href={secondBrainPath}>第二大脑</Link>
-            <Link className="nav-cta" href={`${flagshipPath}#invite`}>
-              联系万臻
+            <Link className="nav-cta" href={startPath}>
+              先做自检
             </Link>
           </nav>
         </div>
@@ -62,6 +65,7 @@ export function SiteFooter() {
       <nav className="footer-nav" aria-label="页脚导航">
         <div>
           <span>服务与方法</span>
+          <Link href={coursePath}>FDE 顾问课程</Link>
           <Link href={servicesPath}>服务目录</Link>
           <Link href={industriesPath}>行业与企业类型</Link>
           <Link href={applicationsPath}>业务工作流</Link>

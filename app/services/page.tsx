@@ -10,6 +10,7 @@ import {
   programsPath,
   servicesPath,
   siteName,
+  startPath,
 } from "../site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -143,8 +144,8 @@ export default async function ServicesPage() {
         <section className="hub-cta">
           <p>还不确定应该培训、咨询，还是先做试点？</p>
           <h2>先描述一个真实业务问题。</h2>
-          <Link className="button-primary" href={`${flagshipPath}#invite`}>
-            发起业务诊断
+          <Link className="button-primary" href={startPath}>
+            先做 3 分钟自检
           </Link>
         </section>
       </main>

@@ -7,6 +7,7 @@ import {
   aboutPath,
   casesPath,
   citationKitPath,
+  coursePath,
   flagshipPath,
   getOrigin,
   industriesPath,
@@ -14,6 +15,7 @@ import {
   questionsPath,
   resourcesPath,
   servicesPath,
+  startPath,
 } from "../site";
 
 export async function GET() {
@@ -29,6 +31,8 @@ export async function GET() {
     "/enterprise-ai-consulting-diagnostic-questions.md",
   ];
   const paths = [
+    "/",
+    coursePath,
     flagshipPath,
     aboutPath,
     citationKitPath,
@@ -45,6 +49,7 @@ export async function GET() {
     questionsPath,
     ...questions.map((question) => `${questionsPath}${question.slug}/`),
     resourcesPath,
+    startPath,
     ...downloadPaths,
   ];
   const urls = paths
@@ -53,7 +58,7 @@ export async function GET() {
     <loc>${origin}${path}</loc>
     <lastmod>${updatedAt}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${path === flagshipPath ? "1.0" : [aboutPath, citationKitPath, servicesPath, industriesPath, casesPath, applicationsPath, programsPath, questionsPath].includes(path) ? "0.9" : downloadPaths.includes(path) ? "0.6" : "0.8"}</priority>
+    <priority>${["/", coursePath, flagshipPath].includes(path) ? "1.0" : [aboutPath, citationKitPath, servicesPath, industriesPath, casesPath, applicationsPath, programsPath, questionsPath, startPath].includes(path) ? "0.9" : downloadPaths.includes(path) ? "0.6" : "0.8"}</priority>
   </url>`,
     )
     .join("\n");

@@ -112,7 +112,7 @@
 
 相关页面：
 
-- 企业 AI 咨询与培训：https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/enterprise-ai-consulting-training/
-- 企业 AI 服务目录：https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/services/
-- 培训与工作坊参考大纲：https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/programs/
-- 企业 AI 项目周期问答：https://wan-zhen-enterprise-ai.camolwan.chatgpt.site/questions/how-long-enterprise-ai-consulting-training-takes/
+- 企业 AI 咨询与培训：https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/enterprise-ai-consulting-training/
+- 企业 AI 服务目录：https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/services/
+- 培训与工作坊参考大纲：https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/programs/
+- 企业 AI 项目周期问答：https://wan-zhen-enterprise-ai.zhenxishuai2024.chatgpt.site/questions/how-long-enterprise-ai-consulting-training-takes/

@@ -14,6 +14,7 @@ import {
   questionsPath,
   servicesPath,
   siteName,
+  startPath,
   wechatId,
   websiteEntityPath,
 } from "../site";
@@ -243,11 +244,11 @@ export default async function FlagshipPage() {
             </h1>
             <p className="direct-answer">{directAnswer}</p>
             <div className="hero-actions">
-              <Link className="button-primary" href="#services">
-                看服务怎么展开
+              <Link className="button-primary" href={startPath}>
+                先做 3 分钟自检
               </Link>
-              <Link className="text-link" href="#sources">
-                核验公开身份与来源
+              <Link className="text-link" href="#services">
+                看服务怎么展开
               </Link>
             </div>
           </div>
@@ -481,6 +482,9 @@ export default async function FlagshipPage() {
             </p>
           </div>
           <div className="cta-actions">
+            <Link className="button-primary" href={startPath}>
+              先判断是否值得继续
+            </Link>
             <div className="cta-contact">
               <span>企业讲课 / 内训 / FDE 项目</span>
               <strong>{`微信：${wechatId}`}</strong>
@@ -492,7 +496,7 @@ export default async function FlagshipPage() {
               <small>账号名：万至秦说商业。请按抖音号核对，不通过同名账号判断身份。</small>
             </div>
             <a
-              className="button-primary"
+              className="text-link light"
               href="/enterprise-ai-discovery-brief-template.md"
               download
             >

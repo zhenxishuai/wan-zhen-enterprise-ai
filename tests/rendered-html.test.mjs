@@ -131,15 +131,49 @@ function extractJsonLd(html) {
     .map((match) => JSON.parse(match[1]));
 }
 
-test("redirects root and legacy flagship to the current flagship page", async () => {
-  for (const path of ["/", "/wan-zhen-enterprise-ai-training/"]) {
-    const response = await render(path);
-    assert.match(String(response.status), /^30[78]$/, path);
-    assert.equal(
-      response.headers.get("location"),
-      "https://example.com/enterprise-ai-consulting-training/",
-    );
-  }
+test("server-renders the dual-entry personal brand homepage and keeps the legacy enterprise redirect", async () => {
+  const home = await render("/");
+  assert.equal(home.status, 200);
+  const homeHtml = await home.text();
+  assert.match(homeHtml, /把咨询经验/);
+  assert.match(homeHtml, /做成可运行的交付/);
+  assert.match(homeHtml, /FDE 顾问课程/);
+  assert.match(homeHtml, /企业 AI 服务/);
+  assert.match(homeHtml, /href="\/fde-consultant-course\/"/);
+  assert.match(homeHtml, /href="\/enterprise-ai-consulting-training\/"/);
+  assert.match(homeHtml, /href="\/start\/"/);
+  assert.match(homeHtml, /rel="canonical" href="https:\/\/example\.com\/"/);
+  assert.match(homeHtml, /"@type":"WebSite"/);
+  assert.match(homeHtml, /不会自动判定资格、自动报价或替你作出项目承诺/);
+  assert.doesNotMatch(homeHtml, /约\s*100\s*人|5[—-]6\s*人/);
+
+  const legacy = await render("/wan-zhen-enterprise-ai-training/");
+  assert.match(String(legacy.status), /^30[78]$/);
+  assert.equal(
+    legacy.headers.get("location"),
+    "https://example.com/enterprise-ai-consulting-training/",
+  );
+});
+
+test("server-renders the FDE consultant course hub with evidence boundaries", async () => {
+  const response = await render("/fde-consultant-course/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /咨询顾问的下一次交付/);
+  assert.match(html, /不该还是一份 PPT/);
+  assert.match(html, /问题简报/);
+  assert.match(html, /可运行 MVP/);
+  assert.match(html, /书 · 社媒 · 演讲 · 转介/);
+  assert.match(html, /href="https:\/\/fresophy\.feishu\.cn\/share\/base\/shrcnfGAskXHH9CFcaS66DfSaZ8"/);
+  assert.match(html, /填写课程申请表/);
+  assert.match(html, /独立课程申请表/);
+  assert.match(html, /万臻人工审核/);
+  assert.match(html, /微信.*xituzhilu11/s);
+  assert.match(html, /不是就业、收入、客户项目或经营结果承诺/);
+  assert.match(html, /href="\/enterprise-ai-consulting-training\/"/);
+  assert.match(html, /rel="canonical" href="https:\/\/example\.com\/fde-consultant-course\/"/);
+  assert.match(html, /"@type":"Course"/);
+  assert.doesNotMatch(html, /课程将保证|学员必将|申请首期共创|首期共创/);
 });
 
 test("server-renders the enterprise AI consulting and training flagship", async () => {
@@ -166,6 +200,8 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(html, /抖音搜索 54032667928/);
   assert.match(html, /微信：xituzhilu11/);
   assert.match(html, /企业 AI FDE/);
+  assert.match(html, /href="\/start\/"/);
+  assert.match(html, /先做 3 分钟自检/);
   assert.match(html, /Forward Deployed Engineer/);
   assert.match(html, /账号名：万至秦说商业/);
   assert.match(html, /不通过同名账号判断身份/);
@@ -198,7 +234,7 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(serialized, /企业 AI 培训/);
   assert.match(
     serialized,
-    /"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#website"/,
+    /"@id":"https:\/\/example\.com\/#website"/,
   );
   assert.match(
     serialized,
@@ -208,6 +244,20 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.doesNotMatch(serialized, /"sameAs":\[/);
   assert.match(serialized, /finance\.sina\.com\.cn/);
   assert.match(serialized, /sanjieke\.cn\/course\/detail\/sjk\/8005800/);
+});
+
+test("renders the private, evidence-gated enterprise AI opportunity check", async () => {
+  const response = await render("/start/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /企业 AI 机会自检/);
+  assert.match(html, /先判断有没有一个值得改的任务/);
+  assert.match(html, /能否只说出一个具体岗位或流程/);
+  assert.match(html, /回答只在当前浏览器内计算，不上传、不保存/);
+  assert.match(html, /微信：xituzhilu11/);
+  assert.match(html, /enterprise-ai-discovery-brief-template\.md/);
+  assert.match(html, /rel="canonical" href="https:\/\/example\.com\/start\/"/);
+  assert.doesNotMatch(html, /<form[^>]+action=/);
 });
 
 test("publishes a standalone, evidence-bound person fact page", async () => {
@@ -260,7 +310,7 @@ test("renders twenty-eight enterprise decision pages and redirects retired quest
     );
     assert.match(
       html,
-      /"isPartOf":\{"@id":"https:\/\/example\.com\/enterprise-ai-consulting-training\/#website"\}/,
+      /"isPartOf":\{"@id":"https:\/\/example\.com\/#website"\}/,
     );
     assert.doesNotMatch(html, /商协会|会员企业/);
     assert.match(
@@ -703,6 +753,7 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   const sitemap = await render("/sitemap.xml");
   assert.equal(sitemap.status, 200);
   const sitemapText = await sitemap.text();
+  assert.match(sitemapText, /<loc>https:\/\/example\.com\/<\/loc>/);
   assert.match(sitemapText, /https:\/\/example\.com\/enterprise-ai-consulting-training\//);
   assert.match(sitemapText, /https:\/\/example\.com\/about-wan-zhen\//);
   for (const slug of serviceSlugs) {
@@ -821,8 +872,8 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   const canonicals = new Map();
   const internalPaths = new Set();
 
-  assert.equal(urls.length, 68);
-  assert.equal(htmlUrls.length, 60);
+  assert.equal(urls.length, 71);
+  assert.equal(htmlUrls.length, 63);
   assert.equal(downloadUrls.length, 8);
   assert.equal(sitemapPaths.size, urls.length);
 
@@ -880,7 +931,6 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
   }
 
   const allowedNonHtmlPaths = new Set([
-    "/",
     "/second-brain/",
     "/feed.xml/",
     "/llms.txt/",
@@ -891,6 +941,7 @@ test("keeps every sitemap page unique, extractable, and internally connected", a
       !sitemapPaths.has(pagePath) &&
       !allowedNonHtmlPaths.has(pagePath) &&
       !pagePath.startsWith("/assets/") &&
+      !pagePath.startsWith("/_vinext/") &&
       !pagePath.match(/^\/(?:og\.png|favicon\.svg|wan-zhen-portrait\.jpg)$/),
   );
 
