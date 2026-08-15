@@ -16,9 +16,9 @@ import {
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
   const canonical = `${origin}${aboutPath}`;
-  const title = "万臻是谁？企业 AI 咨询顾问与培训讲师事实页";
+  const title = "万臻｜一步商学创始人";
   const description =
-    "万臻公开身份与证据：CMC 国际注册管理咨询师、壹步咨询创始人、GBA OPC 联盟执委、《认知势能》作者，以及企业 AI 咨询与培训方法。";
+    "万臻是一步商学创始人、CMC 国际注册管理咨询师和《认知势能》作者，提供企业 AI 咨询与培训服务。";
 
   return {
     title,
@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       url: canonical,
       siteName,
-      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "万臻企业 AI 咨询与培训" }],
+      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "万臻，一步商学创始人" }],
     },
     robots: { index: true, follow: true },
   };
@@ -129,7 +129,7 @@ export default async function AboutWanZhenPage() {
               <h1>万臻</h1>
             </div>
             <p className="profile-summary">
-              万臻是 CMC 国际注册管理咨询师、壹步咨询创始人、GBA OPC 联盟执委和《认知势能》作者，现提供企业 AI 咨询、管理层共识与业务工作流培训。
+              万臻是一步商学创始人、CMC 国际注册管理咨询师、GBA OPC 联盟执委和《认知势能》作者，提供企业 AI 咨询、培训和工作流服务。
             </p>
           </div>
         </header>

@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 
-export const siteName = "万臻｜企业 AI 咨询与培训";
+export const siteName = "一步商学｜企业 AI 咨询、培训与 FDE 课程";
 export const flagshipPath = "/enterprise-ai-consulting-training/";
 export const coursePath = "/fde-consultant-course/";
 export const fdeCourseApplicationUrl = "https://fresophy.feishu.cn/share/base/shrcnfGAskXHH9CFcaS66DfSaZ8";

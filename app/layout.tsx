@@ -4,14 +4,14 @@ import { aboutPath } from "./site";
 
 export const metadata: Metadata = {
   title: {
-    default: "万臻｜企业 AI 咨询与培训",
-    template: "%s｜万臻企业 AI 咨询与培训",
+    default: "一步商学｜企业 AI 咨询、培训与 FDE 课程",
+    template: "%s｜一步商学",
   },
   description:
-    "万臻面向企业负责人、管理团队与业务部门提供企业 AI 讲课、内训、咨询和 FDE 工作流试点：从真实业务问题出发，形成可运行、可复盘的 AI 交付。",
+    "一步商学由万臻创立，提供企业 AI 咨询、培训、工作流试点和 FDE 顾问课程。",
   authors: [{ name: "万臻", url: aboutPath }],
   creator: "万臻",
-  publisher: "壹步咨询",
+  publisher: "一步商学",
   icons: { icon: "/favicon.svg" },
 };
 
@@ -27,7 +27,7 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="application/atom+xml"
-          title="万臻企业 AI 咨询与培训更新"
+          title="一步商学更新"
           href="/feed.xml/"
         />
       </head>

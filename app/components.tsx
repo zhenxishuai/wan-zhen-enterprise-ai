@@ -24,17 +24,17 @@ export function SiteHeader() {
       </a>
       <header className="site-header">
         <div className="header-inner">
-          <Link className="brand" href="/" aria-label="万叔个人品牌首页">
-            <span className="brand-name">万叔</span>
-            <span className="brand-note">把经验做成能用的工作</span>
+          <Link className="brand" href="/" aria-label="一步商学首页">
+            <span className="brand-name">一步商学</span>
+            <span className="brand-note">企业 AI 咨询、培训与 FDE 课程</span>
           </Link>
           <nav className="nav-links" aria-label="主导航">
-            <Link href={coursePath}>FDE 课程</Link>
             <Link href={flagshipPath}>企业服务</Link>
-            <Link href={`${flagshipPath}#method`}>怎么做</Link>
-            <Link href={aboutPath}>关于万臻</Link>
+            <Link href={coursePath}>FDE 课程</Link>
+            <Link href={servicesPath}>服务目录</Link>
+            <Link href={aboutPath}>创始人万臻</Link>
             <Link className="nav-cta" href={startPath}>
-              梳理一项任务
+              企业机会自检
             </Link>
           </nav>
         </div>
@@ -47,26 +47,26 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="footer-statement">
-        <strong>万叔</strong>
-        <span>把经验做成别人能用的工作</span>
+        <strong>一步商学</strong>
+        <span>企业 AI 咨询、培训与 FDE 课程</span>
         <p>
-          从一项具体任务出发，把材料、判断与使用者放在同一张工作台上；先做出能试的版本，再决定下一步。{" "}
+          一步商学由万臻创立，面向企业和有行业经验的从业者提供企业 AI 咨询、培训和课程服务。{" "}
           <Link href={`${flagshipPath}#sources`}>查看公开来源</Link>
         </p>
         <p className="footer-contact">
-          企业服务或课程申请<br />
+          咨询企业服务或 FDE 课程<br />
           <b>{`微信：${wechatId}`}</b>
         </p>
       </div>
       <nav className="footer-nav" aria-label="页脚导航">
         <div>
-          <span>从哪里开始</span>
-          <Link href={coursePath}>把经验做成作品</Link>
-          <Link href={flagshipPath}>处理企业里的问题</Link>
-          <Link href={startPath}>用 3 分钟梳理任务</Link>
+          <span>服务</span>
+          <Link href={flagshipPath}>企业 AI 咨询与培训</Link>
+          <Link href={coursePath}>FDE 顾问课程</Link>
+          <Link href={startPath}>企业机会自检</Link>
         </div>
         <div>
-          <span>了解工作方式</span>
+          <span>了解服务内容</span>
           <Link href={servicesPath}>服务目录</Link>
           <Link href={applicationsPath}>业务工作流</Link>
           <Link href={programsPath}>培训大纲</Link>
@@ -74,9 +74,9 @@ export function SiteFooter() {
           <Link href={industriesPath}>行业与企业类型</Link>
         </div>
         <div>
-          <span>了解万叔</span>
-          <Link href={aboutPath}>公开身份与事实边界</Link>
-          <Link href={questionsPath}>决策问答</Link>
+          <span>关于一步商学</span>
+          <Link href={aboutPath}>创始人万臻</Link>
+          <Link href={questionsPath}>常见问题</Link>
           <Link href={resourcesPath}>案例证据框架</Link>
           <Link href={citationKitPath}>主办方引用资料</Link>
           <Link href={secondBrainPath}>第二大脑</Link>

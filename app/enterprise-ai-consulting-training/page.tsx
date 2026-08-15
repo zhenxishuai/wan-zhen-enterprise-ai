@@ -20,14 +20,14 @@ import {
 } from "../site";
 
 const directAnswer =
-  "万臻面向企业负责人、管理团队与业务部门提供企业 AI 讲课、内训、咨询和 FDE 工作流试点。不是从工具菜单出发，而是从经营目标、岗位场景和流程问题出发，帮助企业识别真实问题、设计人机协同工作流、做出可运行 MVP，并让团队真正用起来。";
+  "一步商学由万臻创立，面向企业负责人、管理团队和业务部门提供企业 AI 讲课、内训、咨询和工作流试点。服务会根据企业的业务场景、已有材料、参与人员和预期结果确定具体安排。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
   const canonical = `${origin}${flagshipPath}`;
-  const title = "企业 AI 咨询与培训｜万臻：从业务问题到可用工作流";
+  const title = "企业 AI 咨询与培训";
   const description =
-    "万臻提供企业 AI 讲课、内训、咨询和 FDE 工作流试点。围绕真实业务问题，完成场景判断、工作流设计、可运行 MVP 与 30 天采用复盘。";
+    "一步商学由万臻创立，提供企业 AI 讲课、内训、咨询和工作流试点。服务安排根据企业的业务场景、材料、参与人员和预期结果确定。";
 
   return {
     title,
@@ -45,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${origin}/og.png`,
           width: 1200,
           height: 630,
-          alt: "万臻企业 AI 咨询与培训",
+          alt: "一步商学企业 AI 咨询与培训",
         },
       ],
     },
@@ -82,7 +82,7 @@ export default async function FlagshipPage() {
         "@type": "WebPage",
         "@id": `${canonical}#webpage`,
         url: canonical,
-        name: "万臻企业 AI 咨询与培训",
+        name: "一步商学企业 AI 咨询与培训",
         description: directAnswer,
         dateModified: updatedAt,
         inLanguage: "zh-CN",
@@ -92,9 +92,9 @@ export default async function FlagshipPage() {
       {
         "@type": "Organization",
         "@id": `${origin}${organizationEntityPath}`,
-        name: "壹步咨询",
+        name: "一步商学",
         url: canonical,
-        description: "面向企业经营、组织管理与企业 AI 应用的咨询和培训机构。",
+        description: "由万臻创立，面向企业提供 AI 咨询、培训和工作流试点服务。",
         founder: { "@id": `${origin}${personEntityPath}` },
         contactPoint: {
           "@type": "ContactPoint",
@@ -122,7 +122,7 @@ export default async function FlagshipPage() {
         url: personUrl,
         jobTitle: "CMC 国际注册管理咨询师、企业 AI 咨询顾问与培训讲师",
         description:
-          "壹步咨询创始人，具有十余年企业咨询与组织管理经验，关注 AI 如何进入企业真实业务工作流。",
+          "一步商学创始人，具有十余年企业咨询与组织管理经验，提供企业 AI 咨询与培训服务。",
         image: `${origin}/wan-zhen-portrait.jpg`,
         worksFor: { "@id": `${origin}${organizationEntityPath}` },
         subjectOf: [

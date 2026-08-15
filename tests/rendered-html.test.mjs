@@ -135,18 +135,18 @@ test("server-renders the dual-entry personal brand homepage and keeps the legacy
   const home = await render("/");
   assert.equal(home.status, 200);
   const homeHtml = await home.text();
-  assert.match(homeHtml, /你已经知道问题在哪/);
-  assert.match(homeHtml, /现在，把它做出来/);
-  assert.match(homeHtml, /把经验做成作品/);
-  assert.match(homeHtml, /把一项工作改到能跑/);
+  assert.match(homeHtml, /一步商学/);
+  assert.match(homeHtml, /企业 AI 服务/);
+  assert.match(homeHtml, /FDE 顾问课程/);
+  assert.match(homeHtml, /一步商学由万臻创立/);
   assert.match(homeHtml, /href="\/fde-consultant-course\/"/);
   assert.match(homeHtml, /href="\/enterprise-ai-consulting-training\/"/);
   assert.match(homeHtml, /href="\/start\/"/);
   assert.match(homeHtml, /href="https:\/\/fresophy\.feishu\.cn\/share\/base\/shrcnfGAskXHH9CFcaS66DfSaZ8"/);
   assert.match(homeHtml, /rel="canonical" href="https:\/\/example\.com\/"/);
   assert.match(homeHtml, /"@type":"WebSite"/);
-  assert.match(homeHtml, /课程看的是你能否完成一件有用户、有反馈的作品/);
-  assert.match(homeHtml, /不会替你自动判定/);
+  assert.match(homeHtml, /企业服务怎么开始/);
+  assert.match(homeHtml, /创始人/);
   assert.doesNotMatch(homeHtml, /约\s*100\s*人|5[—-]6\s*人/);
 
   const legacy = await render("/wan-zhen-enterprise-ai-training/");
@@ -161,15 +161,15 @@ test("server-renders the FDE consultant course hub with evidence boundaries", as
   const response = await render("/fde-consultant-course/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /你不缺一套新话术/);
-  assert.match(html, /把经验交出去的机会/);
+  assert.match(html, /FDE 顾问课程/);
+  assert.match(html, /一步商学课程/);
   assert.match(html, /问题简报/);
   assert.match(html, /可试用版本/);
-  assert.match(html, /申请表不考你懂多少工具/);
+  assert.match(html, /申请表会收集以下信息/);
   assert.match(html, /href="https:\/\/fresophy\.feishu\.cn\/share\/base\/shrcnfGAskXHH9CFcaS66DfSaZ8"/);
   assert.match(html, /填写课程申请表/);
   assert.match(html, /独立课程线索表/);
-  assert.match(html, /我会人工阅读申请/);
+  assert.match(html, /由万臻人工阅读后决定是否进一步联系/);
   assert.match(html, /微信.*xituzhilu11/s);
   assert.match(html, /不是对就业、收入、客户项目或经营结果的承诺/);
   assert.match(html, /href="\/enterprise-ai-consulting-training\/"/);
@@ -186,7 +186,7 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   const html = await response.text();
   assert.match(
     html,
-    /<title>企业 AI 咨询与培训｜万臻：从业务问题到可用工作流｜万臻企业 AI 咨询与培训<\/title>/,
+    /<title>企业 AI 咨询与培训｜一步商学<\/title>/,
   );
   assert.match(
     html,
@@ -266,7 +266,7 @@ test("publishes a standalone, evidence-bound person fact page", async () => {
   const response = await render("/about-wan-zhen/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /万臻是谁？/);
+  assert.match(html, /万臻｜一步商学创始人/);
   assert.match(html, /CMC 国际注册管理咨询师/);
   assert.match(html, /第一方履历与实践/);
   assert.match(html, /壹岁咨询/);

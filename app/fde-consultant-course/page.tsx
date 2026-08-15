@@ -8,19 +8,19 @@ import styles from "./page.module.css";
 const coursePath = "/fde-consultant-course/";
 
 const outcomes = [
-  ["01", "问题简报", "说清楚你要改的是哪一项工作：谁在做，哪里卡住，什么变化才算值得。"],
-  ["02", "现状工作流", "把人、信息、工具和判断点摊开，看到经验到底在哪一步起作用。"],
-  ["03", "可试用版本", "做出一个真实用户能操作的流程、原型或助手；不必华丽，但要能被用。"],
-  ["04", "测试记录", "记下谁试过、哪里不顺、哪些判断仍要由人负责，而不是只留一张演示截图。"],
-  ["05", "下一轮计划", "决定它该继续打磨、放进一个岗位，还是暂时停下；每个选择都要有理由。"],
+  ["01", "问题简报", "说明要处理的业务问题、相关岗位、现状和预期变化。"],
+  ["02", "现状工作流", "整理现有材料、参与人员、工具和关键判断点。"],
+  ["03", "可试用版本", "完成一个流程、原型或助手，供真实用户试用。"],
+  ["04", "测试记录", "记录试用过程、反馈、问题和仍需人工处理的部分。"],
+  ["05", "下一轮计划", "根据试用结果，决定后续修改、采用或暂停的安排。"],
 ] as const;
 
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
   const canonical = `${origin}${coursePath}`;
-  const title = "从经验到可用作品｜万叔 FDE 顾问课程";
+  const title = "FDE 顾问课程｜一步商学";
   const description =
-    "面向有行业与业务经验的顾问、管理者、实施与解决方案人员：带一项熟悉工作进来，做成可试用版本、测试记录与下一轮计划。";
+    "一步商学 FDE 顾问课程面向有行业经验的顾问、管理者、实施和解决方案人员。学员围绕一个业务问题完成工作流、可试用版本和测试记录。";
 
   return {
     title: { absolute: title },
@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${origin}/wan-zhen-portrait.jpg`,
           width: 1280,
           height: 1600,
-          alt: "万臻，CMC 国际注册管理咨询师与企业 AI 顾问",
+          alt: "万臻，一步商学创始人",
         },
       ],
     },
@@ -55,23 +55,23 @@ export default async function FdeConsultantCoursePage() {
         "@type": "WebPage",
         "@id": `${canonical}#webpage`,
         url: canonical,
-        name: "从经验到可用作品｜万叔 FDE 顾问课程",
+        name: "FDE 顾问课程｜一步商学",
         description:
-          "面向有行业经验的顾问、管理者、实施与解决方案人员：带一项熟悉工作进来，做成可试用版本、测试记录与下一轮计划。",
+          "面向有行业经验的顾问、管理者、实施和解决方案人员的 FDE 顾问课程。",
         inLanguage: "zh-CN",
         about: { "@id": `${origin}${aboutPath}#person` },
       },
       {
         "@type": "Course",
         "@id": `${canonical}#course`,
-        name: "从经验到可用作品｜万叔 FDE 顾问课程",
+        name: "一步商学 FDE 顾问课程",
         description:
-          "从一项熟悉工作出发，完成问题简报、现状工作流、可试用版本、测试记录与下一轮计划。",
+          "围绕一个业务问题，完成问题简报、现状工作流、可试用版本、测试记录和下一轮计划。",
         provider: { "@id": `${origin}${flagshipPath}#organization` },
         author: { "@id": `${origin}${aboutPath}#person` },
         audience: {
           "@type": "Audience",
-          audienceType: "有行业经验的顾问、管理者、实施与解决方案人员",
+          audienceType: "有行业经验的顾问、管理者、实施和解决方案人员",
         },
         teaches: outcomes.map(([, title, description]) => `${title}：${description}`),
         inLanguage: "zh-CN",
@@ -86,37 +86,35 @@ export default async function FdeConsultantCoursePage() {
         跳到主要内容
       </a>
       <header className={styles.header}>
-        <Link className={styles.brand} href="/" aria-label="万叔个人品牌首页">
-          <strong>万叔</strong>
-          <span>把经验做成能用的工作</span>
+        <Link className={styles.brand} href="/" aria-label="一步商学首页">
+          <strong>一步商学</strong>
+          <span>企业 AI 咨询、培训与 FDE 课程</span>
         </Link>
         <nav className={styles.nav} aria-label="主导航">
-          <a href="#outcomes">你会完成什么</a>
+          <a href="#outcomes">课程内容</a>
           <a href="#fit">适合谁</a>
-          <Link href={aboutPath}>关于万臻</Link>
+          <Link href={aboutPath}>创始人万臻</Link>
           <Link href={flagshipPath}>企业服务</Link>
-          <a className={styles.navCta} href={fdeCourseApplicationUrl} target="_blank" rel="noreferrer">填写课程申请表</a>
+          <a className={styles.navCta} href={fdeCourseApplicationUrl} target="_blank" rel="noreferrer">填写申请表</a>
         </nav>
       </header>
 
       <main id="main-content">
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}>FDE 顾问课程 · 面向有现场经验的专业人士</p>
-            <h1>
-              你不缺一套新话术。<em>你缺一次把经验交出去的机会。</em>
-            </h1>
+            <p className={styles.kicker}>一步商学课程</p>
+            <h1>FDE 顾问课程</h1>
             <p className={styles.lead}>
-              你做过咨询、管理、实施、产品或解决方案，知道事情为什么会卡住。课程不是让你从零学编程，而是陪你把一项熟悉工作拆开，做成真实用户能试用的版本。
+              课程面向有行业经验的顾问、管理者、实施人员、产品人员和解决方案人员。学员选择一个熟悉的业务问题，完成问题简报、工作流、可试用版本和测试记录。
             </p>
             <div className={styles.actions}>
               <a className={styles.primaryButton} href={fdeCourseApplicationUrl} target="_blank" rel="noreferrer">填写课程申请表</a>
-              <a className={styles.secondaryButton} href="#outcomes">先看你会完成什么</a>
+              <a className={styles.secondaryButton} href="#outcomes">查看课程内容</a>
             </div>
             <dl className={styles.credentials}>
-              <div><dt>带来的</dt><dd>一项你熟悉、也想改好的工作</dd></div>
-              <div><dt>做出的</dt><dd>别人能试用的工作流、原型或助手</dd></div>
-              <div><dt>留下的</dt><dd>测试记录和下一轮行动计划</dd></div>
+              <div><dt>适合对象</dt><dd>有行业和业务经验的从业者</dd></div>
+              <div><dt>课程重点</dt><dd>把一个业务问题做成可试用版本</dd></div>
+              <div><dt>申请方式</dt><dd>填写课程申请表，由人工联系</dd></div>
             </dl>
           </div>
           <figure className={styles.portrait}>
@@ -128,25 +126,25 @@ export default async function FdeConsultantCoursePage() {
               sizes="(max-width: 820px) 100vw, 38vw"
             />
             <figcaption>
-              <span>万臻 / 万叔</span>
-              <strong>壹步咨询创始人 · 企业 AI 顾问</strong>
+              <span>创始人和讲师</span>
+              <strong>万臻 · 企业 AI 顾问</strong>
             </figcaption>
           </figure>
         </section>
 
-        <section className={styles.thesis} aria-label="课程主张">
-          <span>01 / 这门课要解决什么</span>
+        <section className={styles.thesis} aria-label="课程说明">
+          <span>01 / 课程说明</span>
           <p>
-            专业经验最难的地方，不是你知道得不够多，而是它常常只留在脑子里、会议里、PPT 里。这里做的是另一件事：<strong>让别人看得见、用得上，也能提出意见。</strong>
+            课程不以工具数量或出勤次数作为主要内容。学员需要围绕一个具体业务问题，完成一套可供他人查看和试用的材料。<strong>最终是否采用，由实际使用情况决定。</strong>
           </p>
         </section>
 
         <section className={styles.section} id="outcomes">
           <div className={styles.sectionHead}>
-            <span>02 / 你会完成什么</span>
+            <span>02 / 课程内容</span>
             <div>
-              <p className={styles.kicker}>不是听完课程，是带走一套做过的东西</p>
-              <h2>结束时，桌上应该有这些。<br />每一项都能回到你的真实场景。</h2>
+              <p className={styles.kicker}>学员需要完成的内容</p>
+              <h2>课程结束时，您会有以下材料。</h2>
             </div>
           </div>
           <div className={styles.outcomeGrid}>
@@ -159,46 +157,46 @@ export default async function FdeConsultantCoursePage() {
             ))}
           </div>
           <p className={styles.boundary}>
-            这些是课程中的完成标准，不是对就业、收入、客户项目或经营结果的承诺。你带来的问题、投入程度和现场验证条件，会决定作品最后长成什么样。
+            上述内容是课程中的完成要求，不是对就业、收入、客户项目或经营结果的承诺。课程成果取决于学员提供的问题、投入时间和实际试用条件。
           </p>
         </section>
 
         <section className={styles.section}>
           <div className={styles.sectionHead}>
-            <span>03 / 这几步怎么走</span>
+            <span>03 / 课程过程</span>
             <div>
-              <p className={styles.kicker}>先做一件小而具体的事</p>
-              <h2>不赶着把它说得很大。<br />先把一个能用的版本做出来。</h2>
+              <p className={styles.kicker}>围绕一个具体问题开展</p>
+              <h2>课程按以下四步进行。</h2>
             </div>
           </div>
           <ol className={styles.path}>
-            <li><span>第一步</span><strong>挑一项工作</strong><p>选你熟悉、反复出现，而且真的有人会用到的任务。</p></li>
-            <li><span>第二步</span><strong>看清它现在怎么做</strong><p>找到材料从哪来、谁在判断、哪里最容易返工或漏掉信息。</p></li>
-            <li><span>第三步</span><strong>做出能试的版本</strong><p>可以是流程、原型或助手。重点不是功能有多全，而是有人愿意上手。</p></li>
-            <li><span>第四步</span><strong>根据反馈改一次</strong><p>用真实使用中的问题决定下一轮，而不是用一场漂亮演示结束项目。</p></li>
+            <li><span>第一步</span><strong>选择问题</strong><p>选择一个熟悉的岗位任务、流程问题或客户问题。</p></li>
+            <li><span>第二步</span><strong>整理现状</strong><p>梳理已有材料、参与人员、工作步骤和判断点。</p></li>
+            <li><span>第三步</span><strong>完成版本</strong><p>制作一个可供真实用户试用的流程、原型或助手。</p></li>
+            <li><span>第四步</span><strong>记录反馈</strong><p>记录试用结果，并据此安排下一轮修改或采用。</p></li>
           </ol>
         </section>
 
         <section className={styles.fit} id="fit">
           <div className={styles.fitIntro}>
-            <span>04 / 谁更适合来</span>
-            <h2>经验不是门槛。<br />愿意把它拿出来检验，才是。</h2>
-            <p>你不必把自己变成程序员。但你需要对一个行业、岗位或客户问题有自己的判断，也愿意接受真实用户的反馈。</p>
+            <span>04 / 适合谁</span>
+            <h2>适合有业务经验，并希望整理一项具体工作的人。</h2>
+            <p>不要求编程背景。申请人需要能说明自己熟悉的行业、岗位或客户问题，并能够投入时间完成材料和试用。</p>
           </div>
           <div className={styles.fitLists}>
             <article>
-              <h3>更适合</h3>
+              <h3>适合</h3>
               <ul>
-                <li>已经做过行业咨询、管理、实施、产品或专业服务</li>
-                <li>手上有一项想重新做一遍的工作，或一类反复遇到的客户问题</li>
-                <li>愿意动手，愿意让使用者告诉你哪里不好用</li>
+                <li>顾问、管理者、实施人员、产品人员和专业服务人员</li>
+                <li>有一个需要整理或改进的业务问题</li>
+                <li>愿意准备材料，并安排真实用户试用</li>
               </ul>
             </article>
             <article>
-              <h3>暂时别急着来</h3>
+              <h3>暂不适合</h3>
               <ul>
                 <li>只想收集提示词、工具清单或证书</li>
-                <li>还没有任何愿意花时间琢磨的业务场景</li>
+                <li>暂时没有可投入时间的业务问题</li>
                 <li>希望课程保证接单、就业或收入结果</li>
               </ul>
             </article>
@@ -207,45 +205,45 @@ export default async function FdeConsultantCoursePage() {
 
         <section className={styles.entry}>
           <div className={styles.sectionHead}>
-            <span>05 / 申请以前，先想三件事</span>
+            <span>05 / 申请信息</span>
             <div>
-              <p className={styles.kicker}>让问题先说话</p>
-              <h2>申请表不考你懂多少工具。<br />它帮我判断，我们该不该聊下一步。</h2>
+              <p className={styles.kicker}>填写申请表前可先准备</p>
+              <h2>申请表会收集以下信息。</h2>
             </div>
           </div>
-          <div className={styles.entryFlow} aria-label="课程申请准备事项">
-            <article><span>01</span><strong>你在哪个场景里工作</strong><p>行业、岗位或服务对象是什么？不用包装，说明白就好。</p></article>
-            <article><span>02</span><strong>你想改哪一件事</strong><p>挑一个具体任务，别写“全面拥抱 AI”这类大题目。</p></article>
-            <article><span>03</span><strong>你能投入什么</strong><p>时间、材料、真实使用者，哪些条件现在已经具备？</p></article>
-            <article><span>04</span><strong>接下来怎么联系</strong><p>我会人工阅读申请；是否继续沟通，以双方确认的信息为准。</p></article>
+          <div className={styles.entryFlow} aria-label="课程申请信息">
+            <article><span>01</span><strong>所在行业和岗位</strong><p>说明您目前服务的行业、岗位或客户类型。</p></article>
+            <article><span>02</span><strong>相关经验</strong><p>简要说明您做过的咨询、管理、实施或解决方案工作。</p></article>
+            <article><span>03</span><strong>业务问题</strong><p>说明希望在课程中处理的一项具体工作。</p></article>
+            <article><span>04</span><strong>可投入时间</strong><p>说明可用于准备材料、学习和试用的时间。</p></article>
           </div>
         </section>
 
         <section className={styles.about}>
           <div>
-            <span>06 / 为什么由万叔来带</span>
-            <h2>我关心的不是把 AI 讲得多新。<br />而是它放进工作里以后，谁会真的用。</h2>
+            <span>06 / 讲师</span>
+            <h2>万臻</h2>
           </div>
           <div>
             <p>
-              万臻是壹步咨询创始人、CMC 国际注册管理咨询师、《认知势能》作者。长期做企业咨询、组织管理与培训，让他更在意一件事：一份方案离开会议室后，能不能进入真实岗位、经得起一次次使用。
+              万臻是一步商学创始人、CMC 国际注册管理咨询师和《认知势能》作者，长期从事企业咨询、组织管理和培训。公开履历、作品和身份信息可在人物页面查看。
             </p>
-            <Link className={styles.textLink} href={aboutPath}>查看公开身份与证据 →</Link>
+            <Link className={styles.textLink} href={aboutPath}>查看万臻介绍 →</Link>
           </div>
         </section>
 
         <section className={styles.apply} id="apply">
-          <p className={styles.kicker}>COURSE APPLICATION</p>
-          <h2>如果你有一项不想再只靠口头讲清的经验，<br />就从申请表开始。</h2>
+          <p className={styles.kicker}>课程申请</p>
+          <h2>填写 FDE 课程申请表</h2>
           <p>
-            表单会问你的行业、相关经验、那件想改的事，以及你能投入的时间。记录只进入独立课程线索表；我会人工阅读，确认是否需要进一步沟通。
+            申请表会收集您的行业、相关经验、业务问题和可投入时间。记录只进入独立课程线索表，由万臻人工阅读后决定是否进一步联系。
           </p>
           <div className={styles.actions}>
             <a className={styles.secondaryOnDark} href={fdeCourseApplicationUrl} target="_blank" rel="noreferrer">填写课程申请表</a>
-            <Link className={styles.textLinkOnDark} href={flagshipPath}>我在处理企业里的问题 →</Link>
+            <Link className={styles.textLinkOnDark} href={flagshipPath}>查看企业 AI 服务 →</Link>
           </div>
           <div className={styles.contact}>
-            <span>需要补充材料</span>
+            <span>补充申请材料</span>
             <strong>{wechatId}</strong>
           </div>
           <small>系统不会自动判定合格、自动报价或自动联系。课程时间、规模与价格以双方确认的信息为准。</small>
@@ -253,11 +251,11 @@ export default async function FdeConsultantCoursePage() {
       </main>
 
       <footer className={styles.footer}>
-        <strong>万叔 · 把经验做成能用的工作</strong>
-        <p>© 2026 壹步咨询。课程申请与企业服务分开处理，公开履历均保留证据边界。</p>
+        <strong>一步商学</strong>
+        <p>企业 AI 咨询、培训与 FDE 顾问课程。创始人：万臻。</p>
         <nav aria-label="页脚导航">
-          <Link href="/">品牌首页</Link>
-          <Link href={aboutPath}>关于万臻</Link>
+          <Link href="/">一步商学首页</Link>
+          <Link href={aboutPath}>创始人万臻</Link>
           <Link href={flagshipPath}>企业 AI 服务</Link>
         </nav>
       </footer>
