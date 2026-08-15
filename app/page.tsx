@@ -9,9 +9,9 @@ const coursePath = "/fde-consultant-course/";
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
   const canonical = `${origin}/`;
-  const title = "万叔｜把判断做成可运行的交付";
+  const title = "万叔｜把经验做成别人能用的工作";
   const description =
-    "万臻（万叔）的个人品牌入口：为有现场经验的从业者提供 FDE 顾问课程，为企业决策者提供从真实业务问题出发的 AI 咨询、培训与试点。";
+    "万臻（万叔）帮助企业团队和有现场经验的从业者，把一项具体任务或专业判断做成可试用、可复盘的工作方式。";
 
   return {
     title: { absolute: title },
@@ -54,7 +54,7 @@ export default async function Home() {
         "@type": "WebPage",
         "@id": `${canonical}#webpage`,
         url: canonical,
-        name: "万叔｜把判断做成可运行的交付",
+        name: "万叔｜把经验做成别人能用的工作",
         description:
           "万臻（万叔）的个人品牌入口：分别通向 FDE 顾问课程与企业 AI 服务。",
         inLanguage: "zh-CN",
@@ -79,10 +79,10 @@ export default async function Home() {
           </span>
         </Link>
         <nav className={styles.nav} aria-label="主导航">
-          <a href="#method">方法</a>
-          <a href="#routes">服务入口</a>
+          <a href="#method">怎么做</a>
+          <a href="#routes">从哪里开始</a>
           <Link href={aboutPath}>关于万臻</Link>
-          <a className={styles.navCta} href="#routes">开始判断</a>
+          <a className={styles.navCta} href="#routes">选一条路线</a>
         </nav>
       </header>
 
@@ -90,26 +90,28 @@ export default async function Home() {
         <section className={styles.hero} aria-labelledby="hero-heading">
           <div className={styles.heroCopy}>
             <div className={styles.heroMeta}>
-              <p>01 / 真实问题的工作台</p>
+              <p>01 / 把经验做成能用的工作</p>
               <span>SHENZHEN · CHINA</span>
             </div>
             <div className={styles.heroMain}>
-              <p className={styles.eyebrow}>万叔 · 咨询、FDE 与企业 AI</p>
+              <p className={styles.eyebrow}>咨询 · FDE · 企业 AI</p>
               <h1 id="hero-heading">
-                别把判断，
-                <em>停在一份报告里。</em>
+                你已经知道问题在哪。
+                <em>现在，把它做出来。</em>
               </h1>
               <p className={styles.lead}>
-                我做的事情很简单：把你已经看见的问题，拆成可以交付、可以验证、也有人愿意使用的工作方式。
+                有些团队卡在一项反复返工的工作上；有些专业人士已经有一套判断，却交不出一个别人能试用的版本。这里从那件具体的事开始，把它做成能给人用、也经得起复盘的工作。
               </p>
               <div className={styles.actions}>
-                <a className={styles.primaryButton} href="#routes">我带着一个真实问题来</a>
-                <Link className={styles.inlineLink} href={aboutPath}>先了解万臻是谁 <span>↗</span></Link>
+                <Link className={styles.primaryButton} href={flagshipPath}>我在解决一项企业里的事</Link>
+                <Link className={styles.inlineLink} href={coursePath}>我想把经验做成作品 <span>→</span></Link>
               </div>
             </div>
             <div className={styles.heroFoot}>
-              <span>不从工具清单开始</span>
-              <span>从任务、责任与证据开始</span>
+              <span>一项任务</span>
+              <span>一份材料</span>
+              <span>一次试用</span>
+              <span>一轮复盘</span>
             </div>
           </div>
 
@@ -130,25 +132,25 @@ export default async function Home() {
           </figure>
         </section>
 
-        <section className={styles.ticker} aria-label="服务原则">
-          <span>真实任务</span><i>✦</i><span>清晰责任</span><i>✦</i><span>可运行交付</span><i>✦</i><span>复盘证据</span><i>✦</i><span>真实任务</span>
+        <section className={styles.ticker} aria-label="工作原则">
+          <span>先说清任务</span><i>✦</i><span>再摊开过程</span><i>✦</i><span>做个能试的版本</span><i>✦</i><span>用反馈决定下一步</span><i>✦</i><span>先说清任务</span>
         </section>
 
         <section className={styles.method} id="method" aria-labelledby="method-heading">
           <div className={styles.sectionLabel}>
             <span>02</span>
-            <p>METHOD<br />不是多学一个工具。</p>
+            <p>HOW WE START<br />先看手头这件事</p>
           </div>
           <div className={styles.methodBody}>
-            <h2 id="method-heading">先把事情说清楚，<br /><em>再谈 AI 能做什么。</em></h2>
+            <h2 id="method-heading">先别讨论“要不要上 AI”。<br /><em>把那件卡住的事摆到桌上。</em></h2>
             <p className={styles.methodLead}>
-              任何一项课程、工作坊或试点，都从一个足够具体的问题开始：谁在做、卡在何处、什么算完成、出了偏差由谁承担。工具只是后面的事。
+              谁在做？交付给谁？用到哪些材料？卡在哪一步？什么结果才算好？这些问题没说清，换什么工具都只是换一种忙法。
             </p>
             <ol className={styles.steps}>
-              <li><span>01</span><div><strong>定位场景</strong><p>不谈“赋能”，先找到一个正在消耗时间或影响判断的任务。</p></div></li>
-              <li><span>02</span><div><strong>重写工作流</strong><p>把经验、输入、判断节点与人工责任摆在同一张工作台上。</p></div></li>
-              <li><span>03</span><div><strong>做出交付</strong><p>报告、原型或助手必须能被实际使用，而不是只在演示里成立。</p></div></li>
-              <li><span>04</span><div><strong>留下证据</strong><p>用测试、反馈与采用计划判断下一步，不用漂亮话替代验收。</p></div></li>
+              <li><span>01</span><div><strong>说清任务</strong><p>从一项具体工作开始：它为什么反复发生，为什么值得现在处理。</p></div></li>
+              <li><span>02</span><div><strong>摊开过程</strong><p>把材料、判断点、参与者和交接处放在一起看，找出真正的摩擦。</p></div></li>
+              <li><span>03</span><div><strong>做个能试的版本</strong><p>把想法做成流程、原型或助手，交给真实使用者，而不是留在汇报里。</p></div></li>
+              <li><span>04</span><div><strong>看它有没有用</strong><p>记录哪里省了时间、哪里仍会出错，再决定停下、重做还是扩大。</p></div></li>
             </ol>
           </div>
         </section>
@@ -157,32 +159,32 @@ export default async function Home() {
           <div className={styles.routesHead}>
             <div className={styles.sectionLabel}>
               <span>03</span>
-              <p>CHOOSE A<br />WORKING PATH</p>
+              <p>TWO STARTING POINTS<br />两种责任场景</p>
             </div>
-            <h2 id="routes-heading">同一套标准，<br />两条不同的路。</h2>
-            <p>你不必先证明自己“适不适合 AI”。先选你此刻真正需要解决的问题。</p>
+            <h2 id="routes-heading">你要做的不是同一件事。<br /><em>起点也不一样。</em></h2>
+            <p>选离你现在更近的那一条。两条路都从真实工作开始，也都要回到真实使用者身上。</p>
           </div>
 
           <div className={styles.routeGrid}>
             <article className={`${styles.routeCard} ${styles.courseCard}`}>
               <div className={styles.cardTop}>
                 <span className={styles.cardNumber}>A</span>
-                <p>FOR EXPERIENCED PROFESSIONALS</p>
+                <p>给有现场经验的专业人士</p>
               </div>
               <div className={styles.cardCore}>
-                <h3>FDE 顾问课程</h3>
+                <h3>把经验做成作品</h3>
                 <p>
-                  给已经在行业、咨询、管理、产品、售前、实施或解决方案一线的人。带一个真问题进来，把自己的判断做成工作流、可运行 MVP、测试记录和采用计划。
+                  你做过咨询、管理、实施、产品或解决方案。现在，挑一个熟悉的场景，把自己的判断拆成工作流，做出一个能让人试用的版本。
                 </p>
               </div>
               <div className={styles.cardBottom}>
                 <ul>
-                  <li>以完成什么验收，不以听了多少课</li>
-                  <li>不是零经验就业班</li>
-                  <li>不承诺就业、接单或收入结果</li>
+                  <li>带走问题简报、工作流与可试用 MVP</li>
+                  <li>用测试记录，而不是出勤证明，说明你做过什么</li>
+                  <li>适合愿意动手、也愿意让真实用户挑毛病的人</li>
                 </ul>
                 <div className={styles.cardActions}>
-                  <Link className={styles.darkButton} href={coursePath}>看课程与验收方式 <span>→</span></Link>
+                  <Link className={styles.darkButton} href={coursePath}>看课程怎么验收 <span>→</span></Link>
                   <a className={styles.cardTextLink} href={fdeCourseApplicationUrl} target="_blank" rel="noreferrer">填写课程申请表 ↗</a>
                 </div>
               </div>
@@ -191,23 +193,23 @@ export default async function Home() {
             <article className={`${styles.routeCard} ${styles.enterpriseCard}`}>
               <div className={styles.cardTop}>
                 <span className={styles.cardNumber}>B</span>
-                <p>FOR BUSINESS DECISION MAKERS</p>
+                <p>给正带着业务问题的企业团队</p>
               </div>
               <div className={styles.cardCore}>
-                <h3>企业 AI 服务</h3>
+                <h3>把一项工作改到能跑</h3>
                 <p>
-                  给需要把 AI 从讨论推到真实业务现场的企业。先确认任务、负责人、现状证据与验收责任，再进入诊断、工作坊、培训或 FDE 试点。
+                  你不是来找一份 AI 清单。你需要判断：哪一项任务值得先动，谁来负责，拿什么材料开始，又如何知道它真的比原来好。
                 </p>
               </div>
               <div className={styles.cardBottom}>
                 <ul>
-                  <li>咨询、培训、工作坊与试点分开判断</li>
-                  <li>从业务问题走到可用工作流</li>
-                  <li>不自动报价，不代替人工判断</li>
+                  <li>从一项任务判断咨询、工作坊、培训或试点是否合适</li>
+                  <li>把负责人、材料、人工判断与验收条件先讲明白</li>
+                  <li>先确认值不值得做，再讨论怎么投入</li>
                 </ul>
                 <div className={styles.cardActions}>
-                  <Link className={styles.lightButton} href={flagshipPath}>看企业服务怎么开始 <span>→</span></Link>
-                  <Link className={styles.cardTextLink} href="/start/">先做 3 分钟机会自检 ↗</Link>
+                  <Link className={styles.lightButton} href={flagshipPath}>看企业服务如何开始 <span>→</span></Link>
+                  <Link className={styles.cardTextLink} href="/start/">用 3 分钟梳理任务 ↗</Link>
                 </div>
               </div>
             </article>
@@ -219,23 +221,23 @@ export default async function Home() {
             <span>?</span><i /> <b>!</b>
           </div>
           <div className={styles.proofCopy}>
-            <p className={styles.eyebrow}>04 / THE WORK IS IN THE DETAILS</p>
-            <h2 id="proof-heading">网站可以帮你<br />厘清下一步，<em>不能替你下结论。</em></h2>
+            <p className={styles.eyebrow}>04 / WORKING AGREEMENT</p>
+            <h2 id="proof-heading">先把下一步讲明白。<br /><em>再决定要不要一起做。</em></h2>
             <p>
-              这里不会自动判定谁合格，不会用一张表单替你报价，也不会把尚未核验的信息包装成案例。课程申请与企业服务使用不同入口，由人来做后续判断。
+              课程看的是你能否完成一件有用户、有反馈的作品；企业服务先看任务、负责人和材料是否到位。这里不会替你自动判定，也不会用一张表单给出报价。
             </p>
-            <Link className={styles.inlineLink} href={aboutPath}>查看公开身份与事实边界 <span>↗</span></Link>
+            <Link className={styles.inlineLink} href={aboutPath}>看万臻的公开身份与事实边界 <span>→</span></Link>
           </div>
         </section>
 
         <section className={styles.finalCta} aria-labelledby="cta-heading">
           <div>
-            <p>05 / START WITH THE REAL THING</p>
-            <h2 id="cta-heading">不用准备一套漂亮说辞。<br /><em>带着你现在的问题来。</em></h2>
+            <p>05 / YOUR NEXT CONVERSATION</p>
+            <h2 id="cta-heading">不用先讲得很漂亮。<br /><em>说说现在最卡的是哪件事。</em></h2>
           </div>
           <div className={styles.ctaActions}>
-            <Link className={styles.ctaMain} href={flagshipPath}>我是企业决策者 <span>→</span></Link>
-            <Link className={styles.ctaSecondary} href={coursePath}>我是资深从业者 <span>→</span></Link>
+            <Link className={styles.ctaMain} href={flagshipPath}>我在处理企业里的问题 <span>→</span></Link>
+            <Link className={styles.ctaSecondary} href={coursePath}>我想把经验做成作品 <span>→</span></Link>
           </div>
         </section>
       </main>
@@ -243,9 +245,9 @@ export default async function Home() {
       <footer className={styles.footer}>
         <div className={styles.footerBrand}>
           <span className={styles.brandMark} aria-hidden="true">W.</span>
-          <div><strong>万叔</strong><p>CONSULTING / FDE / AI</p></div>
+          <div><strong>万叔</strong><p>把经验做成别人能用的工作</p></div>
         </div>
-        <p className={styles.footerNote}>© 2026 壹步咨询。公开信息、第一方实践与尚待核验的内容，分开呈现。</p>
+        <p className={styles.footerNote}>© 2026 壹步咨询。课程申请与企业服务分开处理；公开信息与尚待核验的信息分开呈现。</p>
         <nav aria-label="页脚导航">
           <Link href={coursePath}>FDE 顾问课程</Link>
           <Link href={flagshipPath}>企业 AI 服务</Link>
