@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const canonical = `${origin}/`;
   const title = "一步商学｜企业 AI 咨询、培训与 FDE 课程";
   const description =
-    "一步商学由万臻创立，提供企业 AI 咨询、培训和 FDE 顾问课程。企业可从业务机会自检开始，专业人士可申请 FDE 课程。";
+    "一步商学面向企业提供 AI 咨询、培训和工作流试点，也为有行业经验的从业者提供 FDE 顾问课程。服务从一项具体工作和现有做法开始。";
 
   return {
     title: { absolute: title },
@@ -56,7 +56,7 @@ export default async function Home() {
         url: canonical,
         name: "一步商学｜企业 AI 咨询、培训与 FDE 课程",
         description:
-          "一步商学由万臻创立，提供企业 AI 咨询、培训和 FDE 顾问课程。",
+          "一步商学面向企业提供 AI 咨询、培训和工作流试点，也为有行业经验的从业者提供 FDE 顾问课程。",
         inLanguage: "zh-CN",
         isPartOf: { "@id": `${canonical}#website` },
         about: { "@id": `${origin}${aboutPath}#person` },
@@ -82,7 +82,7 @@ export default async function Home() {
           <Link href={flagshipPath}>企业服务</Link>
           <Link href={coursePath}>FDE 课程</Link>
           <Link href={aboutPath}>创始人万臻</Link>
-          <Link className={styles.navCta} href="/start/">企业机会自检</Link>
+          <Link className={styles.navCta} href="/start/">做企业机会自检</Link>
         </nav>
       </header>
 
@@ -95,9 +95,9 @@ export default async function Home() {
             </div>
             <div className={styles.heroMain}>
               <p className={styles.eyebrow}>一步商学</p>
-              <h1 id="hero-heading">企业 AI 服务<br /><em>和 FDE 顾问课程</em></h1>
+              <h1 id="hero-heading">企业 AI 服务<br /><em>从一项具体工作开始</em></h1>
               <p className={styles.lead}>
-                一步商学由万臻创立。我们为企业提供 AI 咨询、培训和工作流试点；也为有行业经验的顾问、管理者和解决方案人员提供 FDE 顾问课程。
+                很多企业已经买过工具、听过课，部门里也有人在用 AI。下一步往往更难：哪项工作先改，材料能不能用，谁负责检查结果。一步商学据此安排咨询、培训或小范围试点。
               </p>
               <div className={styles.actions}>
                 <Link className={styles.primaryButton} href={flagshipPath}>查看企业服务</Link>
@@ -134,8 +134,8 @@ export default async function Home() {
               <span>01</span>
               <p>服务内容</p>
             </div>
-            <h2 id="services-heading">两项主要服务</h2>
-            <p>企业和个人的需求不同，请选择相应的入口。</p>
+            <h2 id="services-heading">企业服务和 FDE 课程，是两条不同路径。</h2>
+            <p>企业服务解决一项业务工作怎么改；课程帮助有经验的人把一项工作做成可交付方案。</p>
           </div>
 
           <div className={styles.routeGrid}>
@@ -147,14 +147,14 @@ export default async function Home() {
               <div className={styles.cardCore}>
                 <h3>企业 AI 服务</h3>
                 <p>
-                  为企业提供 AI 咨询、管理层和业务团队培训，以及工作流试点。服务会根据企业的业务场景、已有材料和负责人安排确定。
+                  适合已经有人试过 AI、但还没有确定先做什么的团队。先看一项具体任务，再决定需要咨询、培训还是试点。
                 </p>
               </div>
               <div className={styles.cardBottom}>
                 <ul>
-                  <li>企业 AI 咨询</li>
-                  <li>管理层和业务团队培训</li>
-                  <li>业务工作流试点</li>
+                  <li>确定优先处理的业务任务</li>
+                  <li>准备材料和团队协作方式</li>
+                  <li>安排培训或小范围试点</li>
                 </ul>
                 <div className={styles.cardActions}>
                   <Link className={styles.darkButton} href={flagshipPath}>查看企业服务 <span>→</span></Link>
@@ -171,14 +171,14 @@ export default async function Home() {
               <div className={styles.cardCore}>
                 <h3>FDE 顾问课程</h3>
                 <p>
-                  面向顾问、管理者、实施人员、产品人员和解决方案人员。课程围绕一个具体业务问题，完成问题简报、工作流、可试用版本和测试记录。
+                  适合懂行业、懂客户问题，但希望把自己的经验变成可演示、可试用方案的人。课程围绕一个真实问题完成一套可检查的材料。
                 </p>
               </div>
               <div className={styles.cardBottom}>
                 <ul>
                   <li>问题简报和现状工作流</li>
-                  <li>可试用的流程、原型或助手</li>
-                  <li>测试记录和下一轮计划</li>
+                  <li>可演示、可试用的方案</li>
+                  <li>测试记录和后续安排</li>
                 </ul>
                 <div className={styles.cardActions}>
                   <Link className={styles.lightButton} href={coursePath}>查看课程内容 <span>→</span></Link>
@@ -195,15 +195,15 @@ export default async function Home() {
             <p>企业服务流程</p>
           </div>
           <div className={styles.methodBody}>
-            <h2 id="method-heading">企业服务怎么开始</h2>
+            <h2 id="method-heading">先看现在怎么做，再谈 AI。</h2>
             <p className={styles.methodLead}>
-              开始前，我们会先了解企业要处理的业务场景、已有材料、参与人员和预期结果。确认这些信息后，再讨论适合采用咨询、培训还是试点。
+              企业通常用人、表格、文档和现有系统把工作完成。服务先看这些做法在哪一步花时间、容易出错或需要多人反复确认，再决定 AI 是否值得介入。
             </p>
             <ol className={styles.steps}>
-              <li><span>01</span><div><strong>了解业务场景</strong><p>确认要处理的岗位、流程或具体问题。</p></div></li>
-              <li><span>02</span><div><strong>整理现有材料</strong><p>查看已有流程、文档、数据和责任分工。</p></div></li>
-              <li><span>03</span><div><strong>确定服务方式</strong><p>根据情况安排咨询、培训、工作坊或工作流试点。</p></div></li>
-              <li><span>04</span><div><strong>确认后续安排</strong><p>明确参与人员、时间、交付内容和沟通方式。</p></div></li>
+              <li><span>01</span><div><strong>找一项值得动的工作</strong><p>说清岗位、任务、发生频率和当前影响。</p></div></li>
+              <li><span>02</span><div><strong>看现有做法</strong><p>查看文档、表格、数据、参与人员和责任分工。</p></div></li>
+              <li><span>03</span><div><strong>决定服务方式</strong><p>根据问题的成熟度安排咨询、培训或试点。</p></div></li>
+              <li><span>04</span><div><strong>约定检查标准</strong><p>明确谁参与、产出什么、何时检查和怎样继续。</p></div></li>
             </ol>
           </div>
         </section>
@@ -214,7 +214,7 @@ export default async function Home() {
             <p className={styles.eyebrow}>创始人</p>
             <h2 id="founder-heading">万臻</h2>
             <p>
-              万臻是一步商学创始人、CMC 国际注册管理咨询师和《认知势能》作者，长期从事企业咨询、组织管理和培训。他的公开履历、作品和身份信息可在人物页面查看。
+              万臻是一步商学创始人、CMC 国际注册管理咨询师和《认知势能》作者。他长期从事企业咨询、组织管理和培训。公开履历、作品和身份信息可在人物页面查看。
             </p>
             <Link className={styles.inlineLink} href={aboutPath}>查看万臻介绍 <span>→</span></Link>
           </div>
@@ -223,7 +223,7 @@ export default async function Home() {
         <section className={styles.finalCta} aria-labelledby="cta-heading">
           <div>
             <p>联系一步商学</p>
-            <h2 id="cta-heading">请选择您的服务入口</h2>
+            <h2 id="cta-heading">有一个具体问题，可以从这里开始。</h2>
           </div>
           <div className={styles.ctaActions}>
             <Link className={styles.ctaMain} href={flagshipPath}>企业 AI 服务 <span>→</span></Link>
@@ -237,7 +237,7 @@ export default async function Home() {
           <span className={styles.brandMark} aria-hidden="true">一</span>
           <div><strong>一步商学</strong><p>企业 AI 咨询、培训与 FDE 课程</p></div>
         </div>
-        <p className={styles.footerNote}>一步商学由万臻创立。课程申请和企业服务使用不同入口，后续由人工联系。</p>
+        <p className={styles.footerNote}>企业服务和 FDE 课程分别申请，后续由人工联系。</p>
         <nav aria-label="页脚导航">
           <Link href={flagshipPath}>企业服务</Link>
           <Link href={coursePath}>FDE 课程</Link>

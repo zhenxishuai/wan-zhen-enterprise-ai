@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const canonical = `${origin}${coursePath}`;
   const title = "FDE 顾问课程｜一步商学";
   const description =
-    "一步商学 FDE 顾问课程面向有行业经验的顾问、管理者、实施和解决方案人员。学员围绕一个业务问题完成工作流、可试用版本和测试记录。";
+    "一步商学 FDE 顾问课程面向有行业经验的顾问、管理者、实施和解决方案人员。课程帮助学员把一个熟悉的业务问题整理成可演示、可试用的方案。";
 
   return {
     title: { absolute: title },
@@ -105,7 +105,7 @@ export default async function FdeConsultantCoursePage() {
             <p className={styles.kicker}>一步商学课程</p>
             <h1>FDE 顾问课程</h1>
             <p className={styles.lead}>
-              课程面向有行业经验的顾问、管理者、实施人员、产品人员和解决方案人员。学员选择一个熟悉的业务问题，完成问题简报、工作流、可试用版本和测试记录。
+              很多从业者懂行业，也知道客户的问题，却很难让别人看见自己的经验可以怎样落地。课程要求学员选择一个熟悉的问题，完成一套可演示、可试用、可复盘的方案。
             </p>
             <div className={styles.actions}>
               <a className={styles.primaryButton} href={fdeCourseApplicationUrl} target="_blank" rel="noreferrer">填写课程申请表</a>
@@ -113,7 +113,7 @@ export default async function FdeConsultantCoursePage() {
             </div>
             <dl className={styles.credentials}>
               <div><dt>适合对象</dt><dd>有行业和业务经验的从业者</dd></div>
-              <div><dt>课程重点</dt><dd>把一个业务问题做成可试用版本</dd></div>
+              <div><dt>课程重点</dt><dd>把行业经验整理成可演示方案</dd></div>
               <div><dt>申请方式</dt><dd>填写课程申请表，由人工联系</dd></div>
             </dl>
           </div>
@@ -135,7 +135,7 @@ export default async function FdeConsultantCoursePage() {
         <section className={styles.thesis} aria-label="课程说明">
           <span>01 / 课程说明</span>
           <p>
-            课程不以工具数量或出勤次数作为主要内容。学员需要围绕一个具体业务问题，完成一套可供他人查看和试用的材料。<strong>最终是否采用，由实际使用情况决定。</strong>
+            课程以一个具体业务问题作为作业。学员需要交出可供他人查看和试用的材料，并记录试用结果。<strong>方案是否继续采用，要看真实使用情况。</strong>
           </p>
         </section>
 
@@ -144,7 +144,7 @@ export default async function FdeConsultantCoursePage() {
             <span>02 / 课程内容</span>
             <div>
               <p className={styles.kicker}>学员需要完成的内容</p>
-              <h2>课程结束时，您会有以下材料。</h2>
+              <h2>学完后，您需要完成这五项材料。</h2>
             </div>
           </div>
           <div className={styles.outcomeGrid}>
@@ -166,7 +166,7 @@ export default async function FdeConsultantCoursePage() {
             <span>03 / 课程过程</span>
             <div>
               <p className={styles.kicker}>围绕一个具体问题开展</p>
-              <h2>课程按以下四步进行。</h2>
+              <h2>从问题到试用，按这四步进行。</h2>
             </div>
           </div>
           <ol className={styles.path}>
@@ -180,8 +180,8 @@ export default async function FdeConsultantCoursePage() {
         <section className={styles.fit} id="fit">
           <div className={styles.fitIntro}>
             <span>04 / 适合谁</span>
-            <h2>适合有业务经验，并希望整理一项具体工作的人。</h2>
-            <p>不要求编程背景。申请人需要能说明自己熟悉的行业、岗位或客户问题，并能够投入时间完成材料和试用。</p>
+            <h2>适合已经在行业里做过事，并想把经验做成服务方案的人。</h2>
+            <p>申请人需要能说明自己熟悉的行业、岗位或客户问题，并能够投入时间准备材料和安排试用。编程不是申请条件。</p>
           </div>
           <div className={styles.fitLists}>
             <article>
@@ -208,7 +208,7 @@ export default async function FdeConsultantCoursePage() {
             <span>05 / 申请信息</span>
             <div>
               <p className={styles.kicker}>填写申请表前可先准备</p>
-              <h2>申请表会收集以下信息。</h2>
+              <h2>提交申请前，请先想清这四件事。</h2>
             </div>
           </div>
           <div className={styles.entryFlow} aria-label="课程申请信息">
@@ -236,7 +236,7 @@ export default async function FdeConsultantCoursePage() {
           <p className={styles.kicker}>课程申请</p>
           <h2>填写 FDE 课程申请表</h2>
           <p>
-            申请表会收集您的行业、相关经验、业务问题和可投入时间。记录只进入独立课程线索表，由万臻人工阅读后决定是否进一步联系。
+            申请表会收集您的行业、相关经验、业务问题和可投入时间。万臻会人工阅读这些信息，再决定是否适合继续沟通。
           </p>
           <div className={styles.actions}>
             <a className={styles.secondaryOnDark} href={fdeCourseApplicationUrl} target="_blank" rel="noreferrer">填写课程申请表</a>

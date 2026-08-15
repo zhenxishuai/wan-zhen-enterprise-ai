@@ -34,7 +34,7 @@ export function SiteHeader() {
             <Link href={servicesPath}>服务目录</Link>
             <Link href={aboutPath}>创始人万臻</Link>
             <Link className="nav-cta" href={startPath}>
-              企业机会自检
+              做企业机会自检
             </Link>
           </nav>
         </div>

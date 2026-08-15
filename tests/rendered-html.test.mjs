@@ -138,14 +138,14 @@ test("server-renders the dual-entry personal brand homepage and keeps the legacy
   assert.match(homeHtml, /一步商学/);
   assert.match(homeHtml, /企业 AI 服务/);
   assert.match(homeHtml, /FDE 顾问课程/);
-  assert.match(homeHtml, /一步商学由万臻创立/);
+  assert.match(homeHtml, /很多企业已经买过工具、听过课/);
   assert.match(homeHtml, /href="\/fde-consultant-course\/"/);
   assert.match(homeHtml, /href="\/enterprise-ai-consulting-training\/"/);
   assert.match(homeHtml, /href="\/start\/"/);
   assert.match(homeHtml, /href="https:\/\/fresophy\.feishu\.cn\/share\/base\/shrcnfGAskXHH9CFcaS66DfSaZ8"/);
   assert.match(homeHtml, /rel="canonical" href="https:\/\/example\.com\/"/);
   assert.match(homeHtml, /"@type":"WebSite"/);
-  assert.match(homeHtml, /企业服务怎么开始/);
+  assert.match(homeHtml, /先看现在怎么做，再谈 AI/);
   assert.match(homeHtml, /创始人/);
   assert.doesNotMatch(homeHtml, /约\s*100\s*人|5[—-]6\s*人/);
 
@@ -165,11 +165,11 @@ test("server-renders the FDE consultant course hub with evidence boundaries", as
   assert.match(html, /一步商学课程/);
   assert.match(html, /问题简报/);
   assert.match(html, /可试用版本/);
-  assert.match(html, /申请表会收集以下信息/);
+  assert.match(html, /提交申请前，请先想清这四件事/);
   assert.match(html, /href="https:\/\/fresophy\.feishu\.cn\/share\/base\/shrcnfGAskXHH9CFcaS66DfSaZ8"/);
   assert.match(html, /填写课程申请表/);
-  assert.match(html, /独立课程线索表/);
-  assert.match(html, /由万臻人工阅读后决定是否进一步联系/);
+  assert.match(html, /万臻会人工阅读这些信息/);
+  assert.match(html, /再决定是否适合继续沟通/);
   assert.match(html, /微信.*xituzhilu11/s);
   assert.match(html, /不是对就业、收入、客户项目或经营结果的承诺/);
   assert.match(html, /href="\/enterprise-ai-consulting-training\/"/);
@@ -192,8 +192,8 @@ test("server-renders the enterprise AI consulting and training flagship", async 
     html,
     /rel="canonical" href="https:\/\/example\.com\/enterprise-ai-consulting-training\/"/,
   );
-  assert.match(html, /把 AI 放进/);
-  assert.match(html, /场景—问题—工作流/);
+  assert.match(html, /先决定/);
+  assert.match(html, /从一项业务任务开始/);
   assert.match(html, /证据|第一方实践/);
   assert.match(html, /更新订阅/);
   assert.match(html, /href="\/feed\.xml\/"/);
@@ -203,7 +203,7 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(html, /微信：xituzhilu11/);
   assert.match(html, /企业 AI FDE/);
   assert.match(html, /href="\/start\/"/);
-  assert.match(html, /先做 3 分钟自检/);
+  assert.match(html, /做企业机会自检/);
   assert.match(html, /Forward Deployed Engineer/);
   assert.match(html, /账号名：万至秦说商业/);
   assert.match(html, /不通过同名账号判断身份/);

@@ -20,14 +20,14 @@ import {
 } from "../site";
 
 const directAnswer =
-  "一步商学由万臻创立，面向企业负责人、管理团队和业务部门提供企业 AI 讲课、内训、咨询和工作流试点。服务会根据企业的业务场景、已有材料、参与人员和预期结果确定具体安排。";
+  "面对已经在尝试 AI、但还没有决定先改哪项工作的企业，一步商学协助负责人从当前任务中选出优先事项，明确材料、人工责任和检查标准，再安排咨询、培训或小范围试点。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await getOrigin();
   const canonical = `${origin}${flagshipPath}`;
   const title = "企业 AI 咨询与培训";
   const description =
-    "一步商学由万臻创立，提供企业 AI 讲课、内训、咨询和工作流试点。服务安排根据企业的业务场景、材料、参与人员和预期结果确定。";
+    "一步商学面向已经开始尝试 AI 的企业，提供咨询、培训和工作流试点。服务从一项具体任务、已有材料、参与人员和检查标准开始。";
 
   return {
     title,
@@ -236,26 +236,26 @@ export default async function FlagshipPage() {
       <main id="main-content">
         <section className="hero page">
           <div className="hero-copy">
-            <div className="eyebrow">企业 AI 咨询 / 培训 / 业务工作流</div>
+            <div className="eyebrow">一步商学 / 企业 AI 咨询与培训</div>
             <h1>
-              把 AI 放进
-              <span>业务。</span>
-              <small>不是放进课件。</small>
+              先决定
+              <span>哪项工作值得改。</span>
+              <small>再决定怎样用 AI。</small>
             </h1>
             <p className="direct-answer">{directAnswer}</p>
             <div className="hero-actions">
               <Link className="button-primary" href={startPath}>
-                先做 3 分钟自检
+                做企业机会自检
               </Link>
               <Link className="text-link" href="#services">
-                看服务怎么展开
+                查看服务内容
               </Link>
             </div>
           </div>
           <aside className="hero-proof" aria-label="万臻公开身份摘要">
             <div className="proof-heading">
               <span>WAN ZHEN</span>
-              <strong>管理咨询背景，企业 AI 实践。</strong>
+              <strong>一步商学创始人，企业 AI 顾问。</strong>
             </div>
             <dl>
               <div>
@@ -281,11 +281,10 @@ export default async function FlagshipPage() {
           </aside>
         </section>
 
-        <section className="statement page" aria-label="核心判断">
-          <span>一个判断</span>
+        <section className="statement page" aria-label="服务起点">
+          <span>服务起点</span>
           <p>
-            企业缺的通常不是更多 AI 工具，
-            <strong>而是知道哪个业务问题值得先改，以及如何让人和 AI 各负其责。</strong>
+            企业已经有工具、文档和人员安排。<strong>先找出一项值得改的工作，再确定 AI 在哪里参与、谁检查结果。</strong>
           </p>
         </section>
 
@@ -293,8 +292,8 @@ export default async function FlagshipPage() {
           <header className="section-head">
             <div className="section-index">01</div>
             <div>
-              <p className="section-kicker">What we work on</p>
-              <h2>咨询负责把问题看准，培训负责让团队用起来。</h2>
+              <p className="section-kicker">服务内容</p>
+              <h2>咨询、培训和试点，分别解决不同问题。</h2>
             </div>
           </header>
           <div className="service-ledger">
@@ -320,25 +319,25 @@ export default async function FlagshipPage() {
           <header className="section-head">
             <div className="section-index">02</div>
             <div>
-              <p className="section-kicker">Scene → Problem → Workflow</p>
-              <h2>场景—问题—工作流。工具最后再选。</h2>
+              <p className="section-kicker">服务方法</p>
+              <h2>从一项业务任务开始。</h2>
             </div>
           </header>
           <ol className="method-sequence">
             <li>
               <span>01 / 场景</span>
-              <h3>先把工作现场说清楚</h3>
-              <p>哪个岗位、什么触发条件、哪些材料、谁对结果负责。</p>
+              <h3>把任务说清楚</h3>
+              <p>确认哪个岗位在做、什么时候开始、要用哪些材料、谁对结果负责。</p>
             </li>
             <li>
               <span>02 / 问题</span>
-              <h3>判断真正的阻力</h3>
-              <p>是重复整理、资料分散、判断困难，还是协同断点。</p>
+              <h3>找出当前成本</h3>
+              <p>看时间花在哪里、错误发生在哪里、哪些地方需要多人反复确认。</p>
             </li>
             <li>
               <span>03 / 工作流</span>
-              <h3>重新安排人机分工</h3>
-              <p>明确输入、AI 步骤、人工复核和最终交付物。</p>
+              <h3>安排试用和检查</h3>
+              <p>明确输入材料、AI 步骤、人工检查和最终交付物。</p>
             </li>
           </ol>
           <figure className="signature-quote">
@@ -351,8 +350,8 @@ export default async function FlagshipPage() {
           <header className="section-head">
             <div className="section-index">03</div>
             <div>
-              <p className="section-kicker">First-party practice</p>
-              <h2>先从高频、可检查、有人负责的任务开始。</h2>
+              <p className="section-kicker">第一方实践</p>
+              <h2>这些任务适合先做小范围试用。</h2>
             </div>
           </header>
           <div className="practice-list">
@@ -383,11 +382,10 @@ export default async function FlagshipPage() {
             />
           </div>
           <div className="profile-copy">
-            <p className="section-kicker">Why Wan Zhen</p>
-            <h2>不是教企业追工具，而是帮企业建立判断。</h2>
+            <p className="section-kicker">创始人</p>
+            <h2>万臻的咨询和培训背景。</h2>
             <p>
-              万臻是壹步咨询创始人、CMC 国际注册管理咨询师和《认知势能》作者。公开资料能够核验其管理咨询背景、GBA OPC
-              联盟执委身份及企业 AI 方法观点；十余年咨询与组织管理经验属于第一方履历。
+              万臻是一步商学创始人、CMC 国际注册管理咨询师和《认知势能》作者。公开资料可核验其管理咨询背景、GBA OPC 联盟执委身份和企业 AI 方法观点；十余年咨询与组织管理经验属于第一方履历。
             </p>
             <Link className="button-secondary" href={aboutPath}>
               查看完整身份与证据
@@ -399,8 +397,8 @@ export default async function FlagshipPage() {
           <header className="section-head">
             <div className="section-index">04</div>
             <div>
-              <p className="section-kicker">Fit & boundary</p>
-              <h2>适合业务试点，不把一次培训包装成全面转型。</h2>
+              <p className="section-kicker">适合范围</p>
+              <h2>适合先处理一项具体任务的企业。</h2>
             </div>
           </header>
           <div className="fit-split">
@@ -429,8 +427,8 @@ export default async function FlagshipPage() {
           <header className="section-head">
             <div className="section-index">05</div>
             <div>
-              <p className="section-kicker">Decision Q&A</p>
-              <h2>企业负责人真正会问的采购与落地问题。</h2>
+              <p className="section-kicker">常见问题</p>
+              <h2>企业负责人常会问这些问题。</h2>
             </div>
           </header>
           <div className="question-list">
@@ -455,8 +453,8 @@ export default async function FlagshipPage() {
           <header className="section-head">
             <div className="section-index">06</div>
             <div>
-              <p className="section-kicker">Sources & evidence</p>
-              <h2>身份、方法和第一方实践，分别说明。</h2>
+              <p className="section-kicker">公开来源</p>
+              <h2>身份、方法和第一方实践分别说明。</h2>
             </div>
           </header>
           <p className="source-intro">
@@ -475,15 +473,15 @@ export default async function FlagshipPage() {
 
         <section className="cta page" id="invite">
           <div>
-            <p className="section-kicker">Start with the problem</p>
-            <h2>先别谈“上什么 AI”。说说现在最卡的业务问题。</h2>
+              <p className="section-kicker">联系一步商学</p>
+              <h2>有一项具体工作要改，可以先说明这些信息。</h2>
             <p>
               请写明企业所处行业、参与角色、希望改善的任务、可使用的材料和预期时间。正式合作前先完成一次需求访谈。
             </p>
           </div>
           <div className="cta-actions">
             <Link className="button-primary" href={startPath}>
-              先判断是否值得继续
+                做企业机会自检
             </Link>
             <div className="cta-contact">
               <span>企业讲课 / 内训 / FDE 项目</span>
