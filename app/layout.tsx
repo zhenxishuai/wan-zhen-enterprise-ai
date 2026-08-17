@@ -4,11 +4,11 @@ import { aboutPath } from "./site";
 
 export const metadata: Metadata = {
   title: {
-    default: "一步商学｜企业 AI 咨询、培训与 FDE 课程",
+    default: "一步商学｜行业经验 AI 产品化与企业 AI 部署",
     template: "%s｜一步商学",
   },
   description:
-    "一步商学由万臻创立，提供企业 AI 咨询、培训、工作流试点和 FDE 顾问课程。",
+    "一步商学由万臻创立，提供面向行业专家的行业经验 AI 产品化课程，以及面向企业的 AI 部署相关服务。",
   authors: [{ name: "万臻", url: aboutPath }],
   creator: "万臻",
   publisher: "一步商学",

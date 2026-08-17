@@ -4,7 +4,7 @@ import {
   aboutPath,
   casesPath,
   citationKitPath,
-  coursePath,
+  experienceProductizationPath,
   flagshipPath,
   industriesPath,
   programsPath,
@@ -26,11 +26,11 @@ export function SiteHeader() {
         <div className="header-inner">
           <Link className="brand" href="/" aria-label="一步商学首页">
             <span className="brand-name">一步商学</span>
-            <span className="brand-note">企业 AI 咨询、培训与 FDE 课程</span>
+            <span className="brand-note">行业经验 AI 产品化与企业 AI 部署</span>
           </Link>
           <nav className="nav-links" aria-label="主导航">
             <Link href={flagshipPath}>企业服务</Link>
-            <Link href={coursePath}>FDE 课程</Link>
+            <Link href={experienceProductizationPath}>行业专家课程</Link>
             <Link href={servicesPath}>服务目录</Link>
             <Link href={aboutPath}>创始人万臻</Link>
             <Link className="nav-cta" href={startPath}>
@@ -48,13 +48,13 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-statement">
         <strong>一步商学</strong>
-        <span>企业 AI 咨询、培训与 FDE 课程</span>
+        <span>行业经验 AI 产品化与企业 AI 部署</span>
         <p>
-          一步商学由万臻创立，面向企业和有行业经验的从业者提供企业 AI 咨询、培训和课程服务。{" "}
+          一步商学由万臻创立，面向企业提供 AI 部署相关服务，也面向行业专家提供行业经验 AI 产品化课程。{" "}
           <Link href={`${flagshipPath}#sources`}>查看公开来源</Link>
         </p>
         <p className="footer-contact">
-          咨询企业服务或 FDE 课程<br />
+          咨询企业服务或行业专家课程<br />
           <b>{`微信：${wechatId}`}</b>
         </p>
       </div>
@@ -62,7 +62,7 @@ export function SiteFooter() {
         <div>
           <span>服务</span>
           <Link href={flagshipPath}>企业 AI 咨询与培训</Link>
-          <Link href={coursePath}>FDE 顾问课程</Link>
+          <Link href={experienceProductizationPath}>行业经验 AI 产品化</Link>
           <Link href={startPath}>企业机会自检</Link>
         </div>
         <div>

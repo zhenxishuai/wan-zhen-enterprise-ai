@@ -7,7 +7,7 @@ import {
   aboutPath,
   casesPath,
   citationKitPath,
-  coursePath,
+  experienceProductizationPath,
   flagshipPath,
   getOrigin,
   industriesPath,
@@ -32,7 +32,7 @@ export async function GET() {
   ];
   const paths = [
     "/",
-    coursePath,
+    experienceProductizationPath,
     flagshipPath,
     aboutPath,
     citationKitPath,
@@ -58,7 +58,7 @@ export async function GET() {
     <loc>${origin}${path}</loc>
     <lastmod>${updatedAt}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${["/", coursePath, flagshipPath].includes(path) ? "1.0" : [aboutPath, citationKitPath, servicesPath, industriesPath, casesPath, applicationsPath, programsPath, questionsPath, startPath].includes(path) ? "0.9" : downloadPaths.includes(path) ? "0.6" : "0.8"}</priority>
+    <priority>${["/", experienceProductizationPath, flagshipPath].includes(path) ? "1.0" : [aboutPath, citationKitPath, servicesPath, industriesPath, casesPath, applicationsPath, programsPath, questionsPath, startPath].includes(path) ? "0.9" : downloadPaths.includes(path) ? "0.6" : "0.8"}</priority>
   </url>`,
     )
     .join("\n");

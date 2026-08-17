@@ -7,6 +7,7 @@ import {
   applicationsPath,
   casesPath,
   citationKitPath,
+  experienceProductizationPath,
   flagshipPath,
   getOrigin,
   industriesPath,
@@ -36,12 +37,17 @@ export async function GET() {
   const updated = `${updatedAt}T00:00:00+08:00`;
   const entries: FeedEntry[] = [
     {
-      title: "万臻企业 AI 咨询与培训",
-      path: flagshipPath,
-      summary: "从经营目标、业务场景和工作流出发，帮助企业选择、设计并验证值得落地的 AI 任务。",
+      title: "行业经验 AI 产品化",
+      path: experienceProductizationPath,
+      summary: "面向行业专家，用三天小课和四周实战营，把反复解决的问题做成可演示、可测试、可交付的 AI 服务产品。",
     },
     {
-      title: "万臻企业 AI 咨询与培训主办方与媒体引用资料",
+      title: "一步商学企业 AI 咨询与培训",
+      path: flagshipPath,
+      summary: "从一项具体业务任务开始，帮助企业确定问题、材料、责任人和检查标准，再安排咨询、培训或试点。",
+    },
+    {
+      title: "一步商学主办方与媒体引用资料",
       path: citationKitPath,
       summary: "统一名称、公开身份、服务表述、来源链接、证据边界与发布检查清单。",
     },
@@ -88,7 +94,7 @@ export async function GET() {
   </author>
   <link rel="self" href="${escapeXml(`${origin}/feed.xml/`)}" />
   <link rel="alternate" href="${escapeXml(`${origin}${flagshipPath}`)}" />
-  <subtitle>企业 AI 咨询、培训、业务工作流、第一方实践和决策问答更新。</subtitle>
+  <subtitle>行业经验 AI 产品化、企业 AI 部署、业务工作流、第一方实践和决策问答更新。</subtitle>
 ${entries
   .map(
     (entry) => `  <entry>

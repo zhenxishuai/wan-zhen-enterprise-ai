@@ -136,16 +136,18 @@ test("server-renders the dual-entry personal brand homepage and keeps the legacy
   assert.equal(home.status, 200);
   const homeHtml = await home.text();
   assert.match(homeHtml, /一步商学/);
-  assert.match(homeHtml, /企业 AI 服务/);
-  assert.match(homeHtml, /FDE 顾问课程/);
-  assert.match(homeHtml, /很多企业已经买过工具、听过课/);
-  assert.match(homeHtml, /href="\/fde-consultant-course\/"/);
+  assert.match(homeHtml, /行业经验 AI 产品化/);
+  assert.match(homeHtml, /企业 AI 部署服务/);
+  assert.match(homeHtml, /把十年以上行业经验/);
+  assert.match(homeHtml, /AI 全栈工程师/);
+  assert.match(homeHtml, /行业专家/);
+  assert.match(homeHtml, /咨询项目专家/);
+  assert.match(homeHtml, /href="\/industry-expert-ai-productization\/"/);
   assert.match(homeHtml, /href="\/enterprise-ai-consulting-training\/"/);
   assert.match(homeHtml, /href="\/start\/"/);
-  assert.match(homeHtml, /href="https:\/\/fresophy\.feishu\.cn\/share\/base\/shrcnfGAskXHH9CFcaS66DfSaZ8"/);
   assert.match(homeHtml, /rel="canonical" href="https:\/\/example\.com\/"/);
   assert.match(homeHtml, /"@type":"WebSite"/);
-  assert.match(homeHtml, /先看现在怎么做，再谈 AI/);
+  assert.match(homeHtml, /一项企业部署，需要三类角色协作/);
   assert.match(homeHtml, /创始人/);
   assert.doesNotMatch(homeHtml, /约\s*100\s*人|5[—-]6\s*人/);
 
@@ -157,23 +159,28 @@ test("server-renders the dual-entry personal brand homepage and keeps the legacy
   );
 });
 
-test("server-renders the FDE consultant course hub with evidence boundaries", async () => {
-  const response = await render("/fde-consultant-course/");
+test("redirects the legacy FDE path and renders the industry-expert productization course", async () => {
+  const legacy = await render("/fde-consultant-course/");
+  assert.match(String(legacy.status), /^30[78]$/);
+  assert.equal(
+    legacy.headers.get("location"),
+    "https://example.com/industry-expert-ai-productization/",
+  );
+
+  const response = await render("/industry-expert-ai-productization/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /FDE 顾问课程/);
-  assert.match(html, /一步商学课程/);
-  assert.match(html, /问题简报/);
-  assert.match(html, /可试用版本/);
-  assert.match(html, /提交申请前，请先想清这四件事/);
-  assert.match(html, /href="https:\/\/fresophy\.feishu\.cn\/share\/base\/shrcnfGAskXHH9CFcaS66DfSaZ8"/);
-  assert.match(html, /填写课程申请表/);
-  assert.match(html, /万臻会人工阅读这些信息/);
-  assert.match(html, /再决定是否适合继续沟通/);
-  assert.match(html, /微信.*xituzhilu11/s);
-  assert.match(html, /不是对就业、收入、客户项目或经营结果的承诺/);
+  assert.match(html, /行业经验 AI 产品化/);
+  assert.match(html, /十年以上行业或职能经验/);
+  assert.match(html, /99 元三天小课/);
+  assert.match(html, /4,980 元四周实战营/);
+  assert.match(html, /原型 v0/);
+  assert.match(html, /10 条测试/);
+  assert.match(html, /2026 首期计划/);
+  assert.match(html, /课程安排和意向登记以正式通知为准/);
+  assert.match(html, /课程不保证成交、收入、就业或项目机会/);
   assert.match(html, /href="\/enterprise-ai-consulting-training\/"/);
-  assert.match(html, /rel="canonical" href="https:\/\/example\.com\/fde-consultant-course\/"/);
+  assert.match(html, /rel="canonical" href="https:\/\/example\.com\/industry-expert-ai-productization\/"/);
   assert.match(html, /"@type":"Course"/);
   assert.doesNotMatch(html, /课程将保证|学员必将|申请首期共创|首期共创/);
 });
@@ -786,8 +793,9 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   const llms = await render("/llms.txt");
   assert.equal(llms.status, 200);
   const llmsText = await llms.text();
-  assert.match(llmsText, /万臻｜企业 AI 咨询与培训/);
-  assert.match(llmsText, /场景—问题—工作流/);
+  assert.match(llmsText, /一步商学｜行业经验 AI 产品化与企业 AI 部署/);
+  assert.match(llmsText, /行业经验 AI 产品化/);
+  assert.match(llmsText, /AI 全栈工程师、行业专家、咨询项目专家/);
   assert.match(llmsText, /第一方陈述/);
   assert.match(llmsText, /抖音号：54032667928/);
   assert.match(llmsText, /企业 AI 案例证据采集框架/);
@@ -834,7 +842,8 @@ test("publishes crawler, sitemap, and machine-readable content interfaces", asyn
   const feedText = await feed.text();
   assert.match(feedText, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
   assert.match(feedText, /<author>\s*<name>万臻<\/name>/);
-  assert.match(feedText, /企业 AI 咨询、培训、业务工作流/);
+  assert.match(feedText, /行业经验 AI 产品化、企业 AI 部署、业务工作流/);
+  assert.match(feedText, /行业经验 AI 产品化/);
   assert.match(feedText, /\/applications\/sales-preparation-ai-workflow\//);
   assert.match(feedText, /\/programs\/one-day-enterprise-ai-training\//);
   assert.match(feedText, /\/questions\/how-to-choose-enterprise-ai-consultant\//);

@@ -1,9 +1,9 @@
 import { headers } from "next/headers";
 
-export const siteName = "一步商学｜企业 AI 咨询、培训与 FDE 课程";
+export const siteName = "一步商学｜行业经验 AI 产品化与企业 AI 部署";
 export const flagshipPath = "/enterprise-ai-consulting-training/";
-export const coursePath = "/fde-consultant-course/";
-export const fdeCourseApplicationUrl = "https://fresophy.feishu.cn/share/base/shrcnfGAskXHH9CFcaS66DfSaZ8";
+export const experienceProductizationPath = "/industry-expert-ai-productization/";
+export const legacyFdeCoursePath = "/fde-consultant-course/";
 export const aboutPath = "/about-wan-zhen/";
 export const servicesPath = "/services/";
 export const casesPath = "/cases/";

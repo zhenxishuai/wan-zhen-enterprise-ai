@@ -87,9 +87,7 @@ a {
 .site-shell {
   min-height: 100dvh;
   overflow: clip;
-  background:
-    linear-gradient(90deg, transparent calc(100% - 1px), rgba(21, 23, 24, 0.07) 0);
-  background-size: calc((min(100vw, var(--max)) - 2 * var(--gutter)) / 6) 100%;
+  background: var(--paper);
 }
 
 .page {
