@@ -557,6 +557,170 @@ a:focus-visible {
   font-size: 12px;
 }
 
+.deployment-diagram {
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+  background: #e9ebf2;
+}
+
+.deployment-diagram-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 52px;
+  align-items: end;
+  padding: 76px var(--gutter) 46px;
+}
+
+.deployment-diagram-head h2 {
+  max-width: 720px;
+  margin: 12px 0 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.055em;
+}
+
+.deployment-diagram-head > p {
+  max-width: 440px;
+  margin: 0 0 8px;
+  color: var(--ink-soft);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.deployment-canvas {
+  position: relative;
+  min-height: 580px;
+  margin: 0 var(--gutter);
+  padding: 36px;
+  overflow: hidden;
+  border: 1px solid rgba(21, 23, 24, 0.2);
+  background: var(--white);
+}
+
+.deployment-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.deployment-lines path {
+  fill: none;
+  stroke: rgba(35, 71, 217, 0.46);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 7;
+}
+
+.deployment-role,
+.deployment-hub,
+.deployment-output {
+  position: absolute;
+  z-index: 1;
+  background: var(--white);
+}
+
+.deployment-role {
+  top: 38px;
+  width: calc((100% - 144px) / 3);
+  min-height: 176px;
+  padding: 27px 26px 24px;
+  border: 1px solid var(--line-strong);
+  box-shadow: 8px 8px 0 rgba(35, 71, 217, 0.08);
+}
+
+.deployment-role-tech {
+  left: 36px;
+}
+
+.deployment-role-expert {
+  left: calc(50% - ((100% - 144px) / 6));
+}
+
+.deployment-role-project {
+  right: 36px;
+}
+
+.deployment-role span,
+.deployment-hub span,
+.deployment-output span {
+  display: block;
+  color: var(--blue);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.deployment-role h3 {
+  margin: 36px 0 12px;
+  font-size: clamp(19px, 2vw, 27px);
+  letter-spacing: -0.045em;
+}
+
+.deployment-role p,
+.deployment-hub p,
+.deployment-output p {
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.deployment-hub {
+  top: 264px;
+  left: 50%;
+  width: min(330px, 38%);
+  transform: translateX(-50%);
+  padding: 25px 28px 24px;
+  border: 2px solid var(--blue);
+  text-align: center;
+}
+
+.deployment-hub strong {
+  display: block;
+  margin: 14px 0 9px;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.deployment-output {
+  bottom: 36px;
+  left: 50%;
+  width: min(420px, 48%);
+  transform: translateX(-50%);
+  padding: 21px 26px;
+  background: var(--ink);
+  color: var(--white);
+  text-align: center;
+}
+
+.deployment-output span {
+  color: #aeb9ff;
+}
+
+.deployment-output p {
+  margin-top: 9px;
+  color: rgba(255, 255, 255, 0.76);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 15px;
+}
+
+.deployment-note {
+  max-width: 880px;
+  margin: 0;
+  padding: 24px var(--gutter) 32px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
 .practice-list article {
   display: grid;
   grid-template-columns: 70px 0.75fr 1.15fr 1fr;
@@ -2641,6 +2805,36 @@ a:focus-visible {
     grid-template-columns: 0.8fr 1.2fr;
   }
 
+  .deployment-diagram-head {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .deployment-diagram-head > p {
+    max-width: 640px;
+  }
+
+  .deployment-canvas {
+    min-height: 620px;
+  }
+
+  .deployment-role {
+    width: calc((100% - 112px) / 3);
+    padding: 22px 20px;
+  }
+
+  .deployment-role-tech {
+    left: 28px;
+  }
+
+  .deployment-role-expert {
+    left: calc(50% - ((100% - 112px) / 6));
+  }
+
+  .deployment-role-project {
+    right: 28px;
+  }
+
   .service-row ul {
     grid-column: 2;
   }
@@ -2810,6 +3004,60 @@ a:focus-visible {
 
   .signature-quote {
     padding: 58px 22px 54px;
+  }
+
+  .deployment-diagram-head {
+    display: block;
+    padding: 56px 22px 34px;
+  }
+
+  .deployment-diagram-head > p {
+    margin-top: 20px;
+    font-size: 15px;
+  }
+
+  .deployment-canvas {
+    min-height: 0;
+    display: grid;
+    gap: 12px;
+    margin: 0 22px;
+    padding: 14px;
+    overflow: visible;
+  }
+
+  .deployment-lines {
+    display: none;
+  }
+
+  .deployment-role,
+  .deployment-hub,
+  .deployment-output {
+    position: static;
+    width: auto;
+    min-height: 0;
+    transform: none;
+  }
+
+  .deployment-role {
+    padding: 22px 20px;
+    box-shadow: none;
+  }
+
+  .deployment-role h3 {
+    margin-top: 22px;
+  }
+
+  .deployment-hub {
+    margin-top: 6px;
+    text-align: left;
+  }
+
+  .deployment-output {
+    text-align: left;
+  }
+
+  .deployment-note {
+    padding: 20px 22px 28px;
   }
 
   .practice-list article {

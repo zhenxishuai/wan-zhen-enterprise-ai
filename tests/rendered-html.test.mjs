@@ -209,6 +209,12 @@ test("server-renders the enterprise AI consulting and training flagship", async 
   assert.match(html, /抖音搜索 54032667928/);
   assert.match(html, /微信：xituzhilu11/);
   assert.match(html, /企业 AI FDE/);
+  assert.match(html, /企业 AI 部署，不是一个人的工作/);
+  assert.match(html, /AI 全栈工程师/);
+  assert.match(html, /行业专家/);
+  assert.match(html, /咨询项目专家/);
+  assert.match(html, /可试用、可复核、有人负责的业务工作流/);
+  assert.match(html, /具体技术实施范围、系统集成和持续运维/);
   assert.match(html, /href="\/start\/"/);
   assert.match(html, /做企业机会自检/);
   assert.match(html, /Forward Deployed Engineer/);

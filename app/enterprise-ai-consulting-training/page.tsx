@@ -346,6 +346,53 @@ export default async function FlagshipPage() {
           </figure>
         </section>
 
+        <section className="deployment-diagram page" aria-labelledby="deployment-diagram-title">
+          <header className="deployment-diagram-head">
+            <div>
+              <p className="section-kicker">企业部署协作</p>
+              <h2 id="deployment-diagram-title">企业 AI 部署，不是一个人的工作。</h2>
+            </div>
+            <p>
+              技术能不能跑、业务问题是否值得解决、项目能不能在组织里推进，是三件不同的事。三类角色要一起对一条工作流负责。
+            </p>
+          </header>
+          <div className="deployment-canvas">
+            <svg className="deployment-lines" viewBox="0 0 1200 520" aria-hidden="true" preserveAspectRatio="none">
+              <path d="M 208 126 C 340 126, 420 126, 512 260" />
+              <path d="M 600 126 C 600 178, 600 210, 600 260" />
+              <path d="M 992 126 C 860 126, 780 126, 688 260" />
+              <path d="M 600 340 L 600 412" />
+            </svg>
+            <article className="deployment-role deployment-role-tech">
+              <span>01</span>
+              <h3>AI 全栈工程师</h3>
+              <p>负责技术实现、工具连接、原型运行和必要的工程处理。</p>
+            </article>
+            <article className="deployment-role deployment-role-expert">
+              <span>02</span>
+              <h3>行业专家</h3>
+              <p>负责问题定义、关键判断、输出复核和不能交给 AI 的事项。</p>
+            </article>
+            <article className="deployment-role deployment-role-project">
+              <span>03</span>
+              <h3>咨询项目专家</h3>
+              <p>负责目标、范围、项目节奏、跨部门协作和验收安排。</p>
+            </article>
+            <div className="deployment-hub">
+              <span>共同推进</span>
+              <strong>一项业务工作流</strong>
+              <p>从任务、材料和责任人开始。</p>
+            </div>
+            <div className="deployment-output">
+              <span>共同交付</span>
+              <p>可试用、可复核、有人负责的业务工作流。</p>
+            </div>
+          </div>
+          <p className="deployment-note">
+            一步商学负责咨询与项目协作；具体技术实施范围、系统集成和持续运维，需在需求确认后与企业及技术团队另行界定。
+          </p>
+        </section>
+
         <section className="section page" id="cases">
           <header className="section-head">
             <div className="section-index">03</div>
@@ -484,7 +531,7 @@ export default async function FlagshipPage() {
                 做企业机会自检
             </Link>
             <div className="cta-contact">
-              <span>企业讲课 / 内训 / FDE 项目</span>
+              <span>企业讲课 / 内训 / AI 部署项目</span>
               <strong>{`微信：${wechatId}`}</strong>
               <small>添加时请注明企业、岗位与希望解决的业务问题。</small>
             </div>
