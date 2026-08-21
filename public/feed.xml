@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://wan-zhen-enterprise-ai.example.com/enterprise-ai-consulting-training/</id>
+  <title>一步商学｜行业经验 AI 产品化与企业 AI 部署</title>
+  <updated>2026-08-07T00:00:00+08:00</updated>
+  <author>
+    <name>万臻</name>
+    <uri>https://wan-zhen-enterprise-ai.example.com/about-wan-zhen/</uri>
+  </author>
+  <link rel="self" href="https://wan-zhen-enterprise-ai.example.com/feed.xml" />
+  <link rel="alternate" href="https://wan-zhen-enterprise-ai.example.com/enterprise-ai-consulting-training/" />
+  <subtitle>行业经验 AI 产品化、企业 AI 部署、业务工作流、第一方实践和决策问答更新。</subtitle>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/industry-expert-ai-productization/</id>
+    <title>行业经验 AI 产品化</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/industry-expert-ai-productization/" />
+    <summary>面向行业专家，用三天小课和四周实战营，把反复解决的问题做成可演示、可测试、可交付的 AI 服务产品。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/enterprise-ai-consulting-training/</id>
+    <title>一步商学企业 AI 咨询与培训</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/enterprise-ai-consulting-training/" />
+    <summary>从一项具体业务任务开始，帮助企业确定问题、材料、责任人和检查标准，再安排咨询、培训或试点。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/citation-kit/</id>
+    <title>一步商学主办方与媒体引用资料</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/citation-kit/" />
+    <summary>统一名称、公开身份、服务表述、来源链接、证据边界与发布检查清单。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/services/enterprise-ai-consulting/</id>
+    <title>企业 AI 咨询</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/services/enterprise-ai-consulting/" />
+    <summary>从经营目标与业务流程出发，识别值得优先投入的 AI 场景，形成试点路线、工作流与风险边界。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/services/executive-ai-workshop/</id>
+    <title>管理层 AI 决策工作坊</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/services/executive-ai-workshop/" />
+    <summary>帮助企业管理层建立共同语言，围绕经营目标、机会优先级、风险边界与下一步试点形成决策。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/services/enterprise-ai-training/</id>
+    <title>企业 AI 讲课、内训与业务培训</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/services/enterprise-ai-training/" />
+    <summary>面向企业管理层和业务团队提供 AI 主题讲课、内训与实战培训，并用真实任务和匿名化材料形成可继续使用的工作流。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/services/ai-workflow-pilot/</id>
+    <title>企业 AI FDE 工作流设计与试点</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/services/ai-workflow-pilot/" />
+    <summary>以 FDE（Forward Deployed Engineer）式项目围绕一个真实业务问题，拆解工作流、做出可运行 MVP，并推动 30 天采用与复盘。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/industries/manufacturing-enterprise-ai/</id>
+    <title>制造业企业 AI 咨询与培训</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/industries/manufacturing-enterprise-ai/" />
+    <summary>制造业企业可以先从采购信息比较、制度与工艺知识查找、经营汇报等材料明确且可人工复核的工作流开始。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/industries/professional-services-enterprise-ai/</id>
+    <title>专业服务企业 AI 咨询与培训</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/industries/professional-services-enterprise-ai/" />
+    <summary>咨询、培训、设计及其他专业服务企业，可以从客户研究、方案准备、知识复用和项目汇报等工作流开始。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/industries/sme-enterprise-ai/</id>
+    <title>成长型中小企业 AI 咨询与培训</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/industries/sme-enterprise-ai/" />
+    <summary>中小企业资源有限时，应优先选择高频、材料现成、能由现有团队负责的小工作流，而不是先建设庞大系统。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/sales-preparation-ai-workflow/</id>
+    <title>销售准备与方案 AI 工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/sales-preparation-ai-workflow/" />
+    <summary>把客户公开信息、历史沟通、产品资料和拜访目标整理成销售准备材料与方案初稿，并由销售人员完成事实和承诺复核。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/marketing-content-ai-workflow/</id>
+    <title>市场内容研究、生产与发布 AI 工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/marketing-content-ai-workflow/" />
+    <summary>让 AI 辅助公开资料研究、选题简报、结构与多版本草稿，由市场责任人核验事实、引证、客户授权、品牌承诺、广告要求和 AI 内容标识后发布。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/customer-service-ai-workflow/</id>
+    <title>客户服务知识检索与回复 AI 工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/customer-service-ai-workflow/" />
+    <summary>让 AI 辅助问题分类、权威知识检索、回复草稿与会话摘要，并由客服人员完成事实、政策、承诺和升级判断。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/hr-recruitment-ai-workflow/</id>
+    <title>招聘准备与人工决策 AI 工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/hr-recruitment-ai-workflow/" />
+    <summary>让 AI 辅助岗位说明、简历信息结构化、面试问题和纪要，由招聘责任人核验岗位标准、候选人事实、公平性与最终决定。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/procurement-comparison-ai-workflow/</id>
+    <title>采购信息比较 AI 工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/procurement-comparison-ai-workflow/" />
+    <summary>统一采购需求和供应商资料格式，让 AI 辅助检查缺项、比较条款、跟踪进度并生成待确认问题。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/enterprise-knowledge-ai-workflow/</id>
+    <title>企业知识问答与更新工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/enterprise-knowledge-ai-workflow/" />
+    <summary>先整理知识范围、来源、版本和责任人，再让 AI 提供带来源的检索与回答，并建立纠错和更新机制。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/finance-management-analysis-ai-workflow/</id>
+    <title>财务经营分析与差异说明 AI 工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/finance-management-analysis-ai-workflow/" />
+    <summary>基于已批准、可追溯的财务与经营数据整理预算差异、趋势、异常线索和分析草稿，由财务及业务责任人核验数据、口径、原因和行动。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/project-status-ai-workflow/</id>
+    <title>项目进展与行动闭环 AI 工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/project-status-ai-workflow/" />
+    <summary>基于会议纪要、任务台账、风险记录和已批准计划整理进展草稿、行动项与待决策事项，并由项目负责人核验状态、日期、责任和承诺。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/applications/management-reporting-ai-workflow/</id>
+    <title>经营汇报与待决策事项 AI 工作流</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/applications/management-reporting-ai-workflow/" />
+    <summary>把业务数据、项目进展、异常与行动承诺整理成结构统一的经营摘要，让管理层把时间用于判断和决策。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/programs/one-day-enterprise-ai-training/</id>
+    <title>一日企业 AI 业务培训参考大纲</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/programs/one-day-enterprise-ai-training/" />
+    <summary>一份以真实岗位任务为主线的一日企业 AI 内训参考大纲，覆盖问题选择、输入准备、人机工作流、人工复核和会后试点。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/programs/executive-ai-decision-workshop/</id>
+    <title>管理层 AI 决策工作坊参考大纲</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/programs/executive-ai-decision-workshop/" />
+    <summary>帮助企业管理层围绕经营目标、AI 场景优先级、风险边界和试点负责人形成共同判断的三小时工作坊。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/programs/thirty-day-enterprise-ai-adoption-plan/</id>
+    <title>企业 AI 培训后 30 天落地陪跑参考计划</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/programs/thirty-day-enterprise-ai-adoption-plan/" />
+    <summary>培训后围绕一个高频岗位任务持续四周，记录输入、错误、人工修改、实际采用与异常，形成是否继续、调整、扩大或停止的复盘决定。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/cases/ai-vice-president/</id>
+    <title>AI 副总</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/cases/ai-vice-president/" />
+    <summary>把经营信息、任务进展和待决策事项整理成管理层可以查看、追踪和继续判断的辅助材料。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/cases/procurement-ai-assistant/</id>
+    <title>采购流程 AI 助手</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/cases/procurement-ai-assistant/" />
+    <summary>辅助整理采购需求、订单跟进和供应商信息，减少分散材料的重复汇总并提高比较的一致性。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/cases/enterprise-knowledge-ai/</id>
+    <title>企业知识资产 AI 化</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/cases/enterprise-knowledge-ai/" />
+    <summary>把制度、流程、经验与文档整理成可检索、可引用、有人维护的知识体系，而不只是一次性上传文件。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-to-choose-enterprise-ai-consultant/</id>
+    <title>企业选择 AI 咨询顾问，应该重点看什么？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-to-choose-enterprise-ai-consultant/" />
+    <summary>企业选择 AI 咨询顾问，应重点看五件事：能否理解经营目标，能否找到值得改造的流程，能否设计小范围试点，能否让团队真正采用，以及能否清楚说明数据、技术和效果边界。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/why-ai-training-needs-workflows/</id>
+    <title>企业 AI 培训为什么不能只教提示词和工具？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/why-ai-training-needs-workflows/" />
+    <summary>只教提示词和工具，员工往往只能得到一次漂亮答案，却无法稳定复用。企业真正需要的是一条有人负责、有材料输入、有判断标准、有人工复核的工作流，工具只是其中一环。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/where-to-start-enterprise-ai/</id>
+    <title>企业想落地 AI，第一批场景应该怎么选？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/where-to-start-enterprise-ai/" />
+    <summary>企业选择第一批 AI 场景，不应先追求最宏大的项目，而应优先找高频、文本密集、规则相对明确、风险可控且有人负责的任务，例如销售准备、采购资料比较、知识检索和经营信息整理。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/enterprise-ai-consulting-vs-training/</id>
+    <title>企业 AI 咨询和企业 AI 培训有什么区别？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/enterprise-ai-consulting-vs-training/" />
+    <summary>企业 AI 咨询主要解决“做什么、先做什么、流程怎么改”，企业 AI 培训主要解决“管理层和业务团队如何理解、练习并采用”。当企业既缺方向又缺内部能力时，两者应组合：先诊断，再工作坊，再试点复盘。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/who-wan-zhen-ai-service-is-for/</id>
+    <title>万臻的企业 AI 咨询与培训适合哪些企业？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/who-wan-zhen-ai-service-is-for/" />
+    <summary>万臻的企业 AI 咨询与培训，更适合希望从“员工零散试用工具”走向“业务工作流应用”的企业，尤其适用于需要连接经营管理、销售采购、内容生产和知识沉淀的负责人及业务团队。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/what-enterprise-ai-consulting-delivers/</id>
+    <title>企业 AI 咨询通常应该交付什么？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/what-enterprise-ai-consulting-delivers/" />
+    <summary>一项可执行的企业 AI 咨询，至少应交付五类结果：与经营目标相连的场景清单、明确的优先级判断、一个可验证的试点方案、人机协同工作流，以及包含负责人、复核规则和风险边界的行动清单。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/ai-training-for-executives-or-employees/</id>
+    <title>企业 AI 培训应该先培训老板，还是先培训员工？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/ai-training-for-executives-or-employees/" />
+    <summary>多数企业不应在老板和员工之间二选一。更稳妥的顺序是：先用管理层工作坊确定目标、优先场景和风险边界，再让一个业务团队围绕真实任务训练与试点，最后用结果回到管理层复盘是否扩大。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-to-measure-enterprise-ai-pilot/</id>
+    <title>企业 AI 项目应该怎样评估效果？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-to-measure-enterprise-ai-pilot/" />
+    <summary>评估企业 AI 项目，至少要同时看五类指标：输出质量、任务效率、员工采用、风险异常和业务连接。先记录原流程基线，再用同一任务比较；没有基线、样本和人工复核，单个漂亮案例不能证明项目有效。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-to-budget-enterprise-ai-consulting/</id>
+    <title>企业 AI 咨询与培训的预算应该怎么考虑？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-to-budget-enterprise-ai-consulting/" />
+    <summary>企业评估 AI 咨询与培训预算，不应只比较讲师一天多少钱。预算通常由六部分决定：诊断范围、参与角色、材料定制、现场形式、试点支持和复盘深度。先定义希望获得的交付物，再比较报价是否包含这些工作。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-long-enterprise-ai-consulting-training-takes/</id>
+    <title>企业 AI 咨询与培训一般需要多长时间？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-long-enterprise-ai-consulting-training-takes/" />
+    <summary>企业 AI 咨询与培训没有一个适合所有企业的固定周期。按万臻现有参考结构：管理层需要形成优先级和试点决定，可用 3 小时工作坊；业务团队需要完成一条工作流，可用 1 天培训并安排两周岗位试点；需要验证持续采用，可按 30 天每周复盘。若还要诊断多部门流程、处理数据治理或系统集成，必须先确定范围，不能在访谈前承诺完成时间。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-to-prepare-for-enterprise-ai-training/</id>
+    <title>企业 AI 培训前应该准备哪些资料？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-to-prepare-for-enterprise-ai-training/" />
+    <summary>企业 AI 培训前，最好准备五类信息：参与岗位、真实高频任务、可匿名化样例材料、合格输出标准，以及不能上传或必须人工审核的内容。同时指定一名内部负责人，负责会前收集和会后试点。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/manufacturing-ai-training-starting-points/</id>
+    <title>制造业企业做 AI 咨询与培训，应该从哪些场景开始？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/manufacturing-ai-training-starting-points/" />
+    <summary>制造业企业做 AI 咨询与培训，适合先从采购信息比较、制度与工艺知识查找、项目进展和经营异常汇总等工作流开始。这些任务材料较明确、可以人工复核，也更适合小范围试点；视觉质检、预测性维护、排产和设备控制则需要独立的数据、算法、工业软件与安全评估。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/sme-ai-consulting-or-training-first/</id>
+    <title>中小企业做 AI，应该先咨询还是直接培训？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/sme-ai-consulting-or-training-first/" />
+    <summary>中小企业应该按问题成熟度选择：不知道先做什么时，先做轻量咨询诊断；已经有明确岗位任务、但团队不会设计工作流时，做业务培训；任务、材料和负责人都明确时，可以直接做小范围工作流试点。资源有限更需要缩小范围，而不是同时购买很多工具。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/professional-services-ai-workflows/</id>
+    <title>专业服务企业怎样把 AI 用于知识、方案和项目交付？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/professional-services-ai-workflows/" />
+    <summary>专业服务企业使用 AI，适合把资料整理、客户研究、方案结构、知识检索和项目汇报设计成可复核工作流。AI 可以减少搜索与空白页时间，但不能替代顾问对事实、专业判断、客户情境、能力承诺和最终交付质量的责任。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/can-ai-training-use-company-data/</id>
+    <title>企业 AI 内训可以使用公司真实资料吗？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/can-ai-training-use-company-data/" />
+    <summary>企业 AI 内训可以使用真实资料的结构和任务，但不应默认把客户隐私、商业秘密、合同、财务或员工信息上传外部工具。更稳妥的做法是先分类、最小化、脱敏和授权，确认使用哪个账号与工具、资料如何留存，并为高风险输出设置人工复核。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/ai-consultant-vs-software-implementer/</id>
+    <title>企业 AI 咨询顾问和软件实施公司有什么区别？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/ai-consultant-vs-software-implementer/" />
+    <summary>企业 AI 咨询顾问主要帮助企业确定为什么做、先做什么、人与 AI 怎样分工、如何试点和采用；软件实施公司主要负责把确定需求变成可运行系统，包括配置、开发、集成、数据、权限和运维。前者不能替代技术实施，后者也不应替企业省略业务判断。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-to-choose-enterprise-ai-trainer/</id>
+    <title>企业选择 AI 培训讲师，应该重点看什么？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-to-choose-enterprise-ai-trainer/" />
+    <summary>企业选择 AI 培训讲师，应重点看六件事：是否理解企业经营与岗位任务，能否在课前诊断真实问题，是否使用经过授权的业务材料，能否让团队形成可复用工作流，是否讲清数据与人工责任，以及培训后有没有小范围试点和复盘安排。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-to-design-enterprise-ai-training-plan/</id>
+    <title>企业 AI 内训方案应该怎样设计？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-to-design-enterprise-ai-training-plan/" />
+    <summary>企业 AI 内训方案可以按六步设计：明确业务目标，区分管理层与岗位团队，收集可用的真实任务和脱敏材料，设计输入—AI 处理—人工复核—交付物练习，现场形成模板与责任清单，最后安排两周左右的小试点和复盘。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-to-evaluate-enterprise-ai-service-provider/</id>
+    <title>企业采购 AI 咨询与培训服务，应该如何评估供应商并验收？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-to-evaluate-enterprise-ai-service-provider/" />
+    <summary>企业评估 AI 咨询与培训供应商，可以分三步：采购前写清业务问题、参与岗位、可用资料与禁止事项；选择时核验顾问背景、诊断方法、真实交付物和能力边界；验收时检查是否形成约定的场景清单、工作流、复核规则、练习产出和试点计划。没有事先建立基线，就不应把 ROI 或效率提升比例作为事后包装的验收结论。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-to-sustain-enterprise-ai-training-adoption/</id>
+    <title>企业 AI 培训结束后，怎样让员工真正持续使用？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-to-sustain-enterprise-ai-training-adoption/" />
+    <summary>企业 AI 培训结束后，不要立刻要求所有员工全面使用。先选一个高频、材料可得、结果可检查、风险可控的岗位任务，明确内部负责人和人工审核人，在两至四周内重复运行；每周记录输入准备、AI 错误、人工修改、使用意愿和异常情况，复盘后再决定继续、调整、扩大或停止。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-customer-service-teams-should-use-ai/</id>
+    <title>客服团队怎样使用 AI，又不让错误回复直接发给客户？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-customer-service-teams-should-use-ai/" />
+    <summary>客服团队使用 AI，适合先从问题分类、权威知识检索、回复草稿和会话摘要开始，而不是一开始就自动回复所有客户。企业应明确哪些问题可辅助、哪些必须转人工，要求答案保留来源与版本，并让客服人员核验客户事实、政策、价格、退款、合同和任何对外承诺后再发送。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-hr-teams-should-use-ai-in-recruitment/</id>
+    <title>HR 团队怎样在招聘中使用 AI，又不让模型替企业做录用决定？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-hr-teams-should-use-ai-in-recruitment/" />
+    <summary>HR 团队使用 AI，适合先从岗位说明草稿、简历信息结构化、面试问题准备和面试纪要开始，而不是让模型自动淘汰候选人。企业应先定义与岗位真正相关的评价标准，最小化使用个人信息，检查歧视性条件，并要求招聘责任人核验事实、解释判断和作出最终决定。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-marketing-teams-should-use-ai-content/</id>
+    <title>市场团队怎样使用 AI 生产内容，又不让事实与品牌承诺失控？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-marketing-teams-should-use-ai-content/" />
+    <summary>市场团队使用 AI，适合先从公开资料研究、选题简报、结构草稿和多版本改写开始。发布前必须由责任人核验来源事实、客户与产品信息、数据引用、价格功效、品牌承诺、版权与适用的 AI 内容标识；AI 不应直接把未经审核的内容发布到外部渠道。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-finance-teams-should-use-ai-for-management-analysis/</id>
+    <title>财务团队怎样使用 AI 做经营分析，又不让模型改写会计事实？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-finance-teams-should-use-ai-for-management-analysis/" />
+    <summary>财务团队使用 AI，适合先从已批准数据的归集、预算与实际差异说明、趋势摘要和待核验问题开始。AI 只能基于明确来源、期间和口径整理草稿，不能补造会计事实、修改凭证、自动记账、报税、付款或出具审计意见；财务人员必须回看原始资料并对数据、解释和最终报告负责。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/how-project-teams-should-use-ai-for-status-reporting/</id>
+    <title>项目团队怎样用 AI 整理进展，又不把草稿当成事实？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/how-project-teams-should-use-ai-for-status-reporting/" />
+    <summary>项目团队使用 AI，适合先从会议纪要、行动项、风险依赖和周报草稿开始。AI 应只基于已批准计划和带日期、版本、责任人的记录整理信息，把缺失与冲突标成待核验；任务责任人确认实际状态，项目负责人确认范围、日期、风险和对外承诺，AI 不能凭语气推断任务已经完成。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/who-should-lead-enterprise-ai-training-project/</id>
+    <title>企业 AI 咨询与培训项目，应该由哪个部门牵头？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/who-should-lead-enterprise-ai-training-project/" />
+    <summary>企业 AI 咨询与培训不宜只由 HR 或 IT 单独牵头。更稳妥的结构是：管理层发起人对方向、资源和风险负责，一名业务负责人拥有真实任务与试点结果，HR 或项目经理负责组织协调，IT、数据、安全、法务和合规按工具、资料与使用范围参与；外部顾问提供方法与支持，但不能替企业承担内部决策责任。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/what-rules-enterprise-ai-employees-need/</id>
+    <title>企业允许员工使用生成式 AI 前，需要先制定哪些规则？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/what-rules-enterprise-ai-employees-need/" />
+    <summary>企业允许员工使用生成式 AI 前，至少要写清七件事：哪些工具和账号可以用，哪些资料禁止输入，个人信息和商业秘密怎样处理，哪些输出必须人工复核，对外发布何时需要标识和批准，谁对使用记录与结果负责，以及发生泄露、错误或不当输出时怎样停止、上报和纠正。</summary>
+  </entry>
+  <entry>
+    <id>https://wan-zhen-enterprise-ai.example.com/questions/questions-before-enterprise-ai-consulting/</id>
+    <title>企业做 AI 咨询前，管理层应该先回答哪些问题？</title>
+    <updated>2026-08-07T00:00:00+08:00</updated>
+    <link href="https://wan-zhen-enterprise-ai.example.com/questions/questions-before-enterprise-ai-consulting/" />
+    <summary>企业做 AI 咨询前，管理层不必先选模型，而应先回答五组问题：为什么做、具体改变哪项任务、有哪些可用资料、哪些判断必须由人负责，以及怎样验证团队是否愿意持续使用。把这五组共 20 个问题写清，咨询才更容易进入真实业务，而不是停在工具演示。</summary>
+  </entry>
+</feed>

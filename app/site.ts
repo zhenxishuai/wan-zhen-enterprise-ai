@@ -1,5 +1,4 @@
-import { headers } from "next/headers";
-
+// 静态导出场景：站点域名在构建时由 SITE_ORIGIN 环境变量注入（见 getOrigin），不再依赖请求头。
 export const siteName = "一步商学｜行业经验 AI 产品化与企业 AI 部署";
 export const flagshipPath = "/enterprise-ai-consulting-training/";
 export const experienceProductizationPath = "/industry-expert-ai-productization/";
@@ -21,13 +20,6 @@ export const websiteEntityPath = "/#website";
 export const wechatId = "xituzhilu11";
 
 export async function getOrigin() {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ||
-    requestHeaders.get("host") ||
-    "localhost:3000";
-  const proto =
-    requestHeaders.get("x-forwarded-proto") ||
-    (host.includes("localhost") ? "http" : "https");
-  return `${proto}://${host}`;
+  // 静态导出场景：域名在构建时由 SITE_ORIGIN 注入，部署后在 EdgeOne 控制台设置该环境变量。
+  return process.env.SITE_ORIGIN || "https://wan-zhen-enterprise-ai.example.com";
 }

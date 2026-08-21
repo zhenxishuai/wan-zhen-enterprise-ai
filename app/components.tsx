@@ -10,7 +10,6 @@ import {
   programsPath,
   questionsPath,
   resourcesPath,
-  secondBrainPath,
   servicesPath,
   startPath,
   wechatId,
@@ -79,8 +78,7 @@ export function SiteFooter() {
           <Link href={questionsPath}>常见问题</Link>
           <Link href={resourcesPath}>案例证据框架</Link>
           <Link href={citationKitPath}>主办方引用资料</Link>
-          <Link href={secondBrainPath}>第二大脑</Link>
-          <a href="/feed.xml/">更新订阅</a>
+          <a href="/feed.xml">更新订阅</a>
         </div>
       </nav>
     </footer>

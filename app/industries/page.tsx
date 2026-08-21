@@ -30,7 +30,6 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       url: canonical,
       siteName,
-      modifiedTime: updatedAt,
       images: [{ url: `${origin}/og.png`, width: 1200, height: 630 }],
     },
     robots: { index: true, follow: true },

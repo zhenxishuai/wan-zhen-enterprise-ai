@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: DoubaoBot
+Allow: /
+
+User-agent: Doubao-User
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+Sitemap: https://wan-zhen-enterprise-ai.example.com/sitemap.xml
